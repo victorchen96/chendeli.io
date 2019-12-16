@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-24T11:16:23+08:00</updated><id>http://localhost:4000/</id><title>Yi_git</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><author><name>Yi Zhang</name><email>your-email@domain.com</email></author><entry><title></title><link href="http://localhost:4000/2018/08/22/" rel="alternate" type="text/html" title="" /><published>2018-08-22T00:00:00+08:00</published><updated>2018-08-22T00:00:00+08:00</updated><id>http://localhost:4000/2018/08/</id><content type="html" xml:base="http://localhost:4000/2018/08/22/">&lt;p&gt;&lt;img src=&quot;/images/fulls/07.jpg&quot; class=&quot;fit image&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;research-interests&quot;&gt;Research Interests:&lt;/h1&gt;
+&lt;p&gt;Natural Language Processing, Machine Learning&lt;/p&gt;
+
+&lt;h1 id=&quot;publication&quot;&gt;Publication:&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Yi Zhang&lt;/strong&gt;, Jingjing Xu, Pengcheng Yang, Xu Sun&lt;br /&gt;
+Learning Sentiment Memories for Sentiment Modification without Parallel Data&lt;br /&gt;
+&lt;strong&gt;EMNLP&lt;/strong&gt; 2018 (To appear)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jingjing Xu, &lt;strong&gt;Yi Zhang&lt;/strong&gt;, Qi Zeng, Xuancheng Ren, Xiaoyan Cai, Xu Sun&lt;br /&gt;
+A Skeleton-Based Model for Promoting Coherence Among Sentences in Narrative Story Generation&lt;br /&gt;
+&lt;strong&gt;EMNLP&lt;/strong&gt; 2018 (To appear)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Yi Zhang&lt;/strong&gt;, Xu Sun, Shuming Ma, Yang Yang, Xuancheng Ren&lt;br /&gt;
+Does Higher Order LSTM Have Better Accuracy for Segmenting and Labeling Sequence Data?&lt;br /&gt;
+&lt;strong&gt;COLING&lt;/strong&gt; 2018  &lt;a href=&quot;http://aclweb.org/anthology/C18-1061&quot;&gt;[pdf]&lt;/a&gt; &lt;a href=&quot;https://github.com/lancopku/Multi-Order-LSTM&quot;&gt;[code]&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Yi Zhang&lt;/strong&gt;, Xu Sun&lt;br /&gt;
+A Chinese Dataset with Negative Full Forms for General Abbreviation Prediction&lt;br /&gt;
+&lt;strong&gt;LREC&lt;/strong&gt; 2018 &lt;a href=&quot;https://arxiv.org/pdf/1712.06289.pdf&quot;&gt;[pdf]&lt;/a&gt; &lt;a href=&quot;https://github.com/lancopku/Chinese-abbreviation-dataset&quot;&gt;[data]&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Shuming Ma, Xu Sun, &lt;strong&gt;Yi Zhang&lt;/strong&gt;, Bingzhen Wei&lt;br /&gt;
+Accelerating Graph-based Dependency Parsing with Lock-Free Parallel Perceptron&lt;br /&gt;
+&lt;strong&gt;NLPCC&lt;/strong&gt; 2018&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jingjing Xu, Shuming Ma, &lt;strong&gt;Yi Zhang&lt;/strong&gt;, Bingzhen Wei, Xiaoyan Cai, and Xu Sun&lt;br /&gt;
+Transfer Deep Learning for Low-Resource Chinese Word Segmentation with a Novel Neural Network. &lt;br /&gt;
+&lt;strong&gt;NLPCC&lt;/strong&gt; 2017 &lt;a href=&quot;https://arxiv.org/pdf/1702.04488.pdf&quot;&gt;[pdf]&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Yi Zhang</name><email>your-email@domain.com</email></author><summary>Research Interests:
+Natural Language Processing, Machine Learning</summary></entry></feed>

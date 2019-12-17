@@ -3,15 +3,15 @@ layout: post
 ---
 <!-- <img src="/images/fulls/07.jpg" class="fit image">  -->
 # About:
-I am a Master Student, supervised by Prof. Xu Sun, at MOE Key Laboratory of Computational Linguistics, School of Electronics Engineering and Computer Science, Peking University. My research interest is the NLP application in financial area and the Graph Neural Network training.
+I am a Master Student, supervised by Prof. [[Xu Sun]](https://xusun.org/), at MOE Key Laboratory of Computational Linguistics, School of Electronics Engineering and Computer Science, Peking University. My research interest is the NLP application in financial area and the Graph Neural Network training.
 
 # Experiences:
-Research Intern of Electronic Trading, Mizuho Secirities (Tokyo), 2018.11 - 2019.1  
-Research Intern of Wechat AI, Tencent Inc. (Beijing), 2019.6 - now
+Research Intern of Electronic Trading, Mizuho Secirities (Tokyo), Nov 2018 - Jan 2019  
+Research Intern of Wechat AI, Tencent Inc. (Beijing), Jun 2019 - now
 
 # Publication:
 
-- **Deli Chen**, Yankai Lin, Wei Li, Peng Li, Jie Zhou, Xu Sun
+- **Deli Chen**, Yankai Lin, Wei Li, Peng Li, Jie Zhou, Xu Sun  
 Measuring and Relieving the Over-smoothing Problem for Graph Neural Networks from the Topological View.
 **AAAI** 2020 [[pdf]](https://arxiv.org/abs/1909.03211)
 
@@ -19,11 +19,11 @@ Measuring and Relieving the Over-smoothing Problem for Graph Neural Networks fro
 Predicting Popular News Comments Based on Multi-Target Text Matching Model.
 **NLPCC** 2019 [[pdf]](https://link.springer.com/chapter/10.1007/978-3-030-32233-5_48)
 
-- **Deli Chen**, Shuming Ma, Keiko Harimoto, Ruihan Bao, Qi Su, Xu Sun 
+- **Deli Chen**, Shuming Ma, Keiko Harimoto, Ruihan Bao, Qi Su, Xu Sun  
 Group, Extract and Aggregate: Summarizing a Large Amount of Finance News for Forex Movement Prediction.
 **ECONLP** 2019 [[pdf]](https://arxiv.org/abs/1910.05032)
 
-- **Deli Chen**, Yanyan Zou, Keiko Harimoto, Ruihan Bao, Xuancheng Ren, Xu Sun
+- **Deli Chen**, Yanyan Zou, Keiko Harimoto, Ruihan Bao, Xuancheng Ren, Xu Sun  
 Incorporating Fine-grained Events in Stock Movement Prediction.
 **ECONLP** 2019 [[pdf]](https://arxiv.org/abs/1910.05078)
 

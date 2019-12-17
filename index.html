@@ -10,14 +10,14 @@ layout: default
         <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
       </header>
 	  -->
-      <section>
+      <!-- <section>
         {{ post.content }}
         <p class="editor-link"><a href="cloudcannon:collections/{{ post.path }}" class="button"><strong>&#9998;</strong> Edit post</a></p>
-      </section>
+      </section> -->
     {% endfor %}
   </section>
 
-  <section>
+ <!--  <section>
     <div class="row">
       {% for post in site.posts offset:1 %}
         <article class="{% cycle '6u', '6u$' %} 12u(small)">
@@ -36,5 +36,5 @@ layout: default
         </article>
       {% endfor %}
     </div>
-  </section>
+  </section> -->
 </div>

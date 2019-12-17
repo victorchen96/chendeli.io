@@ -3147,7 +3147,7 @@
 
  /* CloudCannon Editor Links (https://docs.cloudcannon.com/editing/editor-links/) */
 
- 	.editor-link {
+/* 	.editor-link {
  		display: none;
  		margin-top: 0;
  	}
@@ -3164,3 +3164,4 @@
  	.cms-editor-active .editor-link {
  		display: inline-block;
  	}
+*/

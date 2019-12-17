@@ -6,7 +6,7 @@ layout: post
 I am a Master Student, supervised by Prof. Xu Sun, at MOE Key Laboratory of Computational Linguistics, School of Electronics Engineering and Computer Science, Peking University. My research interest is the NLP application in financial area and the Graph Neural Network training.
 
 # Experiences:
-Research Intern of Electronic Trading, Mizuho Secirities (Tokyo), 2018.11 - 2019.1
+Research Intern of Electronic Trading, Mizuho Secirities (Tokyo), 2018.11 - 2019.1  
 Research Intern of Wechat AI, Tencent Inc. (Beijing), 2019.6 - now
 
 # Publication:

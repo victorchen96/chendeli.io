@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<div id="main">
+  <article>
+    <header>
+      <h1 class="post-title">{{ page.title }}</h1>
+      <!--
+      <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+      -->    
+</header>
+
+    <section>
+      {{ content }}
+    </section>
+
+    <footer>
+      <div class="row">
+      {% if page.previous %}
+        <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt">
+          <header>
+            <h2><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h2>
+          </header>
+          <section>
+            {{ page.previous.excerpt }}
+          </section>
+          <footer>
+            <ul class="actions">
+              <li><a href="{{ page.previous.url }}" class="button">Read More</a></li>
+            </ul>
+          </footer>
+        </article>
+      {% endif %}
+
+      {% if page.next %}
+        <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt f-right">
+          <header>
+            <h2><a href="{{ page.next.url }}">{{ page.next.title }}</a></h2>
+          </header>
+          <section>
+            {{ page.next.excerpt | markdownify }}
+          </section>
+          <footer>
+            <ul class="actions">
+              <li><a href="{{ page.next.url }}" class="button">Read More</a></li>
+            </ul>
+          </footer>
+        </article>
+      {% endif %}
+      </div>
+    </footer>
+  </article>
+</div>
+
+
+
+<ul class="icons">
+        {% for account in site.data.social %}
+          <li>
+            <a {% if account.new_window %}target="_blank"{% endif %} href="{% include relative-src.html src=account.link %}" {% if account.social_icon %}class="icon fa-{{ account.social_icon | slugify }}"{% endif %}>
+              <span class="label">{{ account.name }}</span>
+            </a>
+          </li>
+        {% endfor %}
+        {% if site.author.email %}
+        <li>
+          <a href="mailto:{{ site.author.email }}" class="icon fa-envelope-o">
+            <span class="label">Email</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>

@@ -26,3 +26,6 @@ Group, Extract and Aggregate: Summarizing a Large Amount of Finance News for For
 - **Deli Chen**, Yanyan Zou, Keiko Harimoto, Ruihan Bao, Xuancheng Ren, Xu Sun
 Incorporating Fine-grained Events in Stock Movement Prediction.
 **ECONLP** 2019 [[pdf]](https://arxiv.org/abs/1910.05078)
+
+# Contact:
+- chendeli@pku.edu.cn

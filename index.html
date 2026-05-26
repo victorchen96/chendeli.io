@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deli Chen - DeepSeek AI Researcher</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0f; --surface: #16161a; --surface-2: #1e1e24;
+  --text: #e8e8ed; --text-dim: #94949e; --accent: #4fc3f7;
+  --accent-warm: #ff8a65; --accent-green: #66bb6a; --accent-gold: #ffd54f;
+  --border: #2a2a32; --glow: rgba(79, 195, 247, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+/* Banner */
+.profile-banner { width: 100%; height: 180px; overflow: hidden; position: relative; }
+.profile-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.profile-banner::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, var(--bg)); }
+
+/* Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 90; background: rgba(12,12,15,0.92);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 32px;
+}
+.nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 0; }
+.nav-brand { font-weight: 700; font-size: 1.05em; margin-right: 32px; padding: 14px 0; color: var(--text); }
+.nav-tabs { display: flex; gap: 0; overflow-x: auto; }
+.nav-tab {
+  padding: 14px 16px; font-size: 0.88em; color: var(--text-dim); cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; user-select: none;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Pages */
+.page { display: none; padding: 60px 0 80px; min-height: 70vh; }
+.page.active { display: block; }
+
+/* Hero (home page) */
+.hero { padding: 40px 0 60px; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; }
+.hero-right { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.hero-avatar {
+  width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
+  border: 3px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.hero-avatar img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); }
+.hero-name {
+  font-size: 3em; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--text) 60%, var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-name-cn { font-size: 1.05em; color: var(--text-dim); margin-bottom: 16px; }
+.hero-tagline { font-size: 1.05em; color: var(--text-dim); max-width: 560px; margin-bottom: 8px; line-height: 1.8; }
+.hero-tagline a { color: var(--accent); }
+.hero-signature { font-size: 0.88em; color: var(--text-dim); margin-bottom: 20px; opacity: 0.7; }
+
+/* Social Links */
+.social-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.social-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.82em; color: var(--text-dim); transition: all 0.2s;
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+.social-link svg { flex-shrink: 0; }
+
+.hero-stats {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px; min-width: 160px;
+}
+.stat-item { text-align: center; }
+.stat-num { font-size: 1.6em; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.72em; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Section title */
+.section-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8em; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%); border-radius: 1px; }
+.timeline-item { position: relative; margin-bottom: 28px; padding-left: 20px; }
+.timeline-item::before { content: ''; position: absolute; left: -28px; top: 10px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+.timeline-period { font-family: 'JetBrains Mono', monospace; font-size: 0.78em; color: var(--accent-warm); margin-bottom: 3px; }
+.timeline-title { font-weight: 600; margin-bottom: 3px; font-size: 0.95em; }
+.timeline-desc { font-size: 0.88em; color: var(--text-dim); }
+
+/* Research grid */
+.research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.research-card { padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+.research-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.research-icon { font-size: 1.4em; margin-bottom: 8px; }
+.research-name { font-weight: 600; margin-bottom: 4px; font-size: 0.92em; }
+.research-desc { font-size: 0.82em; color: var(--text-dim); }
+
+/* Papers */
+.paper-list { display: flex; flex-direction: column; gap: 10px; }
+.paper-item {
+  padding: 14px 18px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; transition: all 0.2s; display: grid;
+  grid-template-columns: 1fr auto; gap: 14px; align-items: center;
+  text-decoration: none; color: inherit;
+}
+.paper-item:hover { border-color: var(--accent); background: var(--surface-2); opacity: 1; }
+.paper-title { font-weight: 500; font-size: 0.92em; margin-bottom: 3px; color: var(--text); }
+.paper-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.paper-venue { font-size: 0.78em; color: var(--text-dim); }
+.paper-citations {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.78em; color: var(--accent-green);
+  white-space: nowrap; padding: 3px 8px; background: rgba(102,187,106,0.08); border-radius: 4px;
+}
+.paper-badge {
+  display: inline-flex; align-items: center; gap: 3px; font-size: 0.68em; font-weight: 600;
+  padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em;
+}
+.badge-nature { background: rgba(255,213,79,0.15); color: var(--accent-gold); border: 1px solid rgba(255,213,79,0.3); }
+.badge-best { background: rgba(255,138,101,0.15); color: var(--accent-warm); border: 1px solid rgba(255,138,101,0.3); }
+.paper-item.featured { border: 1px solid rgba(255,213,79,0.3); background: linear-gradient(135deg, rgba(255,213,79,0.03) 0%, var(--surface) 100%); }
+.paper-item.featured:hover { border-color: var(--accent-gold); }
+.paper-more { text-align: center; margin-top: 16px; padding: 10px; border: 1px dashed var(--border); border-radius: 8px; color: var(--text-dim); font-size: 0.88em; }
+
+/* Nature showcase */
+.nature-showcase {
+  display: flex; gap: 16px; align-items: stretch; padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(255,213,79,0.04) 0%, var(--surface) 100%);
+  border: 1px solid rgba(255,213,79,0.2); border-radius: 8px;
+  text-decoration: none; transition: all 0.2s; overflow: hidden;
+}
+.nature-showcase:hover { border-color: var(--accent-gold); opacity: 1; }
+.nature-cover { height: 140px; width: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); flex-shrink: 0; }
+.nature-figure { flex: 1; height: 140px; object-fit: contain; border-radius: 4px; background: #fff; padding: 8px; }
+
+/* EMNLP showcase */
+.emnlp-showcase {
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(255,138,101,0.04) 0%, var(--surface) 100%);
+  border: 1px solid rgba(255,138,101,0.2); border-radius: 8px;
+  overflow: hidden;
+}
+.emnlp-showcase img { width: 100%; height: auto; max-height: 240px; object-fit: contain; border-radius: 4px; }
+
+/* Talks */
+.talks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.talk-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: all 0.2s; text-decoration: none; color: inherit; }
+.talk-card:hover { border-color: var(--accent); transform: translateY(-2px); opacity: 1; }
+.talk-img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+.talk-body { padding: 14px 18px; }
+.talk-event { font-weight: 600; margin-bottom: 3px; font-size: 0.92em; }
+.talk-detail { font-size: 0.82em; color: var(--text-dim); }
+
+/* Collaborators */
+.collab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.collab-card {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  transition: all 0.2s; text-decoration: none; color: inherit;
+}
+.collab-card:hover { border-color: var(--accent); opacity: 1; background: var(--surface-2); }
+.collab-avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1em;
+  flex-shrink: 0; border: 1px solid var(--border); color: var(--text-dim);
+}
+.collab-name { font-weight: 500; font-size: 0.9em; color: var(--text); }
+.collab-aff { font-size: 0.78em; color: var(--text-dim); }
+
+.collab-section { margin-bottom: 32px; }
+.collab-section-title { font-size: 0.85em; font-weight: 600; color: var(--text-dim); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+/* Footer */
+footer { padding: 32px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.82em; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .profile-banner { height: 120px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-right { flex-direction: row; align-items: center; }
+  .hero-avatar { width: 80px; height: 80px; }
+  .hero-name { font-size: 2.2em; }
+  .hero-stats { flex-direction: row; justify-content: space-around; }
+  .research-grid { grid-template-columns: 1fr; }
+  .talks-grid { grid-template-columns: 1fr; }
+  .paper-item { grid-template-columns: 1fr; gap: 6px; }
+  .collab-grid { grid-template-columns: 1fr; }
+  .nav-brand { display: none; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.page.active { animation: fadeUp 0.4s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="profile-banner">
+  <img src="banner.jpg" alt="Peking University Weiming Lake" />
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Deli Chen</span>
+    <div class="nav-tabs">
+      <div class="nav-tab active" data-page="home">Home</div>
+      <div class="nav-tab" data-page="publications">Publications</div>
+      <div class="nav-tab" data-page="talks">Talks & News</div>
+      <div class="nav-tab" data-page="collaborators">Collaborators</div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ==================== HOME ==================== -->
+<div class="page active" id="page-home">
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-name">Deli Chen</h1>
+      <p class="hero-name-cn">陈德里</p>
+      <p class="hero-tagline">
+        Senior Researcher at <strong>DeepSeek AI</strong>. Building next-generation large language models.<br>
+        Core contributor to <a href="https://arxiv.org/abs/2401.02954">DeepSeek-V1</a>, <a href="https://arxiv.org/abs/2405.04434">V2</a>, <a href="https://arxiv.org/abs/2412.19437">V3</a>, <a href="https://arxiv.org/abs/2505.09343">V4</a>, <a href="https://www.nature.com/articles/s41586-025-09422-z">DeepSeek-R1</a> (Nature Cover), <a href="https://arxiv.org/abs/2406.11931">DeepSeek-Coder</a>, <a href="https://arxiv.org/abs/2401.06066">DeepSeek-MoE</a> architecture, etc.<br>
+        B.S. & M.S. from Peking University · Previously Tencent WeChat AI.
+      </p>
+      <p class="hero-signature">All opinions are my own. | INTP-T | 人心惟危，道心惟微 ｜ #AGIforEveryone</p>
+      <div class="social-links">
+        <a class="social-link" href="https://x.com/deaborchen" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @deaborchen
+        </a>
+        <a class="social-link" href="https://github.com/chendeli" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a class="social-link" href="https://www.xiaohongshu.com/user/profile/5a77c0214eacab3eb09e2b5c" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2h-3L9 6H6v4h2.5L7 20h3l1.5-10H14l1.5 10h3l-1.5-10H19V6h-3l-1.5-4z"/></svg>
+          小红书
+        </a>
+        <a class="social-link" href="https://scholar.google.com/citations?user=8YpGRDcAAAAJ" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          Scholar
+        </a>
+        <a class="social-link" href="https://dblp.org/pid/50/2637" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 1v17l4 4V5l10 2v15l4 1V3z"/></svg>
+          DBLP
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-avatar"><img src="avatar.png" alt="Deli Chen" /></div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">23,500+</div><div class="stat-label">Citations</div></div>
+        <div class="stat-item"><div class="stat-num">21</div><div class="stat-label">h-index</div></div>
+        <div class="stat-item"><div class="stat-num">29+</div><div class="stat-label">Papers</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Experience -->
+<section>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-period">2023 - Present</div>
+      <div class="timeline-title">Senior Researcher, DeepSeek AI</div>
+      <div class="timeline-desc">Core contributor to DeepSeek-V1, V2, V3, V4, DeepSeek-R1 (Nature Cover), DeepSeek-Coder, DeepSeek-MoE architecture, etc. Public spokesperson at NVIDIA GTC 2024 and World Internet Conference 2025.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2021 - 2023</div>
+      <div class="timeline-title">Researcher, Tencent WeChat AI</div>
+      <div class="timeline-desc">NLP and language model research.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2019 - 2021</div>
+      <div class="timeline-title">M.S. in Computer Science, Peking University</div>
+      <div class="timeline-desc">MOE Key Lab of Computational Linguistics (<a href="https://lancopku.github.io/" target="_blank">LancoPKU</a>). Advisor: Prof. Xu Sun. Research on GNN, NLP, and financial AI.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2015 - 2019</div>
+      <div class="timeline-title">B.S. in Information Management, Peking University</div>
+      <div class="timeline-desc">School of Information Management.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Research -->
+<section>
+  <h2 class="section-title">Research</h2>
+  <div class="research-grid">
+    <div class="research-card"><div class="research-icon">&#x1F9E0;</div><div class="research-name">Large Language Models</div><div class="research-desc">DeepSeek series: scaling, MoE architecture, efficient training.</div></div>
+    <div class="research-card"><div class="research-icon">&#x1F4A1;</div><div class="research-name">Reasoning & RL</div><div class="research-desc">RL for LLM reasoning (DeepSeek-R1), step-by-step verification.</div></div>
+    <div class="research-card"><div class="research-icon">&#x1F578;&#xFE0F;</div><div class="research-name">Graph Neural Networks</div><div class="research-desc">Over-smoothing, topology-imbalance, contrastive learning.</div></div>
+    <div class="research-card"><div class="research-icon">&#x1F512;</div><div class="research-name">LLM Safety & Alignment</div><div class="research-desc">Backdoor detection, watermarking, diffusion purification.</div></div>
+    <div class="research-card"><div class="research-icon">&#x1F4C8;</div><div class="research-name">Financial NLP</div><div class="research-desc">Stock prediction with event graphs, forex news aggregation.</div></div>
+    <div class="research-card"><div class="research-icon">&#x1F50D;</div><div class="research-name">Interpretability</div><div class="research-desc">In-context learning: label words as anchors.</div></div>
+  </div>
+</section>
+</div>
+
+<!-- ==================== PUBLICATIONS ==================== -->
+<div class="page" id="page-publications">
+<section>
+  <h2 class="section-title">Selected Publications</h2>
+  <div class="paper-list">
+    <a class="paper-item featured" href="https://www.nature.com/articles/s41586-025-09422-z" target="_blank">
+      <div><div class="paper-title">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</div>
+      <div class="paper-meta"><span class="paper-venue">Nature 2025 (Cover Article)</span><span class="paper-badge badge-nature">Nature Cover</span></div></div>
+      <div class="paper-citations">9,541</div>
+    </a>
+    <a class="nature-showcase" href="https://www.nature.com/articles/s41586-025-09422-z" target="_blank">
+      <img src="https://media.springernature.com/w300/springer-static/cover/journal/41586/645/8048.jpg" alt="Nature Vol.645 Cover - SELF-HELP" class="nature-cover" />
+      <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09422-z/MediaObjects/41586_2025_9422_Fig1_HTML.png" alt="DeepSeek-R1 Figure 1" class="nature-figure" />
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2412.19437" target="_blank">
+      <div><div class="paper-title">DeepSeek-V3 Technical Report</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2024</span></div></div>
+      <div class="paper-citations">4,600</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/1909.03211" target="_blank">
+      <div><div class="paper-title">Measuring and Relieving the Over-smoothing Problem for Graph Neural Networks from the Topological View</div>
+      <div class="paper-meta"><span class="paper-venue">AAAI 2020</span></div></div>
+      <div class="paper-citations">1,748</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2401.06066" target="_blank">
+      <div><div class="paper-title">DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models</div>
+      <div class="paper-meta"><span class="paper-venue">ACL 2024</span></div></div>
+      <div class="paper-citations">1,017</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2312.08935" target="_blank">
+      <div><div class="paper-title">Math-Shepherd: Verify and Reinforce LLMs Step-by-Step without Human Annotations</div>
+      <div class="paper-meta"><span class="paper-venue">ACL 2024</span></div></div>
+      <div class="paper-citations">993</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2401.02954" target="_blank">
+      <div><div class="paper-title">DeepSeek LLM: Scaling Open-Source Language Models with Longtermism</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2024</span></div></div>
+      <div class="paper-citations">952</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2405.04434" target="_blank">
+      <div><div class="paper-title">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2024</span></div></div>
+      <div class="paper-citations">926</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2406.11931" target="_blank">
+      <div><div class="paper-title">DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2024</span></div></div>
+      <div class="paper-citations">467</div>
+    </a>
+    <a class="paper-item featured" href="https://arxiv.org/abs/2305.14160" target="_blank">
+      <div><div class="paper-title">Label Words are Anchors: An Information Flow Perspective for Understanding In-Context Learning</div>
+      <div class="paper-meta"><span class="paper-venue">EMNLP 2023</span><span class="paper-badge badge-best">Best Long Paper</span></div></div>
+      <div class="paper-citations">284</div>
+    </a>
+    <div class="emnlp-showcase">
+      <img src="emnlp2023-best-long-paper.png" alt="EMNLP 2023 Best Long Paper Award - Label Words are Anchors" />
+    </div>
+    <a class="paper-item" href="https://arxiv.org/abs/2505.09343" target="_blank">
+      <div><div class="paper-title">DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2025</span></div></div>
+      <div class="paper-citations">281</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2106.07052" target="_blank">
+      <div><div class="paper-title">Modeling the Stock Relation with Graph Network for Overnight Stock Movement Prediction</div>
+      <div class="paper-meta"><span class="paper-venue">IJCAI 2021</span></div></div>
+      <div class="paper-citations">281</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2110.04043" target="_blank">
+      <div><div class="paper-title">Topology-Imbalance Learning for Semi-Supervised Node Classification</div>
+      <div class="paper-meta"><span class="paper-venue">NeurIPS 2021</span></div></div>
+      <div class="paper-citations">173</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2307.15992" target="_blank">
+      <div><div class="paper-title">Towards Codable Text Watermarking for Large Language Models</div>
+      <div class="paper-meta"><span class="paper-venue">arXiv 2023</span></div></div>
+      <div class="paper-citations">139</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2012.15445" target="_blank">
+      <div><div class="paper-title">CascadeBERT: Accelerating Inference of Pre-trained Language Models via Calibrated Complete Models Cascade</div>
+      <div class="paper-meta"><span class="paper-venue">Findings of EMNLP 2021</span></div></div>
+      <div class="paper-citations">72</div>
+    </a>
+    <a class="paper-item" href="https://arxiv.org/abs/2305.04547" target="_blank">
+      <div><div class="paper-title">Diffusion Theory as a Scalpel: Detecting and Purifying Poisonous Dimensions in Pre-trained Language Models</div>
+      <div class="paper-meta"><span class="paper-venue">Findings of ACL 2023</span></div></div>
+      <div class="paper-citations">17</div>
+    </a>
+  </div>
+  <div class="paper-more">
+    <a href="https://scholar.google.com/citations?user=8YpGRDcAAAAJ" target="_blank">View all publications on Google Scholar &rarr;</a>
+  </div>
+</section>
+</div>
+
+<!-- ==================== TALKS & NEWS ==================== -->
+<div class="page" id="page-talks">
+<section>
+  <h2 class="section-title">Talks & Appearances</h2>
+  <div class="talks-grid">
+    <a class="talk-card" href="https://www.youtube.com/watch?v=1rjd2OQsT2U" target="_blank">
+      <img class="talk-img" src="https://img.youtube.com/vi/1rjd2OQsT2U/maxresdefault.jpg" alt="NVIDIA GTC 2024 - Deli Chen" />
+      <div class="talk-body">
+        <div class="talk-event">NVIDIA GTC 2024</div>
+        <div class="talk-detail">Invited talk: "Harmony in Diversity: Decoupled Value Alignment for LLMs"</div>
+      </div>
+    </a>
+    <a class="talk-card" href="https://zjic.zj.gov.cn/ywdh/jjyx/202511/t20251110_23798415.shtml" target="_blank">
+      <img class="talk-img" src="https://zjic.zj.gov.cn/ywdh/jjyx/202511/W020251110463015264663.jpeg" alt="World Internet Conference 2025" />
+      <div class="talk-body">
+        <div class="talk-event">World Internet Conference 2025</div>
+        <div class="talk-detail">Wuzhen Summit: "Six Little Dragons Dialogue" — Representing DeepSeek on open-source AI future.</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section style="margin-top: 40px;">
+  <h2 class="section-title">News & Highlights</h2>
+  <div class="paper-list">
+    <div class="paper-item featured" style="cursor:default">
+      <div><div class="paper-title">DeepSeek-R1 published as Nature Cover Article</div>
+      <div class="paper-meta"><span class="paper-venue">Sep 2025</span><span class="paper-badge badge-nature">Nature Cover</span></div></div>
+      <div class="paper-citations" style="color:var(--accent-gold)">Vol. 645</div>
+    </div>
+    <div class="paper-item" style="cursor:default">
+      <div><div class="paper-title">"Label Words are Anchors" wins EMNLP 2023 Best Long Paper</div>
+      <div class="paper-meta"><span class="paper-venue">Dec 2023</span><span class="paper-badge badge-best">Best Long Paper</span></div></div>
+      <div></div>
+    </div>
+    <div class="paper-item" style="cursor:default">
+      <div><div class="paper-title">DeepSeek-R1 crosses 9,500 citations in 4 months</div>
+      <div class="paper-meta"><span class="paper-venue">May 2025</span></div></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ==================== COLLABORATORS ==================== -->
+<div class="page" id="page-collaborators">
+<section>
+  <h2 class="section-title">Lab & Collaborators</h2>
+
+  <div class="collab-section">
+    <div class="collab-section-title">Research Lab</div>
+    <div class="collab-grid">
+      <a class="collab-card" href="https://lancopku.github.io/" target="_blank">
+        <div class="collab-avatar">L</div>
+        <div><div class="collab-name">LancoPKU Lab</div><div class="collab-aff">Language Computing & Web Mining, Peking University</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="collab-section">
+    <div class="collab-section-title">Advisor</div>
+    <div class="collab-grid">
+      <a class="collab-card" href="https://xusun26.github.io" target="_blank">
+        <div class="collab-avatar">X</div>
+        <div><div class="collab-name">Xu Sun</div><div class="collab-aff">Professor, Peking University</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="collab-section">
+    <div class="collab-section-title">DeepSeek AI</div>
+    <div class="collab-grid">
+      <a class="collab-card" href="https://scholar.google.com/citations?user=AGRFxQIAAAAJ" target="_blank">
+        <div class="collab-avatar">D</div>
+        <div><div class="collab-name">Damai Dai</div><div class="collab-aff">DeepSeek AI / Peking University</div></div>
+      </a>
+      <a class="collab-card" href="https://wqfcr.github.io" target="_blank">
+        <div class="collab-avatar">R</div>
+        <div><div class="collab-name">Runxin Xu</div><div class="collab-aff">DeepSeek AI / Peking University</div></div>
+      </a>
+      <a class="collab-card" href="https://zhihongshao.github.io" target="_blank">
+        <div class="collab-avatar">Z</div>
+        <div><div class="collab-name">Zhihong Shao</div><div class="collab-aff">DeepSeek AI / Tsinghua University</div></div>
+      </a>
+      <a class="collab-card" href="https://scholar.google.com/citations?user=kX1nBAIAAAAJ" target="_blank">
+        <div class="collab-avatar">P</div>
+        <div><div class="collab-name">Peiyi Wang</div><div class="collab-aff">DeepSeek AI</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">Y</div>
+        <div><div class="collab-name">Yu Wu (吴俣)</div><div class="collab-aff">DeepSeek AI</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">W</div>
+        <div><div class="collab-name">Wangding Zeng</div><div class="collab-aff">DeepSeek AI</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">C</div>
+        <div><div class="collab-name">Chenggang Zhao</div><div class="collab-aff">DeepSeek AI</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">Z</div>
+        <div><div class="collab-name">Zhenda Xie (解振达)</div><div class="collab-aff">DeepSeek AI</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="collab-section">
+    <div class="collab-section-title">Academia</div>
+    <div class="collab-grid">
+      <a class="collab-card" href="https://linyankai.github.io" target="_blank">
+        <div class="collab-avatar">Y</div>
+        <div><div class="collab-name">Yankai Lin</div><div class="collab-aff">Associate Professor, Renmin University</div></div>
+      </a>
+      <a class="collab-card" href="https://luofuli.github.io" target="_blank">
+        <div class="collab-avatar">F</div>
+        <div><div class="collab-name">Fuli Luo (罗福莉)</div><div class="collab-aff">Peking University</div></div>
+      </a>
+      <a class="collab-card" href="https://jingjingxu.com" target="_blank">
+        <div class="collab-avatar">J</div>
+        <div><div class="collab-name">Jingjing Xu</div><div class="collab-aff">Shanghai AI Lab</div></div>
+      </a>
+      <a class="collab-card" href="https://pengr.github.io" target="_blank">
+        <div class="collab-avatar">P</div>
+        <div><div class="collab-name">Peng Li</div><div class="collab-aff">Institute for AI Industry Research, Tsinghua</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">Q</div>
+        <div><div class="collab-name">Qi Su</div><div class="collab-aff">Associate Professor, Peking University</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">G</div>
+        <div><div class="collab-name">Guangxiang Zhao</div><div class="collab-aff">Peking University</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">W</div>
+        <div><div class="collab-name">Wenkai Yang</div><div class="collab-aff">Renmin University of China</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">C</div>
+        <div><div class="collab-name">Chengqi Deng</div><div class="collab-aff">Zhejiang University</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="collab-section">
+    <div class="collab-section-title">Industry</div>
+    <div class="collab-grid">
+      <a class="collab-card" href="https://fandongmeng.github.io" target="_blank">
+        <div class="collab-avatar">F</div>
+        <div><div class="collab-name">Fandong Meng</div><div class="collab-aff">WeChat AI, Tencent</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">W</div>
+        <div><div class="collab-name">Wei Li</div><div class="collab-aff">Beijing Language and Culture University</div></div>
+      </a>
+      <a class="collab-card" href="#" target="_blank">
+        <div class="collab-avatar">R</div>
+        <div><div class="collab-name">Ruihan Bao</div><div class="collab-aff">Mizuho Securities Co., Ltd.</div></div>
+      </a>
+    </div>
+  </div>
+
+</section>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Deli Chen &middot; <a href="https://lancopku.github.io/" target="_blank">LancoPKU</a> &middot; <a href="https://www.deepseek.com" target="_blank">DeepSeek AI</a></p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('page-' + tab.dataset.page).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>

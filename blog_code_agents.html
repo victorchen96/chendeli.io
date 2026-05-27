@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Code Agents Saved My INTP Brain - Deli Chen</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0f; --surface: #16161a; --surface-2: #1e1e24;
+  --text: #e8e8ed; --text-dim: #94949e; --accent: #4fc3f7;
+  --accent-warm: #ff8a65; --accent-green: #66bb6a; --accent-gold: #ffd54f;
+  --border: #2a2a32; --glow: rgba(79, 195, 247, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
+
+/* Header */
+.blog-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.blog-back { font-size: 0.85em; color: var(--text-dim); margin-bottom: 24px; display: inline-block; }
+.blog-back:hover { color: var(--accent); }
+.blog-title { font-size: 2.2em; font-weight: 700; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.02em; }
+.blog-subtitle { font-size: 1.1em; color: var(--text-dim); margin-bottom: 16px; }
+.blog-meta { font-size: 0.85em; color: var(--text-dim); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.blog-meta-item { display: flex; align-items: center; gap: 5px; }
+
+/* Language toggle */
+.lang-toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-left: auto; }
+.lang-btn {
+  padding: 5px 14px; font-size: 0.82em; cursor: pointer; transition: all 0.2s;
+  background: transparent; color: var(--text-dim); border: none; font-family: inherit;
+}
+.lang-btn.active { background: var(--accent); color: #000; font-weight: 600; }
+.lang-btn:hover:not(.active) { color: var(--text); }
+
+/* Content */
+.blog-content { font-size: 1.02em; }
+.blog-content h2 {
+  font-size: 1.3em; font-weight: 700; margin: 48px 0 16px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  color: var(--accent);
+}
+.blog-content h3 { font-size: 1.1em; font-weight: 600; margin: 36px 0 12px; color: var(--text); }
+.blog-content p { margin-bottom: 16px; color: var(--text); }
+.blog-content strong { color: var(--accent-gold); font-weight: 600; }
+.blog-content em { color: var(--accent-warm); font-style: italic; }
+.blog-content ul, .blog-content ol { margin-bottom: 16px; padding-left: 24px; }
+.blog-content li { margin-bottom: 8px; }
+.blog-content blockquote {
+  border-left: 3px solid var(--accent); padding: 12px 20px; margin: 20px 0;
+  background: var(--surface); border-radius: 0 8px 8px 0; color: var(--text-dim);
+}
+.blog-content .highlight-box {
+  padding: 16px 20px; margin: 20px 0; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.blog-content .highlight-box.warning { border-color: rgba(255,138,101,0.4); background: rgba(255,138,101,0.05); }
+.blog-content .highlight-box.tip { border-color: rgba(102,187,106,0.4); background: rgba(102,187,106,0.05); }
+.blog-content .chain {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: var(--accent-warm);
+  padding: 12px 16px; background: var(--surface); border-radius: 6px; margin: 16px 0;
+  line-height: 2;
+}
+.blog-content .section-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75em;
+  color: var(--accent); opacity: 0.7; margin-right: 8px;
+}
+
+.lang-block { display: none; }
+.lang-block.active { display: block; }
+
+@media (max-width: 700px) {
+  .blog-title { font-size: 1.6em; }
+  .container { padding: 40px 20px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="blog-header">
+  <a class="blog-back" href="index.html#blog">&larr; Back to Blog</a>
+  <h1 class="blog-title" id="title-en">How Code Agents Saved My INTP Brain</h1>
+  <h1 class="blog-title" id="title-cn" style="display:none">代码 Agent 如何拯救了我的 INTP 大脑</h1>
+  <p class="blog-subtitle" id="subtitle-en">And the Survival Rules I Learned the Hard Way</p>
+  <p class="blog-subtitle" id="subtitle-cn" style="display:none">以及我用惨痛教训总结出的生存法则</p>
+  <div class="blog-meta">
+    <span class="blog-meta-item">Victor Chen (Deli Chen)</span>
+    <span class="blog-meta-item">April 18, 2026</span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="cn">中文</button>
+    </div>
+  </div>
+</div>
+
+<!-- English Version -->
+<div class="blog-content lang-block active" id="content-en">
+
+<p>I'm an INTP. My brain runs <strong>10 parallel threads</strong> of ideas — and ships exactly <strong>zero</strong> of them.</p>
+
+<div class="chain">overthink → overplan → never execute → repeat</div>
+
+<p>Then Code Agents broke the cycle entirely. Here's everything I learned.</p>
+
+<h2><span class="section-num">(1/9)</span> The Bottleneck Has Shifted</h2>
+
+<p>The old bottleneck? <strong>Execution</strong>: boilerplate, debugging, wiring things together — grunt work that ate your entire day alive.</p>
+
+<p>Code Agents nuked that overnight. <em>Idea-to-prototype went from days to hours.</em></p>
+
+<p>But the old bottleneck died, and a <strong>new one</strong> instantly took its place:</p>
+
+<blockquote>
+Your <strong>attention</strong>. Your <strong>judgment</strong>. Your ability to decide <em>what actually matters</em>.<br>
+Not your typing speed — your <em>thinking</em> speed. That's the real chokepoint now.
+</blockquote>
+
+<h2><span class="section-num">(2/9)</span> Your Job Just Got Redefined</h2>
+
+<p>Once execution goes to the Agent, your job boils down to two things:</p>
+
+<ul>
+<li><strong>Think clearly</strong> — goal, logic, priority. Corral the chaos, lock the direction.</li>
+<li><strong>Communicate clearly</strong> — align with your team, translate consensus into plans the Agent can run.</li>
+</ul>
+
+<p>You're no longer the builder. You're the <strong>architect + the diplomat</strong>.</p>
+
+<p><em>Execution is delegated. Decision-making is yours. Don't confuse the two.</em></p>
+
+<h2><span class="section-num">(3/9)</span> The INTP Redemption Arc</h2>
+
+<p>INTPs can think. We just can't <em>do</em>. That's always been the curse.</p>
+
+<p>Code Agents flip the script: <strong>you think, it ships.</strong></p>
+
+<p>All those ideas rotting in your notes app? They can <em>actually become real</em> now.</p>
+
+<div class="highlight-box tip">
+For INTPs, this tool isn't just useful — it feels like it was <strong>BUILT FOR US</strong>.
+</div>
+
+<h2><span class="section-num">(4/9)</span> The INTP Trap (Read This Twice)</h2>
+
+<p>The same tendencies that made you <em>need</em> this tool will try to <strong>destroy you</strong> with it.</p>
+
+<div class="chain">More execution power = more branches explored = more rabbit holes = more scope creep = <strong>more chaos</strong></div>
+
+<p>You'll sprint faster than ever... <strong>in the wrong direction.</strong></p>
+
+<div class="highlight-box warning">
+The tool <strong>amplifies everything</strong>. Including your worst habits. Stay aware.
+</div>
+
+<h2><span class="section-num">(5/9)</span> Build a Shared Brain With Your Agent</h2>
+
+<p>The <strong>#1 practice</strong> for Agent collaboration:</p>
+
+<blockquote>
+Maintain a <strong>living doc</strong> that both you and the Agent can reference.
+</blockquote>
+
+<p>Project context, work logs, past mistakes, historical decisions — dump it all in. It becomes your <strong>shared memory</strong>.</p>
+
+<p>No more re-explaining from scratch. No more repeating mistakes.</p>
+
+<div class="highlight-box tip">
+<strong>Rule:</strong> write it down, right now, every time. Traceability > perfect formatting.
+</div>
+
+<h2><span class="section-num">(6/9)</span> Team Collab, Leveled Up</h2>
+
+<p>The playbook for multi-Agent teamwork:</p>
+
+<ol>
+<li><strong>Humans align</strong> on goals</li>
+<li>Each person's Agent <strong>researches independently</strong></li>
+<li>Agents <strong>cross-read & synthesize</strong> each other's output</li>
+<li>Humans reconvene, <strong>final call</strong>, ship it</li>
+</ol>
+
+<p><em>"1 person + 1 Agent" → "N people + N Agents" in concert.</em></p>
+
+<p>Paradoxically, more Agents = <strong>less communication overhead</strong>. Agents handle detail negotiation. Humans focus on the big calls.</p>
+
+<h2><span class="section-num">(7/9)</span> Rule #1: Never Autopilot</h2>
+
+<div class="highlight-box warning">
+Agent output is <strong>NOT</strong> ground truth. It executes. It does <strong>not</strong> judge.
+</div>
+
+<p><strong>You</strong> are the final reviewer. The last line of defense.</p>
+
+<p>Tools write code — they don't make decisions.</p>
+
+<p><em>The moment you stop questioning the output is the moment you start shipping garbage.</em></p>
+
+<h2><span class="section-num">(8/9)</span> Rules #2 & #3</h2>
+
+<h3>Rule #2: Respect Your Cognitive Limits</h3>
+
+<p>Agent work isn't physical — it's <em>mentally</em> brutal. Nonstop decisions, constant context-switching. After a few hours, <strong>your judgment WILL degrade</strong>. You won't even notice.</p>
+
+<p>Set hard time limits. Walk away. <strong>Sustainable output > heroic sprints.</strong></p>
+
+<h3>Rule #3: Don't Replace Humans With Tools</h3>
+
+<p>Mentor the intern. Debate with colleagues. Tools don't grow. <strong>People do.</strong></p>
+
+<p>Step away from the screen every day. Touch grass. Literally.</p>
+
+<h2><span class="section-num">(9/9)</span> The Bottom Line</h2>
+
+<p>Code Agents are the <strong>most powerful productivity multiplier</strong> I've ever used.</p>
+
+<p>But here's the uncomfortable truth: they amplify everything — <em>your strengths AND your weaknesses</em>.</p>
+
+<p>Using them well demands <strong>more self-awareness, not less</strong>. Know what you're doing, why you're doing it, and when to stop.</p>
+
+<blockquote>
+<strong>Master the tool. Don't let the tool master you.</strong><br>
+That might be the most important skill of this entire era.
+</blockquote>
+
+</div>
+
+<!-- Chinese Version -->
+<div class="blog-content lang-block" id="content-cn">
+
+<p>我是 INTP。我的大脑同时跑着 <strong>10 个并行线程</strong>的想法 — 最终交付的数量是：<strong>零</strong>。</p>
+
+<div class="chain">过度思考 → 过度计划 → 永不执行 → 循环往复</div>
+
+<p>直到代码 Agent 彻底打破了这个死循环。以下是我总结的全部经验。</p>
+
+<h2><span class="section-num">(1/9)</span> 瓶颈已经转移</h2>
+
+<p>过去的瓶颈是什么？<strong>执行力</strong>：写样板代码、调试、对接各种组件 — 这些苦力活吞噬了你一整天的时间。</p>
+
+<p>代码 Agent 一夜之间把这些全部消灭了。<em>从想法到原型，从几天缩短到几小时。</em></p>
+
+<p>但旧瓶颈消亡的同时，<strong>新瓶颈</strong>立刻取而代之：</p>
+
+<blockquote>
+你的<strong>注意力</strong>。你的<strong>判断力</strong>。你决定<em>什么才是真正重要的事</em>的能力。<br>
+不是你的打字速度 — 而是你的<em>思考</em>速度。这才是现在真正的瓶颈。
+</blockquote>
+
+<h2><span class="section-num">(2/9)</span> 你的工作被重新定义了</h2>
+
+<p>一旦执行交给 Agent，你的工作就归结为两件事：</p>
+
+<ul>
+<li><strong>清晰地思考</strong> — 目标、逻辑、优先级。驯服混乱，锁定方向。</li>
+<li><strong>清晰地沟通</strong> — 与团队对齐，将共识翻译成 Agent 可执行的方案。</li>
+</ul>
+
+<p>你不再是建造者。你是<strong>架构师 + 外交官</strong>。</p>
+
+<p><em>执行被委托出去了。决策权留在你手里。不要混淆这两者。</em></p>
+
+<h2><span class="section-num">(3/9)</span> INTP 的救赎之路</h2>
+
+<p>INTP 能想。但就是<em>做不到</em>。这一直是我们的诅咒。</p>
+
+<p>代码 Agent 反转了剧本：<strong>你负责想，它负责发货。</strong></p>
+
+<p>那些在你笔记应用里腐烂的想法？它们现在<em>真的可以变成现实了</em>。</p>
+
+<div class="highlight-box tip">
+对 INTP 来说，这个工具不仅仅是有用 — 它感觉就像是<strong>为我们量身定制的</strong>。
+</div>
+
+<h2><span class="section-num">(4/9)</span> INTP 陷阱（请读两遍）</h2>
+
+<p>让你<em>需要</em>这个工具的那些特质，也会试图用它来<strong>摧毁你</strong>。</p>
+
+<div class="chain">更强的执行力 = 探索更多分支 = 更多兔子洞 = 更多范围蔓延 = <strong>更大的混乱</strong></div>
+
+<p>你会比以往跑得更快……<strong>但方向是错的。</strong></p>
+
+<div class="highlight-box warning">
+工具会<strong>放大一切</strong>。包括你最坏的习惯。保持警觉。
+</div>
+
+<h2><span class="section-num">(5/9)</span> 与 Agent 共建第二大脑</h2>
+
+<p>Agent 协作的<strong>第一法则</strong>：</p>
+
+<blockquote>
+维护一份你和 Agent 都能引用的<strong>动态文档</strong>。
+</blockquote>
+
+<p>项目上下文、工作日志、过去的错误、历史决策 — 全部倒进去。它就成了你们的<strong>共享记忆</strong>。</p>
+
+<p>不再从头解释。不再重蹈覆辙。</p>
+
+<div class="highlight-box tip">
+<strong>法则：</strong>立刻写下来，每一次都写。可追溯性 > 完美格式。
+</div>
+
+<h2><span class="section-num">(6/9)</span> 团队协作，升级版</h2>
+
+<p>多 Agent 团队协作的 playbook：</p>
+
+<ol>
+<li><strong>人类对齐</strong>目标</li>
+<li>每个人的 Agent <strong>独立调研</strong></li>
+<li>Agent 之间<strong>交叉阅读和综合</strong>彼此的产出</li>
+<li>人类重新汇合，<strong>做最终决定</strong>，发布</li>
+</ol>
+
+<p><em>"1人 + 1 Agent" → "N人 + N个 Agent" 协同作战。</em></p>
+
+<p>看似矛盾的是，更多 Agent = <strong>更少的沟通开销</strong>。Agent 处理细节谈判，人类专注于重大决策。</p>
+
+<h2><span class="section-num">(7/9)</span> 法则 #1：永远不要开自动驾驶</h2>
+
+<div class="highlight-box warning">
+Agent 的输出<strong>不是</strong>真理。它只负责执行，<strong>不负责</strong>判断。
+</div>
+
+<p><strong>你</strong>是最终的审查者。最后一道防线。</p>
+
+<p>工具写代码 — 但它们不做决策。</p>
+
+<p><em>当你停止质疑输出的那一刻，就是你开始交付垃圾的那一刻。</em></p>
+
+<h2><span class="section-num">(8/9)</span> 法则 #2 和 #3</h2>
+
+<h3>法则 #2：尊重你的认知极限</h3>
+
+<p>Agent 协作不是体力活 — 它在<em>精神上</em>极其消耗。不间断的决策、持续的上下文切换。几个小时后，<strong>你的判断力一定会下降</strong>。而你甚至不会察觉。</p>
+
+<p>设置硬性时间限制。离开电脑。<strong>可持续产出 > 英雄式冲刺。</strong></p>
+
+<h3>法则 #3：不要用工具取代人</h3>
+
+<p>指导实习生。与同事辩论。工具不会成长。<strong>但人会。</strong></p>
+
+<p>每天离开屏幕。出去走走。真的。</p>
+
+<h2><span class="section-num">(9/9)</span> 总结</h2>
+
+<p>代码 Agent 是我用过的<strong>最强大的生产力倍增器</strong>。</p>
+
+<p>但令人不安的真相是：它放大一切 — <em>你的优点和你的缺点都会被放大</em>。</p>
+
+<p>善用它，要求你有<strong>更强的自我认知，而不是更少</strong>。知道你在做什么，为什么做，以及何时该停下来。</p>
+
+<blockquote>
+<strong>驯服工具。别让工具驯服你。</strong><br>
+这可能是这个时代最重要的技能。
+</blockquote>
+
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.lang-block').forEach(b => b.classList.remove('active'));
+    document.getElementById('content-' + lang).classList.add('active');
+    document.getElementById('title-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('title-cn').style.display = lang === 'cn' ? '' : 'none';
+    document.getElementById('subtitle-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('subtitle-cn').style.display = lang === 'cn' ? '' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>

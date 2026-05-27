@@ -1,0 +1,6 @@
+{"timestamp": "2026-05-26T21:00:05.777729", "level": "INFO", "message": "Processing turn (cycle #1)", "turn_count": 1}
+{"timestamp": "2026-05-26T21:00:05.785841", "level": "INFO", "message": "Game state loaded: Turn 50, 中国", "turn_count": 1}
+{"timestamp": "2026-05-26T21:00:35.485677", "level": "INFO", "message": "Advice written: victory_path=文化, confidence=85%", "turn_count": 1}
+{"timestamp": "2026-05-26T21:08:53.678809", "level": "INFO", "message": "Processing turn (cycle #1)", "turn_count": 1}
+{"timestamp": "2026-05-26T21:08:53.687561", "level": "INFO", "message": "Game state loaded: Turn 50, 中国", "turn_count": 1}
+{"timestamp": "2026-05-26T21:08:53.736299", "level": "INFO", "message": "Advice written: victory_path=科技, confidence=40%", "turn_count": 1}

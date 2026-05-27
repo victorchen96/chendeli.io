@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  AIAdvisor.modinfo - Civ6 LLM AI Advisor Mod 配置文件
+  =====================================================
+
+  安装方法：
+  1. 将整个 AIAdvisor 目录复制到：
+     Documents/My Games/Sid Meier's Civilization VI/Mods/AIAdvisor/
+  2. 在游戏中启用此 Mod
+
+  前置要求：
+  - Civilization VI (Steam/Epic) + 所有 DLC（可选但推荐）
+  - 启用 FireTuner（开发阶段）：
+    编辑 AppOptions.txt，设置 EnableTuner 1
+  - Python Bridge 程序在后台运行
+
+  技术说明：
+  - <AddGameplayScripts> 将 Lua 脚本注入到 Gameplay Context
+  - Gameplay Context 可以访问完整的游戏状态 API
+  - UI Context 只能读取有限数据
+  - 本 Mod 不需要替换任何原版文件
+
+  兼容性：
+  - Civ6 最终版本 (1.0.12.9 / 2021年4月更新后)
+  - 与大多数 AI 改进 Mod 兼容（Real Strategy, AI+ 等）
+  - 不兼容：修改了 AI 回合事件的 Mod（可能冲突）
+
+  [未验证] 事项：
+  - Modding.OpenSaveData() 的可用性和存储路径
+  - Game:SetProperty 在多人游戏中的行为
+  - 与 Rise and Fall / Gathering Storm DLC 特定 API 的兼容性
+-->
+<Mod id="com.llm.aiadvisor" version="0.1.0">
+  <Properties>
+    <Name>LLM AI Advisor</Name>
+    <Teaser>DeepSeek LLM 增强的 AI 战略顾问</Teaser>
+    <Description>
+      通过外部 DeepSeek LLM 为 AI 文明提供战略决策增强。
+      Mod 每 10 回合收集游戏状态，通过 Python Bridge 调用 DeepSeek API，
+      将生成的战略建议注入回 AI 决策系统。
+
+      注意：本 Mod 为概念验证阶段（Proof of Concept），
+      部分功能需要开发者工具（FireTuner）支持。
+    </Description>
+    <Authors>Civ6 AI Research Project</Authors>
+    <CompatibleVersions>2.0</CompatibleVersions>
+    <AffectsSavedGames>true</AffectsSavedGames>
+  </Properties>
+
+  <Dependencies>
+    <!-- 基础游戏依赖 -->
+    <Mod id="4873eb62-8ccc-4574-b784-dda455e74e68" title="Expansion: Gathering Storm" />
+  </Dependencies>
+
+  <Components>
+    <!-- Gameplay 脚本：在游戏逻辑上下文中执行 -->
+    <AddGameplayScripts id="aiadvisor_gameplay">
+      <Properties>
+        <LoadOrder>100</LoadOrder>
+      </Properties>
+      <Items>
+        <File>AIAdvisor.lua</File>
+      </Items>
+    </AddGameplayScripts>
+
+    <!--
+    [未来扩展] UI 脚本：显示 LLM 的"思考过程"给玩家
+    <AddUserInterfaces id="aiadvisor_ui">
+      <Properties>
+        <Context>InGame</Context>
+      </Properties>
+      <Items>
+        <File>UI/AIAdvisorPanel.xml</File>
+      </Items>
+    </AddUserInterfaces>
+    -->
+
+    <!--
+    [未来扩展] SQL 修改：动态调整 AI 权重
+    <UpdateDatabase id="aiadvisor_db">
+      <Items>
+        <File>Data/AIWeightOverrides.sql</File>
+      </Items>
+    </UpdateDatabase>
+    -->
+  </Components>
+
+  <Settings>
+    <!--
+    [未来扩展] Mod 设置面板
+    <Custom>
+      <Items>
+        <Row Setting="LLM_MODEL" Name="LLM 模型" Type="dropdown"
+             Default="deepseek-v4-flash"
+             Values="deepseek-v4-flash,deepseek-v4-pro" />
+        <Row Setting="UPDATE_INTERVAL" Name="更新间隔（回合）" Type="number"
+             Default="10" Min="1" Max="50" />
+        <Row Setting="ENABLE_DEBUG_LOG" Name="调试日志" Type="boolean"
+             Default="true" />
+      </Items>
+    </Custom>
+    -->
+  </Settings>
+</Mod>

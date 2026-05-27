@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+<!-- Assyria: Lamassu winged bull -->
+<symbol id="civ-assyria" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#3d2b1f"/>
+  <path d="M22 44 L22 28 Q22 22 28 20 L32 18 L36 20 Q42 22 42 28 L42 44" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M22 28 Q18 22 20 16 M42 28 Q46 22 44 16" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="24" r="4" fill="#c9a227"/>
+  <rect x="26" y="44" width="12" height="4" fill="#c9a227"/>
+</symbol>
+
+<!-- Bulgaria: Lion rampant -->
+<symbol id="civ-bulgaria" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#006b3f"/>
+  <path d="M28 44 L28 30 L24 34 L24 24 L28 20 L32 16 L36 20 L40 24 L40 34 L36 30 L36 44 Z" fill="#c9a227"/>
+  <circle cx="32" cy="22" r="3" fill="#e6c545"/>
+  <path d="M26 18 Q24 14 22 16 M38 18 Q40 14 42 16" fill="none" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Burma/Myanmar: Peacock -->
+<symbol id="civ-burma" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <circle cx="32" cy="22" r="5" fill="#c9a227"/>
+  <path d="M32 27 L32 38" stroke="#c9a227" stroke-width="2"/>
+  <path d="M20 18 Q26 26 32 22 Q38 26 44 18" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <path d="M18 20 Q24 30 32 38 Q40 30 46 20" fill="none" stroke="#e6c545" stroke-width="1.5"/>
+  <path d="M26 42 Q32 48 38 42" fill="none" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Byzantium: Chi-Rho -->
+<symbol id="civ-byzantium" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <rect x="30" y="16" width="4" height="32" fill="#c9a227"/>
+  <rect x="22" y="26" width="20" height="4" fill="#c9a227"/>
+  <path d="M34 16 Q44 16 44 24 Q44 30 34 30" fill="none" stroke="#c9a227" stroke-width="3"/>
+  <circle cx="26" cy="20" r="2" fill="#e6c545"/>
+  <circle cx="38" cy="44" r="2" fill="#e6c545"/>
+</symbol>
+
+<!-- Champa: Cham tower -->
+<symbol id="civ-champa" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a4a6b"/>
+  <path d="M26 48 L26 28 L32 16 L38 28 L38 48 Z" fill="#c9a227"/>
+  <rect x="28" y="32" width="8" height="6" fill="#1a4a6b"/>
+  <path d="M24 48 L40 48" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="22" r="3" fill="#e6c545"/>
+</symbol>
+
+<!-- Dai Viet: Sword and shield -->
+<symbol id="civ-dai_viet" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a4a2a"/>
+  <ellipse cx="28" cy="34" rx="8" ry="12" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <line x1="28" y1="22" x2="28" y2="46" stroke="#c9a227" stroke-width="1.5"/>
+  <line x1="36" y1="14" x2="36" y2="42" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M34 14 L38 14 L37 16 L35 16 Z" fill="#e6c545"/>
+  <rect x="34" y="42" width="4" height="6" fill="#c9a227"/>
+</symbol>
+
+<!-- Goguryeo: Three-legged crow (Samjogo) -->
+<symbol id="civ-goguryeo" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <circle cx="32" cy="28" r="12" fill="#c41e3a" opacity="0.6"/>
+  <path d="M26 24 L32 18 L38 24 L36 28 L32 32 L28 28 Z" fill="#c9a227"/>
+  <path d="M28 32 L24 40 L26 40 M32 32 L32 42 L34 42 M36 32 L40 40 L38 40" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="25" r="2" fill="#e6c545"/>
+</symbol>
+
+<!-- Hittite: Double-headed eagle/Sun disc -->
+<symbol id="civ-hittite" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#5c3317"/>
+  <circle cx="32" cy="28" r="10" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <circle cx="32" cy="28" r="4" fill="#c9a227"/>
+  <path d="M22 28 L14 22 M22 28 L14 34" stroke="#c9a227" stroke-width="2" stroke-linecap="round"/>
+  <path d="M42 28 L50 22 M42 28 L50 34" stroke="#c9a227" stroke-width="2" stroke-linecap="round"/>
+  <rect x="30" y="38" width="4" height="10" fill="#c9a227"/>
+</symbol>
+
+<!-- Khmer: Angkor temple -->
+<symbol id="civ-khmer" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a5a82"/>
+  <path d="M32 14 L36 22 L28 22 Z" fill="#c9a227"/>
+  <rect x="28" y="22" width="8" height="8" fill="#c9a227"/>
+  <rect x="22" y="30" width="20" height="6" fill="#c9a227"/>
+  <rect x="18" y="36" width="28" height="4" fill="#e6c545"/>
+  <rect x="16" y="40" width="32" height="4" fill="#c9a227"/>
+  <path d="M26 14 L28 20 M36 20 L38 14" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Majapahit: Surya Majapahit sun emblem -->
+<symbol id="civ-majapahit" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <circle cx="32" cy="32" r="8" fill="#c9a227"/>
+  <g stroke="#c9a227" stroke-width="2.5" stroke-linecap="round">
+    <line x1="32" y1="14" x2="32" y2="22"/>
+    <line x1="32" y1="42" x2="32" y2="50"/>
+    <line x1="14" y1="32" x2="22" y2="32"/>
+    <line x1="42" y1="32" x2="50" y2="32"/>
+    <line x1="19" y1="19" x2="25" y2="25"/>
+    <line x1="39" y1="39" x2="45" y2="45"/>
+    <line x1="45" y1="19" x2="39" y2="25"/>
+    <line x1="19" y1="45" x2="25" y2="39"/>
+  </g>
+</symbol>
+
+<!-- Ming: Dragon/Forbidden City gate -->
+<symbol id="civ-ming" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <rect x="18" y="34" width="28" height="14" fill="#c9a227"/>
+  <rect x="28" y="38" width="8" height="10" fill="#8b0000"/>
+  <path d="M16 34 Q32 24 48 34" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M18 34 Q32 26 46 34" fill="#e6c545"/>
+  <circle cx="32" cy="20" r="4" fill="#c9a227"/>
+  <path d="M28 18 Q32 14 36 18" fill="none" stroke="#e6c545" stroke-width="1.5"/>
+</symbol>
+
+<!-- Mughal: Taj Mahal dome -->
+<symbol id="civ-mughal" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#006b3f"/>
+  <path d="M32 14 Q40 22 40 32 L40 44 L24 44 L24 32 Q24 22 32 14 Z" fill="#e8e6e3"/>
+  <rect x="30" y="10" width="4" height="6" fill="#c9a227"/>
+  <circle cx="32" cy="10" r="2" fill="#c9a227"/>
+  <rect x="28" y="36" width="8" height="8" rx="4" fill="#006b3f"/>
+  <rect x="20" y="44" width="24" height="4" fill="#e8e6e3"/>
+</symbol>
+
+<!-- Shu Han: Feather fan (Zhuge Liang) -->
+<symbol id="civ-shu_han" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a5a82"/>
+  <path d="M32 44 L32 28" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M20 18 Q26 24 32 28 Q38 24 44 18" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <path d="M22 16 Q27 22 32 26 Q37 22 42 16" fill="#c9a227" opacity="0.7"/>
+  <path d="M24 14 Q28 20 32 24 Q36 20 40 14" fill="#e6c545" opacity="0.8"/>
+  <circle cx="32" cy="46" r="2" fill="#c9a227"/>
+</symbol>
+
+<!-- Siam: Elephant/Lotus -->
+<symbol id="civ-siam" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <path d="M24 26 Q24 18 32 18 Q40 18 40 26 L42 32 L40 38 L36 42 L28 42 L24 38 L22 32 Z" fill="#c9a227"/>
+  <circle cx="28" cy="26" r="2" fill="#4a1a6b"/>
+  <circle cx="36" cy="26" r="2" fill="#4a1a6b"/>
+  <path d="M22 32 Q18 34 18 30 M42 32 Q46 34 46 30" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M30 34 Q32 36 34 34" fill="none" stroke="#4a1a6b" stroke-width="1.5"/>
+</symbol>
+
+<!-- Silla: Golden crown -->
+<symbol id="civ-silla" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <rect x="22" y="32" width="20" height="6" rx="2" fill="#c9a227"/>
+  <path d="M24 32 L24 20 L26 20 L26 32" fill="#c9a227"/>
+  <path d="M30 32 L30 16 L32 16 L32 32" fill="#c9a227"/>
+  <path d="M38 32 L38 20 L40 20 L40 32" fill="#c9a227"/>
+  <circle cx="25" cy="18" r="2" fill="#e6c545"/>
+  <circle cx="31" cy="14" r="2" fill="#e6c545"/>
+  <circle cx="39" cy="18" r="2" fill="#e6c545"/>
+  <path d="M22 38 Q32 44 42 38" fill="none" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Song: Compass/Printing -->
+<symbol id="civ-song" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#3d5c2e"/>
+  <circle cx="32" cy="32" r="14" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="32" r="3" fill="#c9a227"/>
+  <path d="M32 18 L34 29 L32 32 L30 29 Z" fill="#c41e3a"/>
+  <path d="M32 46 L34 35 L32 32 L30 35 Z" fill="#e8e6e3"/>
+  <g stroke="#c9a227" stroke-width="1">
+    <line x1="32" y1="18" x2="32" y2="20"/>
+    <line x1="32" y1="44" x2="32" y2="46"/>
+    <line x1="18" y1="32" x2="20" y2="32"/>
+    <line x1="44" y1="32" x2="46" y2="32"/>
+  </g>
+</symbol>
+
+<!-- Tang: Horse/Palace -->
+<symbol id="civ-tang" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <path d="M16 40 Q32 32 48 40" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <rect x="22" y="40" width="20" height="8" fill="#c9a227"/>
+  <path d="M20 40 Q32 30 44 40" fill="#e6c545"/>
+  <rect x="30" y="42" width="4" height="6" fill="#8b0000"/>
+  <path d="M32 18 L32 30" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="16" r="3" fill="#c9a227"/>
+</symbol>
+
+<!-- Tibet: Dharma wheel -->
+<symbol id="civ-tibet" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#5c3317"/>
+  <circle cx="32" cy="32" r="14" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="5" fill="#c9a227"/>
+  <g stroke="#c9a227" stroke-width="2">
+    <line x1="32" y1="18" x2="32" y2="46"/>
+    <line x1="18" y1="32" x2="46" y2="32"/>
+    <line x1="22" y1="22" x2="42" y2="42"/>
+    <line x1="42" y1="22" x2="22" y2="42"/>
+  </g>
+</symbol>
+
+<!-- Zimbabwe: Great Zimbabwe tower -->
+<symbol id="civ-zimbabwe" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a3728"/>
+  <path d="M24 46 L24 22 Q24 18 28 18 L36 18 Q40 18 40 22 L40 46 Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M20 46 L44 46" stroke="#c9a227" stroke-width="2"/>
+  <rect x="28" y="36" width="8" height="10" fill="#c9a227"/>
+  <path d="M24 26 L40 26 M24 30 L40 30 M24 34 L40 34" stroke="#c9a227" stroke-width="1.5"/>
+  <path d="M30 14 L32 10 L34 14" fill="#e6c545"/>
+</symbol>
+
+</svg>

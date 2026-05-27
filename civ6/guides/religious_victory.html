@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宗教胜利攻略 Religious Victory Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #5c4d1a, #40360d);
+      color: #ffd700;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ff6b6b;
+    }
+    .belief-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .belief-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      transition: border-color 0.2s;
+    }
+    .belief-card:hover { border-color: #ffd700; }
+    .belief-card-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .belief-card-type {
+      font-size: 0.7rem;
+      color: #ffd700;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .belief-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .unit-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .unit-compare-table th, .unit-compare-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .unit-compare-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+    .unit-compare-table td { color: var(--text-secondary); }
+    .unit-compare-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .civ-tier-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 1rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .tier-label {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    .tier-s { background: #3d1f1f; color: #ff6b6b; }
+    .tier-a { background: #3d2e1f; color: #ffaa5b; }
+    .tier-b { background: #3d3d1f; color: #e6e650; }
+    .tier-c { background: #1f3d2a; color: #50e680; }
+    .tier-civs {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tier-civs:last-child { border-bottom: none; }
+    .tier-civ-tag {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .phase-section {
+      border-left: 3px solid #ffd700;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .phase-section h3 {
+      color: #ffd700;
+    }
+    .phase-section p, .phase-section li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .promotion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .promotion-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+    }
+    .promotion-card h5 {
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+    .promotion-card p {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+      <li><a href="religious_victory.html" class="active"><span class="nav-icon">&#128591;</span> Religious Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mechanics/combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="../mechanics/districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="../mechanics/city_states.html"><span class="nav-icon">&#127970;</span> City-States</a></li>
+      <li><a href="../mechanics/great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#128591;</div>
+      <div class="civ-overview">
+        <h1>宗教胜利攻略 <span class="guide-badge">GUIDE</span></h1>
+        <p class="civ-subtitle">Religious Victory - 让你的信仰照耀全世界</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#128591; 宗教传播</span>
+          <span class="civ-meta-tag">&#9876; 神学战斗</span>
+          <span class="civ-meta-tag">&#11088; 大先知竞速</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Victory Condition -->
+    <h2>&#127942; 胜利条件 Victory Condition</h2>
+    <div class="card ability-card">
+      <div class="ability-name">宗教胜利条件</div>
+      <div class="ability-desc">
+        <p>使你创建的宗教成为<strong>所有仍存活文明</strong>的主流宗教。一个文明的主流宗教取决于其多数城市（>50%）信仰的宗教。</p>
+        <ul>
+          <li>只需让每个文明的多数城市信仰你的宗教即可</li>
+          <li>不需要让每个城市的每个人口都转化</li>
+          <li>如果某文明被消灭，则无需管它</li>
+          <li>你自己的文明也需要保持主流宗教为你创建的宗教</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; 关键数学</div>
+      <p>标准8玩家游戏中，你需要让7个其他文明+自己共8个文明的多数城市信仰你的宗教。假设每个文明平均8城，你大约需要让32+座城市转教。这需要大量宗教单位和信仰产出。</p>
+    </div>
+
+    <!-- Religion Founding -->
+    <h2>&#11088; 创教竞速 Founding a Religion</h2>
+    <div class="phase-section">
+      <h3>Phase 1: 大先知竞速 (Turn 1-60)</h3>
+      <p>游戏中最多只有一半玩家能创教（8人局=4个宗教）。大先知点数主要来源：</p>
+      <ul>
+        <li><strong>圣地 (Holy Site):</strong> 提供大先知点数，建筑增加更多。首个区域优先建圣地</li>
+        <li><strong>神殿 (Shrine):</strong> +2 信仰 +1 大先知点。首发神殿是创教核心</li>
+        <li><strong>万神殿:</strong> 选择"God King"政策早期积累信仰，25 信仰触发万神殿选择</li>
+        <li><strong>石圈 (Stonehenge):</strong> 完成即送大先知，但竞争激烈，高难度不推荐</li>
+        <li><strong>祈祷 (Holy Site Prayers):</strong> 城市项目，花产能换大先知点，最后冲刺用</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; 圣地选址优化</div>
+      <p>圣地最佳位置：被山脉/自然奇观/其他区域包围。标准相邻：山脉 +1/格，自然奇观 +2/格，森林 +0.5/格。相邻加成决定信仰产出，直接影响购买宗教单位的速度。</p>
+    </div>
+
+    <!-- Belief Selection -->
+    <h2>&#128220; 信条选择 Belief Selection</h2>
+
+    <h3>创始信条 Founder Beliefs</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">只有宗教创始人享受的全局加成</p>
+    <div class="belief-grid">
+      <div class="belief-card">
+        <div class="belief-card-type">FOUNDER</div>
+        <div class="belief-card-name">什一税 Tithe</div>
+        <div class="belief-card-desc">每4个信仰你宗教的人口获得 +1 金币。滚雪球式收入，适合大规模传教后的经济支撑。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">FOUNDER</div>
+        <div class="belief-card-name">教会财产 Church Property</div>
+        <div class="belief-card-desc">每个信仰你宗教的城市 +2 金币。比什一税更稳定，不依赖人口数量。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">FOUNDER</div>
+        <div class="belief-card-name">教皇首席 Papal Primacy</div>
+        <div class="belief-card-desc">信仰你宗教的城邦中你自动获得额外使节。宗教+外交联动。</div>
+      </div>
+    </div>
+
+    <h3>信徒信条 Follower Beliefs</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">所有信仰该宗教的城市均可享受</p>
+    <div class="belief-grid">
+      <div class="belief-card">
+        <div class="belief-card-type">FOLLOWER</div>
+        <div class="belief-card-name">工作伦理 Work Ethic</div>
+        <div class="belief-card-desc">圣地获得等同于其信仰相邻加成的产能。高相邻圣地 = 免费工业区，极强信条。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">FOLLOWER</div>
+        <div class="belief-card-name">合唱音乐 Choral Music</div>
+        <div class="belief-card-desc">圣地获得等同于其信仰相邻加成的文化。宗教+文化双修路线核心。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">FOLLOWER</div>
+        <div class="belief-card-name">养活世界 Feed the World</div>
+        <div class="belief-card-desc">神殿和寺庙提供 +3/+5 食物。人口暴涨利器，适合需要大人口的策略。</div>
+      </div>
+    </div>
+
+    <h3>崇拜建筑 Worship Buildings</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">用信仰购买的特殊建筑（每宗教限选一种）</p>
+    <div class="belief-grid">
+      <div class="belief-card">
+        <div class="belief-card-type">WORSHIP</div>
+        <div class="belief-card-name">集会所 Meeting House</div>
+        <div class="belief-card-desc">+3 信仰 +2 产能。产能为王，加速建造一切。宗教胜利首选。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">WORSHIP</div>
+        <div class="belief-card-name">大教堂 Cathedral</div>
+        <div class="belief-card-desc">+3 信仰 +1 宗教艺术槽位。宗教+文化胜利兼顾，可放宗教画。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">WORSHIP</div>
+        <div class="belief-card-name">清真寺 Mosque</div>
+        <div class="belief-card-desc">+3 信仰。传教士+1 传教次数。纯宗教胜利最优，减少单位消耗。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">WORSHIP</div>
+        <div class="belief-card-name">宝塔 Pagoda</div>
+        <div class="belief-card-desc">+3 信仰 +1 宜居度 +2 外交好感。全能型，宗教+外交混合。</div>
+      </div>
+    </div>
+
+    <h3>强化信条 Enhancer Beliefs</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">强化宗教传播能力</p>
+    <div class="belief-grid">
+      <div class="belief-card">
+        <div class="belief-card-type">ENHANCER</div>
+        <div class="belief-card-name">传教热忱 Missionary Zeal</div>
+        <div class="belief-card-desc">宗教单位无视地形移动力惩罚。穿越山脉森林如履平地，大幅提高传教效率。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">ENHANCER</div>
+        <div class="belief-card-name">圣令 Holy Order</div>
+        <div class="belief-card-desc">传教士和使徒购买费用 -30%。信仰使用效率大增，同等信仰多买30%的单位。</div>
+      </div>
+      <div class="belief-card">
+        <div class="belief-card-type">ENHANCER</div>
+        <div class="belief-card-name">修道隐修 Monastic Isolation</div>
+        <div class="belief-card-desc">其他宗教对你城市的宗教压力 -75%。守住本国教不被反推。</div>
+      </div>
+    </div>
+
+    <!-- Religious Units -->
+    <h2>&#9876; 宗教单位 Religious Units</h2>
+    <table class="unit-compare-table">
+      <thead>
+        <tr>
+          <th>单位</th>
+          <th>费用(信仰)</th>
+          <th>传教次数</th>
+          <th>宗教战斗力</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>传教士 Missionary</td>
+          <td>150</td>
+          <td>3 次</td>
+          <td>无</td>
+          <td>传播宗教（每次影响城市人口信仰）</td>
+        </tr>
+        <tr>
+          <td>使徒 Apostle</td>
+          <td>400</td>
+          <td>3 次</td>
+          <td>110</td>
+          <td>传播+神学战斗+布道+发动宗教战争</td>
+        </tr>
+        <tr>
+          <td>审判官 Inquisitor</td>
+          <td>150</td>
+          <td>3 次</td>
+          <td>75</td>
+          <td>清除外来宗教（本国城市）+防御神学战</td>
+        </tr>
+        <tr>
+          <td>上师 Guru</td>
+          <td>200</td>
+          <td>-</td>
+          <td>90</td>
+          <td>治疗周围宗教单位（辅助型）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; 使徒 vs 传教士</div>
+      <p>传教士便宜但无法神学战斗，遇到敌方使徒只能逃跑（被接触即强制战斗并失败）。远距离传教用使徒保护传教士编队；本国附近安全区域用传教士更经济。</p>
+    </div>
+
+    <!-- Theological Combat -->
+    <h2>&#9876; 神学战斗 Theological Combat</h2>
+    <div class="card ability-card">
+      <div class="ability-name">神学战斗机制</div>
+      <div class="ability-desc">
+        <p>使徒和审判官可以与敌方宗教单位进行神学战斗。战败的单位被消灭，周围8格内的城市会受到胜利方宗教的压力影响（类似AOE传播）。</p>
+        <ul>
+          <li><strong>地形加成:</strong> 在圣地区域/神圣自然奇观旁 +5 战斗力</li>
+          <li><strong>本国加成:</strong> 在自己领土内 +5 战斗力</li>
+          <li><strong>审判官防御:</strong> 审判官在自己领土内防御时 +35 战斗力</li>
+          <li><strong>晋升加成:</strong> 使徒晋升可提供额外战斗力</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>使徒关键晋升 Apostle Promotions</h3>
+    <div class="promotion-grid">
+      <div class="promotion-card">
+        <h5>辩论家 Debater</h5>
+        <p>神学战斗力 +20。正面战斗王者，优先选择。</p>
+      </div>
+      <div class="promotion-card">
+        <h5>翻译者 Translator</h5>
+        <p>传播宗教的效果 +3 倍。每次传教影响更多人口。</p>
+      </div>
+      <div class="promotion-card">
+        <h5>布道者 Proselytizer</h5>
+        <p>传播时清除 75% 其他宗教人口。对已深度转教的城市极为有效。</p>
+      </div>
+      <div class="promotion-card">
+        <h5>朝圣者 Pilgrim</h5>
+        <p>每次传播获得等同于目标城市外来宗教人口的信仰。越大城市收益越高。</p>
+      </div>
+      <div class="promotion-card">
+        <h5>殉道者 Martyr</h5>
+        <p>在神学战斗中死亡时产生一件圣遗物。文化胜利向。</p>
+      </div>
+      <div class="promotion-card">
+        <h5>隐者 Chaplain</h5>
+        <p>可以治疗相邻军事单位。宗教+军事混合有用。</p>
+      </div>
+    </div>
+
+    <!-- Civ Tier List -->
+    <h2>&#127942; 文明排名 Tier List</h2>
+    <div class="civ-tier-list">
+      <div class="tier-label tier-s">S</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127479;&#127482; 俄罗斯 Russia</span>
+        <span class="tier-civ-tag">&#127480;&#127462; 阿拉伯 Arabia</span>
+        <span class="tier-civ-tag">&#127480;&#127462; 萨拉丁 Saladin</span>
+      </div>
+      <div class="tier-label tier-a">A</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127470;&#127465; 印尼 Indonesia</span>
+        <span class="tier-civ-tag">&#127477;&#127473; 波兰 Poland</span>
+        <span class="tier-civ-tag">&#127466;&#127480; 西班牙 Spain</span>
+        <span class="tier-civ-tag">&#127468;&#127466; 格鲁吉亚 Georgia</span>
+      </div>
+      <div class="tier-label tier-b">B</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127470;&#127475; 印度 India (Gandhi)</span>
+        <span class="tier-civ-tag">&#127464;&#127465; 刚果 Kongo</span>
+        <span class="tier-civ-tag">&#127466;&#127481; 埃塞俄比亚 Ethiopia</span>
+        <span class="tier-civ-tag">&#127474;&#127475; 蒙古 Mongolia</span>
+      </div>
+      <div class="tier-label tier-c">C</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127470;&#127475; 印度 India (Chandragupta)</span>
+        <span class="tier-civ-tag">&#127468;&#127479; 希腊 Greece</span>
+        <span class="tier-civ-tag">其他通用文明</span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; S Tier 解析</div>
+      <p><strong>俄罗斯:</strong> 建城即获额外领土(含更多资源格)，圣地获额外大先知点，薰衣草大教堂让圣遗物产出翻倍。宗教胜利天选之子。</p>
+      <p><strong>阿拉伯/萨拉丁:</strong> 最后一个大先知自动获得，信仰购买打折，所有阿拉伯城市的清真寺+1科技。无惧创教竞速失败。</p>
+    </div>
+
+    <!-- Phase Guide -->
+    <h2>&#128203; 阶段攻略 Phase Guide</h2>
+
+    <div class="phase-section">
+      <h3>Phase 1: 创教期 (Turn 1-80)</h3>
+      <ul>
+        <li>首选"God King"政策+圣地+神殿路线抢大先知</li>
+        <li>万神殿推荐：宗教定居点（+4 信仰新城）或天赐之泉（+2 信仰自然奇观）</li>
+        <li>信条选择：强化信条（传教热忱/圣令）+ 信徒（工作伦理）+ 崇拜（清真寺/集会所）</li>
+        <li>第二城立刻建圣地+神殿+寺庙，开始积累信仰</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 2: 内部巩固 (Turn 80-130)</h3>
+      <ul>
+        <li>先把自己所有城市转为本教（用传教士即可，便宜安全）</li>
+        <li>建立3-4个高产圣地城市，保证持续购买使徒的信仰收入</li>
+        <li>购买第一批使徒开始向邻国传教，优先目标城市少的文明</li>
+        <li>如有叶里温宗主权，选辩论家使徒清除敌方宗教单位</li>
+        <li>开始建造崇拜建筑（清真寺/集会所），提升信仰产出上限</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 3: 全面传教 (Turn 130-200)</h3>
+      <ul>
+        <li>大规模购买传教士+使徒编队向远方文明进发</li>
+        <li>使用"传教热忱"无视地形快速移动到目标城市</li>
+        <li>先用辩论家使徒清除敌方宗教单位，再用翻译者/传教士大面积传教</li>
+        <li>注意防守：留审判官在本国，防止被对方反推</li>
+        <li>优先转化小文明（3-5城）快速完成，最后对付大文明</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 4: 终盘冲刺 (Turn 200+)</h3>
+      <ul>
+        <li>对顽固文明集中所有宗教单位重点突破</li>
+        <li>必要时宣战以杀死对方审判官和使徒（宗教战争CB）</li>
+        <li>使用大量"布道者"晋升使徒清除对方城市的深度宗教人口</li>
+        <li>监控胜利进度面板，确保没有文明被反推</li>
+      </ul>
+    </div>
+
+    <!-- Counter Strategies -->
+    <h2>&#128737; 反制策略 Counter Strategies</h2>
+    <div class="warning-box">
+      <div class="tip-box-title">&#9888; 如何对抗宗教胜利</div>
+      <p><strong>审判官 (Inquisitor):</strong> 在本国购买审判官驻守各城市，他们在本土防御神学战斗力极高（110+35=145），且可清除外来宗教。</p>
+      <p><strong>宣战杀单位:</strong> 宗教单位可被军事单位直接击杀（踩上去即死）。对传教大军宣战后用骑兵逐个消灭。</p>
+      <p><strong>消灭创教文明:</strong> 如果创教文明被完全消灭，其宗教无法继续获胜（虽然不会消失）。征服是最彻底的反制。</p>
+      <p><strong>地形阻断:</strong> 在边境要道驻扎军事单位，宗教单位无法穿过敌方军事单位。形成"宗教封锁线"。</p>
+    </div>
+
+    <!-- Key Tips -->
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; 高阶技巧</div>
+      <p><strong>宗教紧急状态:</strong> 如果你快速转化某文明，可能触发宗教紧急状态（多国联合对你宣战）。循序渐进，避免一次性转化太多城。</p>
+      <p><strong>Condemn Heretics:</strong> 审判官的"谴责异端"能力可一次性清除本城所有外来宗教人口。比传教士便宜得多。</p>
+      <p><strong>自然传播:</strong> 圣城和高信仰城市会自动对10格内城市施加宗教压力。多建圣地+高人口城市形成压力网。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

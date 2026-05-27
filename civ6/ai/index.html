@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI + DeepSeek - 文明6百科</title>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+.ai-metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.ai-metric { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.2rem; text-align: center; }
+.ai-metric-val { font-size: 1.6rem; font-weight: 700; color: var(--accent-blue-light); }
+.ai-metric-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.3rem; }
+.arch-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.78rem; white-space: pre; line-height: 2; overflow-x: auto; }
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1rem 0; }
+.ai-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; }
+.ai-card h3 { color: var(--accent-gold-light); margin: 0 0 0.5rem; font-size: 1rem; }
+.ai-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+.badge-done { background: rgba(63,185,80,0.15); color: #3fb950; }
+.badge-wip { background: rgba(210,153,34,0.15); color: #d29922; }
+.nav-pills { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+.nav-pill { padding: 6px 14px; border-radius: 16px; font-size: 0.8rem; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--accent-blue-light); }
+.nav-pill:hover { border-color: var(--accent-blue); }
+@media (max-width: 768px) { .ai-metric-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body class="has-top-nav no-sidebar">
+
+<header class="site-header">
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="index.html" class="top-nav-tab active"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<main class="main-content">
+  <div class="content-container">
+
+<h1>&#129302; Civ6 AI + DeepSeek 增强系统</h1>
+<p style="color:var(--text-secondary); margin-bottom:1.5rem;">用大语言模型驱动文明6 AI 决策 — 从调研到可运行原型</p>
+
+<div class="nav-pills">
+  <a href="../ai_bridge/demo.html" class="nav-pill">&#127918; 游戏回放演示</a>
+  <a href="../research/ai_integration_report.md" class="nav-pill">&#128196; 可行性报告</a>
+  <a href="../research/technical_design.md" class="nav-pill">&#128736; 技术设计</a>
+  <a href="../research/civ6_simulator_research.md" class="nav-pill">&#128300; 模拟器调研</a>
+</div>
+
+<h2>100 回合完整游戏成果</h2>
+<div class="ai-metric-grid">
+  <div class="ai-metric"><div class="ai-metric-val">4</div><div class="ai-metric-label">城市数</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">11</div><div class="ai-metric-label">科技完成</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">Medieval</div><div class="ai-metric-label">时代</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">380</div><div class="ai-metric-label">得分 vs AI 30</div></div>
+</div>
+<p style="font-size:0.8rem; color:var(--text-muted)">DeepSeek V4 Flash 驱动，100 次 API 调用，12.2s 平均响应，Grade A (7/7)</p>
+
+<h2>系统架构</h2>
+<div class="arch-box">
+┌─────────────────────────────────────────────────────────────┐
+│                    Civ-like 模拟环境                          │
+│  civrealm_env.py (Gymnasium API)                            │
+│  - 六角地图 / 城市 / 科技树 / 单位 / AI 对手                  │
+│  - observation: 文本化游戏状态                               │
+│  - action: 研究/建造/训练/移动/建城/结束                      │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ observation (text)
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   DeepSeek LLM Agent                         │
+│  civrealm_agent.py                                          │
+│  - 构造 prompt (游戏状态 + 可用动作 + 策略规则)               │
+│  - 调用 DeepSeek V4 Flash API                               │
+│  - 6 级 JSON 解析 fallback                                  │
+│  - fuzzy action matching                                    │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ actions (JSON)
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   Python Bridge                              │
+│  bridge.py / advisor.py                                     │
+│  - 也支持真实 Civ6 (文件系统桥接方案)                         │
+│  - Mod 写状态 → Python 读 → API → 写回 → Mod 读取           │
+└─────────────────────────────────────────────────────────────┘
+</div>
+
+<h2>Civ6 AI 架构分析</h2>
+<div class="card">
+<h3 style="color:var(--accent-gold); margin-top:0;">为什么不能直接改 AI？</h3>
+<table class="wiki-table">
+<tr><th>层面</th><th>能力</th><th>限制</th></tr>
+<tr><td>C++ 核心引擎</td><td>所有 AI 决策逻辑</td><td>闭源 DLL，无法修改</td></tr>
+<tr><td>SQL 权重表</td><td>调整 AI 偏好（如科技优先级）</td><td>只能微调数值，不能改逻辑</td></tr>
+<tr><td>Lua Events</td><td>响应游戏事件、修改可见状态</td><td>沙盒环境，禁用 io/os/socket</td></tr>
+<tr><td>FireTuner</td><td>实时 Lua 控制台</td><td>仅开发模式，需 EnableTuner=1</td></tr>
+</table>
+<p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted)"><strong>结论：</strong>真实 Civ6 中只能通过"文件系统桥接"间接影响 AI。模拟环境则完全可控。</p>
+</div>
+
+<h2>模拟器方案对比</h2>
+<table class="wiki-table">
+<tr><th>方案</th><th>类型</th><th>Civ6 覆盖</th><th>是否可用</th><th>备注</th></tr>
+<tr><td><strong>自建 civrealm_env</strong></td><td>Python, Gymnasium</td><td>~40%</td><td><span class="badge badge-done">已实现</span></td><td>轻量、快速、完全可控</td></tr>
+<tr><td>CivRealm (BIGAI)</td><td>FreeCiv + Python</td><td>~60%</td><td><span class="badge badge-wip">需 Docker</span></td><td>ICLR 2024，最完整</td></tr>
+<tr><td>Unciv</td><td>Kotlin, Civ5 规则</td><td>~50%</td><td><span class="badge badge-wip">需改造</span></td><td>开源，逻辑/UI 分离</td></tr>
+<tr><td>FreeCiv</td><td>C, 经典规则</td><td>~30%</td><td><span class="badge badge-done">可用</span></td><td>有 headless 模式</td></tr>
+</table>
+
+<h2>DeepSeek Agent 决策能力</h2>
+<div class="ai-grid">
+  <div class="ai-card">
+    <h3>&#128218; 科技规划</h3>
+    <p>正确选择 Writing → Archery → Engineering 路线，识别秦始皇奇观加速特性推荐文化胜利</p>
+  </div>
+  <div class="ai-card">
+    <h3>&#127961; 城市扩张</h3>
+    <p>人口 ≥3 时训练 Settler，移动到距离 ≥2 处建城，50 回合 3 城 / 100 回合 4 城</p>
+  </div>
+  <div class="ai-card">
+    <h3>&#9881; 生产管理</h3>
+    <p>不中断进行中的生产，优先级：Settler > Library > Granary > Military</p>
+  </div>
+  <div class="ai-card">
+    <h3>&#127919; 长期策略</h3>
+    <p>根据文明特性和外交关系调整策略，100 回合内达成 Medieval 时代</p>
+  </div>
+</div>
+
+<h2>API 集成细节</h2>
+<div class="card">
+<table class="wiki-table">
+<tr><th>参数</th><th>值</th></tr>
+<tr><td>模型</td><td>deepseek-v4-flash（标准）/ deepseek-v4-pro（复杂决策）</td></tr>
+<tr><td>平均延迟</td><td>9.6 - 12.2 秒/回合</td></tr>
+<tr><td>Token 消耗</td><td>~750 tokens/回合（优化后 observation 仅 4-6 行）</td></tr>
+<tr><td>可靠性</td><td>100% 有效动作率（6 级 JSON fallback）</td></tr>
+<tr><td>成本</td><td>100 回合 ≈ 75K tokens ≈ ¥0.15</td></tr>
+</table>
+</div>
+
+<h2>迭代历史</h2>
+<table class="wiki-table">
+<tr><th>Iter</th><th>方向</th><th>成果</th></tr>
+<tr><td>V3-1</td><td>AI 架构调研</td><td>确认闭源 C++，Lua 沙盒，推荐文件桥接</td></tr>
+<tr><td>V3-2</td><td>技术验证 + 原型</td><td>Python Bridge + Mod 框架 + DeepSeek 调用验证</td></tr>
+<tr><td>V3-3</td><td>CivRealm + 自建模拟器</td><td>Gymnasium 环境，10 回合测试</td></tr>
+<tr><td>V3-4</td><td>决策质量优化</td><td>多步动作率 30%→100%，奖励 +74%</td></tr>
+<tr><td>V3-5</td><td>50 回合完整游戏</td><td>3 科技，Classical 时代，Grade A</td></tr>
+<tr><td>V3-6</td><td>修复 + 100 回合演示</td><td>4 城 11 科技 Medieval，7/7 全通过</td></tr>
+</table>
+
+<h2>文件索引</h2>
+<div class="card" style="font-family: var(--font-mono); font-size: 0.8rem; white-space: pre; line-height: 1.8;">
+src/ai_bridge/
+├── bridge.py            Python 桥接主循环
+├── advisor.py           DeepSeek API 调用封装
+├── game_state.py        游戏状态数据模型
+├── civrealm_env.py      Gymnasium 风格模拟环境
+├── civrealm_agent.py    LLM Agent (prompt + 解析)
+├── civrealm_data.py     科技树/单位/建筑数据
+├── run_civrealm_test.py 测试运行器
+├── demo.html            可交互游戏回放
+├── mod/
+│   ├── AIAdvisor.lua    Civ6 Mod 框架
+│   └── AIAdvisor.modinfo
+└── data/
+    └── *.json           游戏日志 + API 结果
+
+src/research/
+├── ai_integration_report.md   可行性调研报告
+├── civ6_simulator_research.md 模拟器方案调研
+└── technical_design.md        技术设计文档
+</div>
+
+  </div>
+</main>
+
+<footer style="background:var(--bg-card);border-top:1px solid var(--border-color);padding:1.5rem 2rem;text-align:center;color:var(--text-muted);font-size:0.85rem;">
+  <p>Civ6 Wiki v3.0 | AI Enhancement Module | Updated: 2026-05-27</p>
+</footer>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

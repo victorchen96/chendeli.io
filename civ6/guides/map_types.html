@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地图与游戏设置 Map Types & Settings - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #2d6b4d, #1a4d33);
+      color: #a0f0c0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .map-card {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent-gold);
+    }
+    .map-card h4 {
+      color: var(--accent-gold-light);
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .map-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0.25rem 0;
+      line-height: 1.6;
+    }
+    .map-card .map-tags {
+      margin-top: 0.5rem;
+    }
+    .map-card .map-tags span {
+      display: inline-block;
+      background: rgba(201, 162, 39, 0.15);
+      color: var(--accent-gold-light);
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+      margin-top: 0.3rem;
+    }
+    .rec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+    .rec-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 2px solid var(--accent-gold-dark);
+    }
+    .rec-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .rec-table tr:hover td {
+      background: rgba(201, 162, 39, 0.05);
+    }
+    .speed-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.3rem 0;
+    }
+    .speed-bar .bar {
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold));
+      border-radius: 4px;
+    }
+    .speed-bar .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      min-width: 3rem;
+    }
+    .difficulty-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+    }
+    .difficulty-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      padding: 0.6rem;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-gold-dark);
+    }
+    .difficulty-table td {
+      padding: 0.5rem 0.6rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .difficulty-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .size-card {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .size-card .size-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+    .size-card .size-detail {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+      <li><a href="religious_victory.html"><span class="nav-icon">&#128591;</span> Religious Victory</a></li>
+      <li><a href="diplomatic_victory.html"><span class="nav-icon">&#127760;</span> Diplomatic Victory</a></li>
+      <li><a href="map_types.html" class="active"><span class="nav-icon">&#127758;</span> Map Types & Settings</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mechanics/combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="../mechanics/districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="../mechanics/units.html"><span class="nav-icon">&#9876;</span> Units Encyclopedia</a></li>
+      <li><a href="../mechanics/victory.html"><span class="nav-icon">&#127942;</span> Victory Types</a></li>
+      <li><a href="../mechanics/wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+      <li><a href="../mechanics/technology.html"><span class="nav-icon">&#128300;</span> Tech & Civics Tree</a></li>
+      <li><a href="../mechanics/great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+      <li><a href="../mechanics/city_states.html"><span class="nav-icon">&#127970;</span> City-States</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128295; Tools</div>
+    <ul class="sidebar-nav">
+      <li><a href="../compare.html"><span class="nav-icon">&#9878;</span> Civ Compare</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="content-container">
+
+    <nav class="breadcrumb">
+      <a href="../index.html">首页</a> &raquo; <a href="../index.html#guides">攻略</a> &raquo; <span>地图与游戏设置</span>
+    </nav>
+
+    <h1>&#127758; 地图类型与游戏设置 <span class="guide-badge">GUIDE</span></h1>
+    <p class="section-intro">地图类型和游戏设置会根本性地影响游戏体验。选择正确的地图类型可以放大你所选文明的优势，而难度和速度设置则决定了游戏的节奏和挑战性。</p>
+
+    <!-- Map Types Section -->
+    <div class="section-header">
+      <h2>&#127757; 地图类型 Map Types</h2>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127755; 盘古大陆 Pangaea</h4>
+      <p><strong>描述：</strong>所有文明生成在同一块巨型大陆上，只有边缘有少量海洋。</p>
+      <p><strong>特点：</strong>陆地战争频繁，早期冲突多，海军价值低。骑兵和近战单位占主导。</p>
+      <p><strong>适合：</strong>征服型文明（蒙古、祖鲁、马其顿）、骑兵强势文明（斯基泰）、早攻策略。</p>
+      <div class="map-tags">
+        <span>陆战为主</span><span>早期冲突</span><span>海军无用</span><span>适合Rush</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127758; 大陆 Continents</h4>
+      <p><strong>描述：</strong>生成2-3个大陆，文明分布在不同大洲。最平衡的地图类型。</p>
+      <p><strong>特点：</strong>早期各自发展，中期通过卡拉维尔帆船发现新大陆后开始跨洲互动。陆军海军都有用武之地。</p>
+      <p><strong>适合：</strong>几乎所有文明都能发挥；西班牙(跨洲加成)、英国(殖民)特别受益。</p>
+      <div class="map-tags">
+        <span>最平衡</span><span>中期海军</span><span>探索重要</span><span>新手推荐</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127965; 岛屿版块 Island Plates</h4>
+      <p><strong>描述：</strong>地图由多个中等大小的岛屿组成，每个文明可能独占一岛或与1-2个邻居共享。</p>
+      <p><strong>特点：</strong>海军很重要，但每个岛上仍有足够陆地发展。城市数量可能受限。</p>
+      <p><strong>适合：</strong>海军文明（挪威、印尼）、需要安全发展空间的文明（韩国）。</p>
+      <div class="map-tags">
+        <span>海军重要</span><span>岛屿隔离</span><span>发展空间大</span><span>中等竞争</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127754; 群岛 Archipelago</h4>
+      <p><strong>描述：</strong>大量小型岛屿，每个文明只有很小的起始领土，必须跨海扩张。</p>
+      <p><strong>特点：</strong>海军是绝对主导，陆军作用有限。贸易路线跨海收益高。城市数量多但规模小。</p>
+      <p><strong>适合：</strong>印尼(甘榜)、挪威(维京长船)、腓尼基(科顿港)、英国(皇家海军船坞)。</p>
+      <div class="map-tags">
+        <span>海军主导</span><span>岛屿众多</span><span>贸易关键</span><span>纯陆军文明劣势</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127776; 分形 Fractal</h4>
+      <p><strong>描述：</strong>随机生成的不规则地图，每局都截然不同。可能是几块大陆，也可能是零散岛屿。</p>
+      <p><strong>特点：</strong>完全不可预测，需要灵活的策略适应能力。高重玩性。</p>
+      <p><strong>适合：</strong>经验丰富的玩家、适应力强的通用文明（日本、罗马）。</p>
+      <div class="map-tags">
+        <span>随机性强</span><span>不可预测</span><span>高重玩性</span><span>考验适应力</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127754; 内海 Inland Sea</h4>
+      <p><strong>描述：</strong>大陆环绕一个大型内海，类似地中海。所有文明都能接触到中央海域。</p>
+      <p><strong>特点：</strong>海军和陆军都重要。中央海域是贸易和军事的关键区域。沿海城市价值极高。</p>
+      <p><strong>适合：</strong>腓尼基、印尼、挪威等海军文明；也适合需要贸易的文明。</p>
+      <div class="map-tags">
+        <span>中央海域</span><span>陆海并重</span><span>贸易便利</span><span>海岸城市关键</span>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <h4>&#127757; 湖泊 Lakes</h4>
+      <p><strong>描述：</strong>以陆地为主，散布着多个中小型湖泊。无远洋区域。</p>
+      <p><strong>特点：</strong>纯陆战地图，淡水丰富有利住房。湖泊提供相邻加成但无法通行大型船只。</p>
+      <p><strong>适合：</strong>纯陆军文明（蒙古、斯基泰）、需要淡水的农业型文明。</p>
+      <div class="map-tags">
+        <span>纯陆战</span><span>淡水充足</span><span>住房优势</span><span>无远洋</span>
+      </div>
+    </div>
+
+    <!-- Civ-Map Recommendations -->
+    <div class="section-header">
+      <h2>&#127919; 文明-地图推荐搭配</h2>
+    </div>
+
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>文明类型</th>
+          <th>代表文明</th>
+          <th>推荐地图</th>
+          <th>原因</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>海军型</strong></td>
+          <td>印尼、挪威、腓尼基、英国</td>
+          <td>群岛、岛屿版块</td>
+          <td>海军UU和海洋能力得到最大发挥</td>
+        </tr>
+        <tr>
+          <td><strong>骑兵型</strong></td>
+          <td>蒙古、斯基泰、波兰</td>
+          <td>盘古大陆、大平原</td>
+          <td>开阔地形利于骑兵机动和快攻</td>
+        </tr>
+        <tr>
+          <td><strong>铺城型(Wide)</strong></td>
+          <td>克里、俄罗斯、毛利</td>
+          <td>巨型地图(Huge)</td>
+          <td>更多空地可供扩张和建立远程城市</td>
+        </tr>
+        <tr>
+          <td><strong>高城型(Tall)</strong></td>
+          <td>韩国、荷兰</td>
+          <td>岛屿版块、标准大小</td>
+          <td>有限空间内集中发展少量核心城市</td>
+        </tr>
+        <tr>
+          <td><strong>征服型</strong></td>
+          <td>祖鲁、马其顿、奥斯曼</td>
+          <td>盘古大陆、大陆</td>
+          <td>能快速接触邻居发动战争</td>
+        </tr>
+        <tr>
+          <td><strong>宗教型</strong></td>
+          <td>俄罗斯、波兰、印度</td>
+          <td>盘古大陆、大陆</td>
+          <td>宗教单位需要陆路传教，相邻文明多更易传播</td>
+        </tr>
+        <tr>
+          <td><strong>丛林/雨林型</strong></td>
+          <td>巴西、越南</td>
+          <td>热带地图设置</td>
+          <td>充分利用雨林/丛林格的独特加成</td>
+        </tr>
+        <tr>
+          <td><strong>冻土型</strong></td>
+          <td>俄罗斯、加拿大</td>
+          <td>冻土/寒带设置</td>
+          <td>冻土格通常被其他文明忽视，这些文明能从中获益</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Game Speed -->
+    <div class="section-header">
+      <h2>&#9201; 游戏速度 Game Speed</h2>
+    </div>
+
+    <p style="color:var(--text-secondary);margin-bottom:1rem;">游戏速度影响研究、建造、单位训练的回合数，但<strong>不影响单位移动力</strong>。这意味着在较慢速度下，军事单位相对更强大（移动回合更多），而在快速中科技更迭更快。</p>
+
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>速度</th>
+          <th>研究/建造倍率</th>
+          <th>总回合数(标准)</th>
+          <th>特点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>在线 Online</strong></td>
+          <td>0.5x (8倍速)</td>
+          <td>~250回合</td>
+          <td>极快节奏，适合多人对战；战争窗口极短</td>
+        </tr>
+        <tr>
+          <td><strong>快速 Quick</strong></td>
+          <td>0.67x (4倍速)</td>
+          <td>~330回合</td>
+          <td>单人快速体验；科技更迭快，军事单位过时更快</td>
+        </tr>
+        <tr>
+          <td><strong>标准 Standard</strong></td>
+          <td>1.0x (基准)</td>
+          <td>~500回合</td>
+          <td>默认速度，平衡的游戏体验；大多数攻略基于此速度</td>
+        </tr>
+        <tr>
+          <td><strong>史诗 Epic</strong></td>
+          <td>1.5x</td>
+          <td>~750回合</td>
+          <td>战争更有分量；每个时代停留更久，军事单位不会快速过时</td>
+        </tr>
+        <tr>
+          <td><strong>马拉松 Marathon</strong></td>
+          <td>3.0x</td>
+          <td>~1500回合</td>
+          <td>超长游戏；战争体验最佳(单位寿命长)；需要极大耐心</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">速度选择建议</div>
+      <p><strong>征服型玩家</strong> -- 选择史诗或马拉松。慢速下军事单位在被科技淘汰前有更多回合发挥作用，战争的战略深度更高。</p>
+      <p><strong>科技/文化型玩家</strong> -- 标准或快速即可。快速科技迭代让你更快到达关键解锁点。</p>
+      <p><strong>多人游戏</strong> -- 在线或快速速度，减少每局总时间。</p>
+    </div>
+
+    <!-- Difficulty Levels -->
+    <div class="section-header">
+      <h2>&#127942; 难度等级 Difficulty Levels</h2>
+    </div>
+
+    <p style="color:var(--text-secondary);margin-bottom:1rem;">难度等级影响AI获得的奖励。玩家始终相同，变化的只有AI的额外加成。</p>
+
+    <table class="difficulty-table">
+      <thead>
+        <tr>
+          <th>难度</th>
+          <th>AI战斗力加成</th>
+          <th>AI科技加成</th>
+          <th>AI产能加成</th>
+          <th>AI起始单位</th>
+          <th>玩家加成</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>开拓者 Settler</td>
+          <td>-3</td>
+          <td>-</td>
+          <td>-</td>
+          <td>标准</td>
+          <td>+3 宜居度, 免蛮族</td>
+        </tr>
+        <tr>
+          <td>酋长 Chieftain</td>
+          <td>-1</td>
+          <td>-</td>
+          <td>-</td>
+          <td>标准</td>
+          <td>+2 宜居度</td>
+        </tr>
+        <tr>
+          <td>军阀 Warlord</td>
+          <td>0</td>
+          <td>-</td>
+          <td>-</td>
+          <td>标准</td>
+          <td>+1 宜居度</td>
+        </tr>
+        <tr>
+          <td>王子 Prince</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>标准</td>
+          <td>无(公平)</td>
+        </tr>
+        <tr>
+          <td>国王 King</td>
+          <td>+2</td>
+          <td>+4%</td>
+          <td>+20%</td>
+          <td>+1 勇士</td>
+          <td>无</td>
+        </tr>
+        <tr>
+          <td>皇帝 Emperor</td>
+          <td>+3</td>
+          <td>+8%</td>
+          <td>+40%</td>
+          <td>+2 勇士, +1 开拓者</td>
+          <td>无</td>
+        </tr>
+        <tr>
+          <td>不朽 Immortal</td>
+          <td>+4</td>
+          <td>+16%</td>
+          <td>+60%</td>
+          <td>+2 勇士, +2 开拓者</td>
+          <td>无</td>
+        </tr>
+        <tr>
+          <td>神标 Deity</td>
+          <td>+5</td>
+          <td>+32%</td>
+          <td>+80%</td>
+          <td>+3 勇士, +3 开拓者, +2 建造者</td>
+          <td>无</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">难度攀升建议</div>
+      <p><strong>新手：</strong>从酋长或军阀开始，学习基本机制。能稳定获胜后升一级。</p>
+      <p><strong>王子(Prince)：</strong>完全公平的难度，没有任何一方获得奖励。真正的"棋逢对手"。</p>
+      <p><strong>神标(Deity)：</strong>AI在开局就领先1-2个时代。必须精确利用政策卡、尤里卡加速、和黄金时代来追赶。前50回合是生死攸关的"生存阶段"。</p>
+    </div>
+
+    <!-- Map Size -->
+    <div class="section-header">
+      <h2>&#128208; 地图大小 Map Size</h2>
+    </div>
+
+    <div class="size-grid">
+      <div class="size-card">
+        <div class="size-name">决斗 Duel</div>
+        <div class="size-detail">44x26 格<br>2 文明 / 3 城邦</div>
+      </div>
+      <div class="size-card">
+        <div class="size-name">小型 Tiny</div>
+        <div class="size-detail">60x38 格<br>4 文明 / 6 城邦</div>
+      </div>
+      <div class="size-card">
+        <div class="size-name">小 Small</div>
+        <div class="size-detail">74x46 格<br>6 文明 / 9 城邦</div>
+      </div>
+      <div class="size-card">
+        <div class="size-name">标准 Standard</div>
+        <div class="size-detail">84x54 格<br>8 文明 / 12 城邦</div>
+      </div>
+      <div class="size-card">
+        <div class="size-name">大型 Large</div>
+        <div class="size-detail">96x60 格<br>10 文明 / 15 城邦</div>
+      </div>
+      <div class="size-card">
+        <div class="size-name">巨型 Huge</div>
+        <div class="size-detail">106x66 格<br>12 文明 / 18 城邦</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">地图大小建议</div>
+      <p><strong>铺城型文明（俄罗斯、克里）：</strong>选择大型或巨型地图，有更多空间建立远方城市。</p>
+      <p><strong>征服型文明（祖鲁、马其顿）：</strong>小型或标准更好，敌人近在咫尺，减少行军时间。</p>
+      <p><strong>性能考虑：</strong>巨型地图在后期回合切换会变慢。如果在意游戏流畅度，推荐标准大小。</p>
+    </div>
+
+    <!-- Start Bias -->
+    <div class="section-header">
+      <h2>&#127793; 起始偏好 Start Bias</h2>
+    </div>
+
+    <p style="color:var(--text-secondary);margin-bottom:1rem;">每个文明都有隐藏的起始偏好(Start Bias)，决定了你出生时附近更可能出现什么地形。起始偏好分为1-5级，1级最强(几乎必定满足)，5级最弱(轻微倾向)。</p>
+
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>偏好类型</th>
+          <th>代表文明</th>
+          <th>偏好强度</th>
+          <th>效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>海岸</strong></td>
+          <td>印尼、挪威、腓尼基、英国</td>
+          <td>1-2级(强)</td>
+          <td>出生在海岸附近，利于海军发展</td>
+        </tr>
+        <tr>
+          <td><strong>冻土</strong></td>
+          <td>俄罗斯、加拿大</td>
+          <td>2级</td>
+          <td>出生在冻土/极地边缘，减少竞争</td>
+        </tr>
+        <tr>
+          <td><strong>草原</strong></td>
+          <td>克里、蒙古</td>
+          <td>3级</td>
+          <td>出生在草原区域，食物充足</td>
+        </tr>
+        <tr>
+          <td><strong>丛林/雨林</strong></td>
+          <td>巴西、越南</td>
+          <td>2-3级</td>
+          <td>出生在热带区域，利用丛林特殊加成</td>
+        </tr>
+        <tr>
+          <td><strong>丘陵</strong></td>
+          <td>印加(秘鲁)</td>
+          <td>2级</td>
+          <td>出生在多丘陵区域，产能充足</td>
+        </tr>
+        <tr>
+          <td><strong>河流</strong></td>
+          <td>荷兰、埃及</td>
+          <td>3级</td>
+          <td>出生在河流附近，住房/灌溉优势</td>
+        </tr>
+        <tr>
+          <td><strong>山脉</strong></td>
+          <td>格鲁吉亚</td>
+          <td>3级</td>
+          <td>出生在山脉附近，防御/学院加成</td>
+        </tr>
+        <tr>
+          <td><strong>无偏好</strong></td>
+          <td>美国、德国、法国</td>
+          <td>-</td>
+          <td>完全随机起始位置，适应力强</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">利用起始偏好的策略</div>
+      <p>了解起始偏好可以帮你预判邻居。如果你玩俄罗斯(冻土偏好)，附近不太可能出现其他文明，因为大多数文明偏好温带地形。这意味着你有更多时间安全发展。</p>
+      <p>相反，草原/河流偏好的文明(如克里、荷兰)更容易与其他文明相邻，需要早期做好防御准备。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+<script src="../js/search.js"></script>
+</body>
+</html>

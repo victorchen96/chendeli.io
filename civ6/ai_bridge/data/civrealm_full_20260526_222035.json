@@ -1,0 +1,2340 @@
+{
+  "session_id": "civrealm_full_20260526_222035",
+  "config": {
+    "num_turns": 50,
+    "seed": 42,
+    "use_api": true,
+    "model": "deepseek-v4-flash",
+    "fast_research": true
+  },
+  "summary": {
+    "turns_played": 50,
+    "final_score": 96,
+    "total_reward": 210.0,
+    "era_reached": "classical",
+    "cities_built": 1,
+    "units_count": 3,
+    "techs_researched": 5,
+    "techs_list": [
+      "Mining",
+      "Pottery",
+      "Writing",
+      "Archery",
+      "Engineering"
+    ],
+    "total_time_seconds": 607.698653459549,
+    "end_reason": "completed"
+  },
+  "assessment": {
+    "criteria": {
+      "techs_researched_2plus": true,
+      "cities_2plus": false,
+      "reached_classical": true,
+      "no_crash": true,
+      "positive_reward": true,
+      "ahead_of_ai": true,
+      "score_leader": true
+    },
+    "passed": 6,
+    "total": 7,
+    "success": true,
+    "grade": "A"
+  },
+  "snapshots": [
+    {
+      "turn": 10,
+      "era": "ancient",
+      "score": 14,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 3,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 2,
+      "techs_researched": [
+        "Mining",
+        "Pottery"
+      ],
+      "current_research": "Writing",
+      "gold": 110,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 0,
+          "techs": 2
+        },
+        {
+          "name": "Egypt",
+          "score": 0,
+          "techs": 2
+        }
+      ],
+      "total_reward": 35.5
+    },
+    {
+      "turn": 20,
+      "era": "ancient",
+      "score": 34,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 4,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 3,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing"
+      ],
+      "current_research": "Archery",
+      "gold": 140,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 5,
+          "techs": 3
+        },
+        {
+          "name": "Egypt",
+          "score": 5,
+          "techs": 3
+        }
+      ],
+      "total_reward": 76.0
+    },
+    {
+      "turn": 30,
+      "era": "classical",
+      "score": 64,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 5,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 4,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery"
+      ],
+      "current_research": "Engineering",
+      "gold": 170,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 5,
+          "techs": 3
+        },
+        {
+          "name": "Egypt",
+          "score": 5,
+          "techs": 3
+        }
+      ],
+      "total_reward": 124.0
+    },
+    {
+      "turn": 40,
+      "era": "classical",
+      "score": 76,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 6,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 4,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery"
+      ],
+      "current_research": "Engineering",
+      "gold": 200,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 10,
+          "techs": 4
+        },
+        {
+          "name": "Egypt",
+          "score": 10,
+          "techs": 4
+        }
+      ],
+      "total_reward": 164.5
+    },
+    {
+      "turn": 50,
+      "era": "classical",
+      "score": 96,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 7,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 5,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery",
+        "Engineering"
+      ],
+      "current_research": "Mathematics",
+      "gold": 230,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        },
+        {
+          "turn": 41,
+          "type": "tech_complete",
+          "detail": "Engineering"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 15,
+          "techs": 5
+        },
+        {
+          "name": "Egypt",
+          "score": 15,
+          "techs": 5
+        }
+      ],
+      "total_reward": 210.0
+    }
+  ],
+  "milestones": [
+    {
+      "turn": 11,
+      "type": "tech_complete",
+      "detail": "Writing"
+    },
+    {
+      "turn": 25,
+      "type": "tech_complete",
+      "detail": "Archery"
+    },
+    {
+      "turn": 25,
+      "type": "era_advance",
+      "detail": "classical"
+    },
+    {
+      "turn": 41,
+      "type": "tech_complete",
+      "detail": "Engineering"
+    }
+  ],
+  "agent_stats": {
+    "turns_played": 50,
+    "total_api_calls": 50,
+    "total_tokens_used": 75093,
+    "avg_reward_per_turn": 4.2,
+    "avg_valid_action_rate": 1.0,
+    "avg_response_time_s": 12.153555297851563,
+    "total_reward": 210.0
+  },
+  "turn_logs": [
+    {
+      "turn": 1,
+      "reasoning": "Research Writing for early science, build Library to boost research, explore with warriors and builder.",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (5,4)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (5,3)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 1. Score: 1"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 4.5,
+      "game_score": 1,
+      "elapsed_seconds": 10.402530670166016
+    },
+    {
+      "turn": 2,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 2. Score: 2"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 7.5,
+      "game_score": 2,
+      "elapsed_seconds": 13.510471105575562
+    },
+    {
+      "turn": 3,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 3. Score: 5"
+        }
+      ],
+      "turn_reward": 5.0,
+      "cumulative_reward": 12.5,
+      "game_score": 5,
+      "elapsed_seconds": 13.046113014221191
+    },
+    {
+      "turn": 4,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 4. Score: 6"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 15.5,
+      "game_score": 6,
+      "elapsed_seconds": 14.22531795501709
+    },
+    {
+      "turn": 5,
+      "reasoning": "Continue researching Writing and building Library, while exploring east with both warriors.",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "move 0 1 0",
+        "move 1 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,2)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 5. Score: 7"
+        }
+      ],
+      "turn_reward": 4.0,
+      "cumulative_reward": 19.5,
+      "game_score": 7,
+      "elapsed_seconds": 9.0405113697052
+    },
+    {
+      "turn": 6,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 6. Score: 8"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 22.5,
+      "game_score": 8,
+      "elapsed_seconds": 12.767776250839233
+    },
+    {
+      "turn": 7,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 7. Score: 9"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 25.5,
+      "game_score": 9,
+      "elapsed_seconds": 12.037544965744019
+    },
+    {
+      "turn": 8,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 8. Score: 12"
+        }
+      ],
+      "turn_reward": 5.0,
+      "cumulative_reward": 30.5,
+      "game_score": 12,
+      "elapsed_seconds": 28.881136178970337
+    },
+    {
+      "turn": 9,
+      "reasoning": "Continue researching Writing (almost done), explore with warriors.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 9. Score: 13"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 32.5,
+      "game_score": 13,
+      "elapsed_seconds": 11.839132308959961
+    },
+    {
+      "turn": 10,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 10. Score: 14"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 35.5,
+      "game_score": 14,
+      "elapsed_seconds": 13.995514631271362
+    },
+    {
+      "turn": 11,
+      "reasoning": "Continue building Library, explore with both warriors.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (10,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,6)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 9.0,
+          "valid": true,
+          "message": "Turn 11. Score: 23"
+        }
+      ],
+      "turn_reward": 10.0,
+      "cumulative_reward": 45.5,
+      "game_score": 23,
+      "elapsed_seconds": 11.162520408630371
+    },
+    {
+      "turn": 12,
+      "reasoning": "Start Archery research for military boost, train a Settler to expand, and explore with all units.",
+      "actions": [
+        "research Archery",
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (11,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,7)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (6,3)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 12. Score: 24"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 50.0,
+      "game_score": 24,
+      "elapsed_seconds": 7.314021110534668
+    },
+    {
+      "turn": 13,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 13. Score: 25"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 53.0,
+      "game_score": 25,
+      "elapsed_seconds": 13.018794298171997
+    },
+    {
+      "turn": 14,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 14. Score: 26"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 56.0,
+      "game_score": 26,
+      "elapsed_seconds": 13.621651887893677
+    },
+    {
+      "turn": 15,
+      "reasoning": "Continue archery research, scout east with warrior, move builder south to prepare improvement.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (12,2)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (6,4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 15. Score: 29"
+        }
+      ],
+      "turn_reward": 5.0,
+      "cumulative_reward": 61.0,
+      "game_score": 29,
+      "elapsed_seconds": 11.03920578956604
+    },
+    {
+      "turn": 16,
+      "reasoning": "Continue researching Archery, explore east and south with warriors.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (13,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 16. Score: 30"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 64.0,
+      "game_score": 30,
+      "elapsed_seconds": 10.961046934127808
+    },
+    {
+      "turn": 17,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 17. Score: 31"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 67.0,
+      "game_score": 31,
+      "elapsed_seconds": 13.791453838348389
+    },
+    {
+      "turn": 18,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 18. Score: 32"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 70.0,
+      "game_score": 32,
+      "elapsed_seconds": 12.614475965499878
+    },
+    {
+      "turn": 19,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 19. Score: 33"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 73.0,
+      "game_score": 33,
+      "elapsed_seconds": 12.088451147079468
+    },
+    {
+      "turn": 20,
+      "reasoning": "Continue researching Archery, explore with warriors, builder standby.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (14,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,9)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 20. Score: 34"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 76.0,
+      "game_score": 34,
+      "elapsed_seconds": 9.903775215148926
+    },
+    {
+      "turn": 21,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 21. Score: 35"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 79.0,
+      "game_score": 35,
+      "elapsed_seconds": 13.078628540039062
+    },
+    {
+      "turn": 22,
+      "reasoning": "Library and Archery in progress, explore with warriors.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (15,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,10)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 22. Score: 36"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 81.0,
+      "game_score": 36,
+      "elapsed_seconds": 10.168530702590942
+    },
+    {
+      "turn": 23,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 23. Score: 39"
+        }
+      ],
+      "turn_reward": 5.0,
+      "cumulative_reward": 86.0,
+      "game_score": 39,
+      "elapsed_seconds": 14.161940336227417
+    },
+    {
+      "turn": 24,
+      "reasoning": "Finish Archery this turn, build Settler for expansion, explore with warriors and move builder.",
+      "actions": [
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (16,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,11)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (6,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 24. Score: 40"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 89.5,
+      "game_score": 40,
+      "elapsed_seconds": 12.537840604782104
+    },
+    {
+      "turn": 25,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 9.0,
+          "valid": true,
+          "message": "Turn 25. Score: 59"
+        }
+      ],
+      "turn_reward": 11.0,
+      "cumulative_reward": 100.5,
+      "game_score": 59,
+      "elapsed_seconds": 13.26107120513916
+    },
+    {
+      "turn": 26,
+      "reasoning": "Research Engineering for defensive units, start training a Settler for expansion, and move warriors to explore.",
+      "actions": [
+        "research Engineering",
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (17,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,12)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (7,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 26. Score: 60"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 105.0,
+      "game_score": 60,
+      "elapsed_seconds": 5.646280288696289
+    },
+    {
+      "turn": 27,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 27. Score: 61"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 108.0,
+      "game_score": 61,
+      "elapsed_seconds": 12.372469663619995
+    },
+    {
+      "turn": 28,
+      "reasoning": "{\"reasoning\":\"Continue Engineering research and Library construction, explore with units.\",\"",
+      "actions": [
+        "research Engineering",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 28. Score: 62"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 110.0,
+      "game_score": 62,
+      "elapsed_seconds": 11.868233442306519
+    },
+    {
+      "turn": 29,
+      "reasoning": "{\"reasoning\":\"Continue Engineering research, explore with warriors",
+      "actions": [
+        "research Engineering",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 29. Score: 63"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 112.0,
+      "game_score": 63,
+      "elapsed_seconds": 13.00693392753601
+    },
+    {
+      "turn": 30,
+      "reasoning": "{\n  \"reasoning\": \"Continue researching Engineering, explore with warriors moving southeast and east, builder stays for now.\",\n  \"actions\": [\n    \"research Engineering\",\n    \"move 0 1 0\",\n    \"move 1 1",
+      "actions": [
+        "research Engineering",
+        "build 0 Granary",
+        "build 0 Monument",
+        "build 0 Library",
+        "build 0 Market",
+        "train 0 Warrior",
+        "train 0 Archer",
+        "train 0 Settler",
+        "train 0 Builder",
+        "move 0 1 0",
+        "move 0 0 1",
+        "move 1 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Granary",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Granary"
+        },
+        {
+          "action": "build 0 Monument",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Monument"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "build 0 Market",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Market"
+        },
+        {
+          "action": "train 0 Warrior",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Warrior"
+        },
+        {
+          "action": "train 0 Archer",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Archer"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "train 0 Builder",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Builder"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (18,2)"
+        },
+        {
+          "action": "move 0 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (18,3)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,12)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,13)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 30. Score: 64"
+        }
+      ],
+      "turn_reward": 12.0,
+      "cumulative_reward": 124.0,
+      "game_score": 64,
+      "elapsed_seconds": 12.779923439025879
+    },
+    {
+      "turn": 31,
+      "reasoning": "{\"reasoning\":\"Continue Engineering research, switch city production to Library for science boost, explore with warriors and builder.\",\"actions\":[\"build 0 Library\",\"move 0 1 0\",\"move 1 0 1\",\"",
+      "actions": [
+        "research Engineering",
+        "build 0 Granary",
+        "build 0 Monument",
+        "build 0 Library",
+        "build 0 Market",
+        "train 0 Warrior",
+        "train 0 Archer",
+        "train 0 Settler",
+        "train 0 Builder",
+        "move 0 1 0",
+        "move 0 0 1",
+        "move 1 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Granary",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Granary"
+        },
+        {
+          "action": "build 0 Monument",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Monument"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "build 0 Market",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Market"
+        },
+        {
+          "action": "train 0 Warrior",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Warrior"
+        },
+        {
+          "action": "train 0 Archer",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Archer"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "train 0 Builder",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Builder"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,3)"
+        },
+        {
+          "action": "move 0 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,13)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,14)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 31. Score: 65"
+        }
+      ],
+      "turn_reward": 12.0,
+      "cumulative_reward": 136.0,
+      "game_score": 65,
+      "elapsed_seconds": 12.477460861206055
+    },
+    {
+      "turn": 32,
+      "reasoning": "Continue Engineering research, let Builder finish, move warriors east to explore.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,14)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 32. Score: 68"
+        }
+      ],
+      "turn_reward": 4.0,
+      "cumulative_reward": 140.0,
+      "game_score": 68,
+      "elapsed_seconds": 12.067254781723022
+    },
+    {
+      "turn": 33,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 33. Score: 69"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 143.0,
+      "game_score": 69,
+      "elapsed_seconds": 13.797404050827026
+    },
+    {
+      "turn": 34,
+      "reasoning": "Continue Engineering research and Library construction, train an Archer for defense, and explore with both warriors.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "train 0 Archer",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,15)"
+        },
+        {
+          "action": "train 0 Archer",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Archer"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 34. Score: 70"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 146.0,
+      "game_score": 70,
+      "elapsed_seconds": 4.866810321807861
+    },
+    {
+      "turn": 35,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 35. Score: 71"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 149.0,
+      "game_score": 71,
+      "elapsed_seconds": 14.590222597122192
+    },
+    {
+      "turn": 36,
+      "reasoning": "Continue Engineering research for faster advancement, train a Settler to expand territory, and move the eastern warrior to explore.",
+      "actions": [
+        "research Engineering",
+        "train 0 Settler",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 36. Score: 72"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 152.5,
+      "game_score": 72,
+      "elapsed_seconds": 12.36404037475586
+    },
+    {
+      "turn": 37,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 37. Score: 73"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 155.5,
+      "game_score": 73,
+      "elapsed_seconds": 13.82796859741211
+    },
+    {
+      "turn": 38,
+      "reasoning": "Continue Engineering and Library builds, move warriors to scout.",
+      "actions": [
+        "research Engineering",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,16)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 38. Score: 74"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 158.5,
+      "game_score": 74,
+      "elapsed_seconds": 6.6503095626831055
+    },
+    {
+      "turn": 39,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 39. Score: 75"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 161.5,
+      "game_score": 75,
+      "elapsed_seconds": 14.071867942810059
+    },
+    {
+      "turn": 40,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 40. Score: 76"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 164.5,
+      "game_score": 76,
+      "elapsed_seconds": 13.009809732437134
+    },
+    {
+      "turn": 41,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 11.0,
+          "valid": true,
+          "message": "Turn 41. Score: 87"
+        }
+      ],
+      "turn_reward": 13.0,
+      "cumulative_reward": 177.5,
+      "game_score": 87,
+      "elapsed_seconds": 14.50219440460205
+    },
+    {
+      "turn": 42,
+      "reasoning": "Start Construction for Colosseum/Walls, continue Library, train Archer for defense, explore with units.",
+      "actions": [
+        "research Construction",
+        "build 0 Library",
+        "train 0 Archer",
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Construction",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Construction"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "train 0 Archer",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Archer"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (10,16)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (8,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 42. Score: 88"
+        }
+      ],
+      "turn_reward": 5.5,
+      "cumulative_reward": 183.0,
+      "game_score": 88,
+      "elapsed_seconds": 12.299989223480225
+    },
+    {
+      "turn": 43,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Mathematics",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 43. Score: 89"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 186.0,
+      "game_score": 89,
+      "elapsed_seconds": 13.451973915100098
+    },
+    {
+      "turn": 44,
+      "reasoning": "Continue Mathematics research, train Settler for expansion, explore with all units.",
+      "actions": [
+        "research Mathematics",
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (11,16)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (9,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 44. Score: 90"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 190.5,
+      "game_score": 90,
+      "elapsed_seconds": 9.709294557571411
+    },
+    {
+      "turn": 45,
+      "reasoning": "Continue Mathematics research, explore with warriors, and position builder for improvement.",
+      "actions": [
+        "research Mathematics",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (11,17)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (9,6)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 45. Score: 91"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 194.0,
+      "game_score": 91,
+      "elapsed_seconds": 11.420397758483887
+    },
+    {
+      "turn": 46,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Mathematics",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 46. Score: 92"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 197.0,
+      "game_score": 92,
+      "elapsed_seconds": 13.333617448806763
+    },
+    {
+      "turn": 47,
+      "reasoning": "Continue Mathematics, train Settler for expansion, and scout with warrior.",
+      "actions": [
+        "research Mathematics",
+        "train 0 Settler",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 47. Score: 93"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 200.5,
+      "game_score": 93,
+      "elapsed_seconds": 4.0883636474609375
+    },
+    {
+      "turn": 48,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Mathematics",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 48. Score: 94"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 203.5,
+      "game_score": 94,
+      "elapsed_seconds": 13.015139818191528
+    },
+    {
+      "turn": 49,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Mathematics",
+        "build 0 Library",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 49. Score: 95"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 206.5,
+      "game_score": 95,
+      "elapsed_seconds": 13.997143268585205
+    },
+    {
+      "turn": 50,
+      "reasoning": "Continue researching Mathematics, queue Granary after Library, and scout with warrior at (11,17).",
+      "actions": [
+        "research Mathematics",
+        "build 0 Granary",
+        "move 1 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "build 0 Granary",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Granary"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (12,17)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 50. Score: 96"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 210.0,
+      "game_score": 96,
+      "elapsed_seconds": 9.993204832077026
+    }
+  ]
+}

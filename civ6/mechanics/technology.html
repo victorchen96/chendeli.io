@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology & Civics Tree - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .era-section {
+      margin: 2rem 0;
+      border-left: 3px solid #4a90d9;
+      padding-left: 1.5rem;
+    }
+    .era-section h3 {
+      color: #7cb3f0;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .tech-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s;
+    }
+    .tech-card:hover {
+      border-color: #4a90d9;
+    }
+    .tech-card-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .tech-card-effect {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .tech-card-boost {
+      font-size: 0.75rem;
+      color: #50c878;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+    .victory-path {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .victory-path h4 {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+    .victory-path-science h4 { color: #7cb3f0; }
+    .victory-path-culture h4 { color: #d4a0f0; }
+    .victory-path-domination h4 { color: #ff6b6b; }
+    .victory-path-religion h4 { color: #ffcc44; }
+    .tech-flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .tech-flow-item {
+      background: var(--bg-tertiary);
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+    .tech-flow-arrow {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .civics-section {
+      border-left-color: #9b59b6;
+    }
+    .civics-section h3 {
+      color: #d4a0f0;
+    }
+    .civic-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s;
+    }
+    .civic-card:hover {
+      border-color: #9b59b6;
+    }
+    .boost-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .boost-table th, .boost-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .boost-table th {
+      background: var(--bg-tertiary);
+      color: #7cb3f0;
+      font-weight: 600;
+    }
+    .boost-table td {
+      color: var(--text-secondary);
+    }
+    .boost-condition {
+      color: #50c878;
+      font-style: italic;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(74, 144, 217, 0.1), rgba(74, 144, 217, 0.05));
+      border: 1px solid rgba(74, 144, 217, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #7cb3f0;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .era-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .era-ancient { background: #3d2d1f; color: #d4a060; }
+    .era-classical { background: #1f3d2a; color: #50c878; }
+    .era-medieval { background: #2a2a3d; color: #7c7cf0; }
+    .era-renaissance { background: #3d1f2a; color: #f07c7c; }
+    .era-industrial { background: #2d2d2d; color: #b0b0b0; }
+    .era-modern { background: #1f2a3d; color: #7cb3f0; }
+    .era-atomic { background: #3d3d1f; color: #e6e650; }
+    .era-info { background: #1f3d3d; color: #50e6e6; }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="victory.html"><span class="nav-icon">&#127942;</span> Victory Types</a></li>
+      <li><a href="wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+      <li><a href="technology.html" class="active"><span class="nav-icon">&#128300;</span> Tech & Civics Tree</a></li>
+      <li><a href="great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="../guides/early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="../guides/science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="../guides/culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="../guides/domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127760; Civilizations</div>
+    <ul class="sidebar-nav">
+      <li><a href="../civs/korea.html"><span class="nav-icon">&#127472;&#127479;</span> Korea</a></li>
+      <li><a href="../civs/japan.html"><span class="nav-icon">&#127471;&#127477;</span> Japan</a></li>
+      <li><a href="../civs/germany.html"><span class="nav-icon">&#127465;&#127466;</span> Germany</a></li>
+      <li><a href="../civs/china.html"><span class="nav-icon">&#127464;&#127475;</span> China</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <h1>&#128300; 科技与市政树 Technology & Civics Tree</h1>
+
+    <!-- Overview -->
+    <div class="card">
+      <div class="card-content">
+        <p>文明6的研究系统分为两条独立的树：<strong>科技树</strong>（Technology Tree）由科研值驱动，解锁单位、建筑和改良设施；<strong>市政树</strong>（Civics Tree）由文化值驱动，解锁政策卡、政体和部分建筑。每项科技/市政都有一个"尤里卡/启发"（Eureka/Inspiration）条件，完成后减少50%研究成本。</p>
+      </div>
+    </div>
+
+    <!-- Victory Tech Paths -->
+    <h2>&#127942; 按胜利类型的关键科技路线</h2>
+
+    <div class="victory-path victory-path-science">
+      <h4>&#128640; 科技胜利路线 Science Victory</h4>
+      <div class="tech-flow">
+        <span class="tech-flow-item">Astrology</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Mathematics</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Education</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Astronomy</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Chemistry</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Rocketry</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Satellites</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Robotics</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Nuclear Fusion</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Nanotechnology</span>
+      </div>
+    </div>
+
+    <div class="victory-path victory-path-culture">
+      <h4>&#127912; 文化胜利路线 Culture Victory</h4>
+      <div class="tech-flow">
+        <span class="tech-flow-item">Writing</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Printing</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Flight</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Radio</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Computers</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Telecommunications</span>
+      </div>
+    </div>
+
+    <div class="victory-path victory-path-domination">
+      <h4>&#9876; 征服胜利路线 Domination Victory</h4>
+      <div class="tech-flow">
+        <span class="tech-flow-item">Bronze Working</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Iron Working</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Stirrups</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Gunpowder</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Military Science</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Ballistics</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Combined Arms</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Nuclear Fission</span>
+      </div>
+    </div>
+
+    <div class="victory-path victory-path-religion">
+      <h4>&#9962; 宗教胜利路线 Religion Victory</h4>
+      <div class="tech-flow">
+        <span class="tech-flow-item">Astrology</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Theology (Civic)</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Reformed Church (Civic)</span>
+        <span class="tech-flow-arrow">&rarr;</span>
+        <span class="tech-flow-item">Theocracy (Gov)</span>
+      </div>
+    </div>
+
+    <!-- Technology Tree by Era -->
+    <h2>&#128218; 科技树 Technology Tree</h2>
+
+    <div class="era-section">
+      <h3>&#9728; Ancient Era <span class="era-badge era-ancient">ANCIENT</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Pottery</div>
+          <div class="tech-card-effect">Unlocks: Granary, Shrine</div>
+          <div class="tech-card-boost">Boost: Build 1 improvement</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Animal Husbandry</div>
+          <div class="tech-card-effect">Unlocks: Pasture, reveals Horses</div>
+          <div class="tech-card-boost">Boost: Build 1 camp or pasture</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Mining</div>
+          <div class="tech-card-effect">Unlocks: Mine, Quarry</div>
+          <div class="tech-card-boost">Boost: Build 1 mine</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Sailing</div>
+          <div class="tech-card-effect">Unlocks: Galley, Fishing Boat</div>
+          <div class="tech-card-boost">Boost: Found a city on coast</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Astrology</div>
+          <div class="tech-card-effect">Unlocks: Holy Site district</div>
+          <div class="tech-card-boost">Boost: Find a natural wonder</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Irrigation</div>
+          <div class="tech-card-effect">Unlocks: Plantation, Hanging Gardens</div>
+          <div class="tech-card-boost">Boost: Farm a resource</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Writing</div>
+          <div class="tech-card-effect">Unlocks: Campus district, Library</div>
+          <div class="tech-card-boost">Boost: Meet another civilization</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Archery</div>
+          <div class="tech-card-effect">Unlocks: Archer (ranged unit)</div>
+          <div class="tech-card-boost">Boost: Kill a unit with Slinger</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Masonry</div>
+          <div class="tech-card-effect">Unlocks: Ancient Walls, Pyramids</div>
+          <div class="tech-card-boost">Boost: Build a quarry</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Bronze Working</div>
+          <div class="tech-card-effect">Unlocks: Spearman, Encampment</div>
+          <div class="tech-card-boost">Boost: Kill 3 barbarians</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Wheel</div>
+          <div class="tech-card-effect">Unlocks: Heavy Chariot, Water Mill</div>
+          <div class="tech-card-boost">Boost: Mine a luxury resource</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#127919; Classical Era <span class="era-badge era-classical">CLASSICAL</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Iron Working</div>
+          <div class="tech-card-effect">Unlocks: Swordsman, reveals Iron</div>
+          <div class="tech-card-boost">Boost: Build an Iron Mine</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Horseback Riding</div>
+          <div class="tech-card-effect">Unlocks: Horseman (light cavalry)</div>
+          <div class="tech-card-boost">Boost: Build a Pasture</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Mathematics</div>
+          <div class="tech-card-effect">Unlocks: Catapult, Petra wonder</div>
+          <div class="tech-card-boost">Boost: Build 3 different districts</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Construction</div>
+          <div class="tech-card-effect">Unlocks: Colosseum, Aqueduct</div>
+          <div class="tech-card-boost">Boost: Build a Water Mill</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Engineering</div>
+          <div class="tech-card-effect">Unlocks: Catapult upgrade path</div>
+          <div class="tech-card-boost">Boost: Build Ancient Walls</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Currency</div>
+          <div class="tech-card-effect">Unlocks: Market, Commercial Hub</div>
+          <div class="tech-card-boost">Boost: Make a trade route</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#127984; Medieval Era <span class="era-badge era-medieval">MEDIEVAL</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Apprenticeship</div>
+          <div class="tech-card-effect">Unlocks: Man-at-Arms, Industrial Zone</div>
+          <div class="tech-card-boost">Boost: Build 3 mines</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Stirrups</div>
+          <div class="tech-card-effect">Unlocks: Knight (heavy cavalry)</div>
+          <div class="tech-card-boost">Boost: Have the Feudalism civic</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Machinery</div>
+          <div class="tech-card-effect">Unlocks: Crossbowman, Lumber Mill</div>
+          <div class="tech-card-boost">Boost: Own 3 Archers</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Education</div>
+          <div class="tech-card-effect">Unlocks: University</div>
+          <div class="tech-card-boost">Boost: Earn a Great Scientist</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Military Tactics</div>
+          <div class="tech-card-effect">Unlocks: Pikeman</div>
+          <div class="tech-card-boost">Boost: Kill a unit with Spearman</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Castles</div>
+          <div class="tech-card-effect">Unlocks: Medieval Walls, Star Fort</div>
+          <div class="tech-card-boost">Boost: Build 6 improvements with Governor</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#127752; Renaissance Era <span class="era-badge era-renaissance">RENAISSANCE</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Gunpowder</div>
+          <div class="tech-card-effect">Unlocks: Musketman, Renaissance Walls</div>
+          <div class="tech-card-boost">Boost: Build an Armory</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Printing</div>
+          <div class="tech-card-effect">+1 Diplomatic Visibility with all civs</div>
+          <div class="tech-card-boost">Boost: Build 2 Universities</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Astronomy</div>
+          <div class="tech-card-effect">Unlocks: University adjacency to mountains</div>
+          <div class="tech-card-boost">Boost: Build a University next to a mountain</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Banking</div>
+          <div class="tech-card-effect">Unlocks: Bank</div>
+          <div class="tech-card-boost">Boost: Have Treasury building</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Cartography</div>
+          <div class="tech-card-effect">Unlocks: Caravel (ocean travel)</div>
+          <div class="tech-card-boost">Boost: Build 2 Harbors</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Mass Production</div>
+          <div class="tech-card-effect">Unlocks: Shipyard, Venetian Arsenal</div>
+          <div class="tech-card-boost">Boost: Build a Lumber Mill</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#9881; Industrial Era <span class="era-badge era-industrial">INDUSTRIAL</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Industrialization</div>
+          <div class="tech-card-effect">Unlocks: Factory, Coal Power Plant</div>
+          <div class="tech-card-boost">Boost: Build 3 Workshops</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Military Science</div>
+          <div class="tech-card-effect">Unlocks: Cavalry</div>
+          <div class="tech-card-boost">Boost: Kill a unit with Knight</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Ballistics</div>
+          <div class="tech-card-effect">Unlocks: Artillery (siege)</div>
+          <div class="tech-card-boost">Boost: Have 2 Forts in your territory</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Rifling</div>
+          <div class="tech-card-effect">Unlocks: Infantry</div>
+          <div class="tech-card-boost">Boost: Build a Niter Mine</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Steam Power</div>
+          <div class="tech-card-effect">Unlocks: Ironclad, reveals Coal</div>
+          <div class="tech-card-boost">Boost: Build 2 Shipyards</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Electricity</div>
+          <div class="tech-card-effect">Unlocks: Seaport, Stock Exchange</div>
+          <div class="tech-card-boost">Boost: Own 3 Privateers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#127758; Modern Era <span class="era-badge era-modern">MODERN</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Flight</div>
+          <div class="tech-card-effect">Unlocks: Biplane, Wonders give Tourism</div>
+          <div class="tech-card-boost">Boost: Build an Industrial era or later wonder</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Radio</div>
+          <div class="tech-card-effect">Unlocks: Seaside Resort, Broadcast Center</div>
+          <div class="tech-card-boost">Boost: Build a National Park</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Chemistry</div>
+          <div class="tech-card-effect">Unlocks: Research Lab</div>
+          <div class="tech-card-boost">Boost: Complete a Research Alliance</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Combined Arms</div>
+          <div class="tech-card-effect">Unlocks: Tank, Modern AT</div>
+          <div class="tech-card-boost">Boost: Build an Airstrip</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Advanced Flight</div>
+          <div class="tech-card-effect">Unlocks: Bomber, Fighter</div>
+          <div class="tech-card-boost">Boost: Build 3 Biplanes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#9762; Atomic Era <span class="era-badge era-atomic">ATOMIC</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Rocketry</div>
+          <div class="tech-card-effect">Unlocks: Rocket Artillery, Spaceport</div>
+          <div class="tech-card-boost">Boost: Boost a tech from the Information era</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Nuclear Fission</div>
+          <div class="tech-card-effect">Unlocks: Nuclear Device, Uranium revealed</div>
+          <div class="tech-card-boost">Boost: Boost a tech from the Modern era with Great Scientist</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Computers</div>
+          <div class="tech-card-effect">+25% Tourism output</div>
+          <div class="tech-card-boost">Boost: Have a government with 8 policy slots</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Satellites</div>
+          <div class="tech-card-effect">Unlocks: Launch Earth Satellite project</div>
+          <div class="tech-card-boost">Boost: Boost a Modern era tech</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section">
+      <h3>&#128187; Information Era <span class="era-badge era-info">INFORMATION</span></h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-name">Robotics</div>
+          <div class="tech-card-effect">Unlocks: Launch Moon Landing project</div>
+          <div class="tech-card-boost">Boost: Have a global alliance</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Nuclear Fusion</div>
+          <div class="tech-card-effect">Unlocks: Thermonuclear Device, Giant Death Robot</div>
+          <div class="tech-card-boost">Boost: Boost a technology with a Great Scientist</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Nanotechnology</div>
+          <div class="tech-card-effect">Unlocks: Launch Mars Colony project</div>
+          <div class="tech-card-boost">Boost: Build an Aluminum Mine</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-name">Telecommunications</div>
+          <div class="tech-card-effect">+25% additional Tourism</div>
+          <div class="tech-card-boost">Boost: Build 2 Broadcast Centers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Civics Tree -->
+    <h2>&#128220; 市政树 Civics Tree (Key Civics)</h2>
+
+    <div class="era-section civics-section">
+      <h3>Ancient & Classical Civics</h3>
+      <div class="tech-grid">
+        <div class="civic-card">
+          <div class="tech-card-name">Code of Laws</div>
+          <div class="tech-card-effect">1st Government (Chiefdom), policy cards</div>
+          <div class="tech-card-boost">Boost: Discover a second continent (not applicable, auto)</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Political Philosophy</div>
+          <div class="tech-card-effect">Unlocks: Autocracy/Oligarchy/Classical Republic</div>
+          <div class="tech-card-boost">Boost: Meet 3 city-states</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Drama and Poetry</div>
+          <div class="tech-card-effect">Unlocks: Theatre Square district</div>
+          <div class="tech-card-boost">Boost: Build a Wonder</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Theology</div>
+          <div class="tech-card-effect">Unlocks: Temple, Missionary purchase</div>
+          <div class="tech-card-boost">Boost: Found a religion</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section civics-section">
+      <h3>Medieval & Renaissance Civics</h3>
+      <div class="tech-grid">
+        <div class="civic-card">
+          <div class="tech-card-name">Feudalism</div>
+          <div class="tech-card-effect">Builders get 1 extra charge; farm triangles +1</div>
+          <div class="tech-card-boost">Boost: Build 6 farms</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Exploration</div>
+          <div class="tech-card-effect">Unlocks: Merchant Republic government</div>
+          <div class="tech-card-boost">Boost: Build 2 Caravels</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Reformed Church</div>
+          <div class="tech-card-effect">Unlocks: Theocracy government</div>
+          <div class="tech-card-boost">Boost: Have 6 cities following your religion</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Humanism</div>
+          <div class="tech-card-effect">Unlocks: Art Museum / Archaeological Museum</div>
+          <div class="tech-card-boost">Boost: Earn a Great Artist</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-section civics-section">
+      <h3>Industrial & Later Civics</h3>
+      <div class="tech-grid">
+        <div class="civic-card">
+          <div class="tech-card-name">Nationalism</div>
+          <div class="tech-card-effect">Unlocks: Corps (combine 2 units)</div>
+          <div class="tech-card-boost">Boost: Declare a war</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Conservation</div>
+          <div class="tech-card-effect">Unlocks: Naturalist (National Parks)</div>
+          <div class="tech-card-boost">Boost: Have a neighborhood at Breathtaking</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Ideology</div>
+          <div class="tech-card-effect">Unlocks: Fascism/Communism/Democracy</div>
+          <div class="tech-card-boost">Boost: Have 3 cities with Tier 2 government buildings</div>
+        </div>
+        <div class="civic-card">
+          <div class="tech-card-name">Cold War</div>
+          <div class="tech-card-effect">Unlocks: Rock Band (faith purchase)</div>
+          <div class="tech-card-boost">Boost: Research nuclear fission</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Boosts Table -->
+    <h2>&#9889; Important Eureka/Inspiration Boosts</h2>
+
+    <table class="boost-table">
+      <thead>
+        <tr>
+          <th>Tech / Civic</th>
+          <th>Era</th>
+          <th>Boost Condition</th>
+          <th>Planning Tip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Writing</strong></td>
+          <td>Ancient</td>
+          <td class="boost-condition">Meet another civilization</td>
+          <td>Scout early to trigger this naturally</td>
+        </tr>
+        <tr>
+          <td><strong>Archery</strong></td>
+          <td>Ancient</td>
+          <td class="boost-condition">Kill a unit with a Slinger</td>
+          <td>Keep slinger alive for barb combat</td>
+        </tr>
+        <tr>
+          <td><strong>Political Philosophy</strong></td>
+          <td>Classical</td>
+          <td class="boost-condition">Meet 3 city-states</td>
+          <td>Explore with Scout to meet city-states early</td>
+        </tr>
+        <tr>
+          <td><strong>Apprenticeship</strong></td>
+          <td>Medieval</td>
+          <td class="boost-condition">Build 3 mines</td>
+          <td>Mine hills near cities; easy boost</td>
+        </tr>
+        <tr>
+          <td><strong>Stirrups</strong></td>
+          <td>Medieval</td>
+          <td class="boost-condition">Have the Feudalism civic</td>
+          <td>Rush Feudalism in civics to unlock Knight faster</td>
+        </tr>
+        <tr>
+          <td><strong>Feudalism</strong></td>
+          <td>Medieval</td>
+          <td class="boost-condition">Build 6 farms</td>
+          <td>Build farms early in flat terrain cities</td>
+        </tr>
+        <tr>
+          <td><strong>Industrialization</strong></td>
+          <td>Industrial</td>
+          <td class="boost-condition">Build 3 Workshops</td>
+          <td>Industrial Zones are essential; plan ahead</td>
+        </tr>
+        <tr>
+          <td><strong>Flight</strong></td>
+          <td>Modern</td>
+          <td class="boost-condition">Build an Industrial+ wonder</td>
+          <td>Ruhr Valley or Big Ben triggers this</td>
+        </tr>
+        <tr>
+          <td><strong>Computers</strong></td>
+          <td>Atomic</td>
+          <td class="boost-condition">8 policy slot government</td>
+          <td>Reach Tier 3 government for this boost</td>
+        </tr>
+        <tr>
+          <td><strong>Rocketry</strong></td>
+          <td>Atomic</td>
+          <td class="boost-condition">Boost an Information era tech</td>
+          <td>Chain boosts in late game; use Great Scientists</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Tips -->
+    <div class="tip-box">
+      <div class="tip-box-title">Research Strategy Tips</div>
+      <p><strong>Always aim for Eurekas:</strong> A 50% discount on every tech/civic adds up enormously. Plan 2-3 turns ahead to trigger boosts before researching.</p>
+      <p><strong>Beeline key techs:</strong> You don't need to research everything in order. Focus on the techs that unlock your victory condition or critical military upgrades.</p>
+      <p><strong>Campus placement:</strong> Adjacent to 2+ mountains = +4 science minimum. Build Campuses early in every city for passive science generation.</p>
+      <p><strong>Theatre Square for civics:</strong> Culture accelerates civic research. Even non-culture players should build Theatre Squares for faster policy unlocks.</p>
+      <p><strong>Great Scientists:</strong> Some Great Scientists provide free tech boosts or instant research completion. Prioritize these in late game for space race techs.</p>
+    </div>
+
+    <div class="strategy-section">
+      <h3>Era Score & Research</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Golden Age bonus:</strong> In a Golden Age, your cities gain +10% science/culture. Time your research of critical techs during Golden Ages for maximum efficiency.</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Overflow research:</strong> If you finish a tech with excess science, the overflow carries to the next. Switching to a nearly-complete tech wastes less overflow.</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Tech trading (GS):</strong> In Gathering Storm, you can trade diplomatic favor for techs via the World Congress. Late-game this can skip expensive technologies.</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

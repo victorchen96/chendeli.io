@@ -1,0 +1,2524 @@
+{
+  "session_id": "civrealm_full_20260526_224947",
+  "config": {
+    "num_turns": 50,
+    "seed": 42,
+    "use_api": true,
+    "model": "deepseek-v4-flash",
+    "fast_research": true
+  },
+  "summary": {
+    "turns_played": 50,
+    "final_score": 121,
+    "total_reward": 185.0,
+    "era_reached": "classical",
+    "cities_built": 1,
+    "units_count": 4,
+    "techs_researched": 5,
+    "techs_list": [
+      "Mining",
+      "Pottery",
+      "Writing",
+      "Archery",
+      "Engineering"
+    ],
+    "total_time_seconds": 388.0743842124939,
+    "end_reason": "completed"
+  },
+  "assessment": {
+    "criteria": {
+      "techs_researched_2plus": true,
+      "cities_2plus": false,
+      "reached_classical": true,
+      "no_crash": true,
+      "positive_reward": true,
+      "ahead_of_ai": true,
+      "score_leader": true
+    },
+    "passed": 6,
+    "total": 7,
+    "success": true,
+    "grade": "A"
+  },
+  "snapshots": [
+    {
+      "turn": 10,
+      "era": "ancient",
+      "score": 19,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 3,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 2,
+      "techs_researched": [
+        "Mining",
+        "Pottery"
+      ],
+      "current_research": "Writing",
+      "gold": 110,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 0,
+          "techs": 2
+        },
+        {
+          "name": "Egypt",
+          "score": 0,
+          "techs": 2
+        }
+      ],
+      "total_reward": 37.0
+    },
+    {
+      "turn": 20,
+      "era": "ancient",
+      "score": 41,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 5,
+      "units": 3,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder"
+      ],
+      "techs_count": 3,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing"
+      ],
+      "current_research": "Archery",
+      "gold": 140,
+      "science_per_turn": 5,
+      "culture_per_turn": 2,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 5,
+          "techs": 3
+        },
+        {
+          "name": "Egypt",
+          "score": 5,
+          "techs": 3
+        }
+      ],
+      "total_reward": 76.0
+    },
+    {
+      "turn": 30,
+      "era": "classical",
+      "score": 79,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 6,
+      "units": 4,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder",
+        "Settler"
+      ],
+      "techs_count": 4,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery"
+      ],
+      "current_research": "Engineering",
+      "gold": 170,
+      "science_per_turn": 5,
+      "culture_per_turn": 4,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 5,
+          "techs": 3
+        },
+        {
+          "name": "Egypt",
+          "score": 5,
+          "techs": 3
+        }
+      ],
+      "total_reward": 115.0
+    },
+    {
+      "turn": 40,
+      "era": "classical",
+      "score": 104,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 7,
+      "units": 4,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder",
+        "Settler"
+      ],
+      "techs_count": 5,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery",
+        "Engineering"
+      ],
+      "current_research": "Mathematics",
+      "gold": 200,
+      "science_per_turn": 8,
+      "culture_per_turn": 4,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        },
+        {
+          "turn": 39,
+          "type": "tech_complete",
+          "detail": "Engineering"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 10,
+          "techs": 4
+        },
+        {
+          "name": "Egypt",
+          "score": 10,
+          "techs": 4
+        }
+      ],
+      "total_reward": 154.5
+    },
+    {
+      "turn": 50,
+      "era": "classical",
+      "score": 121,
+      "cities": 1,
+      "city_names": [
+        "Xi'an"
+      ],
+      "total_population": 8,
+      "units": 4,
+      "unit_types": [
+        "Warrior",
+        "Warrior",
+        "Builder",
+        "Settler"
+      ],
+      "techs_count": 5,
+      "techs_researched": [
+        "Mining",
+        "Pottery",
+        "Writing",
+        "Archery",
+        "Engineering"
+      ],
+      "current_research": "Mathematics",
+      "gold": 254,
+      "science_per_turn": 8,
+      "culture_per_turn": 4,
+      "milestones": [
+        {
+          "turn": 11,
+          "type": "tech_complete",
+          "detail": "Writing"
+        },
+        {
+          "turn": 25,
+          "type": "tech_complete",
+          "detail": "Archery"
+        },
+        {
+          "turn": 25,
+          "type": "era_advance",
+          "detail": "classical"
+        },
+        {
+          "turn": 39,
+          "type": "tech_complete",
+          "detail": "Engineering"
+        }
+      ],
+      "ai_scores": [
+        {
+          "name": "Rome",
+          "score": 15,
+          "techs": 5
+        },
+        {
+          "name": "Egypt",
+          "score": 15,
+          "techs": 5
+        }
+      ],
+      "total_reward": 185.0
+    }
+  ],
+  "milestones": [
+    {
+      "turn": 11,
+      "type": "tech_complete",
+      "detail": "Writing"
+    },
+    {
+      "turn": 25,
+      "type": "tech_complete",
+      "detail": "Archery"
+    },
+    {
+      "turn": 25,
+      "type": "era_advance",
+      "detail": "classical"
+    },
+    {
+      "turn": 39,
+      "type": "tech_complete",
+      "detail": "Engineering"
+    }
+  ],
+  "agent_stats": {
+    "turns_played": 50,
+    "total_api_calls": 50,
+    "total_tokens_used": 71569,
+    "avg_reward_per_turn": 3.7,
+    "avg_valid_action_rate": 0.8723333333333333,
+    "avg_response_time_s": 7.760216670036316,
+    "total_reward": 185.0
+  },
+  "turn_logs": [
+    {
+      "turn": 1,
+      "reasoning": "City idle, start Granary. Research Writing for Library. Explore with warriors and builder.",
+      "actions": [
+        "research Writing",
+        "build 0 Granary",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Granary",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Granary"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (5,4)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (5,3)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 1. Score: 1"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 4.5,
+      "game_score": 1,
+      "elapsed_seconds": 7.891681671142578
+    },
+    {
+      "turn": 2,
+      "reasoning": "City building Granary until 60/60, don't interrupt. Continue research Writing. Move warriors to explore in different directions.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,2)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (6,4)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (5,4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 2. Score: 2"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 7.0,
+      "game_score": 2,
+      "elapsed_seconds": 3.8303372859954834
+    },
+    {
+      "turn": 3,
+      "reasoning": "Continue researching Writing, explore with warriors and builder.",
+      "actions": [
+        "research Writing",
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,2)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,4)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (5,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 3. Score: 5"
+        }
+      ],
+      "turn_reward": 5.5,
+      "cumulative_reward": 12.5,
+      "game_score": 5,
+      "elapsed_seconds": 5.614339828491211
+    },
+    {
+      "turn": 4,
+      "reasoning": "Continue Writing research and Granary production. Move warriors and builder to explore different directions.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (10,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,5)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (6,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 4. Score: 6"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 15.0,
+      "game_score": 6,
+      "elapsed_seconds": 6.73028039932251
+    },
+    {
+      "turn": 5,
+      "reasoning": "Granary under construction, continue Writing research, explore with all units.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (11,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,6)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (7,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 5. Score: 7"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 17.5,
+      "game_score": 7,
+      "elapsed_seconds": 5.14487361907959
+    },
+    {
+      "turn": 6,
+      "reasoning": "City building Granary (28/60, 6t left) - continue. Research Writing (25/54) - continue. Move all units to explore.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (12,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,7)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (8,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 6. Score: 8"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 20.0,
+      "game_score": 8,
+      "elapsed_seconds": 9.10982871055603
+    },
+    {
+      "turn": 7,
+      "reasoning": "Granary in progress, continue research Writing. Move warriors and builder to explore.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (13,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,8)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (9,5)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 7. Score: 9"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 22.5,
+      "game_score": 9,
+      "elapsed_seconds": 6.434833526611328
+    },
+    {
+      "turn": 8,
+      "reasoning": "City building Granary 4t left, do not disrupt. Continue Writing research. Move all units to explore.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (14,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,9)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (9,6)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 8. Score: 12"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 27.0,
+      "game_score": 12,
+      "elapsed_seconds": 5.407625436782837
+    },
+    {
+      "turn": 9,
+      "reasoning": "Xi'an building Granary (2 turns left). Continue research Writing. Explore with units.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (15,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,10)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (9,7)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 9. Score: 13"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 29.5,
+      "game_score": 13,
+      "elapsed_seconds": 4.408430337905884
+    },
+    {
+      "turn": 10,
+      "reasoning": "Let Granary finish, then start Settler. Continue exploring.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (16,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,11)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (10,7)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 6.0,
+          "valid": true,
+          "message": "Turn 10. Score: 19"
+        }
+      ],
+      "turn_reward": 7.5,
+      "cumulative_reward": 37.0,
+      "game_score": 19,
+      "elapsed_seconds": 7.112026214599609
+    },
+    {
+      "turn": 11,
+      "reasoning": "City idle with pop 3, train Settler for expansion. Research Writing nearly done. Continue exploring with warriors.",
+      "actions": [
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (17,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,12)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 9.0,
+          "valid": true,
+          "message": "Turn 11. Score: 28"
+        }
+      ],
+      "turn_reward": 11.0,
+      "cumulative_reward": 48.0,
+      "game_score": 28,
+      "elapsed_seconds": 9.412440061569214
+    },
+    {
+      "turn": 12,
+      "reasoning": "Research Archery as next priority. Continue Settler production. Explore with warriors.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (18,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,13)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 12. Score: 29"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 51.0,
+      "game_score": 29,
+      "elapsed_seconds": 2.736424684524536
+    },
+    {
+      "turn": 13,
+      "reasoning": "Continue researching Archery, explore with all units while Settler is building.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,14)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (11,7)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 13. Score: 30"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 54.5,
+      "game_score": 30,
+      "elapsed_seconds": 4.5360307693481445
+    },
+    {
+      "turn": 14,
+      "reasoning": "City building Settler, continue. Research Archery active. Explore with all units.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,15)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (11,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 14. Score: 33"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 59.0,
+      "game_score": 33,
+      "elapsed_seconds": 8.531707525253296
+    },
+    {
+      "turn": 15,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 15. Score: 34"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 61.0,
+      "game_score": 34,
+      "elapsed_seconds": 13.431698322296143
+    },
+    {
+      "turn": 16,
+      "reasoning": "Continue researching Archery. Explore with warriors while Settler builds.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,16)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 16. Score: 35"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 64.0,
+      "game_score": 35,
+      "elapsed_seconds": 5.787427663803101
+    },
+    {
+      "turn": 17,
+      "reasoning": "Continue Settler production in Xi'an. Researching Archery ongoing. Move warriors to explore and builder to improve tiles.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,17)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (12,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 17. Score: 36"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 66.5,
+      "game_score": 36,
+      "elapsed_seconds": 7.228922128677368
+    },
+    {
+      "turn": 18,
+      "reasoning": "Continue researching Archery while Settler finishes. Move warriors to explore and builder to potential improvement site.",
+      "actions": [
+        "research Archery",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,18)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (13,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 18. Score: 37"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 70.0,
+      "game_score": 37,
+      "elapsed_seconds": 5.837142467498779
+    },
+    {
+      "turn": 19,
+      "reasoning": "Let city finish Settler to expand. Move warriors to explore for new city sites.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (7,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 19. Score: 38"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 72.0,
+      "game_score": 38,
+      "elapsed_seconds": 11.508637189865112
+    },
+    {
+      "turn": 20,
+      "reasoning": "Settler building in 2 turns, continue research. Explore with warriors.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 20. Score: 41"
+        }
+      ],
+      "turn_reward": 4.0,
+      "cumulative_reward": 76.0,
+      "game_score": 41,
+      "elapsed_seconds": 8.536980628967285
+    },
+    {
+      "turn": 21,
+      "reasoning": "Settler completes next turn. Continue exploring with warriors and builder. Keep research on Archery.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (14,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 4.0,
+          "valid": true,
+          "message": "Turn 21. Score: 45"
+        }
+      ],
+      "turn_reward": 5.5,
+      "cumulative_reward": 81.5,
+      "game_score": 45,
+      "elapsed_seconds": 12.809166193008423
+    },
+    {
+      "turn": 22,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Archery",
+        "settle 3",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 22. Score: 46"
+        }
+      ],
+      "turn_reward": 1.5,
+      "cumulative_reward": 83.0,
+      "game_score": 46,
+      "elapsed_seconds": 13.756614446640015
+    },
+    {
+      "turn": 23,
+      "reasoning": "{\n  \"reasoning\": \"Settle new city with ready Settler (unit 3) to expand, train another Settler in capital for further expansion, continue Archery research, and explore with warriors.\",\n  \"actions\": [\n",
+      "actions": [
+        "research Archery",
+        "move 3 1 0",
+        "move 3 0 1",
+        "settle 3",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "move 3 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Settler -> (6,2)"
+        },
+        {
+          "action": "move 3 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Settler -> (6,3)"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 23. Score: 47"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 85.5,
+      "game_score": 47,
+      "elapsed_seconds": 13.557805299758911
+    },
+    {
+      "turn": 24,
+      "reasoning": "Finish Archery research this turn, build Monument in idle Xi'an, and settle the new city with the ready Settler.",
+      "actions": [
+        "research Archery",
+        "build 0 Monument",
+        "settle 3",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "build 0 Monument",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Monument"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 24. Score: 48"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 88.5,
+      "game_score": 48,
+      "elapsed_seconds": 9.489917278289795
+    },
+    {
+      "turn": 25,
+      "reasoning": "Settler ready - found new city immediately. Finish Archery research. Explore with warrior.",
+      "actions": [
+        "research Archery",
+        "settle 3",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Archery",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Archery"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 9.0,
+          "valid": true,
+          "message": "Turn 25. Score: 67"
+        }
+      ],
+      "turn_reward": 10.0,
+      "cumulative_reward": 98.5,
+      "game_score": 67,
+      "elapsed_seconds": 7.545590877532959
+    },
+    {
+      "turn": 26,
+      "reasoning": "Settler ready to found new city. Research Engineering for future siege and defense. Move warriors to explore unknown areas.",
+      "actions": [
+        "research Engineering",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 26. Score: 68"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 101.0,
+      "game_score": 68,
+      "elapsed_seconds": 2.9187324047088623
+    },
+    {
+      "turn": 27,
+      "reasoning": "Settle new city with settler, move warrior to explore. Continue Engineering research.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 27. Score: 71"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 104.0,
+      "game_score": 71,
+      "elapsed_seconds": 4.928611993789673
+    },
+    {
+      "turn": 28,
+      "reasoning": "Settle settler immediately to found second city. Continue Engineering research (already in progress). Move builder to improve new city.",
+      "actions": [
+        "settle 3",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (15,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 6.0,
+          "valid": true,
+          "message": "Turn 28. Score: 77"
+        }
+      ],
+      "turn_reward": 6.0,
+      "cumulative_reward": 110.0,
+      "game_score": 77,
+      "elapsed_seconds": 9.770079374313354
+    },
+    {
+      "turn": 29,
+      "reasoning": "Settle new city with Settler, start Library in capital to boost science, continue Engineering research, and explore with units.",
+      "actions": [
+        "settle 3",
+        "build 0 Library",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Library"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (16,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 29. Score: 78"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 113.0,
+      "game_score": 78,
+      "elapsed_seconds": 6.0976622104644775
+    },
+    {
+      "turn": 30,
+      "reasoning": "Settler ready at (6,3) - settle new city immediately. Continue Engineering research. Move warriors and builder to explore.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (17,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 30. Score: 79"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 115.0,
+      "game_score": 79,
+      "elapsed_seconds": 8.204963684082031
+    },
+    {
+      "turn": 31,
+      "reasoning": "Settle new city with Settler near capital. Continue exploring with warriors and move builder for improvement.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (18,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 31. Score: 80"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 117.0,
+      "game_score": 80,
+      "elapsed_seconds": 8.104838609695435
+    },
+    {
+      "turn": 32,
+      "reasoning": "Settle new city immediately with the ready Settler. Continue researching Engineering. Explore with warriors.",
+      "actions": [
+        "research Engineering",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 32. Score: 81"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 119.5,
+      "game_score": 81,
+      "elapsed_seconds": 13.029948472976685
+    },
+    {
+      "turn": 33,
+      "reasoning": "Settler ready - found new city immediately. Continue research Engineering (already active). Move warriors and builder for exploration.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 33. Score: 82"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 121.5,
+      "game_score": 82,
+      "elapsed_seconds": 5.859568357467651
+    },
+    {
+      "turn": 34,
+      "reasoning": "Settler ready to found new city; continue research Engineering; explore with warriors and builder.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 34. Score: 83"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 123.5,
+      "game_score": 83,
+      "elapsed_seconds": 8.009188175201416
+    },
+    {
+      "turn": 35,
+      "reasoning": "Settle new city immediately to expand. Continue Engineering research. Scout with warriors and builder.",
+      "actions": [
+        "settle 3",
+        "research Engineering",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 35. Score: 86"
+        }
+      ],
+      "turn_reward": 5.0,
+      "cumulative_reward": 128.5,
+      "game_score": 86,
+      "elapsed_seconds": 4.192371606826782
+    },
+    {
+      "turn": 36,
+      "reasoning": "Settle new city with settler to expand empire. Move warriors to explore and reveal map. Continue Engineering research.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (8,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,8)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 6.0,
+          "valid": true,
+          "message": "Turn 36. Score: 92"
+        }
+      ],
+      "turn_reward": 7.0,
+      "cumulative_reward": 135.5,
+      "game_score": 92,
+      "elapsed_seconds": 9.800610303878784
+    },
+    {
+      "turn": 37,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Engineering",
+        "settle 3",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 37. Score: 93"
+        }
+      ],
+      "turn_reward": 1.5,
+      "cumulative_reward": 137.0,
+      "game_score": 93,
+      "elapsed_seconds": 13.925237894058228
+    },
+    {
+      "turn": 38,
+      "reasoning": "City idle, start Market. Settler ready at (6,3) - found new city. Continue researching Engineering. Explore with warriors.",
+      "actions": [
+        "research Engineering",
+        "build 0 Market",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "build 0 Market",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an building: Market"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 38. Score: 94"
+        }
+      ],
+      "turn_reward": 3.5,
+      "cumulative_reward": 140.5,
+      "game_score": 94,
+      "elapsed_seconds": 8.50776195526123
+    },
+    {
+      "turn": 39,
+      "reasoning": "Engineering is 1 turn from completion, finish it. Settle new city immediately with the settler at (6,3). Move warriors to explore north/east. Builder idle, move toward unimproved tiles.",
+      "actions": [
+        "research Engineering",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Engineering",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Engineering"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,9)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 9.0,
+          "valid": true,
+          "message": "Turn 39. Score: 103"
+        }
+      ],
+      "turn_reward": 11.0,
+      "cumulative_reward": 151.5,
+      "game_score": 103,
+      "elapsed_seconds": 6.731979846954346
+    },
+    {
+      "turn": 40,
+      "reasoning": "Settle new city to expand empire, start Mathematics research for siege units, and continue exploring with warriors.",
+      "actions": [
+        "research Mathematics",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,10)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 40. Score: 104"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 154.5,
+      "game_score": 104,
+      "elapsed_seconds": 4.930714130401611
+    },
+    {
+      "turn": 41,
+      "reasoning": "Settler is ready; settle a new city to expand. Continue Mathematics research. Move warriors to explore.",
+      "actions": [
+        "research Mathematics",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,11)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 41. Score: 105"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 157.5,
+      "game_score": 105,
+      "elapsed_seconds": 10.24364447593689
+    },
+    {
+      "turn": 42,
+      "reasoning": "Settle new city with settler at (6,3). Continue research Mathematics. Move warriors to explore and builder to a useful location.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,12)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 42. Score: 106"
+        }
+      ],
+      "turn_reward": 2.0,
+      "cumulative_reward": 159.5,
+      "game_score": 106,
+      "elapsed_seconds": 6.056445121765137
+    },
+    {
+      "turn": 43,
+      "reasoning": "Settler ready at (6,3) - settle immediately to found new city. Continue research on Mathematics. Move warrior to explore.",
+      "actions": [
+        "settle 3",
+        "move 0 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 43. Score: 107"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 160.5,
+      "game_score": 107,
+      "elapsed_seconds": 9.633157968521118
+    },
+    {
+      "turn": 44,
+      "reasoning": "Settler ready at (6,3) - settle new city immediately for expansion. Continue research Mathematics. Move warriors to explore.",
+      "actions": [
+        "settle 3",
+        "research Mathematics",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 44. Score: 110"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 165.0,
+      "game_score": 110,
+      "elapsed_seconds": 3.793250560760498
+    },
+    {
+      "turn": 45,
+      "reasoning": "Settler is ready to found a new city at (6,3). Continue Mathematics research. Move warriors and builder to explore.",
+      "actions": [
+        "settle 3",
+        "research Mathematics",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,12)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 6.0,
+          "valid": true,
+          "message": "Turn 45. Score: 116"
+        }
+      ],
+      "turn_reward": 8.0,
+      "cumulative_reward": 173.0,
+      "game_score": 116,
+      "elapsed_seconds": 8.041646242141724
+    },
+    {
+      "turn": 46,
+      "reasoning": "Settle settler to found new city. Train another settler in capital for expansion. Move warriors to explore.",
+      "actions": [
+        "settle 3",
+        "train 0 Settler",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "train 0 Settler",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an training: Settler"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 46. Score: 117"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 175.5,
+      "game_score": 117,
+      "elapsed_seconds": 10.015057563781738
+    },
+    {
+      "turn": 47,
+      "reasoning": "Settler ready, found new city immediately. Continue Mathematics research. Keep exploring with warriors and builder.",
+      "actions": [
+        "settle 3",
+        "research Mathematics",
+        "move 0 1 0",
+        "move 1 0 1",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder -> (19,12)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 47. Score: 118"
+        }
+      ],
+      "turn_reward": 3.0,
+      "cumulative_reward": 178.5,
+      "game_score": 118,
+      "elapsed_seconds": 5.817761421203613
+    },
+    {
+      "turn": 48,
+      "reasoning": "[FALLBACK] ",
+      "actions": [
+        "research Mathematics",
+        "settle 3",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 48. Score: 119"
+        }
+      ],
+      "turn_reward": 1.5,
+      "cumulative_reward": 180.0,
+      "game_score": 119,
+      "elapsed_seconds": 11.961073875427246
+    },
+    {
+      "turn": 49,
+      "reasoning": "Settle the new city with the Settler at (6,3). Continue researching Mathematics. Move warriors to explore.",
+      "actions": [
+        "research Mathematics",
+        "settle 3",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 49. Score: 120"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 182.5,
+      "game_score": 120,
+      "elapsed_seconds": 6.486127138137817
+    },
+    {
+      "turn": 50,
+      "reasoning": "Settle existing Settler at (6,3) to found second city. Continue research Mathematics. Move warriors to explore.",
+      "actions": [
+        "settle 3",
+        "research Mathematics",
+        "move 0 1 0",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "settle 3",
+          "reward": -0.5,
+          "valid": true,
+          "message": "Too close to city"
+        },
+        {
+          "action": "research Mathematics",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Mathematics"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (19,2)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior -> (9,19)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 50. Score: 121"
+        }
+      ],
+      "turn_reward": 2.5,
+      "cumulative_reward": 185.0,
+      "game_score": 121,
+      "elapsed_seconds": 4.559637546539307
+    }
+  ]
+}

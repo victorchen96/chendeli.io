@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>科技胜利攻略 Science Victory Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #2d4d6b, #1a335a);
+      color: #a0d0f0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding: 1rem 1rem 1rem 3.5rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--accent-blue);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0.75rem;
+      top: 1rem;
+      width: 2rem;
+      height: 2rem;
+      background: var(--accent-blue-dark);
+      color: var(--text-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(61, 127, 181, 0.1), rgba(61, 127, 181, 0.05));
+      border: 1px solid rgba(61, 127, 181, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child {
+      margin-bottom: 0;
+    }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ff7070;
+    }
+    .civ-tier-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 1rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .tier-label {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    .tier-s { background: #3d1f1f; color: #ff6b6b; }
+    .tier-a { background: #3d2e1f; color: #ffaa5b; }
+    .tier-b { background: #3d3d1f; color: #e6e650; }
+    .tier-c { background: #1f3d2a; color: #50e680; }
+    .tier-civs {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tier-civs:last-child {
+      border-bottom: none;
+    }
+    .tier-civ-tag {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .phase-section {
+      border-left: 3px solid var(--accent-blue);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .phase-section h3 {
+      color: var(--accent-blue-light);
+    }
+    .versus-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .versus-table th, .versus-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    .versus-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-blue-light);
+      text-align: left;
+    }
+    .versus-table td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128214; 攻略指南</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> 开局攻略</a></li>
+      <li><a href="science_victory.html" class="active"><span class="nav-icon">&#128640;</span> 科技胜利</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127912; 和而不同 Mod</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mod/index.html"><span class="nav-icon">&#127912;</span> Mod 总览</a></li>
+      <li><a href="../mod/civs/tang.html"><span class="nav-icon">&#127983;</span> 唐朝</a></li>
+      <li><a href="../mod/civs/silla.html"><span class="nav-icon">&#127983;</span> 新罗</a></li>
+      <li><a href="../mod/civs/champa.html"><span class="nav-icon">&#9973;</span> 占婆</a></li>
+      <li><a href="../mod/civs/ming.html"><span class="nav-icon">&#128674;</span> 明朝</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#128640;</div>
+      <div class="civ-overview">
+        <h1>科技胜利攻略 <span class="guide-badge">GUIDE</span></h1>
+        <p class="civ-subtitle">从学院到太空 - 完整科技胜利路线图</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#128640; 太空竞赛</span>
+          <span class="civ-meta-tag">&#128218; 中高级玩家</span>
+          <span class="civ-meta-tag">&#9201; 全阶段</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Civs -->
+    <h2>&#127942; 科技胜利文明排名</h2>
+    <div class="card">
+      <div class="card-content">
+        <div class="civ-tier-list">
+          <div class="tier-label tier-s">S</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">韩国 (书院)</span>
+            <span class="tier-civ-tag">巴比伦 (尤里卡=完成)</span>
+            <span class="tier-civ-tag">新罗 MOD (瞻星台+战斗科技)</span>
+          </div>
+          <div class="tier-label tier-a">A</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">苏格兰 (黄金+快乐=科技)</span>
+            <span class="tier-civ-tag">明朝 MOD (杰作产科技)</span>
+            <span class="tier-civ-tag">德国 (多区域)</span>
+            <span class="tier-civ-tag">日本 (区域相邻)</span>
+          </div>
+          <div class="tier-label tier-b">B</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">中国 (尤里卡60%)</span>
+            <span class="tier-civ-tag">俄罗斯 (领土+大学)</span>
+            <span class="tier-civ-tag">荷兰 (河流学院)</span>
+            <span class="tier-civ-tag">阿拉伯 (最后先知+科技)</span>
+          </div>
+          <div class="tier-label tier-c">C</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">任何文明 (科技胜利对所有人开放)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Campus Placement -->
+    <h2>&#127891; 学院区域布局优化</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>学院的相邻加成来源：</p>
+        <table class="versus-table">
+          <tr>
+            <th>相邻来源</th>
+            <th>加成值</th>
+            <th>备注</th>
+          </tr>
+          <tr>
+            <td>每座山脉</td>
+            <td>+1</td>
+            <td>最稳定的加成来源，优先靠山建学院</td>
+          </tr>
+          <tr>
+            <td>每2个雨林格</td>
+            <td>+1</td>
+            <td>巴西尤其适合，但注意砍雨林不可逆</td>
+          </tr>
+          <tr>
+            <td>每2个礁石格</td>
+            <td>+1</td>
+            <td>沿海城市可利用</td>
+          </tr>
+          <tr>
+            <td>每个相邻区域</td>
+            <td>+0.5</td>
+            <td>工业区/商业中心相邻时有额外收益</td>
+          </tr>
+          <tr>
+            <td>政府广场</td>
+            <td>+1.5</td>
+            <td>首都学院紧贴政府广场可获高加成</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">最优布局策略</div>
+      <p><strong>黄金法则:</strong> 学院放在2-3座山脉中间。如果能找到"口袋"位置（三面环山），那就是 +3 起步的完美位置。</p>
+      <p><strong>城市规划:</strong> 选城位置时就要考虑学院放在哪。有时候一个看起来不太好的城市位置，但附近有3座山的学院位，比"好看"的平原城市更适合科技胜利。</p>
+      <p><strong>韩国特例:</strong> 韩国书院的机制是"相邻区域减少产出"而非"增加"。韩国玩家要把书院放在远离其他区域的孤立位置。</p>
+    </div>
+
+    <!-- Great Scientists -->
+    <h2>&#128104;&#8205;&#128300; 伟大科学家优先级</h2>
+    <div class="strategy-section">
+      <h3>必抢伟大科学家</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">S</span>
+        <span class="tip-text"><strong>海什木 (前期):</strong> 在一座有学院的城市触发2项随机科技的尤里卡。前期拿到等于省下大量研究时间。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">S</span>
+        <span class="tip-text"><strong>牛顿 (中期):</strong> 大学和图书馆各 +2 科技产出（全局生效）。如果你有5个学院城市，这就是 +20 科技/回合。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">S</span>
+        <span class="tip-text"><strong>达尔文 (中后期):</strong> 在自然奇观旁使用获得500科技点。选择正在研究的昂贵科技时使用，可以直接跳过。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">A</span>
+        <span class="tip-text"><strong>爱因斯坦 (后期):</strong> 研究所 +4 科技产出（全局）。太空竞赛阶段的加速器。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">A</span>
+        <span class="tip-text"><strong>玛丽居里 (中后期):</strong> 提供2项工业时代科技的尤里卡，外加大量科技点。加速进入现代。</span>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">注意：不要为抢伟人而牺牲发展</div>
+      <p>伟大科学家很强，但为了抢一个伟人而过度投资信仰购买（赞助）可能得不偿失。如果差距不大（2-3回合），可以等下一个。核心科技产出才是根本。</p>
+    </div>
+
+    <!-- Space Race Order -->
+    <h2>&#128640; 太空竞赛项目顺序</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>科技胜利需要完成以下太空项目（按解锁顺序）：</p>
+      </div>
+    </div>
+
+    <ol class="step-list">
+      <li><strong>发射卫星 (Launch Earth Satellite)</strong> — 需要科技"火箭技术"。产能需求: 1500。这是最简单的一步，在工业产能最强的城市建造。完成后解锁全局地图视野。</li>
+      <li><strong>登月计划 (Launch Moon Landing)</strong> — 需要科技"卫星"。产能需求: 1800。比第一步稍难，但应该在同一城市连续建造。用大工程师或军事工程师加速。</li>
+      <li><strong>发射火星殖民舱 (Launch Mars Colony)</strong> — 包括三个子项目：居住模块(Mars Habitation)、反应堆(Mars Reactor)、水培农场(Mars Hydroponics)。每个需要1500-1800产能。可以在不同城市并行建造！</li>
+      <li><strong>系外行星探测 (Exoplanet Expedition)</strong> — 需要科技"核聚变"。产能需求: 2100。最昂贵的单个项目。完成后需等待飞船到达（约50回合，可通过激光加速器缩短为15-20回合）。</li>
+      <li><strong>地面激光站 (Terrestrial Laser Station)</strong> — 可选但强烈推荐。每个激光站减少飞船到达时间。建造多个激光站可以将等待时间压缩到10回合以下。</li>
+    </ol>
+
+    <div class="tip-box">
+      <div class="tip-box-title">加速技巧：并行建造</div>
+      <p>火星殖民舱的三个子项目可以在不同城市同时建造！不要在一个城市串行建造三个，而是在你产能最高的三个城市同时开工。这可以节省 50-80 回合。</p>
+      <p>同样，在建造系外行星探测的同时，在其他城市建造地面激光站。探测完成时激光站已经就位，大幅缩短等待时间。</p>
+    </div>
+
+    <!-- Defense While Teching -->
+    <h2>&#128737; 科技路线的军事防御</h2>
+    <div class="strategy-section">
+      <h3>如何在科技优先时保证安全</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>城墙是最划算的防御:</strong> 远古/中世纪/文艺复兴三层城墙让城市几乎不可能被同时代军队攻克。产能投入远低于维持一支常备军。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>科技代差即防御:</strong> 比对手领先1个时代的军事科技意味着你的基础单位就能碾压他的精英。保持科技领先本身就是最好的防御。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>外交缓冲:</strong> 与邻居保持友好关系或结盟。友谊声明期间对方无法宣战。联盟更提供10回合保护 + 各种加成。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>最小军事存在:</strong> 即使科技优先，也应该维持：每个城市1个驻军 + 2-3个流动防御单位。AI会评估你的军事力量决定是否开战。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">5</span>
+        <span class="tip-text"><strong>金币应急:</strong> 保持一定金币储备（500+）。被突然宣战时可以用金币紧急购买军事单位。科技领先意味着你能买到更强的单位。</span>
+      </div>
+    </div>
+
+    <!-- Late Game Acceleration -->
+    <h2>&#9889; 后期加速技巧</h2>
+    <div class="strategy-section">
+      <h3>太空竞赛阶段的关键操作</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>大工程师囤积:</strong> 后期大工程师可以给太空项目加产能（如Wernher von Braun给太空项目 +100%）。在太空竞赛开始前尽量囤积1-2个相关大工程师。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>溢出产能(Overflow):</strong> 文明6中，当一个项目完成时多余的产能会流入下一个项目。利用这个机制：在太空项目前建造一个快完成的便宜项目，让多余产能"溢出"到太空项目中。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>贸易路线集中:</strong> 所有内部贸易路线指向建造太空项目的城市，提供产能加成。6条贸易路线可以额外提供 +30-50 产能/回合。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>政策卡优化:</strong> "集体化"(Collectivization) 给国内贸易路线 +4 产能。"五年计划"(Five-Year Plan) 给每个学院/工业区的建筑 +2 产能。"太空竞赛"(Space Race) 项目加速15%。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>军事工程师:</strong> 军事工程师可以给太空项目增加 20% 产能（消耗2次充能）。囤积 3-4 个军事工程师用于加速关键太空项目。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>砍树冲刺:</strong> 到了最后阶段，如果还有树/雨林/石头可以砍，用工人砍掉直接转化为产能注入太空项目。每棵后期的树约 200-300 产能。</span>
+      </div>
+    </div>
+
+    <!-- Phase Guide -->
+    <h2>&#128197; 分阶段路线图</h2>
+
+    <div class="phase-section">
+      <h3>早期 (回合 1-80): 基础建设</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        快速扩张到3-4个城市。每个城市都应该有（或规划好）学院位置。
+        首都优先建造学院+图书馆。第二城市视位置决定学院或商业中心。
+        科技路线: 采矿 -> 帆船 -> 文字(学院) -> 天文导航 -> 教育(大学)。
+        触发尽可能多的尤里卡。保持基本防御。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>中期 (回合 80-180): 核心发展</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        所有城市学院+图书馆+大学。工业区开始铺设。
+        抢关键伟大科学家（牛顿、达尔文）。
+        科技路线: 教育 -> 印刷术 -> 工业化 -> 科学理论(研究所) -> 电力。
+        确保至少2个工业区达到 +4 相邻。贸易路线转为内部产能输送。
+        保持与邻居的和平关系。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>后期 (回合 180-250): 太空冲刺</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        研究所全铺。科技路线冲向火箭技术->卫星->核聚变。
+        政策卡切换为产能最大化。贸易路线全部指向产能最高城市。
+        太空项目并行建造（不同城市）。军事工程师+大工程师加速。
+        激光站尽早开建。注意防御其他文明的破坏行动（间谍）。
+        使用反间谍保护太空港城市！
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">最终建议</div>
+      <p>科技胜利的核心是<strong>经济效率</strong>，而不是单纯的科技产出。一个拥有5个高产能城市的帝国比一个有10个弱城市的帝国更容易赢得太空竞赛。质量优于数量。</p>
+      <p>关注你的"太空项目产能"而非"每回合科技值"。到了最后阶段，瓶颈不是研究速度，而是建造速度。一个 +100 产能/回合的工业城市胜过3个 +30 产能的小城。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

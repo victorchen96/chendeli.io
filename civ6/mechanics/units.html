@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单位百科 Units Encyclopedia - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .unit-table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+    .unit-table th { background:var(--bg-tertiary); padding:0.55rem 0.7rem; text-align:left; border-bottom:2px solid var(--accent-gold-dark); font-weight:600; }
+    .unit-table td { padding:0.45rem 0.7rem; border-bottom:1px solid var(--border-color); color:var(--text-secondary); }
+    .unit-table tr:hover td { background:rgba(201,162,39,0.05); }
+    .th-melee { color:#ff6b6b; }
+    .th-ranged { color:#7cb3f0; }
+    .th-cavalry { color:#ffaa5b; }
+    .th-siege { color:#50c878; }
+    .th-naval { color:#9b7be8; }
+    .section-label { display:inline-block; padding:0.2rem 0.6rem; border-radius:3px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; vertical-align:middle; margin-left:0.5rem; }
+    .label-melee { background:rgba(255,107,107,0.15); color:#ff6b6b; }
+    .label-ranged { background:rgba(124,179,240,0.15); color:#7cb3f0; }
+    .label-cavalry { background:rgba(255,170,91,0.15); color:#ffaa5b; }
+    .label-siege { background:rgba(80,200,120,0.15); color:#50c878; }
+    .label-naval { background:rgba(155,123,232,0.15); color:#9b7be8; }
+    .promo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; margin:1rem 0; }
+    .promo-card { background:var(--bg-tertiary); border-radius:var(--radius-md); padding:0.75rem; }
+    .promo-card h4 { color:var(--accent-gold-light); font-size:0.85rem; margin-bottom:0.3rem; }
+    .promo-card p { color:var(--text-muted); font-size:0.8rem; margin:0; }
+    .uu-table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+    .uu-table th { background:var(--bg-tertiary); padding:0.55rem 0.7rem; text-align:left; border-bottom:2px solid var(--accent-gold-dark); color:var(--accent-gold-light); font-weight:600; }
+    .uu-table td { padding:0.45rem 0.7rem; border-bottom:1px solid var(--border-color); color:var(--text-secondary); }
+    .uu-table tr:hover td { background:rgba(201,162,39,0.05); }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo"><span class="logo-icon">&#127983;</span><span>文明6百科</span></a>
+  <div class="header-search"><span class="search-icon">&#128269;</span><input type="text" placeholder="Search wiki... (Ctrl+K)"></div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="units.html" class="active"><span class="nav-icon">&#128722;</span> Units</a></li>
+      <li><a href="districts.html"><span class="nav-icon">&#127960;</span> Districts</a></li>
+      <li><a href="victory.html"><span class="nav-icon">&#127942;</span> Victory Types</a></li>
+      <li><a href="wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+      <li><a href="technology.html"><span class="nav-icon">&#128300;</span> Tech & Civics</a></li>
+      <li><a href="great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+      <li><a href="city_states.html"><span class="nav-icon">&#127970;</span> City-States</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128214; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="../guides/early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="../guides/domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+      <li><a href="../guides/map_types.html"><span class="nav-icon">&#127758;</span> Map & Settings</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="content-container">
+
+    <nav class="breadcrumb"><a href="../index.html">首页</a> &raquo; <a href="../index.html#mechanics">机制</a> &raquo; <span>单位百科</span></nav>
+    <h1>&#9876; 单位百科 Units Encyclopedia</h1>
+    <p style="color:var(--text-secondary);margin-bottom:1.5rem;">文明6全兵种升级路线、战斗力与科技需求速查。数值基于标准规则集（含风云变幻DLC）。</p>
+
+    <!-- Melee -->
+    <h2>&#128481; 近战步兵 Melee <span class="section-label label-melee">MELEE</span></h2>
+    <table class="unit-table">
+      <thead><tr><th class="th-melee">单位</th><th>战斗力</th><th>时代</th><th>科技需求</th><th>升级为</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Warrior 勇士</strong></td><td>20</td><td>远古</td><td>无</td><td>Swordsman</td></tr>
+        <tr><td><strong>Swordsman 剑士</strong></td><td>36</td><td>古典</td><td>Iron Working</td><td>Man-at-Arms</td></tr>
+        <tr><td><strong>Man-at-Arms 武装步兵</strong></td><td>45</td><td>中世纪</td><td>Apprenticeship</td><td>Musketman</td></tr>
+        <tr><td><strong>Musketman 火枪手</strong></td><td>55</td><td>文艺复兴</td><td>Gunpowder</td><td>Infantry</td></tr>
+        <tr><td><strong>Infantry 步兵</strong></td><td>70</td><td>现代</td><td>Replaceable Parts</td><td>Mech. Infantry</td></tr>
+        <tr><td><strong>Mechanized Infantry</strong></td><td>85</td><td>原子</td><td>Composites</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Ranged -->
+    <h2>&#127993; 远程单位 Ranged <span class="section-label label-ranged">RANGED</span></h2>
+    <table class="unit-table">
+      <thead><tr><th class="th-ranged">单位</th><th>远程力</th><th>射程</th><th>时代</th><th>科技需求</th><th>升级为</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Slinger 投石兵</strong></td><td>15</td><td>1</td><td>远古</td><td>无</td><td>Archer</td></tr>
+        <tr><td><strong>Archer 弓箭手</strong></td><td>25</td><td>2</td><td>远古</td><td>Archery</td><td>Crossbowman</td></tr>
+        <tr><td><strong>Crossbowman 弩手</strong></td><td>40</td><td>2</td><td>中世纪</td><td>Machinery</td><td>Field Cannon</td></tr>
+        <tr><td><strong>Field Cannon 野战炮</strong></td><td>50</td><td>2</td><td>文艺复兴</td><td>Ballistics</td><td>Machine Gun</td></tr>
+        <tr><td><strong>Machine Gun 机枪</strong></td><td>75</td><td>2</td><td>现代</td><td>Advanced Ballistics</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Cavalry -->
+    <h2>&#127943; 骑兵 Cavalry <span class="section-label label-cavalry">CAVALRY</span></h2>
+    <table class="unit-table">
+      <thead><tr><th class="th-cavalry">单位</th><th>战斗力</th><th>移动</th><th>时代</th><th>科技需求</th><th>升级为</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Heavy Chariot 重型战车</strong></td><td>28</td><td>3</td><td>远古</td><td>Wheel</td><td>Knight</td></tr>
+        <tr><td><strong>Knight 骑士</strong></td><td>48</td><td>4</td><td>中世纪</td><td>Stirrups</td><td>Cavalry</td></tr>
+        <tr><td><strong>Cavalry 骑兵</strong></td><td>62</td><td>5</td><td>工业</td><td>Military Science</td><td>Tank</td></tr>
+        <tr><td><strong>Tank 坦克</strong></td><td>80</td><td>4</td><td>现代</td><td>Combined Arms</td><td>Modern Armor</td></tr>
+        <tr><td><strong>Modern Armor 现代装甲</strong></td><td>90</td><td>4</td><td>原子</td><td>Composites</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Siege -->
+    <h2>&#128163; 攻城单位 Siege <span class="section-label label-siege">SIEGE</span></h2>
+    <table class="unit-table">
+      <thead><tr><th class="th-siege">单位</th><th>抛射力</th><th>射程</th><th>时代</th><th>科技需求</th><th>升级为</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Catapult 投石车</strong></td><td>35</td><td>2</td><td>古典</td><td>Engineering</td><td>Bombard</td></tr>
+        <tr><td><strong>Bombard 射石炮</strong></td><td>55</td><td>2</td><td>文艺复兴</td><td>Metal Casting</td><td>Artillery</td></tr>
+        <tr><td><strong>Artillery 火炮</strong></td><td>70</td><td>3</td><td>工业</td><td>Steel</td><td>Rocket Artillery</td></tr>
+        <tr><td><strong>Rocket Artillery</strong></td><td>85</td><td>3</td><td>原子</td><td>Guidance Systems</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Naval -->
+    <h2>&#9875; 海军单位 Naval <span class="section-label label-naval">NAVAL</span></h2>
+    <table class="unit-table">
+      <thead><tr><th class="th-naval">单位</th><th>战/远程力</th><th>类型</th><th>时代</th><th>科技需求</th><th>升级为</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Galley 桨帆船</strong></td><td>30 melee</td><td>近战</td><td>远古</td><td>Sailing</td><td>Caravel</td></tr>
+        <tr><td><strong>Quadrireme 四列桨船</strong></td><td>25 ranged</td><td>远程</td><td>远古</td><td>Sailing</td><td>Frigate</td></tr>
+        <tr><td><strong>Caravel 卡拉维尔</strong></td><td>55 melee</td><td>近战</td><td>文艺复兴</td><td>Cartography</td><td>Ironclad</td></tr>
+        <tr><td><strong>Frigate 护卫舰</strong></td><td>55 ranged</td><td>远程</td><td>文艺复兴</td><td>Square Rigging</td><td>Battleship</td></tr>
+        <tr><td><strong>Ironclad 铁甲舰</strong></td><td>70 melee</td><td>近战</td><td>工业</td><td>Steam Power</td><td>Destroyer</td></tr>
+        <tr><td><strong>Battleship 战列舰</strong></td><td>70 ranged</td><td>远程</td><td>现代</td><td>Advanced Ballistics</td><td>Missile Cruiser</td></tr>
+        <tr><td><strong>Destroyer 驱逐舰</strong></td><td>75 melee</td><td>近战</td><td>原子</td><td>Combined Arms</td><td>-</td></tr>
+        <tr><td><strong>Missile Cruiser</strong></td><td>85 ranged</td><td>远程</td><td>信息</td><td>Lasers</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Promotions -->
+    <h2>&#11088; 晋升树 Promotion Trees</h2>
+    <div class="promo-grid">
+      <div class="promo-card"><h4>近战步兵</h4><p>Battlecry / Tortoise / Commando / Amphibious / Urban Warfare / Elite Guard / Zweihander</p></div>
+      <div class="promo-card"><h4>远程单位</h4><p>Volley / Garrison / Arrow Storm / Incendiaries / Emplacement / Expert Marksman / Suppression</p></div>
+      <div class="promo-card"><h4>轻骑兵</h4><p>Caparison / Coursers / Depredation / Double Envelopment / Pursuit / Escort Mobility / Spiking</p></div>
+      <div class="promo-card"><h4>重骑兵</h4><p>Charge / Barding / Marauding / Rout / Armor Piercing / Reactive Armor / Breakthrough</p></div>
+      <div class="promo-card"><h4>攻城单位</h4><p>Grape Shot / Crew Weapons / Shrapnel / Forward Observers / Shells / Expert Crew / Advancing</p></div>
+      <div class="promo-card"><h4>海军近战</h4><p>Helmsman / Rutter / Reinforced Hull / Convoy / Creeping Attack / Press Gang / Coincidence Range</p></div>
+    </div>
+
+    <!-- Unique Units -->
+    <h2>&#127942; 特色单位速查 Unique Units</h2>
+    <table class="uu-table">
+      <thead><tr><th>特色单位</th><th>替代</th><th>所属文明</th><th>核心优势</th></tr></thead>
+      <tbody>
+        <tr><td>Impi 因皮</td><td>Pikeman</td><td>Zulu</td><td>低维护+Flanking bonus+军团提前解锁</td></tr>
+        <tr><td>Legion 军团</td><td>Swordsman</td><td>Rome</td><td>40力+可建堡垒和道路</td></tr>
+        <tr><td>Eagle Warrior 雄鹰</td><td>Warrior</td><td>Aztec</td><td>击杀转化为建造者</td></tr>
+        <tr><td>Keshig 怯薛</td><td>Knight</td><td>Mongolia</td><td>远程骑兵+护送移动力</td></tr>
+        <tr><td>Huszar 骠骑兵</td><td>Cavalry</td><td>Hungary</td><td>每个联盟+3战力</td></tr>
+        <tr><td>Winged Hussar 翼骑兵</td><td>Cavalry</td><td>Poland</td><td>击退敌军+额外伤害</td></tr>
+        <tr><td>Immortal 不死队</td><td>Swordsman</td><td>Persia</td><td>近战+远程双攻击</td></tr>
+        <tr><td>Berserker 狂战士</td><td>Man-at-Arms</td><td>Norway</td><td>进攻+7/防御-7</td></tr>
+        <tr><td>Samurai 武士</td><td>Man-at-Arms</td><td>Japan</td><td>受伤不降低战力</td></tr>
+        <tr><td>Janissary 禁卫军</td><td>Musketman</td><td>Ottoman</td><td>高力+免费升级</td></tr>
+        <tr><td>Redcoat 红衫军</td><td>Infantry</td><td>England</td><td>本土外+10战力</td></tr>
+        <tr><td>Rough Rider 粗骑兵</td><td>Cavalry</td><td>America</td><td>丘陵+10+击杀获文化</td></tr>
+        <tr><td>War-Cart 战车</td><td>Heavy Chariot</td><td>Sumeria</td><td>无反骑弱点+免费开局</td></tr>
+        <tr><td>Hetairoi 伙友骑兵</td><td>Knight</td><td>Macedon</td><td>大将军邻近+5+大将军点</td></tr>
+        <tr><td>Conquistador 征服者</td><td>Musketman</td><td>Spain</td><td>宗教单位邻近+10+占城传教</td></tr>
+        <tr><td>Viking Longship</td><td>Galley</td><td>Norway</td><td>沿海掠夺+4移动</td></tr>
+        <tr><td>Jong 爽船</td><td>Frigate</td><td>Indonesia</td><td>编队移动力继承</td></tr>
+        <tr><td>Bireme 双层桨战船</td><td>Galley</td><td>Phoenicia</td><td>护送贸易路线+4移动</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+<script src="../js/search.js"></script>
+</body>
+</html>

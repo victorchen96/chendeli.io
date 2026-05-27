@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开局攻略 Early Game Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #2d6b4d, #1a4d33);
+      color: #a0f0c0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding: 1rem 1rem 1rem 3.5rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--accent-gold);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0.75rem;
+      top: 1rem;
+      width: 2rem;
+      height: 2rem;
+      background: var(--accent-gold-dark);
+      color: var(--text-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child {
+      margin-bottom: 0;
+    }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ff7070;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .checklist li {
+      padding: 0.5rem 0 0.5rem 2rem;
+      position: relative;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .checklist li::before {
+      content: "\2610";
+      position: absolute;
+      left: 0.25rem;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+    }
+    .versus-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .versus-table th, .versus-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    .versus-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold);
+      text-align: left;
+    }
+    .versus-table td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128214; 攻略指南</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html" class="active"><span class="nav-icon">&#127793;</span> 开局攻略</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> 科技胜利</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127912; 和而不同 Mod</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mod/index.html"><span class="nav-icon">&#127912;</span> Mod 总览</a></li>
+      <li><a href="../mod/civs/tang.html"><span class="nav-icon">&#127983;</span> 唐朝</a></li>
+      <li><a href="../mod/civs/silla.html"><span class="nav-icon">&#127983;</span> 新罗</a></li>
+      <li><a href="../mod/civs/champa.html"><span class="nav-icon">&#9973;</span> 占婆</a></li>
+      <li><a href="../mod/civs/ming.html"><span class="nav-icon">&#128674;</span> 明朝</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#127793;</div>
+      <div class="civ-overview">
+        <h1>开局攻略 <span class="guide-badge">GUIDE</span></h1>
+        <p class="civ-subtitle">前30回合决定全局走向</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#127793; 新手友好</span>
+          <span class="civ-meta-tag">&#9201; 前30回合</span>
+          <span class="civ-meta-tag">&#128200; 通用策略</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 30-Turn Checklist -->
+    <h2>&#9745; 前30回合检查清单</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>无论你选择哪个文明，开局30回合内应该完成以下目标：</p>
+        <ul class="checklist">
+          <li>探索首都周围至少 8-10 格的区域</li>
+          <li>找到至少 2-3 个部落村庄 (Tribal Village)</li>
+          <li>确定第二城市的位置</li>
+          <li>消灭或控制邻近的蛮族营地</li>
+          <li>与至少一个邻居建立联系 (Meet)</li>
+          <li>研究完成至少 2 项科技</li>
+          <li>首都产出第一个开拓者或至少开始建造</li>
+          <li>拥有至少 2 个军事单位（防御用）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Build Order -->
+    <h2>&#128296; 最佳建造顺序</h2>
+
+    <h3>路线A: 快速扩张（推荐大多数情况）</h3>
+    <ol class="step-list">
+      <li><strong>侦察兵 (Scout)</strong> — 第一个建造。快速探索周围地形，找到部落村庄、自然奇观和适合的第二城位置。侦察兵的信息价值远超其低廉的产能成本。</li>
+      <li><strong>投石兵 (Slinger)</strong> — 第二个建造。提供远程防御能力，且可以升级为弓箭手。击杀蛮族可以触发弓术尤里卡（非常重要的早期科技加速）。</li>
+      <li><strong>投石兵/勇士 (Slinger/Warrior)</strong> — 根据蛮族压力决定。如果附近蛮族多，再来一个军事单位确保安全。</li>
+      <li><strong>开拓者 (Settler)</strong> — 在确保安全后尽快建造。第二城越早越好，利用政策卡"殖民主义"(Colonization) 加速50%。</li>
+      <li><strong>纪念碑 (Monument)</strong> — 第二城建好后，首都开始补文化建筑。纪念碑的 +2 文化加速市政研究，尽快解锁更多政策槽。</li>
+    </ol>
+
+    <h3>路线B: 防御/奇观型开局</h3>
+    <ol class="step-list">
+      <li><strong>勇士 (Warrior)</strong> — 探索 + 防御蛮族。如果首都位置很安全也可以用侦察兵。</li>
+      <li><strong>纪念碑 (Monument)</strong> — 优先文化产出，加速解锁"远古传承"(God King) 万神殿。</li>
+      <li><strong>粮仓 (Granary)</strong> — 增加人口增长速度，为后续区域建设铺垫。</li>
+      <li><strong>圣地/学院 (Holy Site/Campus)</strong> — 根据你的胜利目标选择第一个区域。人口到4即可放置。</li>
+      <li><strong>开拓者 (Settler)</strong> — 稍晚但首都更强壮时扩张。</li>
+    </ol>
+
+    <div class="tip-box">
+      <div class="tip-box-title">专家建议：何时选择哪条路线？</div>
+      <p>路线A 适合：起始位置资源丰富、周围有好的第二城位置、需要抢占关键资源点。大多数情况下推荐A。</p>
+      <p>路线B 适合：起始位置安全封闭（如半岛/山谷）、周围没有明确的扩张方向、需要抢建早期奇观（金字塔/巨石阵）。</p>
+    </div>
+
+    <!-- Exploration -->
+    <h2>&#127757; 探索优先级</h2>
+    <div class="strategy-section">
+      <h3>探索目标（按优先级排列）</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>部落村庄:</strong> 提供随机奖励（科技、市政、金币、单位、人口）。每个村庄都值得绕路去拿。优先探索未开发的方向。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>第二城位置:</strong> 寻找拥有2+奢侈品、淡水（河流/湖泊）、多种地形产出的位置。理想距离为首都 4-6 格。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>邻居位置:</strong> 知道邻居在哪比什么都重要。可以判断是否需要防御、能否友好交往、是否有征服目标。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>自然奇观:</strong> 提供相邻加成和时代得分。发现自然奇观也能触发部分尤里卡/灵感。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">5</span>
+        <span class="tip-text"><strong>城邦:</strong> 第一个发现城邦获得一个免费使者。城邦宗主国加成在早期非常强力。</span>
+      </div>
+    </div>
+
+    <!-- Settle vs War -->
+    <h2>&#9876; 何时开战 vs 何时发展</h2>
+    <div class="card">
+      <div class="card-content">
+        <table class="versus-table">
+          <tr>
+            <th>应该开战的信号</th>
+            <th>应该继续发展的信号</th>
+          </tr>
+          <tr>
+            <td>邻居非常近（3-4格内有对方城市）</td>
+            <td>邻居距离远（6+格），中间有缓冲</td>
+          </tr>
+          <tr>
+            <td>你有军事特色单位优势（如阿兹特克鹰战士）</td>
+            <td>对方有防御优势（城墙、地形）</td>
+          </tr>
+          <tr>
+            <td>对方只有1个城市且防御薄弱</td>
+            <td>对方已有2-3个城市且有军队</td>
+          </tr>
+          <tr>
+            <td>周围没有更好的空城位置</td>
+            <td>周围有大量未被占领的好位置</td>
+          </tr>
+          <tr>
+            <td>你是征服型文明（蒙古、马其顿等）</td>
+            <td>你是经济/科技/文化型文明</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">常见错误：盲目开战</div>
+      <p>新手最常犯的错误是在没有足够军队的情况下开战。进攻城市至少需要：2个近战 + 2个远程 + 1个攻城。如果没有这些兵力，宁可先发展。失败的战争会让你落后 50-100 回合。</p>
+    </div>
+
+    <!-- Barbarian Management -->
+    <h2>&#128128; 蛮族管理</h2>
+    <div class="strategy-section">
+      <h3>蛮族机制要点</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>侦察兵规则:</strong> 蛮族营地会派出侦察兵，如果侦察兵看到你的城市并返回营地，营地会开始大量出兵。在侦察兵返回前拦截它是最高优先级！</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>清剿奖励:</strong> 摧毁蛮族营地获得 +50 金币（如果有政策卡"纪律"还能额外获得）。前期这是重要的金币来源。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>利用蛮族:</strong> 蛮族是触发尤里卡的好工具。杀3个蛮族触发"青铜冶炼"，用投石兵杀蛮族触发"弓术"。某些文明（新罗等）能从蛮族击杀中获取额外资源。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>控制而非消灭:</strong> 有时故意保留一个远离你城市的蛮族营地，可以阻止新营地在附近生成，同时不对你造成威胁。</span>
+      </div>
+    </div>
+
+    <!-- District Timing -->
+    <h2>&#127959; 区域放置时机</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>区域的产能成本在游戏进行中会随你的科技/市政进度上升。因此，<strong>尽早规划和放置区域</strong>可以节省大量产能。</p>
+
+        <table class="versus-table">
+          <tr>
+            <th>区域</th>
+            <th>最佳放置时机</th>
+            <th>理由</th>
+          </tr>
+          <tr>
+            <td>圣地 (Holy Site)</td>
+            <td>人口4时立即放</td>
+            <td>万神殿竞争激烈，越早越好</td>
+          </tr>
+          <tr>
+            <td>学院 (Campus)</td>
+            <td>人口4时立即放</td>
+            <td>科技是一切的基础，越早收益越高</td>
+          </tr>
+          <tr>
+            <td>商业中心</td>
+            <td>人口4-7之间</td>
+            <td>第一条贸易路线很重要，但不急于第一个</td>
+          </tr>
+          <tr>
+            <td>剧院广场</td>
+            <td>人口7+</td>
+            <td>文化前期依赖纪念碑足够，中期再考虑</td>
+          </tr>
+          <tr>
+            <td>工业区</td>
+            <td>人口7+</td>
+            <td>需要优秀相邻位置，等城市发展后再规划</td>
+          </tr>
+          <tr>
+            <td>军营</td>
+            <td>视需求而定</td>
+            <td>只有征服路线或防御压力大时才需要</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">关键技巧：区域价格锁定</div>
+      <p>区域一旦放置（开始建造），其产能成本就被锁定。即使你暂停建造去做其他事情，之后恢复时成本不会上涨。因此可以在成本低时"占坑"，之后慢慢建造。</p>
+      <p>实际操作：在人口刚到4时放下区域开始建造1回合，然后切换去建其他东西。区域会保持低成本等你回来。</p>
+    </div>
+
+    <!-- Quick Reference -->
+    <h2>&#128203; 快速参考</h2>
+    <div class="strategy-section">
+      <h3>开局核心原则</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>探索至上:</strong> 信息是最宝贵的资源。不知道周围有什么就无法做正确决策。第一个单位永远是探索单位。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>安全第一:</strong> 确保至少有2个军事单位保护首都。一次成功的蛮族/邻居突袭就可能毁掉你的游戏。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>早期扩张:</strong> 文明6的雪球效应很强。多一个城市意味着多一份产出。尽量在前50回合建立2-3个城市。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>触发尤里卡:</strong> 尤里卡/灵感提供40%（部分文明60%）的研究进度。有意识地触发它们比被动研究快得多。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">5</span>
+        <span class="tip-text"><strong>灵活应变:</strong> 没有一成不变的开局。根据起始位置、邻居、地形和文明特性调整策略。死板执行"标准"路线不如灵活应变。</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

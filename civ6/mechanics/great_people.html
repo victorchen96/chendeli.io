@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great People - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .gp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .gp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .gp-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+    .gp-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .gp-icon {
+      font-size: 1.8rem;
+      width: 2.5rem;
+      text-align: center;
+    }
+    .gp-card-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+    .gp-card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .gp-card-body {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .gp-source {
+      font-size: 0.8rem;
+      color: #50c878;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    .notable-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .notable-table th, .notable-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .notable-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+    .notable-table td {
+      color: var(--text-secondary);
+    }
+    .notable-table .gp-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(218, 165, 32, 0.05));
+      border: 1px solid rgba(218, 165, 32, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .patronage-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .patronage-section h4 {
+      color: var(--accent-gold-light);
+      margin-bottom: 0.75rem;
+    }
+    .patronage-section p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .victory-relevance {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .vr-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .vr-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .vr-science h4 { color: #7cb3f0; }
+    .vr-culture h4 { color: #d4a0f0; }
+    .vr-domination h4 { color: #ff6b6b; }
+    .vr-religion h4 { color: #ffcc44; }
+    .vr-card p {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    .points-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .points-table th, .points-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .points-table th {
+      background: var(--bg-tertiary);
+      color: #7cb3f0;
+      font-weight: 600;
+    }
+    .points-table td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="victory.html"><span class="nav-icon">&#127942;</span> Victory Types</a></li>
+      <li><a href="wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+      <li><a href="technology.html"><span class="nav-icon">&#128300;</span> Tech & Civics Tree</a></li>
+      <li><a href="great_people.html" class="active"><span class="nav-icon">&#11088;</span> Great People</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="../guides/early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="../guides/science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="../guides/culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="../guides/domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127760; Civilizations</div>
+    <ul class="sidebar-nav">
+      <li><a href="../civs/brazil.html"><span class="nav-icon">&#127463;&#127479;</span> Brazil</a></li>
+      <li><a href="../civs/korea.html"><span class="nav-icon">&#127472;&#127479;</span> Korea</a></li>
+      <li><a href="../civs/greece.html"><span class="nav-icon">&#127468;&#127479;</span> Greece</a></li>
+      <li><a href="../civs/russia.html"><span class="nav-icon">&#127479;&#127482;</span> Russia</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <h1>&#11088; 伟人系统 Great People</h1>
+
+    <!-- Overview -->
+    <div class="card">
+      <div class="card-content">
+        <p>伟人（Great People）是文明6中的特殊单位，每位伟人都有独特的历史背景和游戏能力。伟人通过积累伟人点数（Great Person Points）获得，不同类型的伟人由不同的区域产生点数。所有文明共同竞争同一批伟人——先到先得。</p>
+      </div>
+    </div>
+
+    <!-- 9 Great Person Types -->
+    <h2>&#128100; 九大伟人类型</h2>
+
+    <div class="gp-grid">
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#128300;</div>
+          <div>
+            <div class="gp-card-title">Great Scientist</div>
+            <div class="gp-card-subtitle">伟大科学家</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          提供科技加速、免费科技、学院建筑增益等。是科技胜利的核心助力，后期可直接完成太空项目部分进度。
+        </div>
+        <div class="gp-source">来源: Campus (学院区域)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#128081;</div>
+          <div>
+            <div class="gp-card-title">Great General</div>
+            <div class="gp-card-subtitle">伟大将军</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          被动光环+5战力/+1移动力给2格内同时代陆军。退休能力包括全军加经验、特殊建筑等。征服胜利的重要辅助。
+        </div>
+        <div class="gp-source">来源: Encampment (军营区域)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#9875;</div>
+          <div>
+            <div class="gp-card-title">Great Admiral</div>
+            <div class="gp-card-subtitle">伟大海军统帅</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          被动光环+5战力/+1移动力给2格内同时代海军。退休能力通常为海军单位经验/全局金币等。海军文明必争。
+        </div>
+        <div class="gp-source">来源: Harbor (港口区域)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#127912;</div>
+          <div>
+            <div class="gp-card-title">Great Artist</div>
+            <div class="gp-card-subtitle">伟大艺术家</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          创作3幅艺术杰作（Great Work of Art），放入美术馆。同一画家的3幅作品可以触发主题化(+100%旅游)。文化胜利核心。
+        </div>
+        <div class="gp-source">来源: Theatre Square (剧院广场)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#127925;</div>
+          <div>
+            <div class="gp-card-title">Great Musician</div>
+            <div class="gp-card-subtitle">伟大音乐家</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          创作2首音乐杰作（Great Work of Music），放入广播中心。音乐杰作基础旅游值最高(+4/个)。后期文化胜利加速器。
+        </div>
+        <div class="gp-source">来源: Theatre Square (剧院广场)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#128214;</div>
+          <div>
+            <div class="gp-card-title">Great Writer</div>
+            <div class="gp-card-subtitle">伟大作家</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          创作2部文学杰作（Great Work of Writing），放入图书馆/博物馆。写作杰作提供文化和旅游。早期最容易获得的杰作来源。
+        </div>
+        <div class="gp-source">来源: Theatre Square (剧院广场)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#128176;</div>
+          <div>
+            <div class="gp-card-title">Great Merchant</div>
+            <div class="gp-card-subtitle">伟大商人</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          提供金币、额外贸易路线、奢侈品、特殊能力（如Marcus Licinius Crassus: +60金币）。万金油类型，所有胜利都有帮助。
+        </div>
+        <div class="gp-source">来源: Commercial Hub (商业中心)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#128295;</div>
+          <div>
+            <div class="gp-card-title">Great Engineer</div>
+            <div class="gp-card-subtitle">伟大工程师</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          加速奇观建造或太空项目、提供产能、建造特殊建筑。后期工程师可以直接加速太空竞赛项目（科技胜利关键）。
+        </div>
+        <div class="gp-source">来源: Industrial Zone (工业区)</div>
+      </div>
+
+      <div class="gp-card">
+        <div class="gp-card-header">
+          <div class="gp-icon">&#9962;</div>
+          <div>
+            <div class="gp-card-title">Great Prophet</div>
+            <div class="gp-card-subtitle">伟大先知</div>
+          </div>
+        </div>
+        <div class="gp-card-body">
+          唯一用途：创立宗教（选择信条）。全局只有有限数量的大先知（=可创宗教数量）。不竞争大先知就不能创立宗教。
+        </div>
+        <div class="gp-source">来源: Holy Site (圣地) / Stonehenge</div>
+      </div>
+    </div>
+
+    <!-- How to Earn GPP -->
+    <h2>&#128200; 伟人点数获取途径</h2>
+
+    <table class="points-table">
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>伟人类型</th>
+          <th>点数/回合</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>区域本身</strong></td>
+          <td>对应类型</td>
+          <td>+1</td>
+          <td>建造区域后自动产生基础点数</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 1 建筑</strong></td>
+          <td>对应类型</td>
+          <td>+1</td>
+          <td>Library, Barracks, Shrine, Market 等</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 2 建筑</strong></td>
+          <td>对应类型</td>
+          <td>+2</td>
+          <td>University, Armory, Temple, Bank 等</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 3 建筑</strong></td>
+          <td>对应类型</td>
+          <td>+3</td>
+          <td>Research Lab, Military Academy 等</td>
+        </tr>
+        <tr>
+          <td><strong>政策卡</strong></td>
+          <td>各类型</td>
+          <td>+100%/+2</td>
+          <td>如Inspiration (+2 Great Scientist per Campus)</td>
+        </tr>
+        <tr>
+          <td><strong>奇观</strong></td>
+          <td>特定类型</td>
+          <td>+2~+4</td>
+          <td>Oracle: +2所有伟人点; Oxford: +3科学家</td>
+        </tr>
+        <tr>
+          <td><strong>城邦宗主国</strong></td>
+          <td>特定类型</td>
+          <td>+2</td>
+          <td>如Bologna宗主: 每Campus+1大科学家点</td>
+        </tr>
+        <tr>
+          <td><strong>项目 (District Projects)</strong></td>
+          <td>对应类型</td>
+          <td>一次性大量</td>
+          <td>Campus Research Grants等项目产出伟人点</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">伟人点数竞争策略</div>
+      <p><strong>集中投资:</strong> 与其每种伟人都争一点点，不如集中在你胜利条件相关的1-2种伟人上全力投资。5个城市都有Campus = 每回合大量科学家点数。</p>
+      <p><strong>项目冲刺:</strong> 当伟人快被别人抢走时，用区域项目（如Campus Research Grants）临时冲刺大量点数。项目完成给的点数远超建筑每回合产出。</p>
+      <p><strong>先到先得:</strong> 伟人池是全局共享的。如果一个伟人特别强（如Newton），所有AI也在争。关注伟人面板，确保你能在AI之前获得关键伟人。</p>
+    </div>
+
+    <!-- Notable Individuals -->
+    <h2>&#11088; 关键伟人列表</h2>
+
+    <h3 style="color: #7cb3f0;">Great Scientists (Highlight)</h3>
+    <table class="notable-table">
+      <thead>
+        <tr>
+          <th>伟人</th>
+          <th>时代</th>
+          <th>能力</th>
+          <th>评价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gp-name">Hypatia</td>
+          <td>Classical</td>
+          <td>图书馆和大学各+1科技; 获得1次免费科技提升</td>
+          <td>早期神级，永久加成所有Campus建筑</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Isaac Newton</td>
+          <td>Renaissance</td>
+          <td>大学+2科技; 1次免费科技（随机Medieval/Renaissance）</td>
+          <td>必争伟人，+2大学效果堆叠极强</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Albert Einstein</td>
+          <td>Modern</td>
+          <td>提供1个免费科技</td>
+          <td>免费跳过一个昂贵的后期科技</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Carl Sagan</td>
+          <td>Information</td>
+          <td>完成25%的火星殖民项目</td>
+          <td>科技胜利收官神人</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Stephanie Kwolek</td>
+          <td>Atomic</td>
+          <td>完成25%的发射地球卫星项目</td>
+          <td>太空竞赛第一步加速</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color: #d4a0f0;">Great Artists & Musicians (Highlight)</h3>
+    <table class="notable-table">
+      <thead>
+        <tr>
+          <th>伟人</th>
+          <th>类型</th>
+          <th>能力</th>
+          <th>评价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gp-name">Michelangelo</td>
+          <td>Artist</td>
+          <td>3幅艺术杰作（同画家可直接主题化美术馆）</td>
+          <td>单人完成一个美术馆主题化</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Rembrandt</td>
+          <td>Artist</td>
+          <td>3幅艺术杰作</td>
+          <td>同Michelangelo，任何大艺术家都很有价值</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Johann Sebastian Bach</td>
+          <td>Musician</td>
+          <td>2首音乐杰作 (+4旅游/个)</td>
+          <td>音乐杰作旅游值最高</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Wolfgang Amadeus Mozart</td>
+          <td>Musician</td>
+          <td>2首音乐杰作</td>
+          <td>后期文化胜利的关键加速</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color: #50c878;">Great Engineers (Highlight)</h3>
+    <table class="notable-table">
+      <thead>
+        <tr>
+          <th>伟人</th>
+          <th>时代</th>
+          <th>能力</th>
+          <th>评价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gp-name">Filippo Brunelleschi</td>
+          <td>Medieval</td>
+          <td>当前城市奇观建造+20%加速</td>
+          <td>抢奇观专用，尤其是高竞争奇观</td>
+        </tr>
+        <tr>
+          <td class="gp-name">James Watt</td>
+          <td>Industrial</td>
+          <td>工业区建筑+2产能; 免费Workshop和Factory</td>
+          <td>产能永久提升，非常强力</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Werner von Braun</td>
+          <td>Atomic</td>
+          <td>完成25%太空项目</td>
+          <td>科技胜利加速器，与Carl Sagan配合</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Sergei Korolev</td>
+          <td>Information</td>
+          <td>完成25%太空项目</td>
+          <td>太空竞赛最后冲刺</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color: #ffcc44;">Great Merchants (Highlight)</h3>
+    <table class="notable-table">
+      <thead>
+        <tr>
+          <th>伟人</th>
+          <th>时代</th>
+          <th>能力</th>
+          <th>评价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gp-name">Marcus Licinius Crassus</td>
+          <td>Classical</td>
+          <td>+60金币; 此城市下次购买-20%成本</td>
+          <td>早期金币爆发，加速扩张</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Giovanni de Medici</td>
+          <td>Medieval</td>
+          <td>+5银行家回报; 激活1条额外贸易路线</td>
+          <td>额外贸易路线是永久收益</td>
+        </tr>
+        <tr>
+          <td class="gp-name">Adam Smith</td>
+          <td>Industrial</td>
+          <td>+500金币; 此城市经济政策槽+1</td>
+          <td>额外政策槽效果独特且强力</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Patronage -->
+    <h2>&#128176; 赞助机制 Patronage</h2>
+
+    <div class="patronage-section">
+      <h4>Gold Patronage (金币赞助)</h4>
+      <p>如果你的伟人点数不够抢到某个伟人，可以用<strong>金币赞助</strong>补齐剩余点数。赞助费用 = 剩余点数差距。这意味着你可以跳过竞争，直接花钱"买"一个伟人。金币充裕的商业文明（如Netherlands）经常使用此策略。</p>
+    </div>
+
+    <div class="patronage-section">
+      <h4>Faith Patronage (信仰赞助)</h4>
+      <p>与金币赞助类似，但使用<strong>信仰值</strong>支付。需要研究 Patronage 政策或Theocracy政体才能解锁信仰赞助。宗教文明（如Russia, Poland）可以利用高信仰产出快速赞助多个伟人。</p>
+    </div>
+
+    <div class="patronage-section">
+      <h4>Reject / Pass</h4>
+      <p>如果当前可招募的伟人对你无用，你可以<strong>拒绝</strong>（Pass）这个伟人让给下一个文明，然后等待下一位（可能更强的）伟人出现。注意：拒绝是永久的——你不能再获得这个被拒绝的伟人。在竞争不激烈时可以选择性跳过弱伟人。</p>
+    </div>
+
+    <!-- Victory Relevance -->
+    <h2>&#127942; 各胜利路线伟人优先级</h2>
+
+    <div class="victory-relevance">
+      <div class="vr-card vr-science">
+        <h4>&#128640; Science Victory</h4>
+        <p><strong>核心:</strong> Great Scientist (Hypatia, Newton, Einstein, Sagan)<br>
+        <strong>辅助:</strong> Great Engineer (Watt, von Braun, Korolev加速太空项目)<br>
+        <strong>次要:</strong> Great Merchant (金币买建筑加速产能)</p>
+      </div>
+      <div class="vr-card vr-culture">
+        <h4>&#127912; Culture Victory</h4>
+        <p><strong>核心:</strong> Great Artist + Great Musician (杰作=旅游)<br>
+        <strong>辅助:</strong> Great Writer (早期文化+旅游)<br>
+        <strong>次要:</strong> Great Engineer (奇观加速=更多旅游来源)</p>
+      </div>
+      <div class="vr-card vr-domination">
+        <h4>&#9876; Domination Victory</h4>
+        <p><strong>核心:</strong> Great General (战场光环+退休能力)<br>
+        <strong>辅助:</strong> Great Admiral (海战必备)<br>
+        <strong>次要:</strong> Great Merchant (金币维护军队)</p>
+      </div>
+      <div class="vr-card vr-religion">
+        <h4>&#9962; Religion Victory</h4>
+        <p><strong>核心:</strong> Great Prophet (创教唯一途径)<br>
+        <strong>辅助:</strong> Great Merchant (金币买使徒/传教士)<br>
+        <strong>次要:</strong> Great General (保护传教路线)</p>
+      </div>
+    </div>
+
+    <!-- Strategy Tips -->
+    <h2>&#128161; 伟人策略总结</h2>
+
+    <div class="strategy-section">
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Oracle奇观:</strong> Oracle提供+2所有类型伟人点数且赞助费用-25%。如果你计划大量使用伟人（尤其是科技胜利），Oracle是必抢奇观之一。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Pingala总督:</strong> Pingala的"Grants"升级让城市的伟人点数+100%。把Pingala放在你伟人产出最高的城市可以大幅加速伟人获取。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Kilwa Kisiwani奇观:</strong> 成为某类型城邦宗主国后，此奇观给+15%该类型产出。科技型城邦宗主国+Kilwa=大量科技点数和伟人点。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>定时招募:</strong> 不要一有伟人就立即激活。有些伟人（如加速奇观的工程师）需要在特定时机使用才能最大化收益。留到需要的时候再激活。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>Korea (Seondeok):</strong> 书院（Seowon）替代Campus，相邻加成固定+4科技且不受影响。Korea获得大科学家的速度远超其他文明，是科技胜利的天然优势。</span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">伟人使用时机</div>
+      <p><strong>大科学家:</strong> 获得后立即到Campus区域激活（在有Library/University的Campus效果更好）。后期太空项目相关的科学家留到建完Spaceport后再用。</p>
+      <p><strong>大将军:</strong> 战争期间带在主力旁边提供被动光环。退役能力在和平期使用（如全军经验+5）。</p>
+      <p><strong>大工程师:</strong> 在开始建造目标奇观/项目后再激活。特别是太空项目工程师必须在Spaceport完成且项目开始后才能使用。</p>
+      <p><strong>大艺术家/音乐家/作家:</strong> 确保有空闲杰作槽位后再激活。如果槽位满了，杰作无处存放会浪费伟人。先建好美术馆/图书馆。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

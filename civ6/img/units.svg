@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+<!-- Samurai (Japan): Katana -->
+<symbol id="unit-samurai" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#2a2a2a"/>
+  <path d="M20 48 L44 16" stroke="#e8e6e3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 48 L16 50 L18 46" fill="#c9a227"/>
+  <rect x="38" y="22" width="2" height="8" rx="1" fill="#c9a227" transform="rotate(-56,39,26)"/>
+</symbol>
+
+<!-- Immortal (Persia): Shield + spear -->
+<symbol id="unit-immortal" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#4a1a6b"/>
+  <circle cx="28" cy="34" r="10" fill="#c9a227"/>
+  <circle cx="28" cy="34" r="6" fill="#4a1a6b"/>
+  <circle cx="28" cy="34" r="2" fill="#c9a227"/>
+  <line x1="40" y1="14" x2="40" y2="50" stroke="#e8e6e3" stroke-width="2.5"/>
+  <polygon points="38,14 42,14 40,10" fill="#c9a227"/>
+</symbol>
+
+<!-- War Elephant (India): Elephant outline -->
+<symbol id="unit-elephant" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#ff9933"/>
+  <path d="M22 42 Q22 30 28 26 Q32 24 36 26 Q44 30 44 42" fill="none" stroke="#1a3a6b" stroke-width="2.5"/>
+  <path d="M22 42 L22 48 M28 42 L28 48 M38 42 L38 48 M44 42 L44 48" stroke="#1a3a6b" stroke-width="2.5"/>
+  <path d="M22 30 Q18 34 16 40" stroke="#1a3a6b" stroke-width="2.5" fill="none"/>
+  <circle cx="26" cy="28" r="2" fill="#1a3a6b"/>
+  <path d="M34 20 L38 16 L42 18" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Cataphract (Byzantium): Heavy cavalry -->
+<symbol id="unit-cataphract" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#4a1a6b"/>
+  <path d="M20 44 Q24 36 32 34 Q40 36 44 44" fill="#c9a227"/>
+  <circle cx="32" cy="28" r="6" fill="#e8e6e3"/>
+  <path d="M26 22 L32 16 L38 22" fill="#c9a227"/>
+  <line x1="42" y1="20" x2="48" y2="14" stroke="#e8e6e3" stroke-width="2"/>
+  <polygon points="48,14 50,12 46,12" fill="#c9a227"/>
+</symbol>
+
+<!-- Xuanjia Cavalry (Tang): Armored horse -->
+<symbol id="unit-xuanjia" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#8b0000"/>
+  <path d="M18 42 Q22 34 30 32 L38 30 Q44 32 46 38" fill="#c9a227"/>
+  <path d="M38 30 Q42 26 40 20 Q38 18 36 20" fill="#c9a227"/>
+  <circle cx="40" cy="22" r="2" fill="#2a2a2a"/>
+  <path d="M18 42 L16 48 M24 42 L24 48 M42 40 L42 48 M46 38 L48 48" stroke="#c9a227" stroke-width="2"/>
+  <path d="M30 26 L26 18" stroke="#e8e6e3" stroke-width="2"/>
+</symbol>
+
+<!-- Eagle Warrior (Aztec): Eagle head -->
+<symbol id="unit-eagle" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#5c3317"/>
+  <circle cx="32" cy="30" r="10" fill="#c9a227"/>
+  <path d="M32 20 L30 14 L34 14 Z" fill="#e6c545"/>
+  <path d="M28 28 L24 30" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="30" cy="28" r="2" fill="#2a2a2a"/>
+  <path d="M22 22 Q26 18 30 20 M42 22 Q38 18 34 20" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <path d="M20 34 Q20 44 28 46 M44 34 Q44 44 36 46" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Berserker (Norway): Axe -->
+<symbol id="unit-berserker" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#1a3a6b"/>
+  <line x1="32" y1="14" x2="32" y2="50" stroke="#8b5e3c" stroke-width="3"/>
+  <path d="M22 18 Q26 22 32 22 Q26 22 22 26 Z" fill="#e8e6e3"/>
+  <path d="M42 18 Q38 22 32 22 Q38 22 42 26 Z" fill="#e8e6e3"/>
+  <circle cx="32" cy="14" r="2" fill="#c9a227"/>
+</symbol>
+
+<!-- Cossack (Russia): Saber + hat -->
+<symbol id="unit-cossack" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#1a3a6b"/>
+  <path d="M18 44 Q30 20 46 16" fill="none" stroke="#e8e6e3" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M46 16 L48 14 L44 14 Z" fill="#c9a227"/>
+  <circle cx="32" cy="36" r="8" fill="#4a3728"/>
+  <path d="M24 36 Q32 32 40 36 Q32 28 24 36 Z" fill="#c9a227"/>
+</symbol>
+
+<!-- Hussar (Hungary): Cavalry saber -->
+<symbol id="unit-hussar" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#006b3f"/>
+  <path d="M20 46 Q32 28 44 18" fill="none" stroke="#e8e6e3" stroke-width="2.5"/>
+  <path d="M44 18 L46 16 L42 18 Z" fill="#c9a227"/>
+  <path d="M20 46 L18 48 L22 48 Z" fill="#c9a227"/>
+  <path d="M28 34 Q32 30 36 34 Q32 38 28 34 Z" fill="#c9a227"/>
+  <path d="M26 26 L30 22 M38 38 L42 34" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Hwacha (Korea): Rocket cart -->
+<symbol id="unit-hwacha" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#1a3a6b"/>
+  <rect x="18" y="32" width="28" height="12" rx="2" fill="#8b5e3c"/>
+  <circle cx="22" cy="48" r="4" fill="#4a3728"/>
+  <circle cx="42" cy="48" r="4" fill="#4a3728"/>
+  <g stroke="#c9a227" stroke-width="1.5">
+    <line x1="22" y1="32" x2="18" y2="18"/>
+    <line x1="27" y1="32" x2="24" y2="18"/>
+    <line x1="32" y1="32" x2="30" y2="18"/>
+    <line x1="37" y1="32" x2="36" y2="18"/>
+    <line x1="42" y1="32" x2="42" y2="18"/>
+  </g>
+</symbol>
+
+<!-- Legion (Rome): Pilum + shield -->
+<symbol id="unit-legion" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#4a1a6b"/>
+  <rect x="22" y="22" width="14" height="24" rx="2" fill="#c41e3a"/>
+  <rect x="22" y="22" width="14" height="24" rx="2" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+  <path d="M29 22 L29 46 M22 34 L36 34" stroke="#c9a227" stroke-width="1.5"/>
+  <line x1="42" y1="14" x2="42" y2="50" stroke="#e8e6e3" stroke-width="2"/>
+  <polygon points="40,14 44,14 42,10" fill="#c9a227"/>
+</symbol>
+
+<!-- Varu (India/Chandragupta): War elephant variant -->
+<symbol id="unit-varu" viewBox="0 0 64 64">
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#ff9933"/>
+  <path d="M20 40 Q24 28 32 26 Q40 28 44 40" fill="#c9a227"/>
+  <path d="M20 30 Q16 36 14 42" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <rect x="26" y="18" width="12" height="8" rx="1" fill="#c41e3a"/>
+  <path d="M20 40 L18 48 M26 42 L26 48 M38 42 L38 48 M44 40 L46 48" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="24" cy="30" r="2" fill="#2a2a2a"/>
+</symbol>
+
+</svg>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-Research Survey Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Source+Serif+4:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --border: #e8e4df;
+  --text: #1a1a1a;
+  --text-dim: #6b6560;
+  --accent: #c0392b;
+  --accent-light: #e74c3c;
+  --blue: #2563eb;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.8; }
+
+.paper-hero {
+  max-width: 800px; margin: 0 auto; padding: 6rem 2rem 4rem;
+  border-bottom: 1px solid var(--border);
+}
+.paper-hero h1 {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.3; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.paper-hero .authors {
+  margin-top: 1.5rem; color: var(--text-dim); font-size: 1rem;
+}
+.paper-hero .venue {
+  margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-dim);
+  font-style: italic;
+}
+.paper-hero .download-btn {
+  display: inline-block; margin-top: 2rem; padding: 0.8rem 2rem;
+  background: var(--accent); color: white; border-radius: 3px;
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; transition: background 0.2s;
+}
+.paper-hero .download-btn:hover { background: var(--accent-light); }
+
+.content { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+
+.abstract {
+  padding: 2rem 2.5rem; background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); margin-bottom: 3rem;
+  font-size: 0.95rem; color: var(--text-dim);
+}
+.abstract h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--text); margin-bottom: 1rem; }
+
+section { margin-bottom: 3rem; }
+section h2 {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 1.5rem; color: var(--text);
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+
+.contrib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.contrib-card {
+  padding: 1.5rem; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.contrib-card h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent); }
+.contrib-card p { font-size: 0.9rem; color: var(--text-dim); }
+
+.systems-table {
+  width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem;
+}
+.systems-table th {
+  text-align: left; padding: 0.75rem 1rem; background: var(--surface);
+  border-bottom: 2px solid var(--border); font-family: var(--font-mono);
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+.systems-table td {
+  padding: 0.6rem 1rem; border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.systems-table tr:hover td { background: rgba(0,0,0,0.02); }
+.systems-table .level { font-family: var(--font-mono); font-weight: 700; }
+.l1 { color: #9ca3af; }
+.l2 { color: #6b7280; }
+.l3 { color: #2563eb; }
+.l4 { color: #7c3aed; }
+.l5 { color: #dc2626; }
+
+.stats-strip {
+  display: flex; gap: 2rem; padding: 1.5rem 2rem; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 4px; margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.stats-strip .stat { text-align: center; flex: 1; min-width: 100px; }
+.stats-strip .stat .n { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent); }
+.stats-strip .stat .l { font-size: 0.8rem; color: var(--text-dim); }
+
+.taxonomy {
+  display: flex; gap: 0; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+}
+.taxonomy .level-box {
+  flex: 1; padding: 1rem 0.75rem; text-align: center;
+  border-right: 1px solid var(--border); font-size: 0.8rem;
+}
+.taxonomy .level-box:last-child { border-right: none; }
+.taxonomy .level-box .lv { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; }
+.taxonomy .level-box .ln { color: var(--text-dim); }
+
+.bib-sample {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;
+  line-height: 1.8; overflow-x: auto; color: var(--text-dim);
+}
+.bib-sample .key { color: var(--accent); }
+.bib-sample .field { color: var(--blue); }
+
+footer {
+  max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center;
+  color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);
+}
+footer a { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .contrib-grid { grid-template-columns: 1fr; }
+  .taxonomy { flex-direction: column; }
+  .taxonomy .level-box { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<div class="paper-hero">
+  <h1>From Copilots to Colleagues: A Survey of Autonomous Research Agents in the Age of Foundation Models</h1>
+  <div class="authors">Anonymous Authors</div>
+  <div class="venue">Under Review at ICLR 2027 &mdash; Long Paper Format</div>
+  <a href="auto_research_survey.pdf" class="download-btn">Download PDF (41 pages)</a>
+</div>
+
+<div class="content">
+
+<div class="abstract">
+  <h3>Abstract</h3>
+  <p>The rapid advancement of foundation models has catalyzed a paradigm shift from human-AI interaction toward autonomous AI research agents. This survey provides a comprehensive analysis of systems that can independently formulate hypotheses, design experiments, execute research workflows, and synthesize findings. We propose a five-level autonomy taxonomy (L1&ndash;L5), identify four dominant architectural patterns, and systematically compare 17 major systems across a six-dimensional feature matrix. We conclude by identifying six fundamental open problems that must be addressed for the field to progress from assisted tooling to genuine research colleagues.</p>
+</div>
+
+<div class="stats-strip">
+  <div class="stat"><div class="n">103</div><div class="l">Verified Citations</div></div>
+  <div class="stat"><div class="n">17</div><div class="l">Systems Analyzed</div></div>
+  <div class="stat"><div class="n">5</div><div class="l">Autonomy Levels</div></div>
+  <div class="stat"><div class="n">41</div><div class="l">Pages</div></div>
+  <div class="stat"><div class="n">6/10</div><div class="l">Peer Review</div></div>
+</div>
+
+<section>
+  <h2>Core Contributions</h2>
+  <div class="contrib-grid">
+    <div class="contrib-card">
+      <h4>L1&ndash;L5 Autonomy Taxonomy</h4>
+      <p>A five-level classification from simple tool augmentation (L1) through fully autonomous scientific discovery (L5), with clear boundary criteria for each level.</p>
+    </div>
+    <div class="contrib-card">
+      <h4>Architectural Patterns</h4>
+      <p>Four dominant patterns identified: Pipeline, Agent-Loop, Multi-Agent, and Neuro-Symbolic &mdash; with comparative strengths analysis.</p>
+    </div>
+    <div class="contrib-card">
+      <h4>17-System Comparison</h4>
+      <p>Systematic evaluation across planning depth, tool integration, verification mechanisms, domain breadth, human oversight, and output quality.</p>
+    </div>
+    <div class="contrib-card">
+      <h4>Open Problems</h4>
+      <p>Six fundamental challenges: verification at scale, credit assignment, safety boundaries, multi-modal reasoning, evaluation metrics, and societal impact.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Autonomy Taxonomy</h2>
+  <div class="taxonomy">
+    <div class="level-box"><div class="lv l1">L1</div><div class="ln">Tool<br>Augmented</div></div>
+    <div class="level-box"><div class="lv l2">L2</div><div class="ln">Task<br>Automated</div></div>
+    <div class="level-box"><div class="lv l3">L3</div><div class="ln">Workflow<br>Autonomous</div></div>
+    <div class="level-box"><div class="lv l4">L4</div><div class="ln">Research<br>Partner</div></div>
+    <div class="level-box"><div class="lv l5">L5</div><div class="ln">Independent<br>Scientist</div></div>
+  </div>
+  <p style="color:var(--text-dim); font-size:0.9rem; margin-top:1rem;">Most current systems operate at L2&ndash;L3. The transition to L4 requires robust verification and goal-directed planning. L5 remains aspirational.</p>
+</section>
+
+<section>
+  <h2>Systems Analyzed</h2>
+  <table class="systems-table">
+    <thead>
+      <tr><th>System</th><th>Level</th><th>Pattern</th><th>Domain</th><th>Year</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>GitHub Copilot</td><td class="level l1">L1</td><td>Tool</td><td>Code</td><td>2021</td></tr>
+      <tr><td>ChatGPT Code Interpreter</td><td class="level l2">L2</td><td>Agent-Loop</td><td>General</td><td>2023</td></tr>
+      <tr><td>AutoGPT</td><td class="level l2">L2</td><td>Agent-Loop</td><td>General</td><td>2023</td></tr>
+      <tr><td>Devin</td><td class="level l3">L3</td><td>Pipeline</td><td>Software</td><td>2024</td></tr>
+      <tr><td>SWE-Agent</td><td class="level l3">L3</td><td>Agent-Loop</td><td>Software</td><td>2024</td></tr>
+      <tr><td>ChemCrow</td><td class="level l3">L3</td><td>Multi-Agent</td><td>Chemistry</td><td>2024</td></tr>
+      <tr><td>The AI Scientist</td><td class="level l4">L4</td><td>Pipeline</td><td>ML Research</td><td>2024</td></tr>
+      <tr><td>OpenScholar</td><td class="level l3">L3</td><td>Neuro-Symbolic</td><td>Literature</td><td>2024</td></tr>
+      <tr><td>AIDE</td><td class="level l3">L3</td><td>Agent-Loop</td><td>Data Science</td><td>2024</td></tr>
+      <tr><td>Claude Code</td><td class="level l3">L3</td><td>Agent-Loop</td><td>Software</td><td>2025</td></tr>
+      <tr><td>Codex (OpenAI)</td><td class="level l3">L3</td><td>Pipeline</td><td>Software</td><td>2025</td></tr>
+      <tr><td>AutoResearch</td><td class="level l4">L4</td><td>Multi-Agent</td><td>General</td><td>2026</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--text-dim); font-size:0.85rem; margin-top:1rem; font-style:italic;">Table shows representative subset. Full comparison of 17 systems with 6-dimensional feature matrix available in paper.</p>
+</section>
+
+<section>
+  <h2>Citation Verification</h2>
+  <p style="color:var(--text-dim); margin-bottom:1.5rem;">All 103 citations verified via search_agent (web search + cross-reference). Sample entries:</p>
+  <div class="bib-sample">
+<span class="key">@article{wang2024autosurvey,</span>
+  <span class="field">title</span>     = {AutoSurvey: Large Language Models Can Automatically Write Surveys},
+  <span class="field">author</span>    = {Wang, Yidong and others},
+  <span class="field">journal</span>   = {arXiv preprint arXiv:2406.10252},
+  <span class="field">year</span>      = {2024}
+}
+
+<span class="key">@inproceedings{lu2024aiscientist,</span>
+  <span class="field">title</span>     = {The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery},
+  <span class="field">author</span>    = {Lu, Chris and others},
+  <span class="field">booktitle</span> = {ICML 2024},
+  <span class="field">year</span>      = {2024}
+}
+
+<span class="key">@article{jimenez2024swebench,</span>
+  <span class="field">title</span>     = {SWE-bench: Can Language Models Resolve Real-World GitHub Issues?},
+  <span class="field">author</span>    = {Jimenez, Carlos E. and others},
+  <span class="field">booktitle</span> = {ICLR 2024},
+  <span class="field">year</span>      = {2024}
+}
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>Generated by AutoResearch Pipeline | May 2026</p>
+  <p style="margin-top:0.5rem;"><a href="../showcase.html">&larr; Back to AutoResearch</a></p>
+</footer>
+
+</body>
+</html>

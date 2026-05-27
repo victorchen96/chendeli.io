@@ -1,0 +1,52 @@
+{
+  "overall_strategy": "维持均衡发展，优先科研产出",
+  "victory_path": "科技",
+  "tech_recommendations": [
+    {
+      "tech_name": "工程学",
+      "priority": 3,
+      "reason": "当前可研发（预计4回合完成）"
+    },
+    {
+      "tech_name": "军事战术",
+      "priority": 3,
+      "reason": "当前可研发（预计6回合完成）"
+    },
+    {
+      "tech_name": "造船术",
+      "priority": 3,
+      "reason": "当前可研发（预计5回合完成）"
+    }
+  ],
+  "production_recommendations": [
+    {
+      "city_name": "西安",
+      "recommended_item": "图书馆",
+      "priority": 3,
+      "reason": "基于城市当前区域配置的通用建议"
+    },
+    {
+      "city_name": "洛阳",
+      "recommended_item": "建造者",
+      "priority": 3,
+      "reason": "基于城市当前区域配置的通用建议"
+    },
+    {
+      "city_name": "成都",
+      "recommended_item": "建造者",
+      "priority": 3,
+      "reason": "基于城市当前区域配置的通用建议"
+    }
+  ],
+  "diplomacy_recommendations": [
+    {
+      "target_civ": "全体",
+      "action": "maintain_peace",
+      "reason": "当前军力不足，避免冲突"
+    }
+  ],
+  "military_advice": "维持防御力量，暂不扩军",
+  "economic_advice": "发展商路，提升金币收入",
+  "turn_generated": 50,
+  "confidence": 0.4
+}

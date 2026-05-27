@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外交胜利攻略 Diplomatic Victory Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #5c4d1a, #40360d);
+      color: #ffd700;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ff6b6b;
+    }
+    .dvp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .dvp-table th, .dvp-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .dvp-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+    .dvp-table td { color: var(--text-secondary); }
+    .dvp-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .civ-tier-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 1rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .tier-label {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    .tier-s { background: #3d1f1f; color: #ff6b6b; }
+    .tier-a { background: #3d2e1f; color: #ffaa5b; }
+    .tier-b { background: #3d3d1f; color: #e6e650; }
+    .tier-c { background: #1f3d2a; color: #50e680; }
+    .tier-civs {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tier-civs:last-child { border-bottom: none; }
+    .tier-civ-tag {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .phase-section {
+      border-left: 3px solid #ffd700;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .phase-section h3 {
+      color: #ffd700;
+    }
+    .phase-section p, .phase-section li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .resolution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .resolution-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      transition: border-color 0.2s;
+    }
+    .resolution-card:hover { border-color: #ffd700; }
+    .resolution-card-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .resolution-card-type {
+      font-size: 0.7rem;
+      color: #ffd700;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .resolution-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .favor-source-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .favor-source-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .favor-source-list li strong {
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+      <li><a href="religious_victory.html"><span class="nav-icon">&#128591;</span> Religious Victory</a></li>
+      <li><a href="diplomatic_victory.html" class="active"><span class="nav-icon">&#127760;</span> Diplomatic Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mechanics/combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="../mechanics/districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="../mechanics/city_states.html"><span class="nav-icon">&#127970;</span> City-States</a></li>
+      <li><a href="../mechanics/great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#127760;</div>
+      <div class="civ-overview">
+        <h1>外交胜利攻略 <span class="guide-badge">GUIDE</span></h1>
+        <p class="civ-subtitle">Diplomatic Victory - 通过世界议会主宰国际事务</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#127760; 世界议会</span>
+          <span class="civ-meta-tag">&#128220; 外交偏好</span>
+          <span class="civ-meta-tag">&#127942; 20胜利点</span>
+          <span class="civ-meta-tag">&#127775; Gathering Storm</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Victory Condition -->
+    <h2>&#127942; 胜利条件 Victory Condition</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>外交胜利需要累计获得 <strong>20 外交胜利点数 (Diplomatic Victory Points, DVP)</strong>。这是 Gathering Storm 资料片引入的第五种胜利方式，强调通过世界议会投票、紧急事件参与和外交手段取胜。</p>
+        <p>外交胜利是唯一一种可以被其他文明直接投票减少进度的胜利方式 — 当你接近20点时，AI会联合投票降低你的DVP。因此需要储备大量外交偏好以对冲反对票。</p>
+      </div>
+    </div>
+
+    <!-- DVP Sources -->
+    <h2>&#128200; 外交胜利点数来源 DVP Sources</h2>
+    <table class="dvp-table">
+      <thead>
+        <tr>
+          <th>来源 Source</th>
+          <th>点数 DVP</th>
+          <th>频率 Frequency</th>
+          <th>说明 Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>世界议会决议投票</td>
+          <td>+2</td>
+          <td>每30回合</td>
+          <td>投票选择正确的结果选项获胜</td>
+        </tr>
+        <tr>
+          <td>计分竞赛 (Scored Competitions)</td>
+          <td>+2</td>
+          <td>随机事件</td>
+          <td>如世博会、奥运会等计分竞赛第一名</td>
+        </tr>
+        <tr>
+          <td>自由女神像 Statue of Liberty</td>
+          <td>+4</td>
+          <td>一次性</td>
+          <td>现代奇观，需港口+海岸地格</td>
+        </tr>
+        <tr>
+          <td>紧急事件 Emergencies</td>
+          <td>+2</td>
+          <td>随机触发</td>
+          <td>成功完成紧急事件目标</td>
+        </tr>
+        <tr>
+          <td>碳回收计划 Carbon Recapture</td>
+          <td>+1~3</td>
+          <td>后期决议</td>
+          <td>信息时代晚期气候相关决议</td>
+        </tr>
+        <tr>
+          <td>陶尔巷 (维新改革)</td>
+          <td>+1</td>
+          <td>每次援助</td>
+          <td>加拿大特性：完成紧急援助+1 DVP</td>
+        </tr>
+        <tr>
+          <td>世界议会直接投票 (+DVP)</td>
+          <td>+2 / -3</td>
+          <td>特殊决议</td>
+          <td>直接对某文明增减DVP的投票</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">关键提示</div>
+      <p>当你达到 10+ DVP 时，世界议会会出现"减少某文明 DVP"的投票。AI几乎总会针对领先者投票。因此需要在冲刺阶段储备 200+ 外交偏好来压制反对票。</p>
+    </div>
+
+    <!-- World Congress Mechanics -->
+    <h2>&#127970; 世界议会机制 World Congress</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>世界议会从中世纪时代开始，每 <strong>30 回合</strong> 召开一次。每次会议提出 2 项决议，所有文明使用外交偏好 (Diplomatic Favor) 投票。投票结果由累计偏好最多的选项获胜。</p>
+      </div>
+    </div>
+
+    <h3>外交偏好获取途径</h3>
+    <ul class="favor-source-list">
+      <li><strong>联盟 (Alliance):</strong> 每级联盟每回合+1偏好，3级联盟=每回合+3</li>
+      <li><strong>宗主国 (Suzerain):</strong> 每个城邦宗主国每回合+1偏好</li>
+      <li><strong>政府类型:</strong> 民主主义每回合+4偏好，其他政府+1~2</li>
+      <li><strong>奇观:</strong> 马哈菩提寺+2/回合，基尔瓦基斯瓦尼+3/回合</li>
+      <li><strong>世界宗教:</strong> 多数文明信仰你的宗教时+大量偏好</li>
+      <li><strong>旅游吸引力 (加拿大特性):</strong> 每100旅游+1偏好/回合</li>
+      <li><strong>碳排放/气候:</strong> 清洁能源承诺可获得偏好奖励</li>
+      <li><strong>政策卡:</strong> "外交联盟"(+3偏好/回合)、"联合国宪章"等</li>
+    </ul>
+
+    <!-- Key Resolutions -->
+    <h2>&#128220; 关键决议 Key Resolutions</h2>
+    <div class="resolution-grid">
+      <div class="resolution-card">
+        <div class="resolution-card-type">高优先级</div>
+        <div class="resolution-card-name">Heritage Organization (遗产组织)</div>
+        <div class="resolution-card-desc">对某类伟人奖励或惩罚。投出正确选项可获 DVP，同时可用来削弱竞争对手的文化/科技产出。</div>
+      </div>
+      <div class="resolution-card">
+        <div class="resolution-card-type">高优先级</div>
+        <div class="resolution-card-name">Global Energy (全球能源)</div>
+        <div class="resolution-card-desc">对发电厂类建筑进行全局加成或惩罚。后期信息时代可将核能/清洁能源决议与碳回收结合获得额外 DVP。</div>
+      </div>
+      <div class="resolution-card">
+        <div class="resolution-card-type">高优先级</div>
+        <div class="resolution-card-name">Arms Control (军备控制)</div>
+        <div class="resolution-card-desc">限制军事单位生产或升级。对征服型文明是巨大打击，外交型文明可利用此决议保护自己。</div>
+      </div>
+      <div class="resolution-card">
+        <div class="resolution-card-type">中优先级</div>
+        <div class="resolution-card-name">International Space Station (国际空间站)</div>
+        <div class="resolution-card-desc">科技类竞赛决议。完成计分竞赛第一名获得+2 DVP，同时推进科技产出。</div>
+      </div>
+      <div class="resolution-card">
+        <div class="resolution-card-type">中优先级</div>
+        <div class="resolution-card-name">World's Fair (世博会)</div>
+        <div class="resolution-card-desc">文化类计分竞赛。贡献最多产能的文明获得+2 DVP和大量文化加成。大工业产能文明优先。</div>
+      </div>
+      <div class="resolution-card">
+        <div class="resolution-card-type">特殊</div>
+        <div class="resolution-card-name">Diplomatic Victory Vote (外交胜利投票)</div>
+        <div class="resolution-card-desc">直接对某文明+2或-3 DVP。领先者几乎总会被针对。需要大量偏好来保证自己+2而非被-3。</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">注意：DVP投票陷阱</div>
+      <p>当你领先时，所有AI会联合对你投-3 DVP。如果你只有少量偏好，可能会被投掉3点。解决方案：储备至少 150-200 偏好应对关键投票，或者保持低调让其他文明互相针对。</p>
+    </div>
+
+    <!-- Emergency Mechanics -->
+    <h2>&#128680; 紧急事件机制 Emergencies</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>紧急事件在特定条件下触发（如某文明使用核武器、征服圣城、转化城邦等）。参与方需要在限定回合内完成目标。</p>
+        <h4>紧急事件类型：</h4>
+        <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+          <li><strong>军事紧急 (Military Emergency):</strong> 某文明征服了其他文明的城市 — 需夺回该城市</li>
+          <li><strong>宗教紧急 (Religious Emergency):</strong> 某文明转化了圣城 — 需将其转回原宗教</li>
+          <li><strong>核武紧急 (Nuclear Emergency):</strong> 使用核武器 — 对该文明造成一定伤害</li>
+          <li><strong>援助请求 (Aid Request):</strong> 某文明遭遇自然灾害 — 贡献金币/粮食援助</li>
+        </ul>
+        <p style="margin-top: 1rem;">成功完成紧急事件可获得 <strong>+2 DVP</strong>，且加拿大特性额外+1。援助请求是最稳定的 DVP 来源，因为只需投入金币。</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">援助请求技巧</div>
+      <p>援助请求按贡献金币/产出排名。保持高金币储备（5000+），在援助事件中大量投入可稳定获得第一名。配合 Big Ben 奇观（金库翻倍）效果极佳。</p>
+    </div>
+
+    <!-- Civ Tier List -->
+    <h2>&#127941; 文明排名 Civilization Tier List</h2>
+    <div class="civ-tier-list">
+      <div class="tier-label tier-s">S</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127464;&#127462; Canada (不可被突袭, +100%外交偏好转化, 紧急援助+1 DVP)</span>
+      </div>
+      <div class="tier-label tier-a">A</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127469;&#127482; Hungary (城邦军队控制, 宗主国偏好)</span>
+        <span class="tier-civ-tag">&#127480;&#127466; Sweden (诺贝尔奖竞赛, 伟人+文化)</span>
+        <span class="tier-civ-tag">&#127468;&#127479; Greece/Pericles (城邦加成, 额外使节)</span>
+      </div>
+      <div class="tier-label tier-b">B</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127482;&#127480; America (外交政策槽位+1, 后期外交)</span>
+        <span class="tier-civ-tag">&#127473;&#127463; Phoenicia (海洋扩张, 贸易路线多)</span>
+        <span class="tier-civ-tag">&#127470;&#127475; India/Gandhi (宗教宽容, 和平加成)</span>
+      </div>
+      <div class="tier-label tier-c">C</div>
+      <div class="tier-civs">
+        <span class="tier-civ-tag">&#127468;&#127466; Georgia (黄金时代+城墙, 稳定发展)</span>
+        <span class="tier-civ-tag">&#127464;&#127462; Cree (贸易扩张, 金币充裕)</span>
+        <span class="tier-civ-tag">&#127464;&#127475; China (奇观抢建, 自由女神像)</span>
+      </div>
+    </div>
+
+    <!-- Strategy Phases -->
+    <h2>&#128640; 阶段攻略 Strategy Phases</h2>
+
+    <div class="phase-section">
+      <h3>Phase 1: 远古-古典 (回合1-60) — 建立基础</h3>
+      <ul>
+        <li>优先发展2-3个核心城市，确保产能和金币基础</li>
+        <li>尽早派遣使节到城邦，争取1-2个宗主国地位（每个+1偏好/回合）</li>
+        <li>研究"政治哲学"市政解锁政府，选择独裁或寡头（前者有外交政策槽）</li>
+        <li>如果附近有宗教竞争者，不必创教，但确保圣地产出信仰用于购买伟人</li>
+        <li>避免战争 — 外交胜利路线的核心是和平发展</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 2: 中世纪-文艺复兴 (回合60-120) — 积累偏好</h3>
+      <ul>
+        <li>世界议会开始运作，首次投票务必选正确选项（提前存档试错）</li>
+        <li>建立联盟：尽量与2-3个文明结盟，每级联盟+1偏好/回合</li>
+        <li>扩大城邦控制：目标5+宗主国地位（+5偏好/回合）</li>
+        <li>建造基尔瓦基斯瓦尼奇观（如果有3+城邦宗主国）</li>
+        <li>积极参与计分竞赛和紧急援助事件</li>
+        <li>政策卡选择"外交联盟"(+3偏好/回合)</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 3: 工业-现代 (回合120-180) — 冲刺阶段</h3>
+      <ul>
+        <li>切换到民主主义政府（+4偏好/回合，外交政策槽位最多）</li>
+        <li>建造自由女神像（一次性+4 DVP，巨大突破）</li>
+        <li>建造大本钟（金库翻倍），储备金币用于援助竞赛</li>
+        <li>在世界议会中大量投入偏好确保+2 DVP决议通过</li>
+        <li>保持低调：如果DVP接近15，AI会开始联合针对你</li>
+        <li>储备200+偏好应对"减少DVP"投票</li>
+      </ul>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 4: 原子-信息 (回合180+) — 最终冲刺</h3>
+      <ul>
+        <li>碳回收决议可额外获得1-3 DVP（需要清洁能源基础）</li>
+        <li>此时应有 15+ DVP，只需再赢1-2次世界议会投票</li>
+        <li>所有偏好集中投在"增加自己DVP"和"阻止被减DVP"上</li>
+        <li>如果遥遥领先，可以用间谍窃取其他文明偏好（削弱反对票）</li>
+        <li>最后关头如果被投掉DVP，通过紧急援助事件补回</li>
+      </ul>
+    </div>
+
+    <!-- Counter Strategies -->
+    <h2>&#9876; 对抗策略 Counter Strategies</h2>
+    <div class="card">
+      <div class="card-content">
+        <h4>如何对抗外交胜利领先者：</h4>
+        <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+          <li><strong>集中投票减DVP:</strong> 当领先者达到 15+ DVP，联合所有偏好投"减少3 DVP"</li>
+          <li><strong>夺取城邦控制:</strong> 用间谍或使节抢走对方的宗主国地位，削减偏好产出</li>
+          <li><strong>打断联盟:</strong> 对其盟友宣战或使用间谍破坏关系</li>
+          <li><strong>抢建自由女神像:</strong> 阻止对方一次性获得 +4 DVP</li>
+          <li><strong>制造紧急事件:</strong> 使用核武器触发紧急事件，但这会让参与者获得 DVP</li>
+        </ul>
+        <h4 style="margin-top: 1rem;">被针对时的应对：</h4>
+        <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+          <li><strong>分散注意力:</strong> 不要过早暴露外交胜利意图，让AI互相竞争其他胜利</li>
+          <li><strong>囤积偏好:</strong> 在关键投票前2-3次会议不投票，积攒偏好做最后冲刺</li>
+          <li><strong>多路线威胁:</strong> 同时发展科技/文化，让AI不确定你的真实胜利路线</li>
+          <li><strong>间谍战:</strong> 用间谍偷取对手外交偏好，减少他们的反对票资源</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Key Wonders -->
+    <h2>&#127963; 关键奇观 Key Wonders</h2>
+    <table class="dvp-table">
+      <thead>
+        <tr>
+          <th>奇观</th>
+          <th>时代</th>
+          <th>效果</th>
+          <th>优先级</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Statue of Liberty (自由女神像)</td>
+          <td>现代</td>
+          <td>+4 DVP，城市中的移民+4忠诚</td>
+          <td>必抢</td>
+        </tr>
+        <tr>
+          <td>Kilwa Kisiwani (基尔瓦基斯瓦尼)</td>
+          <td>中世纪</td>
+          <td>宗主国城邦相关城市+15%对应产出</td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td>Big Ben (大本钟)</td>
+          <td>工业</td>
+          <td>金库翻倍，+6金币，额外经济槽</td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td>Mahabodhi Temple (马哈菩提寺)</td>
+          <td>古典</td>
+          <td>+2偏好/回合，+2使徒</td>
+          <td>中</td>
+        </tr>
+        <tr>
+          <td>Potala Palace (布达拉宫)</td>
+          <td>文艺复兴</td>
+          <td>+1外交政策槽，文化胜利协同</td>
+          <td>中</td>
+        </tr>
+        <tr>
+          <td>Orszaghaz (国会大厦)</td>
+          <td>工业</td>
+          <td>+100%偏好产出（极强）</td>
+          <td>高</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Quick Tips -->
+    <h2>&#128161; 快速技巧 Quick Tips</h2>
+    <div class="tip-box">
+      <div class="tip-box-title">投票策略</div>
+      <p>世界议会投票前，观察 AI 倾向。如果你不确定哪个选项会赢，可以少量投票试探，把大部分偏好留给 DVP 直接投票。</p>
+      <p>技巧：在非DVP决议上只投1点偏好到你认为会赢的选项，把偏好省下来应对DVP投票。</p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">加拿大专属技巧</div>
+      <p>加拿大的"每100旅游+1偏好"配合国家公园和冰球场，可以在后期产生大量偏好。骑警创建国家公园的能力让你同时推进文化胜利和外交胜利，形成双保险。</p>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">常见错误</div>
+      <p>1. 过早暴露外交胜利意图（DVP领先时被集火）</p>
+      <p>2. 忽视军事防御（和平路线不代表零军队，需要足够威慑力）</p>
+      <p>3. 不储备偏好就冲刺（被-3 DVP投票打回原形）</p>
+      <p>4. 忽视计分竞赛（白白浪费稳定的+2 DVP机会）</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

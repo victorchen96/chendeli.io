@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>征服胜利攻略 Domination Victory Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #3d1f1f, #2a1010);
+      color: #ff6b6b;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #ff6b6b;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 170, 87, 0.1), rgba(255, 170, 87, 0.05));
+      border: 1px solid rgba(255, 170, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ffaa5b;
+    }
+    .civ-tier-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 1rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .tier-label {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    .tier-s { background: #3d1f1f; color: #ff6b6b; }
+    .tier-a { background: #3d2e1f; color: #ffaa5b; }
+    .tier-b { background: #3d3d1f; color: #e6e650; }
+    .tier-c { background: #1f3d2a; color: #50e680; }
+    .tier-civs {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tier-civs:last-child { border-bottom: none; }
+    .tier-civ-tag {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .phase-section {
+      border-left: 3px solid #ff6b6b;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .phase-section h3 {
+      color: #ff6b6b;
+    }
+    .unit-progression {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0.75rem 0;
+    }
+    .unit-item {
+      background: var(--bg-tertiary);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      border: 1px solid var(--border-color);
+    }
+    .unit-arrow {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .timing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .timing-card h4 {
+      color: #ff6b6b;
+      margin-bottom: 0.5rem;
+    }
+    .timing-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .counter-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .counter-box h4 {
+      color: var(--accent-gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .counter-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .logistics-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .logistics-table th, .logistics-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .logistics-table th {
+      background: var(--bg-tertiary);
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+    .logistics-table td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128214; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="domination_victory.html" class="active"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="../mechanics/combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="../mechanics/technology.html"><span class="nav-icon">&#128300;</span> Tech & Civics</a></li>
+      <li><a href="../mechanics/great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127760; Top Domination Civs</div>
+    <ul class="sidebar-nav">
+      <li><a href="../civs/zulu.html"><span class="nav-icon">&#127487;&#127462;</span> Zulu</a></li>
+      <li><a href="../civs/mongolia.html"><span class="nav-icon">&#127474;&#127475;</span> Mongolia</a></li>
+      <li><a href="../civs/hungary.html"><span class="nav-icon">&#127469;&#127482;</span> Hungary</a></li>
+      <li><a href="../civs/rome.html"><span class="nav-icon">&#127470;&#127481;</span> Rome</a></li>
+      <li><a href="../civs/aztec.html"><span class="nav-icon">&#127474;&#127485;</span> Aztec</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#9876;</div>
+      <div class="civ-overview">
+        <h1>征服胜利攻略 <span class="guide-badge">DOMINATION</span></h1>
+        <p class="civ-subtitle">从铁剑到核弹 - 军事碾压完全手册</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#9876; 战争</span>
+          <span class="civ-meta-tag">&#128170; 全难度适用</span>
+          <span class="civ-meta-tag">&#9201; 全阶段</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Victory Condition -->
+    <h2>&#127942; 征服胜利条件</h2>
+    <div class="card">
+      <div class="card-content">
+        <p><strong>胜利条件：</strong>占领所有其他文明的<strong>原始首都</strong>（Capital）。你不需要征服每一座城市，只需要拿下每个文明最初建立的首都。如果某文明已被其他人征服，你需要从征服者那里夺取该首都。</p>
+        <p style="margin-top: 0.5rem; color: var(--text-secondary);">在标准8人局中，你需要占领7个首都。这意味着通常需要发动3-5次独立战争（有些首都可能被同一个敌人持有）。</p>
+      </div>
+    </div>
+
+    <!-- Unit Progression -->
+    <h2>&#128481; 军事单位升级路线</h2>
+
+    <div class="card">
+      <div class="card-content">
+        <h4 style="color: #ff6b6b; margin-bottom: 0.75rem;">Melee Line (Anti-Cavalry included)</h4>
+        <div class="unit-progression">
+          <span class="unit-item">Warrior (20)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Swordsman (36)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Man-at-Arms (45)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Musketman (55)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Infantry (70)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Mechanized Infantry (85)</span>
+        </div>
+
+        <h4 style="color: #ffaa5b; margin-top: 1.25rem; margin-bottom: 0.75rem;">Heavy Cavalry Line</h4>
+        <div class="unit-progression">
+          <span class="unit-item">Heavy Chariot (28)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Knight (48)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Cavalry (62)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Tank (80)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Modern Armor (90)</span>
+        </div>
+
+        <h4 style="color: #7cb3f0; margin-top: 1.25rem; margin-bottom: 0.75rem;">Ranged Line</h4>
+        <div class="unit-progression">
+          <span class="unit-item">Slinger (15)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Archer (25)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Crossbowman (40)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Field Cannon (50)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Machine Gun (75)</span>
+        </div>
+
+        <h4 style="color: #50c878; margin-top: 1.25rem; margin-bottom: 0.75rem;">Siege Line</h4>
+        <div class="unit-progression">
+          <span class="unit-item">Battering Ram</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Catapult (35)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Bombard (55)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Artillery (70)</span>
+          <span class="unit-arrow">&rarr;</span>
+          <span class="unit-item">Rocket Artillery (85)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timing Pushes -->
+    <h2>&#9201; 进攻时机窗口 Timing Windows</h2>
+
+    <div class="timing-card">
+      <h4>&#9876; Ancient Rush (T30-60) - 勇士/弓箭手 Rush</h4>
+      <p>用3-4个勇士+2弓箭手在远古时代直接进攻邻居。对手此时通常只有1-2个勇士防守。适合近距离开局且对手没有城墙的情况。Aztec的雄鹰战士和Sumeria的战车特别擅长此时机。<strong>关键：必须在对手建城墙前打下首都。</strong></p>
+    </div>
+
+    <div class="timing-card">
+      <h4>&#127942; Classical Swordsman Push (T50-80)</h4>
+      <p>铁器时代解锁剑士（36战力），比勇士（20）高出80%。3个剑士+1撞门=在对手只有弓箭手防守时几乎无解。需要提前确保铁资源。Rome的军团（40战力+可建堡垒）是此时机的最强选择。</p>
+    </div>
+
+    <div class="timing-card">
+      <h4>&#128014; Medieval Knight Timing (T80-120)</h4>
+      <p>骑士48战力+4移动力是中世纪最强单位。Rush Stirrups科技后立即升级重骑兵或直接生产骑士。4-5个骑士可以在2-3回合内攻下一座无城墙城市。Mongolia和Hungary在此时机无敌。<strong>骑士不受ZOC限制，可以绕过防线直取首都。</strong></p>
+    </div>
+
+    <div class="timing-card">
+      <h4>&#128163; Industrial Artillery Window (T150-200)</h4>
+      <p>火炮（Artillery）3格射程+70战力，可以在城墙射程外轰击。3-4门火炮集火可以在2回合内摧毁文艺复兴城墙。配合步兵推进，这是对付龟缩防守型文明的终极答案。用观测气球+1射程更是如虎添翼。</p>
+    </div>
+
+    <div class="timing-card">
+      <h4>&#9992; Modern Bomber Carpet (T200+)</h4>
+      <p>轰炸机10格射程+空袭对城市/区域高伤害。5+架轰炸机可以在1回合内炸平任何城市防御，后续步兵/坦克进城收割。需要机场基础设施。这是后期征服的效率最高的方式。</p>
+    </div>
+
+    <!-- Tier List -->
+    <h2>&#127942; 征服文明排名 Domination Tier List</h2>
+    <div class="card">
+      <div class="card-content">
+        <div class="civ-tier-list">
+          <div class="tier-label tier-s">S</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">Zulu (因皮军团碾压)</span>
+            <span class="tier-civ-tag">Alexander (永战不厌)</span>
+            <span class="tier-civ-tag">Mongolia (骑兵外交可见+25)</span>
+          </div>
+          <div class="tier-label tier-a">A</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">Hungary (城邦征召军)</span>
+            <span class="tier-civ-tag">Ottoman (征服+总督)</span>
+            <span class="tier-civ-tag">Rome (免费建筑+军团)</span>
+            <span class="tier-civ-tag">Aztec (雄鹰+奢侈品战力)</span>
+          </div>
+          <div class="tier-label tier-b">B</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">Poland (翼骑兵冲锋)</span>
+            <span class="tier-civ-tag">Persia (突袭+不死队)</span>
+            <span class="tier-civ-tag">Norway (维京海袭)</span>
+            <span class="tier-civ-tag">Germany (额外军事槽)</span>
+          </div>
+          <div class="tier-label tier-c">C</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">其他文明 (征服对所有人开放，UU提供不同时机)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- War Logistics -->
+    <h2>&#128230; 战争后勤 War Logistics</h2>
+
+    <table class="logistics-table">
+      <thead>
+        <tr>
+          <th>要素</th>
+          <th>说明</th>
+          <th>解决方案</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>忠诚度压力</strong></td>
+          <td>新征服城市可能因低忠诚度叛变为自由城市</td>
+          <td>派总督（Victor +8忠诚）、驻军、或确保附近有己方城市辐射忠诚</td>
+        </tr>
+        <tr>
+          <td><strong>宜居度管理</strong></td>
+          <td>战争疲惫（War Weariness）降低宜居度，城市不满</td>
+          <td>保留奢侈品、建娱乐区、使用政策卡"Propaganda"减少50%厌战</td>
+        </tr>
+        <tr>
+          <td><strong>总督部署</strong></td>
+          <td>Victor（守望者）提供忠诚和军事加成</td>
+          <td>每攻下一座城市立即指派Victor；升级"Garrison Commander"获驻军+防御</td>
+        </tr>
+        <tr>
+          <td><strong>资源供应</strong></td>
+          <td>铁/硝石/铝等战略资源限制单位数量</td>
+          <td>优先建对应矿、贸易购买、征服有资源的城市</td>
+        </tr>
+        <tr>
+          <td><strong>金币维护</strong></td>
+          <td>大军每回合消耗大量金币维护费</td>
+          <td>商业中心+港口+贸易路线、掠夺敌方改良获金币、政策卡减维护</td>
+        </tr>
+        <tr>
+          <td><strong>修复征服城市</strong></td>
+          <td>被攻下的城市区域和建筑被掠夺/损坏</td>
+          <td>军事工程师修复要塞、工人修复改良、优先修核心产出建筑</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">忠诚度核心策略</div>
+      <p><strong>前线推进法:</strong> 不要跳过城市攻后方——每座城市都为下一座提供忠诚压力。按顺序从近到远逐步推进。</p>
+      <p><strong>Bread & Circuses:</strong> 娱乐区的"面包与马戏"项目可以对周围9格外国城市施加忠诚压力，甚至可以不战而取得自由城市。</p>
+      <p><strong>人口屠城:</strong> 如果一座城市的忠诚度实在无法维持，可以考虑掠夺或拆毁——一个叛变的城市比一座被摧毁的城市更糟糕。</p>
+    </div>
+
+    <!-- Counter Strategies -->
+    <h2>&#128737; 防御与反制 Counter-Strategies</h2>
+
+    <div class="counter-box">
+      <h4>Against Early Rush</h4>
+      <p>立即生产弓箭手（2-3个足够防守）。城墙是最强防御——Ancient Walls让勇士+撞门组合变得无效。把城市建在丘陵上获得防御加成。用Slinger在远处消耗敌人HP。</p>
+    </div>
+
+    <div class="counter-box">
+      <h4>Against Knight Timing</h4>
+      <p>长矛兵（Pikeman）对骑兵+10战力，是骑士的天敌。城墙+弩手组合让骑士无法突破。如果地形允许，利用ZOC封锁山口/桥梁，骑士再快也过不了卡点。</p>
+    </div>
+
+    <div class="counter-box">
+      <h4>Against Artillery</h4>
+      <p>火炮移动力低（2格），骑兵突袭可以一回合击杀。用骑兵绕后切掉火炮线，前线步兵就无法攻城。也可以用自己的远程单位在城墙保护下对射——城墙内射程+1。</p>
+    </div>
+
+    <div class="counter-box">
+      <h4>Against Bombers</h4>
+      <p>防空炮（Anti-Air Gun）和战斗机（Fighter）可以拦截轰炸。建机场部署战斗机设定为"拦截"任务。分散区域避免被集中轰炸。如果来不及建防空，快速推进到对方机场范围外。</p>
+    </div>
+
+    <!-- Phase Guide -->
+    <h2>&#128197; 分阶段战争路线</h2>
+
+    <div class="phase-section">
+      <h3>Phase 1 (T1-60): Build & Scout</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        不要一上来就打。先建1-2个城市，建军营（Encampment）获得大将军点数和经验加成。
+        Scout探索找到所有邻居位置，评估谁最弱/最近。生产2-3个Slinger（弓箭手前置），杀蛮族触发Archery尤里卡。
+        如果开局紧邻弱势文明（如和平文明/无城墙），可以考虑Ancient Rush。否则积蓄力量等Classical push。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 2 (T60-120): First War</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        第一次战争的目标：拿下1-2座城市（最好包含一个首都）。
+        Iron Working/Stirrups是关键科技——剑士或骑士是你的核心输出。
+        带撞门或攻城塔绕过城墙。集中兵力攻一座城市，不要分散。
+        战后立即和平修复城市+建设经济，准备第二波攻势。
+        注意：第一次战争的掠夺收入可以资助第二座军营和更多军队。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 3 (T120-200): Snowball</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        征服带来的城市和资源让你的军队越滚越大。保持军事科技领先1代——当对手还在用弩手时你已经有火枪了。
+        每20-30回合发动一次新战争，不给对手喘息机会。
+        用Corps/Army（合并单位，Nationalism/Mobilization市政）提升单位战力。
+        政策卡：Professional Army（-50%升级费用）、Conscription（-1金币维护）、Grand Master's Chapel（信仰购买军事单位）。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>Phase 4 (T200+): Cleanup</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        到这个阶段你应该已经拿下3-4个首都。剩余首都用轰炸机+坦克快速清扫。
+        如果有文明已经接近其他胜利条件（科技/文化），优先攻击他们。
+        核武器是终极解决方案——但外交代价巨大。只在必要时使用。
+        Giant Death Robot（巨型死亡机器人）在平地上几乎无敌，适合最后收割。
+      </p>
+    </div>
+
+    <!-- Tips & Tricks -->
+    <h2>&#128161; 进阶技巧 Tips & Tricks</h2>
+
+    <div class="strategy-section">
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>升级而非新建:</strong> 升级一个有经验的老兵单位比新建一个没经验的新单位更划算。用"Professional Army"政策卡把升级费用减半，然后一次性升级所有老兵。晋升加成是碾压的关键。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>掠夺经济:</strong> 掠夺敌方改良和区域可以获得大量金币/科技/文化/信仰。骑兵掠夺后还能移动（如果有剩余移动力）——一个骑兵一回合可以掠夺2-3个改良。这笔收入往往比自己城市产出更高。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>大将军光环:</strong> 大将军在2格范围内给所有同时代陆军+5战力+1移动力。这等于白送一级科技代差。永远让大将军跟着你的主力部队。退休能力有时更强（如孙子：全陆军+5经验）。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>地形利用:</strong> 进攻时避免渡河（-2战力）。利用丘陵放置远程单位（视野更好）。进攻城市时从多个方向包围获得flanking bonus。防守时退到森林/丘陵（+3防御）。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">5</span>
+        <span class="tip-text"><strong>宣战时机:</strong> 正式宣战（Formal War）减少50%厌战累积。Joint War和Liberation War完全没有厌战。如果可能，先通过意识形态冲突获得Casus Belli再宣战。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">6</span>
+        <span class="tip-text"><strong>不需要征服一切:</strong> 记住你只需要首都。如果敌方首都离你很远但有一条开放边境的路线，可以用快速骑兵直取首都而不去理会中间城市。闪电战的艺术在于目标明确。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">7</span>
+        <span class="tip-text"><strong>科技不能丢:</strong> 征服胜利不意味着忽略科技。保持2-3个Campus保证科技不会落后太多——科技落后意味着你的单位面对高一代的敌人时会被碾压。</span>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">常见错误</div>
+      <p><strong>分兵进攻:</strong> 把军队分成多路同时进攻多座城市。集中兵力才是王道——快速拿下一座城再推下一座。</p>
+      <p><strong>忽视城墙:</strong> 没有破城手段就硬攻有城墙的城市，结果被消耗殆尽。必须带撞门/攻城塔/投石车。</p>
+      <p><strong>过度扩张:</strong> 一次战争吃太多城市导致忠诚度崩溃、宜居度暴跌。打完2-3座城后停战修复，再发动下一次。</p>
+      <p><strong>不升级单位:</strong> 一直用古代单位打中世纪对手。科技升级后立即用金币升级你的老兵部队。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

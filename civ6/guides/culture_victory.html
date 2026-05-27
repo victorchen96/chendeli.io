@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文化胜利攻略 Culture Victory Guide - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .guide-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #3d2d4d, #2a1f3d);
+      color: #d4a0f0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.75rem;
+    }
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding: 1rem 1rem 1rem 3.5rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      border-left: 3px solid #9b59b6;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0.75rem;
+      top: 1rem;
+      width: 2rem;
+      height: 2rem;
+      background: #6b3a7d;
+      color: var(--text-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(155, 89, 182, 0.05));
+      border: 1px solid rgba(155, 89, 182, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #d4a0f0;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child {
+      margin-bottom: 0;
+    }
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 87, 87, 0.1), rgba(255, 87, 87, 0.05));
+      border: 1px solid rgba(255, 87, 87, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .warning-box .tip-box-title {
+      color: #ff7070;
+    }
+    .civ-tier-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 1rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .tier-label {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    .tier-s { background: #3d1f1f; color: #ff6b6b; }
+    .tier-a { background: #3d2e1f; color: #ffaa5b; }
+    .tier-b { background: #3d3d1f; color: #e6e650; }
+    .tier-c { background: #1f3d2a; color: #50e680; }
+    .tier-civs {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tier-civs:last-child {
+      border-bottom: none;
+    }
+    .tier-civ-tag {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .phase-section {
+      border-left: 3px solid #9b59b6;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .phase-section h3 {
+      color: #d4a0f0;
+    }
+    .mechanic-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .mechanic-box h4 {
+      color: var(--accent-gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .mechanic-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .formula-box {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-blue-light);
+      margin: 0.75rem 0;
+      overflow-x: auto;
+    }
+    .versus-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .versus-table th, .versus-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    .versus-table th {
+      background: var(--bg-tertiary);
+      color: #d4a0f0;
+      text-align: left;
+    }
+    .versus-table td {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128214; 攻略指南</div>
+    <ul class="sidebar-nav">
+      <li><a href="early_game.html"><span class="nav-icon">&#127793;</span> 开局攻略</a></li>
+      <li><a href="science_victory.html"><span class="nav-icon">&#128640;</span> 科技胜利</a></li>
+      <li><a href="culture_victory.html" class="active"><span class="nav-icon">&#127912;</span> 文化胜利</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127760; Civilizations</div>
+    <ul class="sidebar-nav">
+      <li><a href="../civs/france.html"><span class="nav-icon">&#127467;&#127479;</span> France</a></li>
+      <li><a href="../civs/brazil.html"><span class="nav-icon">&#127463;&#127479;</span> Brazil</a></li>
+      <li><a href="../civs/america.html"><span class="nav-icon">&#127482;&#127480;</span> America</a></li>
+      <li><a href="../civs/greece.html"><span class="nav-icon">&#127468;&#127479;</span> Greece</a></li>
+      <li><a href="../civs/greece_gorgo.html"><span class="nav-icon">&#127468;&#127479;</span> Greece (Gorgo)</a></li>
+      <li><a href="../civs/indonesia.html"><span class="nav-icon">&#127470;&#127465;</span> Indonesia</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128295; Tools</div>
+    <ul class="sidebar-nav">
+      <li><a href="../compare.html"><span class="nav-icon">&#9878;</span> Civ Compare</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#127912;</div>
+      <div class="civ-overview">
+        <h1>文化胜利攻略 <span class="guide-badge">GUIDE</span></h1>
+        <p class="civ-subtitle">旅游压制 - 从杰作到摇滚乐队的完整路线图</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#127912; 旅游业</span>
+          <span class="civ-meta-tag">&#128218; 中高级玩家</span>
+          <span class="civ-meta-tag">&#9201; 全阶段</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Victory Condition -->
+    <h2>&#127942; 文化胜利条件</h2>
+    <div class="card">
+      <div class="card-content">
+        <p><strong>胜利条件：</strong>你的国内旅游(Domestic Tourism)压制所有其他文明的国内旅游。具体来说，你对每个文明产生的旅游压力必须超过该文明自身的国内文化积累。</p>
+        <div class="formula-box">
+          胜利条件: 你对文明X的旅游游客数 > 文明X的国内游客数（对所有存活文明均满足）
+        </div>
+        <p>这意味着文化胜利需要两个方向同时努力：<strong>增加你的旅游输出</strong>（让更多外国人来旅游）和<strong>限制对手的文化积累</strong>（减少对手"留住自己人"的能力）。</p>
+      </div>
+    </div>
+
+    <!-- Tourism Mechanics -->
+    <h2>&#128200; 旅游机制详解</h2>
+
+    <div class="mechanic-box">
+      <h4>旅游值来源</h4>
+      <p>旅游(Tourism)是驱动文化胜利的核心数值，来源包括：</p>
+      <table class="versus-table">
+        <tr>
+          <th>来源</th>
+          <th>旅游值</th>
+          <th>解锁条件</th>
+        </tr>
+        <tr>
+          <td>杰作(Great Works)</td>
+          <td>每个 +2 (写作/艺术/音乐)</td>
+          <td>放入剧院广场建筑</td>
+        </tr>
+        <tr>
+          <td>圣遗物(Relics)</td>
+          <td>每个 +8</td>
+          <td>放入圣地建筑或宫殿</td>
+        </tr>
+        <tr>
+          <td>奇观(Wonders)</td>
+          <td>每个 +2</td>
+          <td>研究飞行科技</td>
+        </tr>
+        <tr>
+          <td>国家公园(National Park)</td>
+          <td>= 4格魅力总和</td>
+          <td>研究"保护主义"市政</td>
+        </tr>
+        <tr>
+          <td>海滨度假村</td>
+          <td>= 该格魅力值</td>
+          <td>研究"无线电"科技</td>
+        </tr>
+        <tr>
+          <td>摇滚乐队(Rock Band)</td>
+          <td>一次性大量旅游(500-3000+)</td>
+          <td>信仰购买/冷战市政</td>
+        </tr>
+        <tr>
+          <td>开放边境</td>
+          <td>对该文明旅游 +25%</td>
+          <td>外交协议</td>
+        </tr>
+        <tr>
+          <td>贸易路线</td>
+          <td>对该文明旅游 +25%</td>
+          <td>有贸易路线通往该文明</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">旅游修正器（叠加！）</div>
+      <p><strong>开放边境:</strong> 对方对你开放边境时 +25% 旅游输出</p>
+      <p><strong>贸易路线:</strong> 有通往该文明的贸易路线时 +25%</p>
+      <p><strong>同宗教:</strong> 与你信仰相同宗教的文明 +50% 旅游接收</p>
+      <p><strong>不同政体:</strong> 与你政体不同的文明 -3% 旅游接收（每级差距）</p>
+      <p>这些修正器可以叠加！同宗教(+50%) + 开放边境(+25%) + 贸易路线(+25%) = 对该文明旅游输出翻倍！</p>
+    </div>
+
+    <!-- Best Civs -->
+    <h2>&#127942; 文化胜利文明排名</h2>
+    <div class="card">
+      <div class="card-content">
+        <div class="civ-tier-list">
+          <div class="tier-label tier-s">S</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">法国 (奇观+城堡)</span>
+            <span class="tier-civ-tag">巴西 (雨林加成+狂欢节)</span>
+            <span class="tier-civ-tag">希腊-高尔戈 (战斗产文化)</span>
+          </div>
+          <div class="tier-label tier-a">A</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">美国 (电影制片厂+100%)</span>
+            <span class="tier-civ-tag">中国 (奇观加速+长城旅游)</span>
+            <span class="tier-civ-tag">印尼 (甘榜旅游+宗教)</span>
+            <span class="tier-civ-tag">波兰 (圣遗物超额)</span>
+          </div>
+          <div class="tier-label tier-b">B</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">希腊-伯里克利 (城邦文化)</span>
+            <span class="tier-civ-tag">日本 (电子工厂文化)</span>
+            <span class="tier-civ-tag">俄罗斯 (领土+薰衣草)</span>
+            <span class="tier-civ-tag">波斯 (黄金时代旅游)</span>
+          </div>
+          <div class="tier-label tier-c">C</div>
+          <div class="tier-civs">
+            <span class="tier-civ-tag">任何文明 (文化胜利对所有人开放)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Great Works Management -->
+    <h2>&#127912; 杰作管理</h2>
+    <div class="strategy-section">
+      <h3>杰作系统核心</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>剧院广场建设优先级:</strong> 每个城市尽早建剧院广场。建筑解锁顺序: 纪念碑(免费杰作写作槽) -> 图书馆(研究) -> 考古博物馆/美术馆。美术馆需要3个同画家的杰作才能触发主题化(+50%旅游)。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>主题化奖励:</strong> 美术馆3幅同画家作品 = 主题化(旅游x2)。考古博物馆需要3个不同时代/不同大陆的文物。主题化是杰作旅游翻倍的关键，必须规划！</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>伟大艺术家/音乐家/作家:</strong> 优先投资剧院广场建筑来产伟人点数。伟大音乐家的杰作基础旅游最高(+4)。伟大艺术家需要3个同画家作品做主题化，所以不要用完后就放弃——把作品集中到同一个美术馆。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>杰作交换:</strong> 可以通过外交界面和AI交换杰作来完成主题化。AI通常愿意1换1交换杰作，特别是它有多余同类型作品时。善用这个机制！</span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">选美术馆还是考古博物馆？</div>
+      <p><strong>美术馆:</strong> 需要伟大艺术家产出3幅同画家作品。主题化要求简单（同画家），但依赖伟人点数竞争。适合伟人产出高的文明。</p>
+      <p><strong>考古博物馆:</strong> 派考古学家到全球挖掘文物，不依赖伟人竞争。主题化要求复杂（不同时代+不同大陆），但文物来源稳定。适合扩张型文明。</p>
+      <p><strong>推荐:</strong> 大多数情况下混合使用。首都和前2-3个城市建美术馆（伟人产出集中），新征服或远方城市建考古博物馆（方便就近挖掘不同大陆文物）。</p>
+    </div>
+
+    <!-- National Parks & Resorts -->
+    <h2>&#127966; 国家公园与海滨度假村</h2>
+    <div class="strategy-section">
+      <h3>自然旅游：后期的旅游引擎</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>国家公园要求:</strong> 需要一个自然主义者(Naturalist,信仰购买)。选择一个菱形范围的4格区域(必须在同一城市内、全是自然地格、魅力均为"迷人"以上)。旅游值=4格魅力总和。一个好的国家公园可以产出 +12-20 旅游/回合。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>海滨度假村:</strong> 建造在魅力"迷人"以上的海岸格位。旅游值=该格魅力值。成本低(仅需工人1次充能)，适合大量铺设。每个海岸城市都应该尽可能多建海滨度假村。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>提升魅力:</strong> 种植树林(+1)、埃菲尔铁塔(全城市+2)、金门大桥(+4到相邻格)、自然奇观附近(+1-2)。移除矿山/工业区(-1-2)。规划时预留高魅力区域给国家公园和度假村。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>埃菲尔铁塔:</strong> 文化胜利必抢奇观。效果是你所有城市的所有地格 +2 魅力。这不仅让更多地格够资格建度假村/国家公园，还让已有的国家公园和度假村旅游值大幅增加。</span>
+      </div>
+    </div>
+
+    <!-- Rock Bands -->
+    <h2>&#127928; 摇滚乐队策略</h2>
+    <div class="card">
+      <div class="card-content">
+        <p>摇滚乐队是Gathering Storm DLC引入的文化胜利终极武器。使用信仰值购买(600信仰)，可以在敌方领土内"巡演"，一次性产生大量旅游值(500-3000+)。</p>
+      </div>
+    </div>
+
+    <div class="strategy-section">
+      <h3>摇滚乐队操作指南</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>目标选择:</strong> 摇滚乐队必须在对方城市中"表演"。优先选择有剧院广场+广播中心的城市（表演产出更高）。如果对方有奇观，在有奇观的城市表演也获得加成。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>升级选择:</strong> 摇滚乐队可以获得随机升级。最强的包括："独立摇滚"(表演后不消耗使用次数50%概率)、"迪斯科"(在市政广场表演产出翻倍)、"金属乐"(在军营表演产出翻倍)。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>数量轰炸:</strong> 摇滚乐队每次表演有概率"解散"(类似考古学家用完充能)。所以策略是大量购买(5-10+个)同时派出。不要吝啬信仰——后期的信仰最好的用途就是买摇滚乐队。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>集中火力:</strong> 把所有摇滚乐队派往你最难压制的那个文明。如果你对其他5个文明都已经旅游领先，那就集中对付剩下的那1-2个"钉子户"。</span>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="tip-box-title">注意：摇滚乐队风险</div>
+      <p>每次表演后有概率解散(初始约33%，随等级降低)。高价值表演可能血本无归。不要把所有希望寄托在单个摇滚乐队上，数量才是王道。另外，如果对方和你处于战争状态，你的摇滚乐队无法进入其领土。保持和平或至少停战协议。</p>
+    </div>
+
+    <!-- Defense Against Culture -->
+    <h2>&#128737; 防御其他文化文明</h2>
+    <div class="strategy-section">
+      <h3>如何阻止对手文化胜利</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">1</span>
+        <span class="tip-text"><strong>提升自身文化产出:</strong> 你的国内游客数 = 历史文化总产出 / 100。提高文化产出等于提高对手需要超过的门槛。即使不走文化胜利，也要保持文化产出不太低。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">2</span>
+        <span class="tip-text"><strong>关闭边境:</strong> 不给文化文明开放边境(-25%他们对你的旅游)。如果他们已经对你旅游压力很高，立即关闭。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">3</span>
+        <span class="tip-text"><strong>断开贸易:</strong> 不和文化文明建立贸易路线。他们通往你的贸易路线也会增加旅游压力，可以通过掠夺商人来中断。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">4</span>
+        <span class="tip-text"><strong>间谍行动:</strong> 派间谍到文化文明的剧院广场执行"窃取杰作"任务。成功后直接偷走他们的杰作，减少他们的旅游来源。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">5</span>
+        <span class="tip-text"><strong>军事方案:</strong> 如果有文明即将文化胜利且无法和平阻止，征服他们的城市是最直接的方案。占领有大量杰作和奇观的城市可以一举逆转局势——他们失去旅游来源，你获得了。</span>
+      </div>
+    </div>
+
+    <!-- Late Game Acceleration -->
+    <h2>&#9889; 后期旅游加速</h2>
+    <div class="strategy-section">
+      <h3>最后的冲刺阶段</h3>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>飞行科技:</strong> 研究飞行后，所有已建造的奇观开始产生旅游(每个+2)。如果你前期抢了5-10个奇观，这就是立刻 +10-20 旅游/回合。这也是为什么文化路线也要保持一定科技水平。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>电脑科技:</strong> 研究电脑后，所有旅游输出 +25%。这是乘法加成，非常强大。尽快研究。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>政策卡叠加:</strong> "在线社区"(Online Communities) +50% 对有贸易路线文明的旅游。"遗产旅游"(Heritage Tourism) 文物+杰作旅游 +100%。这些政策卡在后期一定要装上。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>基督救世主(Cristo Redentor):</strong> 这个现代奇观让你的海滨度假村旅游 +100%，并且消除过时政体对旅游的惩罚。如果你有大量海岸城市，这个奇观的旅游翻倍效果是恐怖的。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>全面传教:</strong> 如果能让所有文明和你信同一宗教，每个文明都给你 +50% 旅游接收。这是巨大的乘法加成。后期用使徒/传教士全力传教到所有文明城市。</span>
+      </div>
+      <div class="strategy-tip">
+        <span class="tip-icon">&#9733;</span>
+        <span class="tip-text"><strong>摇滚乐队终结:</strong> 后期积攒大量信仰，一次性购买8-10个摇滚乐队全部派往你最难压制的文明。集中爆发的旅游值往往能在5-10回合内直接结束游戏。</span>
+      </div>
+    </div>
+
+    <!-- Phase Guide -->
+    <h2>&#128197; 分阶段路线图</h2>
+
+    <div class="phase-section">
+      <h3>早期 (回合 1-80): 文化基础</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        建纪念碑优先（+2 文化/回合是早期核心）。首都优先剧院广场（产伟大作家/艺术家点数）。
+        抢关键远古奇观: 巨石阵(如果要宗教)、空中花园(+15%成长)、或金字塔(工人充能)。
+        建造2-3城市，每个城市规划好剧院广场位置。
+        市政路线: 政治哲学(寡头制+政策槽) -> 戏剧诗歌(剧院广场建筑) -> 神学(信仰)。
+        如果是高尔戈等军事文化文明，可以在此阶段发动战争获取文化。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>中期 (回合 80-180): 杰作积累</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        全力产伟人点数。所有城市建剧院广场+建筑。用伟大艺术家/作家/音乐家填满杰作槽位。
+        规划美术馆主题化（同画家3幅作品）。考古学家开始全球挖掘。
+        抢关键中世纪奇观: 大本钟(金币)、紫禁城(通配符)、乌菲兹(杰作槽)。
+        市政路线: 探索 -> 人文主义 -> 启蒙运动 -> 意识形态。
+        贸易路线尽量通往所有已遇到的文明（每条+25%旅游）。
+        开始积累信仰储备（后期买摇滚乐队和自然主义者）。
+      </p>
+    </div>
+
+    <div class="phase-section">
+      <h3>后期 (回合 180-300): 旅游爆发</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+        研究飞行(奇观产旅游) + 电脑(旅游+25%) + 无线电(海滨度假村)。
+        埃菲尔铁塔必抢（全城市+2魅力）。基督救世主如果有海岸也要抢。
+        大量铺设海滨度假村和国家公园。信仰买自然主义者建公园。
+        装载关键政策卡: 在线社区 + 遗产旅游。
+        全力传教确保同宗教加成(+50%)。
+        摇滚乐队集中轰炸最难压制的文明。
+        如果有文明对你关闭边境，考虑宣战后派摇滚乐队(GS中战时无法巡演，需停战)或用间谍偷杰作。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">最终建议</div>
+      <p>文化胜利的核心是<strong>乘法叠加</strong>。单个旅游来源可能不起眼(+2/+4)，但当你有20个杰作+10个奇观+5个国家公园+8个度假村，再乘以飞行(奇观旅游)、电脑(+25%)、遗产旅游(+100%)、同宗教(+50%)、开放边境(+25%)、贸易路线(+25%)...这些乘法叠加后旅游值会呈指数级增长。</p>
+      <p>不要在中期因为旅游值增长缓慢而放弃。文化胜利是"慢热型"——一旦后期科技和政策卡到位，旅游值会在10-20回合内爆炸式增长并快速结束游戏。耐心铺设基础，后期一波收割。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

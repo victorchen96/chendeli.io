@@ -1,0 +1,1134 @@
+/* ============================================
+   Civ6 Wiki - Main Stylesheet
+   Color palette: Civ6 blue/gold aesthetic
+   Dark mode default
+   ============================================ */
+
+/* CSS Variables */
+:root {
+  --bg-primary: #1a1d23;
+  --bg-secondary: #22262e;
+  --bg-tertiary: #2a2f38;
+  --bg-card: #282c34;
+  --bg-hover: #323842;
+
+  --text-primary: #e8e6e3;
+  --text-secondary: #a8a5a0;
+  --text-muted: #6b6966;
+
+  --accent-gold: #c9a227;
+  --accent-gold-light: #e6c545;
+  --accent-gold-dark: #9a7b1c;
+  --accent-blue: #3d7fb5;
+  --accent-blue-light: #5aa3d9;
+  --accent-blue-dark: #2a5a82;
+
+  --border-color: #3a3f48;
+  --border-light: #4a4f58;
+
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --content-max-width: 1200px;
+
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Consolas", monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  --transition: 0.2s ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-blue-light);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-gold-light);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Layout
+   ============================================ */
+
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.site-logo:hover {
+  color: var(--accent-gold-light);
+}
+
+.site-logo .logo-icon {
+  font-size: 1.5rem;
+}
+
+.header-search {
+  margin-left: auto;
+  position: relative;
+}
+
+.header-search input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  width: 300px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.header-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.header-search input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(61, 127, 181, 0.2);
+}
+
+.header-search .search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-right: 0.75rem;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  padding: 1rem 0;
+  z-index: 900;
+  transition: transform var(--transition);
+}
+
+.sidebar-section {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.sidebar-nav {
+  list-style: none;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem 0.5rem 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: all var(--transition);
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav li a:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-left-color: var(--accent-blue);
+}
+
+.sidebar-nav li a.active {
+  background: var(--bg-tertiary);
+  color: var(--accent-gold);
+  border-left-color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.sidebar-nav li a .nav-icon {
+  font-size: 1rem;
+  width: 1.25rem;
+  text-align: center;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  padding: 2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.content-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent-gold);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-content {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Ability Card */
+.ability-card {
+  border-left: 4px solid var(--accent-gold);
+}
+
+.ability-card.leader {
+  border-left-color: var(--accent-blue);
+}
+
+.ability-card .ability-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.ability-card.leader .ability-name {
+  color: var(--accent-blue-light);
+}
+
+.ability-card .ability-desc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Unit/Building Card */
+.unit-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+}
+
+.unit-card .unit-info h4 {
+  color: var(--accent-gold-light);
+  margin-bottom: 0.25rem;
+}
+
+.unit-card .unit-info .unit-replaces {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.unit-card .unit-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.stat-badge {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.stat-badge .stat-label {
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+}
+
+/* ============================================
+   Civ Page Hero
+   ============================================ */
+
+.civ-hero {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.civ-portrait {
+  width: 200px;
+  height: 200px;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  border: 3px solid var(--accent-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.civ-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.civ-overview h1 {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+
+.civ-overview .civ-subtitle {
+  color: var(--accent-blue-light);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.civ-overview .civ-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.civ-meta-tag {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+
+.wiki-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.wiki-table th,
+.wiki-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wiki-table th {
+  background: var(--bg-tertiary);
+  color: var(--accent-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.wiki-table tr:hover td {
+  background: var(--bg-hover);
+}
+
+.wiki-table td {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Strategy Section
+   ============================================ */
+
+.strategy-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.strategy-section h3 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.strategy-tip {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+}
+
+.strategy-tip .tip-icon {
+  color: var(--accent-gold);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.strategy-tip .tip-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ============================================
+   Grid Layouts
+   ============================================ */
+
+.civ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.civ-grid-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.civ-grid-item:hover {
+  border-color: var(--accent-gold-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.civ-grid-item .civ-grid-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.civ-grid-item .civ-grid-icon img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold-dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.civ-grid-item .civ-grid-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.civ-grid-item .civ-grid-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.civ-grid-item .civ-grid-leader {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Index Page - Welcome
+   ============================================ */
+
+.welcome-banner {
+  background: linear-gradient(135deg, var(--accent-blue-dark), var(--bg-tertiary));
+  border: 1px solid var(--accent-blue);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.welcome-banner h1 {
+  border-bottom: none;
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.welcome-banner .subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.section-header .view-all {
+  font-size: 0.9rem;
+  color: var(--accent-blue-light);
+}
+
+/* ============================================
+   Mod Page
+   ============================================ */
+
+.mod-banner {
+  background: linear-gradient(135deg, #2d1f3d, var(--bg-tertiary));
+  border: 1px solid #6b4d8a;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.mod-banner h1 {
+  border-bottom: none;
+  color: #c9a0dc;
+}
+
+.install-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+}
+
+.install-steps li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 3rem;
+  position: relative;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.install-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-gold-dark);
+  color: var(--text-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Mod Rework Tabs
+   ============================================ */
+
+.mod-rework-section {
+  margin-top: 3rem;
+  border-top: 2px solid var(--border-color);
+  padding-top: 2rem;
+}
+
+.mod-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.mod-tab {
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-main);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: var(--transition);
+}
+
+.mod-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.mod-tab.active {
+  color: var(--accent-gold-light);
+  border-bottom-color: var(--accent-gold);
+}
+
+.mod-tab.hid { border-bottom-color: #9b59b6; color: #c9a0dc; }
+.mod-tab.bbg { border-bottom-color: #27ae60; color: #6ddb99; }
+
+.mod-tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.mod-tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mod-change-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.mod-change-card.hid {
+  border-left: 3px solid #9b59b6;
+}
+
+.mod-change-card.bbg {
+  border-left: 3px solid #27ae60;
+}
+
+.mod-change-card h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.mod-change-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.mod-change-card .change-type {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+}
+
+.change-type.rework { background: #4a2d6b; color: #c9a0dc; }
+.change-type.buff { background: #1a4d2e; color: #6ddb99; }
+.change-type.nerf { background: #4d1a1a; color: #db6d6d; }
+.change-type.new { background: #2d4a1a; color: #a0dc6d; }
+
+.mod-no-change {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .civ-hero {
+    grid-template-columns: 150px 1fr;
+  }
+
+  .civ-portrait {
+    width: 150px;
+    height: 150px;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .header-search input {
+    width: 200px;
+  }
+
+  .civ-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .civ-portrait {
+    margin: 0 auto;
+  }
+
+  .civ-overview .civ-meta {
+    justify-content: center;
+  }
+
+  .unit-card {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-banner {
+    padding: 2rem 1rem;
+  }
+
+  .welcome-banner h1 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-search {
+    display: none;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .civ-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
+}
+
+/* ============================================
+   Gamersky Reference Gallery
+   ============================================ */
+
+.gamersky-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.gamersky-gallery a {
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition);
+}
+
+.gamersky-gallery a:hover {
+  border-color: var(--accent-gold-dark);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.02);
+}
+
+.gamersky-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   SVG Icon Styles
+   ============================================ */
+
+.civ-icon-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.civ-portrait[data-civ-icon] {
+  padding: 0;
+  overflow: hidden;
+}
+
+.nav-icon-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.unit-icon-svg {
+  width: 48px;
+  height: 48px;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-nav li a [data-nav-icon] {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   Top-level Tab Navigation
+   ============================================ */
+
+.top-nav {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: stretch;
+  padding: 0 2rem;
+  z-index: 950;
+  gap: 0;
+}
+
+.top-nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.top-nav-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.top-nav-tab.active {
+  color: var(--accent-gold-light);
+  border-bottom-color: var(--accent-gold);
+}
+
+.top-nav-tab .tab-icon {
+  font-size: 1rem;
+}
+
+/* Layout adjustments when top-nav is present */
+body.has-top-nav .sidebar {
+  top: calc(var(--header-height) + 44px);
+}
+
+body.has-top-nav .main-content {
+  margin-top: calc(var(--header-height) + 44px);
+}
+
+/* No-sidebar layout (homepage) */
+body.no-sidebar .sidebar {
+  display: none;
+}
+
+body.no-sidebar .main-content {
+  margin-left: 0;
+}
+
+/* ============================================
+   Homepage Module Cards
+   ============================================ */
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.module-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gold);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.module-card:hover {
+  border-color: var(--accent-gold-dark);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.module-card:hover::before {
+  opacity: 1;
+}
+
+.module-card .module-icon {
+  font-size: 2.5rem;
+}
+
+.module-card .module-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.module-card .module-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.module-card .module-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.module-card.accent-blue::before { background: var(--accent-blue); }
+.module-card.accent-purple::before { background: #9b59b6; }
+.module-card.accent-green::before { background: #27ae60; }
+.module-card.accent-red::before { background: #e74c3c; }
+
+/* Homepage stats bar */
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .stat-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.stat-item .stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Utility classes */
+.text-gold { color: var(--accent-gold); }
+.text-blue { color: var(--accent-blue-light); }
+.text-muted { color: var(--text-muted); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0 0.5rem;
+    overflow-x: auto;
+  }
+  .top-nav-tab {
+    padding: 0 0.75rem;
+    font-size: 0.8rem;
+  }
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}

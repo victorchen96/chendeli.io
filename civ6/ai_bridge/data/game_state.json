@@ -1,0 +1,233 @@
+{
+  "turn": 50,
+  "era": "古典",
+  "civ_name": "中国",
+  "leader": "秦始皇",
+  "cities": [
+    {
+      "name": "西安",
+      "population": 7,
+      "production_focus": "science",
+      "current_production": "图书馆",
+      "districts": [
+        "学院区",
+        "圣地"
+      ],
+      "buildings": [
+        "纪念碑",
+        "粮仓",
+        "水磨坊"
+      ],
+      "yields": {
+        "食物": 12,
+        "产能": 8,
+        "金币": 5,
+        "科研": 14,
+        "文化": 6,
+        "信仰": 4
+      }
+    },
+    {
+      "name": "洛阳",
+      "population": 5,
+      "production_focus": "military",
+      "current_production": "弓箭手",
+      "districts": [
+        "军营"
+      ],
+      "buildings": [
+        "纪念碑",
+        "粮仓"
+      ],
+      "yields": {
+        "食物": 10,
+        "产能": 11,
+        "金币": 4,
+        "科研": 3,
+        "文化": 3,
+        "信仰": 0
+      }
+    },
+    {
+      "name": "成都",
+      "population": 4,
+      "production_focus": "gold",
+      "current_production": "商业中心",
+      "districts": [],
+      "buildings": [
+        "纪念碑"
+      ],
+      "yields": {
+        "食物": 8,
+        "产能": 6,
+        "金币": 8,
+        "科研": 2,
+        "文化": 4,
+        "信仰": 0
+      }
+    }
+  ],
+  "techs_researched": [
+    "采矿",
+    "畜牧",
+    "制陶",
+    "灌溉",
+    "射箭",
+    "占星术",
+    "书写",
+    "砌砖",
+    "铁器",
+    "数学"
+  ],
+  "techs_available": [
+    {
+      "name": "工程学",
+      "researched": false,
+      "turns_remaining": 4,
+      "era": "古典"
+    },
+    {
+      "name": "军事战术",
+      "researched": false,
+      "turns_remaining": 6,
+      "era": "古典"
+    },
+    {
+      "name": "造船术",
+      "researched": false,
+      "turns_remaining": 5,
+      "era": "古典"
+    },
+    {
+      "name": "建筑学",
+      "researched": false,
+      "turns_remaining": 8,
+      "era": "古典"
+    },
+    {
+      "name": "货币",
+      "researched": false,
+      "turns_remaining": 7,
+      "era": "古典"
+    },
+    {
+      "name": "骑术",
+      "researched": false,
+      "turns_remaining": 5,
+      "era": "古典"
+    }
+  ],
+  "civics_researched": [
+    "法典",
+    "外交",
+    "技艺",
+    "神秘主义",
+    "早期帝国",
+    "国家劳动力"
+  ],
+  "diplomacy": [
+    {
+      "civ_name": "罗马",
+      "relationship": "friendly",
+      "has_open_borders": true,
+      "has_alliance": false,
+      "grievances": 0
+    },
+    {
+      "civ_name": "苏美尔",
+      "relationship": "neutral",
+      "has_open_borders": false,
+      "has_alliance": false,
+      "grievances": 5
+    },
+    {
+      "civ_name": "斯基泰",
+      "relationship": "unfriendly",
+      "has_open_borders": false,
+      "has_alliance": false,
+      "grievances": 15
+    },
+    {
+      "civ_name": "埃及",
+      "relationship": "friendly",
+      "has_open_borders": true,
+      "has_alliance": false,
+      "grievances": 0
+    }
+  ],
+  "military": [
+    {
+      "unit_type": "战士",
+      "strength": 20,
+      "location": [
+        5,
+        3
+      ],
+      "health": 100
+    },
+    {
+      "unit_type": "战士",
+      "strength": 20,
+      "location": [
+        8,
+        7
+      ],
+      "health": 100
+    },
+    {
+      "unit_type": "弓箭手",
+      "strength": 25,
+      "location": [
+        6,
+        4
+      ],
+      "health": 100
+    },
+    {
+      "unit_type": "弓箭手",
+      "strength": 25,
+      "location": [
+        9,
+        8
+      ],
+      "health": 100
+    },
+    {
+      "unit_type": "侦察兵",
+      "strength": 10,
+      "location": [
+        12,
+        2
+      ],
+      "health": 100
+    },
+    {
+      "unit_type": "长城卫兵",
+      "strength": 30,
+      "location": [
+        5,
+        5
+      ],
+      "health": 100
+    }
+  ],
+  "gold": 230,
+  "gold_per_turn": 12,
+  "science_per_turn": 28,
+  "culture_per_turn": 22,
+  "faith": 45,
+  "great_people_points": {
+    "大科学家": 12,
+    "大将军": 8,
+    "大商人": 5
+  },
+  "victory_progress": {
+    "科技": 5,
+    "文化": 8,
+    "统治": 3,
+    "宗教": 2,
+    "外交": 4
+  },
+  "current_research": "工程学",
+  "current_civic": "政治哲学"
+}

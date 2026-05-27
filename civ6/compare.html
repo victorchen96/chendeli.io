@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文明对比工具 - 文明6百科</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .compare-controls {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .compare-controls h3 {
+      color: var(--accent-gold);
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .selector-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+    .selector-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    .selector-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .selector-group select {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color var(--transition);
+    }
+    .selector-group select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(61, 127, 181, 0.2);
+    }
+    .btn-compare {
+      padding: 0.6rem 1.5rem;
+      background: var(--accent-gold-dark);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition);
+      white-space: nowrap;
+    }
+    .btn-compare:hover {
+      background: var(--accent-gold);
+      color: #1a1d23;
+    }
+    .btn-reset {
+      padding: 0.6rem 1.2rem;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-reset:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    /* Comparison Grid */
+    .compare-grid {
+      display: grid;
+      gap: 0;
+      margin: 2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .compare-grid.cols-2 { grid-template-columns: 180px 1fr 1fr; }
+    .compare-grid.cols-3 { grid-template-columns: 180px 1fr 1fr 1fr; }
+
+    .compare-header {
+      background: var(--bg-tertiary);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-gold-dark);
+    }
+    .compare-header .civ-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .compare-header .civ-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+    .compare-header .civ-leader {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .compare-label {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+    }
+
+    .compare-cell {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .compare-cell:nth-child(odd) {
+      background: var(--bg-card);
+    }
+    .compare-cell:nth-child(even) {
+      background: var(--bg-secondary);
+    }
+    .compare-cell strong {
+      color: var(--accent-gold-light);
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+    }
+    .compare-cell .victory-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .victory-tag.culture { background: #3d2d4d; color: #d4a0f0; }
+    .victory-tag.science { background: #1f3d4d; color: #80d0f0; }
+    .victory-tag.domination { background: #4d2d2d; color: #f08080; }
+    .victory-tag.religion { background: #4d3d1f; color: #f0d080; }
+    .victory-tag.diplomatic { background: #2d4d3d; color: #80f0c0; }
+
+    .compare-placeholder {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    .compare-placeholder .placeholder-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    .compare-placeholder p {
+      font-size: 1.1rem;
+    }
+
+    .highlight-diff {
+      background: rgba(201, 162, 39, 0.1) !important;
+      border-left: 3px solid var(--accent-gold-dark);
+    }
+
+    @media (max-width: 768px) {
+      .compare-grid.cols-2,
+      .compare-grid.cols-3 {
+        grid-template-columns: 1fr;
+      }
+      .compare-label {
+        border-right: none;
+        background: var(--bg-tertiary);
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+      }
+      .compare-header {
+        border-bottom: 1px solid var(--border-color);
+      }
+      .selector-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#127760; Civilizations</div>
+    <ul class="sidebar-nav">
+      <li><a href="civs/america.html"><span class="nav-icon">&#127482;&#127480;</span> America</a></li>
+      <li><a href="civs/brazil.html"><span class="nav-icon">&#127463;&#127479;</span> Brazil</a></li>
+      <li><a href="civs/china.html"><span class="nav-icon">&#127464;&#127475;</span> China</a></li>
+      <li><a href="civs/france.html"><span class="nav-icon">&#127467;&#127479;</span> France</a></li>
+      <li><a href="civs/germany.html"><span class="nav-icon">&#127465;&#127466;</span> Germany</a></li>
+      <li><a href="civs/greece.html"><span class="nav-icon">&#127468;&#127479;</span> Greece</a></li>
+      <li><a href="civs/japan.html"><span class="nav-icon">&#127471;&#127477;</span> Japan</a></li>
+      <li><a href="civs/korea.html"><span class="nav-icon">&#127472;&#127479;</span> Korea</a></li>
+      <li><a href="civs/rome.html"><span class="nav-icon">&#127470;&#127481;</span> Rome</a></li>
+      <li><a href="civs/russia.html"><span class="nav-icon">&#127479;&#127482;</span> Russia</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="mechanics/combat.html"><span class="nav-icon">&#9876;</span> Combat</a></li>
+      <li><a href="mechanics/districts.html"><span class="nav-icon">&#127960;</span> Districts</a></li>
+      <li><a href="mechanics/victory.html"><span class="nav-icon">&#127942;</span> Victory</a></li>
+      <li><a href="mechanics/wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="guides/early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="guides/science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="guides/culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128295; Tools</div>
+    <ul class="sidebar-nav">
+      <li><a href="compare.html" class="active"><span class="nav-icon">&#9878;</span> Civ Compare</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero -->
+    <div class="welcome-banner" style="background: linear-gradient(135deg, #2a3d1f, var(--bg-tertiary)); border-color: #4a8a3d;">
+      <h1 style="color: var(--accent-gold);">&#9878; 文明对比工具</h1>
+      <p class="subtitle">选择 2-3 个文明，对比能力、特色单位、建筑与推荐胜利路线</p>
+    </div>
+
+    <!-- Selectors -->
+    <div class="compare-controls">
+      <h3>选择对比文明</h3>
+      <div class="selector-row">
+        <div class="selector-group">
+          <label>文明 1</label>
+          <select id="civ-select-1">
+            <option value="">-- 选择文明 --</option>
+          </select>
+        </div>
+        <div class="selector-group">
+          <label>文明 2</label>
+          <select id="civ-select-2">
+            <option value="">-- 选择文明 --</option>
+          </select>
+        </div>
+        <div class="selector-group">
+          <label>文明 3 (可选)</label>
+          <select id="civ-select-3">
+            <option value="">-- 不选择 --</option>
+          </select>
+        </div>
+        <button class="btn-compare" id="btn-compare" onclick="doCompare()">对比</button>
+        <button class="btn-reset" onclick="resetCompare()">重置</button>
+      </div>
+    </div>
+
+    <!-- Comparison Result -->
+    <div id="compare-result">
+      <div class="compare-placeholder">
+        <span class="placeholder-icon">&#9878;</span>
+        <p>选择 2-3 个文明后点击「对比」查看详细对比结果</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/nav.js"></script>
+<script src="js/compare.js"></script>
+</body>
+</html>

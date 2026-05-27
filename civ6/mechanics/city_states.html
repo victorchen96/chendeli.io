@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City-States Encyclopedia - 文明6百科</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .cs-type-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+    }
+    .badge-scientific { background: linear-gradient(135deg, #1a3a5c, #0d2240); color: #5bb8ff; }
+    .badge-cultural { background: linear-gradient(135deg, #3d1f5c, #2a0d40); color: #c080ff; }
+    .badge-industrial { background: linear-gradient(135deg, #5c3a1a, #402a0d); color: #ffaa55; }
+    .badge-militaristic { background: linear-gradient(135deg, #5c1a1a, #400d0d); color: #ff6b6b; }
+    .badge-religious { background: linear-gradient(135deg, #5c4d1a, #40360d); color: #ffd700; }
+    .badge-trade { background: linear-gradient(135deg, #1a5c2e, #0d4020); color: #55ff88; }
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .cs-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .cs-card:hover {
+      transform: translateY(-2px);
+    }
+    .cs-card.scientific:hover { border-color: #5bb8ff; }
+    .cs-card.cultural:hover { border-color: #c080ff; }
+    .cs-card.industrial:hover { border-color: #ffaa55; }
+    .cs-card.militaristic:hover { border-color: #ff6b6b; }
+    .cs-card.religious:hover { border-color: #ffd700; }
+    .cs-card.trade:hover { border-color: #55ff88; }
+    .cs-card-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .cs-card-bonus {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .cs-card-suzerain {
+      font-size: 0.8rem;
+      color: #50c878;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    .envoy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .envoy-table th, .envoy-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .envoy-table th {
+      background: var(--bg-tertiary);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+    .envoy-table td {
+      color: var(--text-secondary);
+    }
+    .envoy-count {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .tip-box {
+      background: linear-gradient(135deg, rgba(91, 184, 255, 0.1), rgba(91, 184, 255, 0.05));
+      border: 1px solid rgba(91, 184, 255, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #5bb8ff;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .tip-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .strategy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+    .strategy-card h4 {
+      color: var(--accent-gold-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .strategy-card p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; Mechanics</div>
+    <ul class="sidebar-nav">
+      <li><a href="combat.html"><span class="nav-icon">&#9876;</span> Combat System</a></li>
+      <li><a href="districts.html"><span class="nav-icon">&#127960;</span> District System</a></li>
+      <li><a href="victory.html"><span class="nav-icon">&#127942;</span> Victory Types</a></li>
+      <li><a href="wonders.html"><span class="nav-icon">&#127963;</span> Wonders</a></li>
+      <li><a href="technology.html"><span class="nav-icon">&#128300;</span> Tech & Civics Tree</a></li>
+      <li><a href="great_people.html"><span class="nav-icon">&#11088;</span> Great People</a></li>
+      <li><a href="city_states.html" class="active"><span class="nav-icon">&#127970;</span> City-States</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128218; Guides</div>
+    <ul class="sidebar-nav">
+      <li><a href="../guides/early_game.html"><span class="nav-icon">&#127793;</span> Early Game</a></li>
+      <li><a href="../guides/science_victory.html"><span class="nav-icon">&#128640;</span> Science Victory</a></li>
+      <li><a href="../guides/culture_victory.html"><span class="nav-icon">&#127912;</span> Culture Victory</a></li>
+      <li><a href="../guides/domination_victory.html"><span class="nav-icon">&#9876;</span> Domination Victory</a></li>
+      <li><a href="../guides/religious_victory.html"><span class="nav-icon">&#128591;</span> Religious Victory</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <div class="civ-hero">
+      <div class="civ-portrait">&#127970;</div>
+      <div class="civ-overview">
+        <h1>City-States Encyclopedia</h1>
+        <p class="civ-subtitle">城邦百科 - 全6类城邦及宗主国奖励</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#128101; 使节系统</span>
+          <span class="civ-meta-tag">&#127380; 宗主国奖励</span>
+          <span class="civ-meta-tag">&#128176; 外交策略</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Envoy Mechanics -->
+    <h2>&#128101; 使节机制 Envoy Mechanics</h2>
+    <div class="card ability-card">
+      <div class="ability-name">使节 (Envoys) 与宗主国 (Suzerain)</div>
+      <div class="ability-desc">
+        <p>使节是一种外交资源，可派遣至城邦以获取加成。派遣最多使节的文明成为该城邦的宗主国，获得独特的宗主国奖励。使节通过市政研究、政策卡、伟人等途径获取。</p>
+      </div>
+    </div>
+
+    <table class="envoy-table">
+      <thead>
+        <tr>
+          <th>使节数量</th>
+          <th>奖励类型</th>
+          <th>效果说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="envoy-count">1 Envoy</td>
+          <td>基础加成</td>
+          <td>首都获得该城邦类型对应的产出 +2（如科学城邦 +2 科技）</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">3 Envoys</td>
+          <td>区域加成</td>
+          <td>每个对应区域获得 +2 产出（如科学城邦：每个学院 +2 科技）</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">6 Envoys</td>
+          <td>建筑加成</td>
+          <td>对应区域的每栋建筑获得 +2 产出（叠加效果极强）</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">Suzerain</td>
+          <td>宗主国奖励</td>
+          <td>获得该城邦独特的宗主国能力（见下方各城邦详情）+ 可征兵</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#128161; 宗主国额外权益</div>
+      <p>成为宗主国后可用金币在城邦征召军事单位（Levy Military），持续30回合。城邦会自动跟随宗主国参战。此外宗主国可以进入城邦领土并共享城邦视野。</p>
+    </div>
+
+    <!-- Scientific City-States -->
+    <h2>&#128300; 科学城邦 Scientific <span class="cs-type-badge badge-scientific">SCIENTIFIC</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/学院 +2 科技产出</p>
+    <div class="cs-grid">
+      <div class="cs-card scientific">
+        <div class="cs-card-name">&#127468;&#127466; 日内瓦 Geneva</div>
+        <div class="cs-card-bonus">当你未与任何文明处于战争状态时，所有城市的科技产出 +15%。和平发展型文明的最佳盟友。</div>
+        <div class="cs-card-suzerain">宗主奖励：和平 = 全局科技 +15%</div>
+      </div>
+      <div class="cs-card scientific">
+        <div class="cs-card-name">&#127470;&#127481; 博洛尼亚 Bologna</div>
+        <div class="cs-card-bonus">你的城市每获得一个伟人点数时额外获得 +1 同类伟人点数。大幅加速伟人争夺。</div>
+        <div class="cs-card-suzerain">宗主奖励：伟人点数翻倍获取</div>
+      </div>
+      <div class="cs-card scientific">
+        <div class="cs-card-name">&#127481;&#127479; 哈图沙 Hattusa</div>
+        <div class="cs-card-bonus">为你提供你尚未改良的每种战略资源各2份。解决早期缺铁/硝石的困境。</div>
+        <div class="cs-card-suzerain">宗主奖励：免费获得缺失的战略资源</div>
+      </div>
+      <div class="cs-card scientific">
+        <div class="cs-card-name">&#127472;&#127479; 首尔 Seoul</div>
+        <div class="cs-card-bonus">每次进入新时代时获得一次随机尤里卡加速（对应该时代科技）。</div>
+        <div class="cs-card-suzerain">宗主奖励：新时代自动触发尤里卡</div>
+      </div>
+    </div>
+
+    <!-- Cultural City-States -->
+    <h2>&#127912; 文化城邦 Cultural <span class="cs-type-badge badge-cultural">CULTURAL</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/剧院 +2 文化产出</p>
+    <div class="cs-grid">
+      <div class="cs-card cultural">
+        <div class="cs-card-name">&#127467;&#127474; 南马都尔 Nan Madol</div>
+        <div class="cs-card-bonus">建在海岸的区域获得 +2 文化相邻加成。海洋文明的文化加速器。</div>
+        <div class="cs-card-suzerain">宗主奖励：沿海区域 +2 文化</div>
+      </div>
+      <div class="cs-card cultural">
+        <div class="cs-card-name">&#127477;&#127472; 摩亨佐达罗 Mohenjo-Daro</div>
+        <div class="cs-card-bonus">你的城市无论是否有淡水均获得满住房。彻底解决住房困难问题。</div>
+        <div class="cs-card-suzerain">宗主奖励：所有城市满住房</div>
+      </div>
+      <div class="cs-card cultural">
+        <div class="cs-card-name">&#127468;&#127469; 库马西 Kumasi</div>
+        <div class="cs-card-bonus">你的贸易路线到达城邦时获得额外 +2 文化和 +1 金币。贸易产文化。</div>
+        <div class="cs-card-suzerain">宗主奖励：城邦贸易路线 +文化/金币</div>
+      </div>
+      <div class="cs-card cultural">
+        <div class="cs-card-name">&#127462;&#127479; 布宜诺斯艾利斯 Buenos Aires</div>
+        <div class="cs-card-bonus">你的加成资源视为奢侈品资源，提供 +1 宜居度。</div>
+        <div class="cs-card-suzerain">宗主奖励：加成资源变奢侈品</div>
+      </div>
+    </div>
+
+    <!-- Industrial City-States -->
+    <h2>&#9881; 工业城邦 Industrial <span class="cs-type-badge badge-industrial">INDUSTRIAL</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/工业区 +2 产能产出</p>
+    <div class="cs-grid">
+      <div class="cs-card industrial">
+        <div class="cs-card-name">&#127463;&#127466; 布鲁塞尔 Brussels</div>
+        <div class="cs-card-bonus">你的奇观建造产能 +15%。奇观流玩家的必争之地。</div>
+        <div class="cs-card-suzerain">宗主奖励：奇观建造速度 +15%</div>
+      </div>
+      <div class="cs-card industrial">
+        <div class="cs-card-name">&#127480;&#127468; 新加坡 Singapore</div>
+        <div class="cs-card-bonus">你的城市获得额外产能，数值等于该城市所拥有的特色区域数量 x2。城市规模越大越强。</div>
+        <div class="cs-card-suzerain">宗主奖励：每区域 +2 产能</div>
+      </div>
+      <div class="cs-card industrial">
+        <div class="cs-card-name">&#127469;&#127472; 香港 Hong Kong</div>
+        <div class="cs-card-bonus">你的城市建造建筑（非奇观非区域）时产能 +20%。快速完善城市基建。</div>
+        <div class="cs-card-suzerain">宗主奖励：建筑建造速度 +20%</div>
+      </div>
+      <div class="cs-card industrial">
+        <div class="cs-card-name">&#127465;&#127466; 亚琛 Aachen</div>
+        <div class="cs-card-bonus">你的工业区建筑的区域效果范围扩大（工厂/发电厂影响 9 格而非 6 格）。</div>
+        <div class="cs-card-suzerain">宗主奖励：工业区建筑辐射范围扩大</div>
+      </div>
+    </div>
+
+    <!-- Militaristic City-States -->
+    <h2>&#9876; 军事城邦 Militaristic <span class="cs-type-badge badge-militaristic">MILITARISTIC</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/军营 +2 产能产出</p>
+    <div class="cs-grid">
+      <div class="cs-card militaristic">
+        <div class="cs-card-name">&#127462;&#127467; 喀布尔 Kabul</div>
+        <div class="cs-card-bonus">你的单位获得的战斗经验值 +50%。快速晋升精英部队。</div>
+        <div class="cs-card-suzerain">宗主奖励：全单位经验获取 +50%</div>
+      </div>
+      <div class="cs-card militaristic">
+        <div class="cs-card-name">&#127474;&#127481; 瓦莱塔 Valletta</div>
+        <div class="cs-card-bonus">可以用信仰购买城市中心建筑（城墙、粮仓等）和军营建筑。宗教产能混合流核心。</div>
+        <div class="cs-card-suzerain">宗主奖励：信仰购买城防建筑</div>
+      </div>
+      <div class="cs-card militaristic">
+        <div class="cs-card-name">&#127470;&#127478; 阿卡德 Akkad</div>
+        <div class="cs-card-bonus">你的近战和反骑兵单位对防御工事造成额外伤害（+5 vs 城区/城墙）。攻城利器。</div>
+        <div class="cs-card-suzerain">宗主奖励：近战单位 +5 攻城战斗力</div>
+      </div>
+      <div class="cs-card militaristic">
+        <div class="cs-card-name">&#127464;&#127469; 迦太基 Carthage</div>
+        <div class="cs-card-bonus">你的军营区域获得额外一个大军事家点数。同时军营建筑提供 +1 贸易路线容量。</div>
+        <div class="cs-card-suzerain">宗主奖励：军营 +大将军点/贸易容量</div>
+      </div>
+    </div>
+
+    <!-- Religious City-States -->
+    <h2>&#128591; 宗教城邦 Religious <span class="cs-type-badge badge-religious">RELIGIOUS</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/圣地 +2 信仰产出</p>
+    <div class="cs-grid">
+      <div class="cs-card religious">
+        <div class="cs-card-name">&#127483;&#127462; 梵蒂冈城 Vatican City</div>
+        <div class="cs-card-bonus">当你激活一位伟人时，所有你宗教的城市获得 +10 旅游（持续10回合）。宗教+旅游联动。</div>
+        <div class="cs-card-suzerain">宗主奖励：伟人激活产旅游</div>
+      </div>
+      <div class="cs-card religious">
+        <div class="cs-card-name">&#127462;&#127474; 叶里温 Yerevan</div>
+        <div class="cs-card-bonus">购买使徒时可以选择其晋升能力（而非随机）。精准打造理想传教团队。</div>
+        <div class="cs-card-suzerain">宗主奖励：使徒晋升可选择</div>
+      </div>
+      <div class="cs-card religious">
+        <div class="cs-card-name">&#127473;&#127472; 康提 Kandy</div>
+        <div class="cs-card-bonus">每次发现自然奇观时获得一件圣遗物。早期探索产信仰/旅游。</div>
+        <div class="cs-card-suzerain">宗主奖励：发现自然奇观获圣遗物</div>
+      </div>
+      <div class="cs-card religious">
+        <div class="cs-card-name">&#127468;&#127466; 拉帕努伊 La Venta</div>
+        <div class="cs-card-bonus">可以用建造者建造巨石人像改良（+2 信仰，+1 文化）。无需建圣地即可产信仰。</div>
+        <div class="cs-card-suzerain">宗主奖励：建造者建巨石人像</div>
+      </div>
+    </div>
+
+    <!-- Trade City-States -->
+    <h2>&#128176; 商业城邦 Trade <span class="cs-type-badge badge-trade">TRADE</span></h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">基础加成：首都/商业中心 +2 金币产出</p>
+    <div class="cs-grid">
+      <div class="cs-card trade">
+        <div class="cs-card-name">&#127481;&#127487; 桑给巴尔 Zanzibar</div>
+        <div class="cs-card-bonus">提供2种独特的奢侈品资源（丁香和肉桂），每种提供 +6 宜居度。无法用其他方式获取。</div>
+        <div class="cs-card-suzerain">宗主奖励：2种独特奢侈品 (+6宜居度)</div>
+      </div>
+      <div class="cs-card trade">
+        <div class="cs-card-name">&#127476;&#127474; 马斯喀特 Muscat</div>
+        <div class="cs-card-bonus">你的贸易路线到达城邦时获得额外 +1 宜居度。城邦贸易越多越快乐。</div>
+        <div class="cs-card-suzerain">宗主奖励：城邦贸易路线 +宜居度</div>
+      </div>
+      <div class="cs-card trade">
+        <div class="cs-card-name">&#127477;&#127472; 洪扎 Hunza</div>
+        <div class="cs-card-bonus">你的贸易路线经过山脉格位时获得额外 +1 金币（每经过一格山脉）。丝绸之路。</div>
+        <div class="cs-card-suzerain">宗主奖励：贸易路线经山脉 +金币</div>
+      </div>
+      <div class="cs-card trade">
+        <div class="cs-card-name">&#127463;&#127475; 文莱 Bandar Brunei</div>
+        <div class="cs-card-bonus">你的港口区域获得额外 +2 金币相邻加成。同时海上贸易路线 +2 金币。</div>
+        <div class="cs-card-suzerain">宗主奖励：港口 +2 金币/海贸 +2</div>
+      </div>
+    </div>
+
+    <!-- Strategy Tips by Victory Type -->
+    <h2>&#128161; 城邦策略指南 Strategy by Victory Type</h2>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h4>&#128640; 科技胜利</h4>
+        <p>优先争夺 <strong>日内瓦</strong>（+15%科技）和 <strong>博洛尼亚</strong>（伟人加速）。哈图沙提供缺失战略资源用于太空项目。6使节到科学城邦的学院加成极为可观。</p>
+      </div>
+      <div class="strategy-card">
+        <h4>&#127912; 文化胜利</h4>
+        <p><strong>梵蒂冈城</strong>的伟人产旅游效果强力。<strong>南马都尔</strong>适合沿海文明加速文化。<strong>布宜诺斯艾利斯</strong>让加成资源产宜居度，间接提升旅游。</p>
+      </div>
+      <div class="strategy-card">
+        <h4>&#9876; 征服胜利</h4>
+        <p><strong>喀布尔</strong> +50%经验加速精英升级。<strong>阿卡德</strong>让近战单位攻城更猛。可征兵（Levy）城邦军队作为前线炮灰，节省自身产能。</p>
+      </div>
+      <div class="strategy-card">
+        <h4>&#128591; 宗教胜利</h4>
+        <p><strong>叶里温</strong>让你精选使徒晋升（翻译者/辩论家）。<strong>瓦莱塔</strong>用信仰购买城防保护圣城。宗教城邦6使节让圣地建筑每栋 +2 信仰。</p>
+      </div>
+      <div class="strategy-card">
+        <h4>&#127760; 外交胜利</h4>
+        <p>成为多个城邦宗主国本身就提供外交好感。<strong>匈牙利</strong>文明能力让城邦征兵翻倍，是城邦玩法的天选文明。政策卡"外交联盟"提供额外使节。</p>
+      </div>
+      <div class="strategy-card">
+        <h4>&#128176; 经济管理</h4>
+        <p><strong>桑给巴尔</strong>的独特奢侈品解决前期宜居度。商业城邦6使节让每栋商业建筑 +2 金币，极大增加收入。用多余金币购买建筑或军事单位。</p>
+      </div>
+    </div>
+
+    <!-- Key Policies -->
+    <h2>&#128220; 相关政策卡 Key Policies</h2>
+    <table class="envoy-table">
+      <thead>
+        <tr>
+          <th>政策卡</th>
+          <th>类型</th>
+          <th>效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="envoy-count">外交联盟 Diplomatic League</td>
+          <td>外交</td>
+          <td>首次派遣使节到城邦时额外派遣1名</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">变色龙 Charismatic Leader</td>
+          <td>外交</td>
+          <td>对每个你是宗主国的城邦 +2 影响力/回合</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">贸易协定 Trade Confederation</td>
+          <td>经济</td>
+          <td>通往城邦的贸易路线 +1 金币 +1 文化</td>
+        </tr>
+        <tr>
+          <td class="envoy-count">压力对策 Containment</td>
+          <td>外交</td>
+          <td>每次其他文明向你的宗主城邦派遣使节时你也获得1使节</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-box-title">&#9888; 城邦互动注意事项</div>
+      <p><strong>征服城邦:</strong> 攻占城邦会导致所有其他城邦 -5 外交好感，且该城邦永久消失。三思而后行。</p>
+      <p><strong>使节被驱逐:</strong> 其他文明的间谍可以在城邦执行"影响城邦选举"任务，移除你的使节。用反间谍保护关键城邦。</p>
+      <p><strong>Levy 征兵:</strong> 征召城邦军队花费金币，单位30回合后返回城邦。适合突然袭击而非长期战争。</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

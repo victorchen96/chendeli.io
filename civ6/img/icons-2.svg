@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+<!-- Maori: Koru spiral -->
+<symbol id="civ-maori" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a4a2a"/>
+  <path d="M32 20 C40 20 44 26 44 32 C44 38 40 42 34 42 C28 42 26 38 26 34 C26 30 28 28 32 28" fill="none" stroke="#e8e6e3" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="24" r="3" fill="#e8e6e3"/>
+  <path d="M20 44 L24 48 M22 42 L26 46 M18 46 L22 50" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Mapuche: Cultrún drum -->
+<symbol id="civ-mapuche" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#3d2b1f"/>
+  <circle cx="32" cy="32" r="16" fill="none" stroke="#c9a227" stroke-width="3"/>
+  <line x1="32" y1="16" x2="32" y2="48" stroke="#c9a227" stroke-width="2"/>
+  <line x1="16" y1="32" x2="48" y2="32" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="24" cy="24" r="4" fill="#4a90d9"/>
+  <circle cx="40" cy="24" r="4" fill="#c9a227"/>
+  <circle cx="24" cy="40" r="4" fill="#c41e3a"/>
+  <circle cx="40" cy="40" r="4" fill="#006b3f"/>
+</symbol>
+
+<!-- Mongolia: Soyombo-style -->
+<symbol id="civ-mongolia" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <rect x="26" y="14" width="12" height="36" rx="2" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="22" r="4" fill="#c9a227"/>
+  <path d="M26 30 L38 30 M26 36 L38 36" stroke="#c9a227" stroke-width="2"/>
+  <polygon points="32,40 28,46 36,46" fill="#c9a227"/>
+</symbol>
+
+<!-- Netherlands: Tulip/Windmill -->
+<symbol id="civ-netherlands" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#ff6600"/>
+  <rect x="30" y="28" width="4" height="22" fill="#e8e6e3"/>
+  <path d="M32 28 L20 18 L32 22 Z" fill="#e8e6e3"/>
+  <path d="M32 28 L44 18 L32 22 Z" fill="#e8e6e3"/>
+  <path d="M32 28 L20 38 L32 34 Z" fill="#e8e6e3"/>
+  <path d="M32 28 L44 38 L32 34 Z" fill="#e8e6e3"/>
+  <circle cx="32" cy="28" r="3" fill="#c9a227"/>
+</symbol>
+
+<!-- Norway: Viking Ship -->
+<symbol id="civ-norway" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <path d="M14 38 Q32 44 50 38 Q48 32 32 30 Q16 32 14 38 Z" fill="#8b5e3c"/>
+  <path d="M14 38 Q12 36 16 34 Q32 28 48 34 Q52 36 50 38" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+  <rect x="31" y="18" width="2" height="20" fill="#8b5e3c"/>
+  <circle cx="32" cy="16" r="3" fill="#c9a227"/>
+  <path d="M10 38 Q8 34 12 36 M54 38 Q56 34 52 36" stroke="#c9a227" stroke-width="2" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<!-- Ottoman: Crescent and Star -->
+<symbol id="civ-ottoman" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#c41e3a"/>
+  <circle cx="28" cy="32" r="12" fill="#c41e3a"/>
+  <circle cx="30" cy="32" r="12" fill="none" stroke="#e8e6e3" stroke-width="0"/>
+  <path d="M24 20 A14 14 0 1 0 24 44 A11 11 0 1 1 24 20" fill="#e8e6e3"/>
+  <polygon points="44,28 46,32 50,32 47,35 48,39 44,37 40,39 41,35 38,32 42,32" fill="#e8e6e3"/>
+</symbol>
+
+<!-- Persia: Faravahar -->
+<symbol id="civ-persia" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <circle cx="32" cy="26" r="6" fill="#c9a227"/>
+  <path d="M20 32 Q26 28 32 32 Q38 28 44 32" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+  <path d="M18 28 Q14 26 12 30 M46 28 Q50 26 52 30" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round"/>
+  <path d="M28 32 L28 44 M36 32 L36 44" stroke="#c9a227" stroke-width="2"/>
+  <path d="M24 44 L40 44" stroke="#c9a227" stroke-width="2.5"/>
+</symbol>
+
+<!-- Phoenicia: Ship/Bireme -->
+<symbol id="civ-phoenicia" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <path d="M12 36 Q32 42 52 36 L48 32 Q32 28 16 32 Z" fill="#c9a227"/>
+  <rect x="30" y="18" width="4" height="18" fill="#c9a227"/>
+  <polygon points="34,18 34,30 46,30" fill="#e8e6e3" opacity="0.8"/>
+  <path d="M10 40 L54 40" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Poland: White Eagle -->
+<symbol id="civ-poland" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#c41e3a"/>
+  <path d="M32 16 L28 22 L20 20 L24 28 L16 32 L24 34 L22 42 L28 38 L32 46 L36 38 L42 42 L40 34 L48 32 L40 28 L44 20 L36 22 Z" fill="#e8e6e3"/>
+  <circle cx="32" cy="30" r="4" fill="#c9a227"/>
+</symbol>
+
+<!-- Rome: SPQR Eagle -->
+<symbol id="civ-rome" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <path d="M32 14 L28 20 L20 18 L24 26 L16 30 L24 32 L22 40 L28 36 L32 44 L36 36 L42 40 L40 32 L48 30 L40 26 L44 18 L36 20 Z" fill="#c9a227"/>
+  <rect x="30" y="44" width="4" height="8" fill="#c9a227"/>
+  <rect x="26" y="48" width="12" height="3" fill="#c9a227"/>
+</symbol>
+
+<!-- Russia: Double Eagle -->
+<symbol id="civ-russia" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <path d="M24 18 L20 24 L16 22 L18 28 L12 30 L18 32 L16 38 L22 36 L24 42" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <path d="M40 18 L44 24 L48 22 L46 28 L52 30 L46 32 L48 38 L42 36 L40 42" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <rect x="28" y="20" width="8" height="24" rx="2" fill="#c9a227"/>
+  <circle cx="32" cy="26" r="4" fill="#c41e3a"/>
+  <rect x="30" y="44" width="4" height="6" fill="#c9a227"/>
+</symbol>
+
+<!-- Scotland: Thistle -->
+<symbol id="civ-scotland" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <rect x="30" y="34" width="4" height="16" fill="#006b3f"/>
+  <path d="M26 36 L30 34 M38 36 L34 34" stroke="#006b3f" stroke-width="2"/>
+  <circle cx="32" cy="26" r="10" fill="#8b3a8b"/>
+  <path d="M32 16 L34 20 L32 18 L30 20 Z" fill="#8b3a8b"/>
+  <path d="M22 26 L26 28 L24 26 L26 24 Z" fill="#8b3a8b"/>
+  <path d="M42 26 L38 28 L40 26 L38 24 Z" fill="#8b3a8b"/>
+  <circle cx="32" cy="26" r="4" fill="#c9a227"/>
+</symbol>
+
+<!-- Spain: Castile Lion -->
+<symbol id="civ-spain" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#c41e3a"/>
+  <rect x="22" y="18" width="20" height="28" rx="3" fill="#c9a227"/>
+  <rect x="24" y="20" width="7" height="12" fill="#c41e3a"/>
+  <rect x="33" y="20" width="7" height="12" fill="#e8e6e3"/>
+  <rect x="24" y="34" width="7" height="10" fill="#e8e6e3"/>
+  <rect x="33" y="34" width="7" height="10" fill="#c41e3a"/>
+</symbol>
+
+<!-- Sumeria: Zigzag/Ziggurat -->
+<symbol id="civ-sumeria" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#3d5c2e"/>
+  <polygon points="16,46 48,46 44,38 20,38" fill="#c9a227"/>
+  <polygon points="20,38 44,38 40,30 24,30" fill="#e6c545"/>
+  <polygon points="24,30 40,30 36,22 28,22" fill="#c9a227"/>
+  <polygon points="28,22 36,22 34,16 30,16" fill="#e6c545"/>
+</symbol>
+
+<!-- Vietnam: Bamboo/Star -->
+<symbol id="civ-vietnam" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#c41e3a"/>
+  <polygon points="32,14 36,26 48,26 38,34 42,46 32,38 22,46 26,34 16,26 28,26" fill="#c9a227"/>
+</symbol>
+
+<!-- Zulu: Shield -->
+<symbol id="civ-zulu" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a2a2a"/>
+  <ellipse cx="32" cy="32" rx="12" ry="18" fill="#e8e6e3"/>
+  <ellipse cx="32" cy="32" rx="12" ry="18" fill="none" stroke="#3d2b1f" stroke-width="2"/>
+  <line x1="32" y1="14" x2="32" y2="50" stroke="#3d2b1f" stroke-width="3"/>
+  <rect x="30" y="10" width="4" height="44" fill="none" stroke="#c9a227" stroke-width="1"/>
+  <path d="M44 28 L52 20 M44 36 L52 44" stroke="#8b5e3c" stroke-width="2.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Greece Gorgo: Spartan Lambda -->
+<symbol id="civ-greece-gorgo" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <path d="M24 46 L32 14 L40 46 L36 46 L32 28 L28 46 Z" fill="#c9a227" stroke="#e6c545" stroke-width="1"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+</svg>

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+<!-- Qin Shi Huang: Crown + dragon robe silhouette -->
+<symbol id="leader-qin" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#8b0000"/>
+  <circle cx="32" cy="24" r="8" fill="#e8e6e3"/>
+  <path d="M24 32 Q32 36 40 32 L42 48 L22 48 Z" fill="#c9a227"/>
+  <path d="M26 12 L28 16 L30 12 L32 16 L34 12 L36 16 L38 12" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <rect x="26" y="16" width="12" height="4" fill="#c9a227"/>
+</symbol>
+
+<!-- Cleopatra: Snake headdress -->
+<symbol id="leader-cleopatra" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a4a6b"/>
+  <circle cx="32" cy="26" r="8" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34 L42 48 L22 48 Z" fill="#c9a227"/>
+  <path d="M28 18 L32 10 L36 18" fill="#c9a227"/>
+  <path d="M30 10 Q32 6 34 10" fill="none" stroke="#e6c545" stroke-width="1.5"/>
+  <path d="M24 22 L22 18 M40 22 L42 18" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Gandhi: Round glasses + bald silhouette -->
+<symbol id="leader-gandhi" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#ff9933"/>
+  <circle cx="32" cy="26" r="9" fill="#e8e6e3"/>
+  <circle cx="28" cy="25" r="3" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="36" cy="25" r="3" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+  <line x1="31" y1="25" x2="33" y2="25" stroke="#2a2a2a" stroke-width="1"/>
+  <path d="M24 34 L24 48 L40 48 L40 34" fill="#e8e6e3"/>
+  <path d="M28 34 L28 48 M36 34 L36 48" stroke="#ddd" stroke-width="0.5"/>
+</symbol>
+
+<!-- Alexander: Helmet with plume -->
+<symbol id="leader-alexander" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <circle cx="32" cy="28" r="8" fill="#e8e6e3"/>
+  <path d="M24 36 Q32 40 40 36 L44 48 L20 48 Z" fill="#c9a227"/>
+  <path d="M24 24 Q32 16 40 24" fill="#c9a227"/>
+  <path d="M32 14 Q34 10 32 6" fill="none" stroke="#c41e3a" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="24" y="24" width="16" height="3" fill="#c9a227"/>
+</symbol>
+
+<!-- Genghis Khan: Fur hat + beard -->
+<symbol id="leader-genghis" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <circle cx="32" cy="28" r="8" fill="#e8e6e3"/>
+  <path d="M24 36 Q32 40 40 36 L42 48 L22 48 Z" fill="#4a3728"/>
+  <path d="M22 22 Q32 14 42 22 L42 26 L22 26 Z" fill="#3d2b1f"/>
+  <path d="M28 32 Q32 36 36 32" fill="none" stroke="#4a3728" stroke-width="1.5"/>
+  <circle cx="32" cy="18" r="2" fill="#c9a227"/>
+</symbol>
+
+<!-- Hojo Tokimune: Samurai helmet -->
+<symbol id="leader-tokimune" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#e8e6e3"/>
+  <circle cx="32" cy="28" r="7" fill="#e8e6e3"/>
+  <path d="M24 36 Q32 40 40 36 L42 48 L22 48 Z" fill="#2a2a2a"/>
+  <path d="M22 24 L32 14 L42 24 L40 26 L24 26 Z" fill="#2a2a2a"/>
+  <path d="M30 14 L32 8 L34 14" fill="#c9a227"/>
+  <path d="M22 24 L18 26 M42 24 L46 26" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Trajan: Laurel wreath -->
+<symbol id="leader-trajan" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#4a1a6b"/>
+  <circle cx="32" cy="26" r="8" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34 L42 48 L22 48 Z" fill="#c41e3a"/>
+  <path d="M24 20 Q28 14 32 14 Q36 14 40 20" fill="none" stroke="#006b3f" stroke-width="3"/>
+  <path d="M24 20 Q22 22 24 24 M40 20 Q42 22 40 24" fill="none" stroke="#006b3f" stroke-width="2"/>
+</symbol>
+
+<!-- Victoria: Crown + Victorian collar -->
+<symbol id="leader-victoria" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <circle cx="32" cy="26" r="8" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34 L42 48 L22 48 Z" fill="#2a2a2a"/>
+  <path d="M26 16 L28 20 L30 16 L32 20 L34 16 L36 20 L38 16" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <circle cx="32" cy="14" r="2" fill="#c9a227"/>
+  <path d="M26 34 Q32 30 38 34" fill="none" stroke="#e8e6e3" stroke-width="2"/>
+</symbol>
+
+<!-- Frederick Barbarossa: Red beard + crown -->
+<symbol id="leader-barbarossa" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a2a2a"/>
+  <circle cx="32" cy="26" r="8" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34 L42 48 L22 48 Z" fill="#4a3728"/>
+  <path d="M26 30 Q32 38 38 30" fill="#c41e3a"/>
+  <rect x="24" y="16" width="16" height="5" rx="2" fill="#c9a227"/>
+  <path d="M28 16 L28 14 M32 16 L32 12 M36 16 L36 14" stroke="#c9a227" stroke-width="2"/>
+</symbol>
+
+<!-- Catherine de Medici: Ruff collar + veil -->
+<symbol id="leader-catherine" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <circle cx="32" cy="24" r="7" fill="#e8e6e3"/>
+  <path d="M22 34 Q32 30 42 34 Q42 40 32 42 Q22 40 22 34 Z" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34" fill="none" stroke="#2a2a2a" stroke-width="0.5"/>
+  <path d="M24 36 Q32 40 40 36" fill="none" stroke="#2a2a2a" stroke-width="0.5"/>
+  <path d="M26 42 L26 48 L38 48 L38 42" fill="#2a2a2a"/>
+  <path d="M28 16 Q32 14 36 16" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+</symbol>
+
+<!-- Pericles: Greek helmet crest -->
+<symbol id="leader-pericles" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#2a5a82"/>
+  <circle cx="32" cy="28" r="8" fill="#e8e6e3"/>
+  <path d="M24 36 Q32 40 40 36 L42 48 L22 48 Z" fill="#2a5a82"/>
+  <path d="M24 24 Q24 16 32 16 Q40 16 40 24" fill="#c9a227"/>
+  <path d="M32 16 L32 8" stroke="#c41e3a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M30 10 Q32 6 34 10" fill="none" stroke="#c41e3a" stroke-width="2"/>
+</symbol>
+
+<!-- Theodore Roosevelt: Glasses + mustache -->
+<symbol id="leader-roosevelt" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1a3a6b"/>
+  <circle cx="32" cy="26" r="8" fill="#e8e6e3"/>
+  <path d="M24 34 Q32 38 40 34 L42 48 L22 48 Z" fill="#2a2a2a"/>
+  <circle cx="29" cy="25" r="3" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="35" cy="25" r="3" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+  <path d="M28 30 Q32 32 36 30" fill="#4a3728"/>
+  <rect x="28" y="16" width="8" height="4" rx="2" fill="#4a3728"/>
+</symbol>
+
+</svg>

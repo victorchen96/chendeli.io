@@ -1,0 +1,386 @@
+{
+  "session_id": "civrealm_test_20260526_212831",
+  "config": {
+    "num_turns": 10,
+    "seed": 42,
+    "use_api": true,
+    "model": "deepseek-v4-flash"
+  },
+  "summary": {
+    "turns_played": 10,
+    "final_score": 14,
+    "total_reward": 22.0,
+    "era_reached": "ancient",
+    "cities_built": 1,
+    "units_count": 3,
+    "techs_researched": 2,
+    "valid_action_rate": 1.0,
+    "avg_reward_per_turn": 2.2,
+    "total_time_seconds": 114.76102685928345
+  },
+  "agent_stats": {
+    "turns_played": 10,
+    "total_api_calls": 10,
+    "total_tokens_used": 16487,
+    "avg_reward_per_turn": 2.2,
+    "avg_valid_action_rate": 1.0,
+    "avg_response_time_s": 11.475740051269531,
+    "total_reward": 22.0
+  },
+  "turn_logs": [
+    {
+      "turn": 1,
+      "observation": "=== GAME STATE (Turn 0, Ancient Era) ===\nCivilization: China | Score: 0\nGold: 80 (+5/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: None (0/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 1) at (5,2)\n      Yields: F:5 P:4 G:3 S:3 C:2\n      Building: Nothing | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (6,2)\n  [1] Warrior HP:100 at (5,3)\n  [2] Builder HP:100 at (5",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 1 complete. Score: 1"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 1.0,
+      "game_score": 1,
+      "elapsed_seconds": 12.776931047439575,
+      "state_snapshot": {
+        "gold": 83,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 2,
+      "observation": "=== GAME STATE (Turn 1, Ancient Era) ===\nCivilization: China | Score: 1\nGold: 83 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: None (0/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 1) at (5,2)\n      Yields: F:5 P:4 G:3 S:3 C:2\n      Building: Nothing | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (6,2)\n  [1] Warrior HP:100 at (5,3)\n  [2] Builder HP:100 at (5",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 2 complete. Score: 2"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 2.0,
+      "game_score": 2,
+      "elapsed_seconds": 12.591804504394531,
+      "state_snapshot": {
+        "gold": 86,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 3,
+      "observation": "=== GAME STATE (Turn 2, Ancient Era) ===\nCivilization: China | Score: 2\nGold: 86 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: None (0/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 1) at (5,2)\n      Yields: F:5 P:4 G:3 S:3 C:2\n      Building: Nothing | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (6,2)\n  [1] Warrior HP:100 at (5,3)\n  [2] Builder HP:100 at (5",
+      "reasoning": "Research Writing to unlock Libraries for science boost, and immediately start building a Library in Xi'an to accelerate science. Move warriors to explore adjacent tiles for potential resources or strategic positioning.",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "move 0 0 1",
+        "move 1 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an now building: Library"
+        },
+        {
+          "action": "move 0 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (6, 3)"
+        },
+        {
+          "action": "move 1 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (5, 4)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 3 complete. Score: 5"
+        }
+      ],
+      "turn_reward": 6.0,
+      "cumulative_reward": 8.0,
+      "game_score": 5,
+      "elapsed_seconds": 6.564460515975952,
+      "state_snapshot": {
+        "gold": 89,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 4,
+      "observation": "=== GAME STATE (Turn 3, Ancient Era) ===\nCivilization: China | Score: 5\nGold: 89 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (3/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 2) at (5,2)\n      Yields: F:6 P:5 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (6,3)\n  [1] Warrior HP:100 at (5,4)\n  [2] Builder HP:100 at",
+      "reasoning": "Continue researching Writing for science and building Library in Xi'an for culture/science boost. Move warriors to explore and scout nearby tiles, and move builder to a new tile to prepare for future improvements.",
+      "actions": [
+        "research Writing",
+        "build 0 Library",
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 0 1",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "research Writing",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Now researching: Writing"
+        },
+        {
+          "action": "build 0 Library",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Xi'an now building: Library"
+        },
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (7, 3)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (6, 4)"
+        },
+        {
+          "action": "move 2 0 1",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder moved to (5, 3)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 4 complete. Score: 6"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 12.5,
+      "game_score": 6,
+      "elapsed_seconds": 7.03415846824646,
+      "state_snapshot": {
+        "gold": 92,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 5,
+      "observation": "=== GAME STATE (Turn 4, Ancient Era) ===\nCivilization: China | Score: 6\nGold: 92 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (6/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 2) at (5,2)\n      Yields: F:6 P:5 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (7,3)\n  [1] Warrior HP:100 at (6,4)\n  [2] Builder HP:100 at",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 5 complete. Score: 7"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 13.5,
+      "game_score": 7,
+      "elapsed_seconds": 13.28556489944458,
+      "state_snapshot": {
+        "gold": 95,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 6,
+      "observation": "=== GAME STATE (Turn 5, Ancient Era) ===\nCivilization: China | Score: 7\nGold: 95 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (9/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 2) at (5,2)\n      Yields: F:6 P:5 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (7,3)\n  [1] Warrior HP:100 at (6,4)\n  [2] Builder HP:100 at",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 6 complete. Score: 8"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 14.5,
+      "game_score": 8,
+      "elapsed_seconds": 12.826813459396362,
+      "state_snapshot": {
+        "gold": 98,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 7,
+      "observation": "=== GAME STATE (Turn 6, Ancient Era) ===\nCivilization: China | Score: 8\nGold: 98 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (12/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 2) at (5,2)\n      Yields: F:6 P:5 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (7,3)\n  [1] Warrior HP:100 at (6,4)\n  [2] Builder HP:100 a",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 7 complete. Score: 9"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 15.5,
+      "game_score": 9,
+      "elapsed_seconds": 12.74553632736206,
+      "state_snapshot": {
+        "gold": 101,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 8,
+      "observation": "=== GAME STATE (Turn 7, Ancient Era) ===\nCivilization: China | Score: 9\nGold: 101 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (15/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 2) at (5,2)\n      Yields: F:6 P:5 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (7,3)\n  [1] Warrior HP:100 at (6,4)\n  [2] Builder HP:100 ",
+      "reasoning": "Continue building Library in Xi'an for science. Move warriors to scout nearby tiles and Builder towards a hill for future mine. Keep researching Writing.",
+      "actions": [
+        "move 0 1 0",
+        "move 1 1 0",
+        "move 2 1 0",
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "move 0 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (8, 3)"
+        },
+        {
+          "action": "move 1 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Warrior moved to (7, 4)"
+        },
+        {
+          "action": "move 2 1 0",
+          "reward": 0.5,
+          "valid": true,
+          "message": "Builder moved to (6, 3)"
+        },
+        {
+          "action": "end_turn",
+          "reward": 3.0,
+          "valid": true,
+          "message": "Turn 8 complete. Score: 12"
+        }
+      ],
+      "turn_reward": 4.5,
+      "cumulative_reward": 20.0,
+      "game_score": 12,
+      "elapsed_seconds": 11.242465257644653,
+      "state_snapshot": {
+        "gold": 104,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 9,
+      "observation": "=== GAME STATE (Turn 8, Ancient Era) ===\nCivilization: China | Score: 12\nGold: 104 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (18/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 3) at (5,2)\n      Yields: F:7 P:6 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (8,3)\n  [1] Warrior HP:100 at (7,4)\n  [2] Builder HP:100",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 9 complete. Score: 13"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 21.0,
+      "game_score": 13,
+      "elapsed_seconds": 12.931308031082153,
+      "state_snapshot": {
+        "gold": 107,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    },
+    {
+      "turn": 10,
+      "observation": "=== GAME STATE (Turn 9, Ancient Era) ===\nCivilization: China | Score: 13\nGold: 107 (+3/turn)\nScience: +3/turn | Culture: +2/turn\n\n--- Research ---\nCurrent: Writing (21/90)\nAvailable: AnimalHusbandry, Sailing, Archery, Writing, Engineering, Mathematics\nResearched: Mining, Pottery\n\n--- Cities (1) ---\n  [0] Xi'an (pop 3) at (5,2)\n      Yields: F:7 P:6 G:3 S:3 C:2\n      Building: Library | Built: None\n\n--- Units (3) ---\n  [0] Warrior HP:100 at (8,3)\n  [1] Warrior HP:100 at (7,4)\n  [2] Builder HP:100",
+      "reasoning": "",
+      "actions": [
+        "end_turn"
+      ],
+      "action_results": [
+        {
+          "action": "end_turn",
+          "reward": 1.0,
+          "valid": true,
+          "message": "Turn 10 complete. Score: 14"
+        }
+      ],
+      "turn_reward": 1.0,
+      "cumulative_reward": 22.0,
+      "game_score": 14,
+      "elapsed_seconds": 12.758358001708984,
+      "state_snapshot": {
+        "gold": 110,
+        "cities": 1,
+        "units": 3,
+        "techs": 2,
+        "era": "ancient"
+      }
+    }
+  ]
+}

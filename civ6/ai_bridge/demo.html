@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CivRealm AI Agent - Game Replay</title>
+<style>
+:root { --bg: #1a1a2e; --card: #16213e; --accent: #0f3460; --gold: #e94560; --text: #eaeaea; --dim: #a0a0a0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+.header { background: linear-gradient(135deg, #0f3460, #533483); padding: 2rem; text-align: center; border-bottom: 3px solid var(--gold); }
+.header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.header .subtitle { color: var(--dim); font-size: 0.95rem; }
+.stats-bar { display: flex; justify-content: center; gap: 2rem; padding: 1rem; background: var(--accent); flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat .value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+.stat .label { font-size: 0.75rem; color: var(--dim); text-transform: uppercase; }
+.controls { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1rem; background: var(--card); }
+.controls button { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; background: var(--accent); color: var(--text); transition: background 0.2s; }
+.controls button:hover { background: var(--gold); }
+.controls button.active { background: var(--gold); }
+#turn-slider { flex: 1; max-width: 400px; }
+.main { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; max-width: 1400px; margin: 0 auto; }
+@media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+.panel { background: var(--card); border-radius: 8px; padding: 1.2rem; border: 1px solid #2a2a4a; }
+.panel h3 { color: var(--gold); margin-bottom: 0.8rem; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.4rem; }
+.observation { font-family: 'Fira Code', monospace; font-size: 0.82rem; white-space: pre-wrap; line-height: 1.5; color: #b8d4e3; }
+.reasoning { font-style: italic; color: #ccc; padding: 0.5rem; background: rgba(233,69,96,0.1); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; }
+.actions-list { list-style: none; }
+.actions-list li { padding: 0.3rem 0.5rem; margin: 0.3rem 0; background: rgba(15,52,96,0.5); border-radius: 4px; font-family: monospace; font-size: 0.85rem; display: flex; justify-content: space-between; }
+.actions-list .reward { font-weight: bold; }
+.reward.positive { color: #4caf50; }
+.reward.negative { color: #f44336; }
+.reward.neutral { color: var(--dim); }
+.milestone { background: rgba(233,69,96,0.2); border: 1px solid var(--gold); border-radius: 4px; padding: 0.4rem 0.8rem; margin: 0.3rem 0; font-size: 0.85rem; }
+.timeline { padding: 1rem; max-width: 1400px; margin: 0 auto; }
+.timeline h3 { color: var(--gold); margin-bottom: 0.8rem; }
+.timeline-bar { display: flex; height: 30px; border-radius: 4px; overflow: hidden; background: var(--card); }
+.timeline-segment { height: 100%; cursor: pointer; transition: opacity 0.2s; position: relative; }
+.timeline-segment:hover { opacity: 0.8; }
+.timeline-segment.active { box-shadow: inset 0 0 0 2px white; }
+#loading { display: flex; align-items: center; justify-content: center; height: 60vh; font-size: 1.2rem; color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>CivRealm AI Agent - Game Replay</h1>
+  <p class="subtitle">DeepSeek V4 Flash | Simplified Civ Environment | Production Queue Fix Demo</p>
+</div>
+
+<div id="loading">Loading game data...</div>
+
+<div id="app" style="display:none">
+  <div class="stats-bar">
+    <div class="stat"><div class="value" id="s-score">0</div><div class="label">Score</div></div>
+    <div class="stat"><div class="value" id="s-cities">0</div><div class="label">Cities</div></div>
+    <div class="stat"><div class="value" id="s-techs">0</div><div class="label">Techs</div></div>
+    <div class="stat"><div class="value" id="s-era">Ancient</div><div class="label">Era</div></div>
+    <div class="stat"><div class="value" id="s-reward">0</div><div class="label">Total Reward</div></div>
+    <div class="stat"><div class="value" id="s-grade">-</div><div class="label">Grade</div></div>
+  </div>
+
+  <div class="controls">
+    <button id="btn-prev">&lt; Prev</button>
+    <button id="btn-play">Play</button>
+    <button id="btn-next">Next &gt;</button>
+    <input type="range" id="turn-slider" min="0" max="49" value="0">
+    <span id="turn-label">Turn 1/50</span>
+  </div>
+
+  <div class="main">
+    <div class="panel">
+      <h3>Game State (Observation)</h3>
+      <div class="observation" id="obs-text"></div>
+    </div>
+    <div class="panel">
+      <h3>LLM Reasoning</h3>
+      <div class="reasoning" id="reasoning-text"></div>
+      <h3 style="margin-top:1rem">Actions Executed</h3>
+      <ul class="actions-list" id="actions-list"></ul>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <h3>Milestones</h3>
+    <div id="milestones-list"></div>
+  </div>
+</div>
+
+<script>
+let gameData = null;
+let currentTurn = 0;
+let playing = false;
+let playInterval = null;
+
+// Try loading from file - fallback to embedded data
+async function loadData() {
+  // Try to load from relative path
+  const files = [
+    'data/civrealm_full_20260526_233721.json',
+    'data/civrealm_full_20260526_230939.json',
+    'data/civrealm_full_20260526_230213.json'
+  ];
+  for (const f of files) {
+    try {
+      const resp = await fetch(f);
+      if (resp.ok) { gameData = await resp.json(); return true; }
+    } catch(e) {}
+  }
+  // Fallback: check for inline data
+  const el = document.getElementById('game-data');
+  if (el) { gameData = JSON.parse(el.textContent); return true; }
+  return false;
+}
+
+function init() {
+  if (!gameData || !gameData.turn_logs) {
+    document.getElementById('loading').textContent = 'No game data found. Place a game JSON in data/ directory.';
+    return;
+  }
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+
+  const slider = document.getElementById('turn-slider');
+  slider.max = gameData.turn_logs.length - 1;
+  slider.addEventListener('input', () => { currentTurn = parseInt(slider.value); render(); });
+
+  document.getElementById('btn-prev').addEventListener('click', () => { if(currentTurn > 0) { currentTurn--; render(); } });
+  document.getElementById('btn-next').addEventListener('click', () => { if(currentTurn < gameData.turn_logs.length-1) { currentTurn++; render(); } });
+  document.getElementById('btn-play').addEventListener('click', togglePlay);
+
+  // Update final stats
+  if (gameData.assessment) {
+    document.getElementById('s-grade').textContent = gameData.assessment.grade;
+  }
+
+  // Render milestones
+  const ml = document.getElementById('milestones-list');
+  if (gameData.milestones) {
+    gameData.milestones.forEach(m => {
+      const div = document.createElement('div');
+      div.className = 'milestone';
+      const icon = m.type === 'city_founded' ? '🏙️' : m.type === 'tech_complete' ? '🔬' : '⭐';
+      div.textContent = `Turn ${m.turn}: ${icon} ${m.type.replace('_',' ')} - ${m.detail}`;
+      ml.appendChild(div);
+    });
+  }
+
+  render();
+}
+
+function render() {
+  const log = gameData.turn_logs[currentTurn];
+  if (!log) return;
+
+  document.getElementById('turn-slider').value = currentTurn;
+  document.getElementById('turn-label').textContent = `Turn ${log.turn}/${gameData.turn_logs.length}`;
+  document.getElementById('s-score').textContent = log.game_score || 0;
+  document.getElementById('s-reward').textContent = log.cumulative_reward?.toFixed(1) || '0';
+
+  // Find snapshot for current era/cities info
+  let era = 'Ancient', cities = 1, techs = 2;
+  if (gameData.snapshots) {
+    for (const snap of gameData.snapshots) {
+      if (snap.turn <= log.turn) { era = snap.era; cities = snap.cities; techs = snap.techs_count; }
+    }
+  }
+  document.getElementById('s-era').textContent = era.charAt(0).toUpperCase() + era.slice(1);
+  document.getElementById('s-cities').textContent = cities;
+  document.getElementById('s-techs').textContent = techs;
+
+  // Reasoning
+  document.getElementById('reasoning-text').textContent = log.reasoning || '(no reasoning)';
+
+  // Build observation from action results context
+  let obsLines = [];
+  obsLines.push(`Turn ${log.turn} | Score: ${log.game_score}`);
+  obsLines.push(`Cumulative Reward: ${log.cumulative_reward?.toFixed(1)}`);
+  obsLines.push(`Actions this turn: ${log.actions?.length || 0}`);
+  document.getElementById('obs-text').textContent = obsLines.join('\n');
+
+  // Actions
+  const al = document.getElementById('actions-list');
+  al.innerHTML = '';
+  if (log.action_results) {
+    log.action_results.forEach(ar => {
+      const li = document.createElement('li');
+      const rClass = ar.reward > 0 ? 'positive' : ar.reward < 0 ? 'negative' : 'neutral';
+      li.innerHTML = `<span>${ar.action}</span><span class="reward ${rClass}">${ar.reward > 0 ? '+' : ''}${ar.reward.toFixed(1)} ${ar.message || ''}</span>`;
+      al.appendChild(li);
+    });
+  }
+}
+
+function togglePlay() {
+  playing = !playing;
+  const btn = document.getElementById('btn-play');
+  if (playing) {
+    btn.textContent = 'Pause';
+    btn.classList.add('active');
+    playInterval = setInterval(() => {
+      if (currentTurn >= gameData.turn_logs.length - 1) { togglePlay(); return; }
+      currentTurn++;
+      render();
+    }, 1500);
+  } else {
+    btn.textContent = 'Play';
+    btn.classList.remove('active');
+    clearInterval(playInterval);
+  }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') { if(currentTurn > 0) { currentTurn--; render(); } }
+  if (e.key === 'ArrowRight') { if(currentTurn < gameData.turn_logs.length-1) { currentTurn++; render(); } }
+  if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+});
+
+loadData().then(init);
+</script>
+</body>
+</html>

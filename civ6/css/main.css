@@ -342,9 +342,29 @@ p {
 
 /* Unit/Building Card */
 .unit-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  align-items: flex-start;
   gap: 1rem;
+}
+
+.unit-card .unit-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.unit-card .unit-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--accent-gold-dark);
+  background: var(--bg-tertiary);
+}
+
+.unit-card .unit-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .unit-card .unit-info h4 {
@@ -575,6 +595,32 @@ p {
 
 .civ-grid-item .civ-grid-leader {
   font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Back nav button */
+.back-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+.back-nav-btn:hover {
+  color: var(--accent-gold);
+  background: var(--bg-tertiary);
+}
+.back-nav-btn kbd {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background: var(--bg-secondary);
   color: var(--text-muted);
 }
 
@@ -867,6 +913,80 @@ p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-light);
+}
+
+/* ============================================
+   Leader Tabs (Multi-leader per civilization)
+   ============================================ */
+
+.leader-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.leader-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.leader-tab img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+}
+
+.leader-tab:hover {
+  border-color: var(--accent-gold-dark);
+  background: var(--bg-card);
+}
+
+.leader-tab.active {
+  border-color: var(--accent-gold);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.2);
+}
+
+.leader-tab.active img {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 6px rgba(201, 162, 39, 0.4);
+}
+
+.leader-panel {
+  display: none;
+}
+
+.leader-panel.active {
+  display: block;
+}
+
+.leader-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.6rem;
+  margin-top: 0.5rem;
 }
 
 /* ============================================

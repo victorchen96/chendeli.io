@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>马其顿 Macedon BBG改动 - 文明6百科</title>
+  <link rel="stylesheet" href="../../../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../../../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../../../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../../../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../../../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../../../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../../hd/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="../index.html" class="top-nav-tab active"><span class="tab-icon">&#9878;</span> BBG</a>
+  <a href="../../../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128196; 导航</div>
+    <ul class="sidebar-nav">
+      <li><a href="../index.html"><span class="nav-icon">&#127968;</span> BBG 总览</a></li>
+      <li><a href="../mechanics.html"><span class="nav-icon">&#9881;</span> 机制改动</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9878; 当前文明</div>
+    <ul class="sidebar-nav">
+      <li><a href="macedon.html" class="active"><span class="nav-icon">&#127468;&#127479;</span> 马其顿 Macedon</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128279; 相关链接</div>
+    <ul class="sidebar-nav">
+      <li><a href="../../../civs/macedon.html"><span class="nav-icon">&#127760;</span> 原版页面</a></li>
+      <li><a href="../../hd/civs/macedon.html"><span class="nav-icon">&#127760;</span> 和而不同版</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <div class="civ-hero">
+      <div class="civ-portrait" style="font-size:3rem;">&#127468;&#127479;</div>
+      <div class="civ-overview">
+        <h1>马其顿 Macedon</h1>
+        <p class="civ-subtitle">BBG 平衡调整 — 微削</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#9878; BBG</span>
+          <span class="civ-meta-tag" style="color:#ef5350;">Tier: A→A-</span>
+          <span class="civ-meta-tag">&#128100; 亚历山大</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header mt-3"><h2>&#9878; BBG 改动详情</h2></div>
+    <div class="card ability-card">
+      <div class="ability-name">微削 (Tier A→A-)</div>
+      <div class="ability-desc">
+        <ul>
+          <li>希腊化：征服城市免费科技改为仅保留原有建筑（不再赠送研究）</li>
+          <li>枪骑兵：战斗力维持，但击杀回复从50%改为30%</li>
+          <li>典礼堂：大将军点+2（原+4，削弱永战大将军产出）</li>
+          <li>亚历山大：无厌战保持，但征服城市不再获得额外经验加成</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header mt-3"><h2>&#128279; 相关页面</h2></div>
+    <div class="civ-grid">
+      <a href="../../../civs/macedon.html" class="civ-grid-item">
+        <div class="civ-grid-icon">&#127468;&#127479;</div>
+        <div class="civ-grid-name">原版 马其顿 Macedon</div>
+        <div class="civ-grid-leader">查看原版数据</div>
+      </a>
+      <a href="../../hd/civs/macedon.html" class="civ-grid-item">
+        <div class="civ-grid-icon">&#127760;</div>
+        <div class="civ-grid-name">和而不同 马其顿 Macedon</div>
+        <div class="civ-grid-leader">查看 HD 重做</div>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../../js/nav.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
+</body>
+</html>

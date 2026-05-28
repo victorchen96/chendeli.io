@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBG 机制改动 - 文明6百科</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../hd/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="index.html" class="top-nav-tab active"><span class="tab-icon">&#9878;</span> BBG</a>
+  <a href="../../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128196; 总览</div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="nav-icon">&#127968;</span> BBG 总览</a></li>
+      <li><a href="mechanics.html" class="active"><span class="nav-icon">&#9881;</span> 机制改动</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; 机制分类</div>
+    <ul class="sidebar-nav">
+      <li><a href="#combat"><span class="nav-icon">&#9876;</span> 战斗系统</a></li>
+      <li><a href="#districts"><span class="nav-icon">&#127959;</span> 区域与建筑</a></li>
+      <li><a href="#great-people"><span class="nav-icon">&#128100;</span> 伟人系统</a></li>
+      <li><a href="#religion"><span class="nav-icon">&#9769;</span> 宗教</a></li>
+      <li><a href="#victory"><span class="nav-icon">&#127942;</span> 胜利条件</a></li>
+      <li><a href="#city-states"><span class="nav-icon">&#127983;</span> 城邦</a></li>
+      <li><a href="#misc"><span class="nav-icon">&#128295;</span> 其他</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <h1>&#9878; BBG — 机制改动总览</h1>
+    <p style="color:var(--text-secondary);margin-bottom:2rem;">BBG 的机制改动主要针对竞技平衡，减少滚雪球效应，增加策略多样性。以下按系统分类列出所有核心改动。</p>
+
+    <!-- Combat -->
+    <div id="combat" class="section-header"><h2>&#9876; 战斗系统</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>单位战斗力调整</h4>
+        <ul>
+          <li>战士: 20 (不变)，但升级路线改为战士→剑士→长剑士→步兵（移除持矛兵分支）</li>
+          <li>骑手: 44→42，骑士: 50→48（削弱前期骑兵rush）</li>
+          <li>弩手: 40远程/30近战 → 38远程/30近战</li>
+          <li>轰炸机: 75→70，战斗机对轰炸机拦截伤害+20%</li>
+        </ul>
+        <h4 style="margin-top:1rem;">战斗机制</h4>
+        <ul>
+          <li><strong>首攻优势移除:</strong> 攻击方不再获得随机+0~+3的首攻加成</li>
+          <li><strong>地形战斗:</strong> 丘陵防御+2（原+3），去除过强的龟缩防御</li>
+          <li><strong>城墙血量:</strong> 古代城墙 50→40，中世纪 100→80（鼓励进攻）</li>
+          <li><strong>攻城伤害:</strong> 投石车/弩炮对城墙伤害+25%</li>
+          <li><strong>围城机制:</strong> 3面封锁即触发围城效果（原需6面完全围城）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">单位维护费</h4>
+        <ul>
+          <li>远古/古典单位: 维护费不变</li>
+          <li>中世纪单位: +1 金币/回合</li>
+          <li>文艺复兴+: +2 金币/回合（限制科技领先方大量屯兵）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Districts -->
+    <div id="districts" class="section-header mt-3"><h2>&#127959; 区域与建筑</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>区域人口需求</h4>
+        <ul>
+          <li>保持原版每3人口1个区域</li>
+          <li>首个区域无人口要求（所有城市可立即建造1个区域）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">关键建筑调整</h4>
+        <ul>
+          <li><strong>书院(韩国):</strong> +2科技（原+4），每个邻接加成+0.5科技（原每个+1）</li>
+          <li><strong>工作坊:</strong> +3产能（原+2），工业区T2价值提升</li>
+          <li><strong>大学:</strong> +4科技（不变），+1大科学家点（原+0.5）</li>
+          <li><strong>银行:</strong> +5金币→+4金币，国际贸易路线经过+2金（新增）</li>
+          <li><strong>竞技场:</strong> 宜居度+2改为宜居度+1 + 文化+2</li>
+        </ul>
+        <h4 style="margin-top:1rem;">奇观调整</h4>
+        <ul>
+          <li><strong>巨像:</strong> 贸易路线金币+3→+2</li>
+          <li><strong>基尔瓦基斯瓦尼:</strong> 城邦宗主奖励+15%→+10%</li>
+          <li><strong>鲁尔谷:</strong> 产能加成从+30%改为+20%，影响范围扩大到6格内所有矿山</li>
+          <li><strong>大本钟:</strong> 移除（过于强势且缺乏反制手段）</li>
+          <li><strong>自由女神像:</strong> 外交支持改为+4/回合（原一次性获得4支持点）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Great People -->
+    <div id="great-people" class="section-header mt-3"><h2>&#128100; 伟人系统</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>伟人点获取</h4>
+        <ul>
+          <li>所有伟人点获取速度-15%（延缓伟人出生速度，增加竞争性）</li>
+          <li>信仰购买伟人费用+25%</li>
+          <li>通过项目获取伟人点的效率-20%</li>
+        </ul>
+        <h4 style="margin-top:1rem;">关键伟人调整</h4>
+        <ul>
+          <li><strong>大科学家-牛顿:</strong> 学院建筑+1科技（原+2）</li>
+          <li><strong>大工程师-居斯塔夫:</strong> 奇观加速300产能（原380）</li>
+          <li><strong>大商人-科尔伯特:</strong> +4金/回合改为+3金/回合</li>
+          <li><strong>大将军-汉尼拔:</strong> 移动力范围内单位+3战斗力（原+5）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Religion -->
+    <div id="religion" class="section-header mt-3"><h2>&#9769; 宗教</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>宗教胜利</h4>
+        <ul>
+          <li>宗教胜利需要将你的宗教传播到所有存活文明的<strong>75%城市</strong>（原为50%以上城市成为主流）</li>
+          <li>宗教胜利只在回合开始时检测，防止突然翻盘</li>
+        </ul>
+        <h4 style="margin-top:1rem;">宗教单位</h4>
+        <ul>
+          <li>传教士: 传播力120→100（需要更多传教士完成宗教胜利）</li>
+          <li>使徒: 基础战斗力110→100</li>
+          <li>审判官: 审判范围从1格改为必须在城市中心</li>
+          <li>宗教单位维护费: 每单位2信仰/回合（限制宗教spam）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">信条调整</h4>
+        <ul>
+          <li><strong>十字军:</strong> 神学战争胜利+10战斗力→+7战斗力</li>
+          <li><strong>朝圣:</strong> 每个异国城市信奉+2信仰→+1.5信仰</li>
+          <li><strong>耶稣会教育:</strong> 信仰购买学院/剧院广场建筑，费用+20%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Victory -->
+    <div id="victory" class="section-header mt-3"><h2>&#127942; 胜利条件</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>科技胜利</h4>
+        <ul>
+          <li>太空竞赛项目产能需求+20%（延缓科技胜利速度）</li>
+          <li>地球卫星：1500→1800 产能</li>
+          <li>登月任务：1800→2160 产能</li>
+          <li>火星殖民：各阶段+20%产能</li>
+        </ul>
+        <h4 style="margin-top:1rem;">文化胜利</h4>
+        <ul>
+          <li>国内旅游业绩要求：你的国内旅游值需至少为50（设置下限，防止0旅游快攻）</li>
+          <li>摇滚乐队：使用次数从4-8次改为固定5次</li>
+          <li>国家公园：产出旅游值-20%（削弱自然主义快攻）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">征服胜利</h4>
+        <ul>
+          <li>征服胜利条件不变：占领所有原始首都</li>
+          <li>战争厌倦增加50%（限制永久战争策略）</li>
+          <li>占领城市忠诚度惩罚+20%（需要更多精力维持占领）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">外交胜利</h4>
+        <ul>
+          <li>外交胜利所需分数：20→25（延长外交线路游戏时间）</li>
+          <li>世界议会投票间隔：30回合→25回合（更频繁的议会事件）</li>
+          <li>紧急事件触发条件放宽，增加外交戏剧性</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- City States -->
+    <div id="city-states" class="section-header mt-3"><h2>&#127983; 城邦</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>城邦宗主权</h4>
+        <ul>
+          <li>宗主国奖励：大部分宗主国奖励效果-25%（降低城邦对游戏的决定性影响）</li>
+          <li>使者获取：每20回合自动获取1使者改为每25回合</li>
+          <li>政策卡「外交联盟」：+2使者→+1使者</li>
+        </ul>
+        <h4 style="margin-top:1rem;">城邦军事</h4>
+        <ul>
+          <li>城邦单位战斗力：宗主国征召时+3战斗力（而非等级提升）</li>
+          <li>城邦防御：独立城邦城墙默认为古代城墙等级</li>
+          <li>征服城邦：释放城邦返还所有使者给原所有者</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Misc -->
+    <div id="misc" class="section-header mt-3"><h2>&#128295; 其他改动</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>开局规则</h4>
+        <ul>
+          <li>开拓者视野：开局显示周围4格地形（原为2格），减少开局运气因素</li>
+          <li>蛮族：蛮族侦察兵发现城市后10回合才出兵（原为立即），给予新手更多准备时间</li>
+          <li>自然奇观：产出统一提升+1（补偿占用格位的机会成本）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">政策卡</h4>
+        <ul>
+          <li><strong>神权政治(政策):</strong> 信仰购买单位战斗力+5→+3</li>
+          <li><strong>殖民主义:</strong> 定居者产能-50%→-40%</li>
+          <li><strong>新政:</strong> 每个城市+2宜居度→+1宜居度+2住房</li>
+          <li><strong>五年计划:</strong> +100%区域建造速度→+75%区域建造速度</li>
+        </ul>
+        <h4 style="margin-top:1rem;">总督</h4>
+        <ul>
+          <li>总督晋升点获取速度-20%（减缓总督power spike）</li>
+          <li>征服者（总督）：征服城市忠诚度加成从+8改为+5</li>
+          <li>平时（总督）：所有产出+10%→+8%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Credits -->
+    <div class="card" style="margin-top:2rem;">
+      <div class="card-content">
+        <p style="color:#888;font-size:0.9rem;">数据基于 BBG v6.5 版本。BBG 由国际竞技社区维护，具体数值随版本频繁调整，以 Steam Workshop 最新版为准。</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../js/nav.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
+</body>
+</html>

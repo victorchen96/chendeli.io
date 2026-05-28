@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>文明6百科 - Civilization VI Wiki</title>
   <link rel="stylesheet" href="css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
 </head>
 <body class="has-top-nav no-sidebar">
 
@@ -26,7 +28,8 @@
   <a href="civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
   <a href="mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
   <a href="guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
-  <a href="mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="mod/hd/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="mod/bbg/index.html" class="top-nav-tab"><span class="tab-icon">&#9878;</span> BBG</a>
   <a href="ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
 </nav>
 
@@ -73,11 +76,18 @@
         <div class="module-count">6 篇攻略指南</div>
       </a>
 
-      <a href="mod/index.html" class="module-card accent-purple">
-        <div class="module-icon">&#127912;</div>
-        <div class="module-title">Mod 专题</div>
-        <div class="module-desc">和而不同、BBG 等热门 Mod 的改动解析、文明重做详情</div>
-        <div class="module-count">和而不同 · BBG</div>
+      <a href="mod/hd/index.html" class="module-card accent-purple">
+        <div class="module-icon">&#127760;</div>
+        <div class="module-title">和而不同</div>
+        <div class="module-desc">大型全面重做模组 — 35 原版文明完整重做 + 19 新文明，东亚/东南亚历史核心</div>
+        <div class="module-count">54 文明 · 全面重做</div>
+      </a>
+
+      <a href="mod/bbg/index.html" class="module-card accent-green">
+        <div class="module-icon">&#9878;</div>
+        <div class="module-title">BBG</div>
+        <div class="module-desc">竞技平衡模组 — 针对性调整 20-30 原版文明 + 新增文明/领袖</div>
+        <div class="module-count">Better Balanced Game</div>
       </a>
 
       <a href="ai/index.html" class="module-card accent-red">
@@ -102,42 +112,42 @@
     </div>
     <div class="civ-grid">
       <a href="civs/china.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127464;&#127475;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/qin.png" alt="秦始皇"></div>
         <div class="civ-grid-name">中国 China</div>
         <div class="civ-grid-leader">秦始皇 · 奇观加速</div>
       </a>
       <a href="civs/rome.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127470;&#127481;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/trajan.png" alt="Trajan"></div>
         <div class="civ-grid-name">罗马 Rome</div>
         <div class="civ-grid-leader">Trajan · 全面发展</div>
       </a>
       <a href="civs/korea.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127472;&#127479;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/seondeok.png" alt="善德女王"></div>
         <div class="civ-grid-name">韩国 Korea</div>
         <div class="civ-grid-leader">善德女王 · 科技胜利</div>
       </a>
       <a href="civs/russia.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127479;&#127482;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/peter.png" alt="彼得大帝"></div>
         <div class="civ-grid-name">俄罗斯 Russia</div>
         <div class="civ-grid-leader">彼得大帝 · 宗教/文化</div>
       </a>
       <a href="civs/japan.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127471;&#127477;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/hojo.png" alt="北条时宗"></div>
         <div class="civ-grid-name">日本 Japan</div>
         <div class="civ-grid-leader">北条时宗 · 区域加成</div>
       </a>
       <a href="civs/germany.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127465;&#127466;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/barbarossa.png" alt="红胡子"></div>
         <div class="civ-grid-name">德国 Germany</div>
         <div class="civ-grid-leader">红胡子 · 工业霸主</div>
       </a>
       <a href="civs/mongolia.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127474;&#127475;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/genghis.png" alt="成吉思汗"></div>
         <div class="civ-grid-name">蒙古 Mongolia</div>
         <div class="civ-grid-leader">成吉思汗 · 骑兵征服</div>
       </a>
       <a href="civs/greece.html" class="civ-grid-item">
-        <div class="civ-grid-icon">&#127468;&#127479;</div>
+        <div class="civ-grid-icon"><img src="img/leaders/pericles.png" alt="伯里克利"></div>
         <div class="civ-grid-name">希腊 Greece</div>
         <div class="civ-grid-leader">伯里克利 · 城邦宗主</div>
       </a>
@@ -154,5 +164,25 @@
 
 <script src="js/nav.js"></script>
 <script src="js/search.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>蜀汉 Shu Han - 和而不同 Mod - 文明6百科</title>
   <link rel="stylesheet" href="../../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
   <style>
     .mod-badge {
       display: inline-block;
@@ -176,5 +178,25 @@
 
 <script src="../../js/nav.js"></script>
 <script src="../../js/icons.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
 </body>
 </html>

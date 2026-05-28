@@ -346,5 +346,25 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--text-dim); font-si
   <p style="margin-top:0.5rem;"><a href="../showcase.html">&larr; Back to AutoResearch</a></p>
 </footer>
 
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
 </body>
 </html>

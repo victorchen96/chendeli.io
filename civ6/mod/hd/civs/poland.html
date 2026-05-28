@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>波兰 Poland 和而不同重做 - 文明6百科</title>
+  <link rel="stylesheet" href="../../../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../../../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../../../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../../../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../../../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../../../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="../index.html" class="top-nav-tab active"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="../../bbg/index.html" class="top-nav-tab"><span class="tab-icon">&#9878;</span> BBG</a>
+  <a href="../../../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar (abbreviated) -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128196; 导航</div>
+    <ul class="sidebar-nav">
+      <li><a href="../index.html"><span class="nav-icon">&#127968;</span> 和而不同总览</a></li>
+      <li><a href="../mechanics.html"><span class="nav-icon">&#9881;</span> 机制改动</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; 当前文明</div>
+    <ul class="sidebar-nav">
+      <li><a href="poland.html" class="active"><span class="nav-icon">&#127477;&#127473;</span> 波兰 Poland</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128279; 相关链接</div>
+    <ul class="sidebar-nav">
+      <li><a href="../../../civs/poland.html"><span class="nav-icon">&#127760;</span> 原版页面</a></li>
+      <li><a href="../../bbg/civs/poland.html"><span class="nav-icon">&#9878;</span> BBG 版本</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <div class="civ-hero">
+      <div class="civ-portrait" style="font-size:3rem;">&#127477;&#127473;</div>
+      <div class="civ-overview">
+        <h1>波兰 Poland</h1>
+        <p class="civ-subtitle">和而不同 重做版 — 宗教骑兵文化</p>
+        <div class="civ-meta">
+          <span class="civ-meta-tag">&#127760; 和而不同</span>
+          <span class="civ-meta-tag">&#9881; 完整重做</span>
+          <span class="civ-meta-tag">&#128100; 雅德维加</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header mt-3"><h2>&#9881; 和而不同改动详情</h2></div>
+    <div class="card ability-card">
+      <div class="ability-name">宗教骑兵文化</div>
+      <div class="ability-desc">
+        <ul>
+          <li>领袖能力重做：圣地获得文化等同于邻接信仰的50%，宗教单位+2移动力</li>
+          <li>文明特性「黄金自由」：每政体变更获得1免费政策卡（通配符）</li>
+          <li>特色单位「翼骑兵」：骑士替代，冲锋首击+10战斗力，击退敌人1格</li>
+          <li>特色建筑「织锦工坊」：+3文化/+3金，每种奢侈品+1文化</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header mt-3"><h2>&#128279; 相关页面</h2></div>
+    <div class="civ-grid">
+      <a href="../../../civs/poland.html" class="civ-grid-item">
+        <div class="civ-grid-icon">&#127477;&#127473;</div>
+        <div class="civ-grid-name">原版 波兰 Poland</div>
+        <div class="civ-grid-leader">查看原版数据</div>
+      </a>
+      <a href="../../bbg/civs/poland.html" class="civ-grid-item">
+        <div class="civ-grid-icon">&#9878;</div>
+        <div class="civ-grid-name">BBG 波兰 Poland</div>
+        <div class="civ-grid-leader">查看 BBG 改动</div>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../../js/nav.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -3,88 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CivRealm AI Agent - Game Replay</title>
+<title>CivRealm AI Agent - V4 Pro Game Replay</title>
 <style>
-:root { --bg: #1a1a2e; --card: #16213e; --accent: #0f3460; --gold: #e94560; --text: #eaeaea; --dim: #a0a0a0; }
+:root { --bg: #0d1117; --card: #161b22; --border: #30363d; --accent: #58a6ff; --gold: #f0883e; --green: #3fb950; --red: #f85149; --text: #e6edf3; --dim: #8b949e; --purple: #bc8cff; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-.header { background: linear-gradient(135deg, #0f3460, #533483); padding: 2rem; text-align: center; border-bottom: 3px solid var(--gold); }
-.header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-.header .subtitle { color: var(--dim); font-size: 0.95rem; }
-.stats-bar { display: flex; justify-content: center; gap: 2rem; padding: 1rem; background: var(--accent); flex-wrap: wrap; }
-.stat { text-align: center; }
-.stat .value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
-.stat .label { font-size: 0.75rem; color: var(--dim); text-transform: uppercase; }
-.controls { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1rem; background: var(--card); }
-.controls button { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; background: var(--accent); color: var(--text); transition: background 0.2s; }
-.controls button:hover { background: var(--gold); }
-.controls button.active { background: var(--gold); }
-#turn-slider { flex: 1; max-width: 400px; }
-.main { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; max-width: 1400px; margin: 0 auto; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.5; }
+.header { background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%); padding: 2rem; text-align: center; border-bottom: 2px solid var(--gold); }
+.header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; background: linear-gradient(90deg, var(--gold), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header .subtitle { color: var(--dim); font-size: 0.9rem; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin: 0 4px; }
+.badge-gold { background: rgba(240,136,62,0.2); color: var(--gold); border: 1px solid var(--gold); }
+.badge-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid var(--green); }
+.badge-purple { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid var(--purple); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-card .value { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+.stat-card .label { font-size: 0.7rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
+.stat-card.highlight .value { color: var(--gold); }
+.section { max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem; }
+.section h2 { color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem; }
+.compare-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.compare-table th, .compare-table td { padding: 0.6rem 1rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.compare-table th { background: rgba(88,166,255,0.1); color: var(--accent); font-size: 0.75rem; text-transform: uppercase; }
+.compare-table .winner { color: var(--green); font-weight: 600; }
+.compare-table td:first-child { text-align: left; font-weight: 600; }
+.chart-container { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; height: 260px; }
+.controls { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1rem 2rem; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+.controls button { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-size: 0.85rem; background: var(--bg); color: var(--text); transition: all 0.2s; }
+.controls button:hover { border-color: var(--accent); color: var(--accent); }
+.controls button.active { background: var(--accent); color: #000; border-color: var(--accent); }
+#turn-slider { flex: 1; max-width: 500px; accent-color: var(--accent); }
+#turn-label { font-weight: 600; min-width: 110px; text-align: center; }
+.main { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 2rem; max-width: 1200px; margin: 0 auto; }
 @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
-.panel { background: var(--card); border-radius: 8px; padding: 1.2rem; border: 1px solid #2a2a4a; }
-.panel h3 { color: var(--gold); margin-bottom: 0.8rem; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.4rem; }
-.observation { font-family: 'Fira Code', monospace; font-size: 0.82rem; white-space: pre-wrap; line-height: 1.5; color: #b8d4e3; }
-.reasoning { font-style: italic; color: #ccc; padding: 0.5rem; background: rgba(233,69,96,0.1); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; }
-.actions-list { list-style: none; }
-.actions-list li { padding: 0.3rem 0.5rem; margin: 0.3rem 0; background: rgba(15,52,96,0.5); border-radius: 4px; font-family: monospace; font-size: 0.85rem; display: flex; justify-content: space-between; }
-.actions-list .reward { font-weight: bold; }
-.reward.positive { color: #4caf50; }
-.reward.negative { color: #f44336; }
+.panel { background: var(--card); border-radius: 8px; padding: 1.2rem; border: 1px solid var(--border); }
+.panel h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 0.9rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+.observation { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; white-space: pre-wrap; line-height: 1.5; color: #b8d4e3; max-height: 300px; overflow-y: auto; }
+.reasoning { font-style: italic; color: #ccc; padding: 0.5rem 0.7rem; background: rgba(240,136,62,0.08); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; margin-bottom: 1rem; font-size: 0.82rem; }
+.actions-list { list-style: none; max-height: 200px; overflow-y: auto; }
+.actions-list li { padding: 4px 8px; margin: 3px 0; background: rgba(88,166,255,0.05); border-radius: 4px; font-family: monospace; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; }
+.reward { font-weight: 600; font-size: 0.72rem; }
+.reward.positive { color: var(--green); }
+.reward.negative { color: var(--red); }
 .reward.neutral { color: var(--dim); }
-.milestone { background: rgba(233,69,96,0.2); border: 1px solid var(--gold); border-radius: 4px; padding: 0.4rem 0.8rem; margin: 0.3rem 0; font-size: 0.85rem; }
-.timeline { padding: 1rem; max-width: 1400px; margin: 0 auto; }
-.timeline h3 { color: var(--gold); margin-bottom: 0.8rem; }
-.timeline-bar { display: flex; height: 30px; border-radius: 4px; overflow: hidden; background: var(--card); }
-.timeline-segment { height: 100%; cursor: pointer; transition: opacity 0.2s; position: relative; }
-.timeline-segment:hover { opacity: 0.8; }
-.timeline-segment.active { box-shadow: inset 0 0 0 2px white; }
-#loading { display: flex; align-items: center; justify-content: center; height: 60vh; font-size: 1.2rem; color: var(--dim); }
+.milestone-track { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.milestone { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; display: flex; align-items: center; gap: 5px; }
+.milestone .turn-num { color: var(--dim); font-size: 0.68rem; }
+.milestone.era { border-color: var(--gold); background: rgba(240,136,62,0.08); }
+.milestone.city { border-color: var(--green); background: rgba(63,185,80,0.08); }
+.milestone.tech { border-color: var(--purple); background: rgba(188,140,255,0.08); }
+.footer { text-align: center; padding: 2rem; color: var(--dim); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 2rem; }
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>CivRealm AI Agent - Game Replay</h1>
-  <p class="subtitle">DeepSeek V4 Flash | Simplified Civ Environment | Production Queue Fix Demo</p>
+  <h1>CivRealm AI Agent - V4 Pro Game Replay</h1>
+  <p class="subtitle">DeepSeek Reasoner (V4 Pro) | 97 Turns | Renaissance Era
+    <span class="badge badge-gold">A+ Grade</span>
+    <span class="badge badge-green">Score 501</span>
+    <span class="badge badge-purple">7/7 Criteria</span>
+  </p>
 </div>
 
-<div id="loading">Loading game data...</div>
+<div class="stats-grid">
+  <div class="stat-card highlight"><div class="value" id="s-score">501</div><div class="label">Final Score</div></div>
+  <div class="stat-card"><div class="value" id="s-cities">7</div><div class="label">Cities</div></div>
+  <div class="stat-card"><div class="value" id="s-techs">12</div><div class="label">Technologies</div></div>
+  <div class="stat-card"><div class="value">45</div><div class="label">Population</div></div>
+  <div class="stat-card"><div class="value" style="color:var(--gold)" id="s-era">Renaissance</div><div class="label">Era</div></div>
+  <div class="stat-card"><div class="value" id="s-reward">708</div><div class="label">Total Reward</div></div>
+  <div class="stat-card"><div class="value">100%</div><div class="label">Valid Actions</div></div>
+  <div class="stat-card"><div class="value">A+</div><div class="label">Grade</div></div>
+</div>
 
-<div id="app" style="display:none">
-  <div class="stats-bar">
-    <div class="stat"><div class="value" id="s-score">0</div><div class="label">Score</div></div>
-    <div class="stat"><div class="value" id="s-cities">0</div><div class="label">Cities</div></div>
-    <div class="stat"><div class="value" id="s-techs">0</div><div class="label">Techs</div></div>
-    <div class="stat"><div class="value" id="s-era">Ancient</div><div class="label">Era</div></div>
-    <div class="stat"><div class="value" id="s-reward">0</div><div class="label">Total Reward</div></div>
-    <div class="stat"><div class="value" id="s-grade">-</div><div class="label">Grade</div></div>
-  </div>
+<div class="section">
+  <h2>Model Comparison: V4 Pro (Reasoner) vs V4 Flash</h2>
+  <table class="compare-table">
+    <thead><tr><th>Metric</th><th>V4 Pro (Phase 4)</th><th>V4 Flash (Phase 3)</th><th>Improvement</th></tr></thead>
+    <tbody>
+      <tr><td>Final Score</td><td class="winner">501</td><td>380</td><td class="winner">+32%</td></tr>
+      <tr><td>Era Reached</td><td class="winner">Renaissance</td><td>Medieval</td><td class="winner">+2 Eras</td></tr>
+      <tr><td>Cities Founded</td><td class="winner">7</td><td>4</td><td class="winner">+3</td></tr>
+      <tr><td>Technologies</td><td class="winner">12</td><td>11</td><td class="winner">+1</td></tr>
+      <tr><td>Population</td><td class="winner">45</td><td>33</td><td class="winner">+36%</td></tr>
+      <tr><td>Total Reward</td><td class="winner">708</td><td>539</td><td class="winner">+31%</td></tr>
+      <tr><td>Valid Action Rate</td><td>100%</td><td>~95%</td><td class="winner">+5%</td></tr>
+      <tr><td>Avg Response Time</td><td>10.3s</td><td>8.0s</td><td style="color:var(--dim)">+2.3s</td></tr>
+      <tr><td>Total Tokens</td><td>211,106</td><td>196,466</td><td style="color:var(--dim)">+7%</td></tr>
+    </tbody>
+  </table>
+</div>
 
-  <div class="controls">
-    <button id="btn-prev">&lt; Prev</button>
-    <button id="btn-play">Play</button>
-    <button id="btn-next">Next &gt;</button>
-    <input type="range" id="turn-slider" min="0" max="49" value="0">
-    <span id="turn-label">Turn 1/50</span>
-  </div>
+<div class="section">
+  <h2>Score Progression</h2>
+  <div class="chart-container"><canvas id="score-chart"></canvas></div>
+</div>
 
-  <div class="main">
-    <div class="panel">
-      <h3>Game State (Observation)</h3>
-      <div class="observation" id="obs-text"></div>
-    </div>
-    <div class="panel">
-      <h3>LLM Reasoning</h3>
-      <div class="reasoning" id="reasoning-text"></div>
-      <h3 style="margin-top:1rem">Actions Executed</h3>
-      <ul class="actions-list" id="actions-list"></ul>
-    </div>
-  </div>
+<div class="controls">
+  <button id="btn-prev">&larr; Prev</button>
+  <button id="btn-play">Play</button>
+  <button id="btn-next">Next &rarr;</button>
+  <input type="range" id="turn-slider" min="0" max="99" value="0">
+  <span id="turn-label">Turn 1 / 100</span>
+</div>
 
-  <div class="timeline">
-    <h3>Milestones</h3>
-    <div id="milestones-list"></div>
+<div class="main">
+  <div class="panel">
+    <h3>Game State (Observation)</h3>
+    <div class="observation" id="obs-text"></div>
   </div>
+  <div class="panel">
+    <h3>LLM Reasoning</h3>
+    <div class="reasoning" id="reasoning-text"></div>
+    <h3 style="margin-top:1rem">Actions Executed</h3>
+    <ul class="actions-list" id="actions-list"></ul>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Key Milestones</h2>
+  <div class="milestone-track" id="milestones-list"></div>
+</div>
+
+<div class="footer">
+  CivRealm AI Agent | Phase 4 | deepseek-v4-pro via Cloudsway API | 2026-05-28
 </div>
 
 <script>
@@ -93,13 +135,10 @@ let currentTurn = 0;
 let playing = false;
 let playInterval = null;
 
-// Try loading from file - fallback to embedded data
 async function loadData() {
-  // Try to load from relative path
   const files = [
-    'data/civrealm_full_20260526_233721.json',
-    'data/civrealm_full_20260526_230939.json',
-    'data/civrealm_full_20260526_230213.json'
+    'data/civrealm_v4pro_20260528_141308.json',
+    'data/civrealm_v4pro_latest.json'
   ];
   for (const f of files) {
     try {
@@ -107,77 +146,95 @@ async function loadData() {
       if (resp.ok) { gameData = await resp.json(); return true; }
     } catch(e) {}
   }
-  // Fallback: check for inline data
   const el = document.getElementById('game-data');
   if (el) { gameData = JSON.parse(el.textContent); return true; }
   return false;
 }
 
-function init() {
-  if (!gameData || !gameData.turn_logs) {
-    document.getElementById('loading').textContent = 'No game data found. Place a game JSON in data/ directory.';
-    return;
+function drawChart() {
+  const canvas = document.getElementById('score-chart');
+  if (!canvas || !gameData || !gameData.turn_logs || !gameData.turn_logs.length) return;
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width - 48;
+  canvas.height = rect.height - 48;
+  const W = canvas.width, H = canvas.height;
+  const pad = { top: 20, right: 20, bottom: 30, left: 50 };
+  const plotW = W - pad.left - pad.right, plotH = H - pad.top - pad.bottom;
+
+  const scores = gameData.turn_logs.map(t => t.game_score || 0);
+  const rewards = gameData.turn_logs.map(t => t.cumulative_reward || 0);
+  const maxVal = Math.max(...scores, ...rewards) * 1.1;
+  const numTurns = scores.length;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Grid lines
+  ctx.strokeStyle = '#30363d'; ctx.lineWidth = 0.5;
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.top + (plotH / 5) * i;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke();
+    ctx.fillStyle = '#8b949e'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(Math.round(maxVal * (1 - i/5)), pad.left - 5, y + 3);
   }
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  const slider = document.getElementById('turn-slider');
-  slider.max = gameData.turn_logs.length - 1;
-  slider.addEventListener('input', () => { currentTurn = parseInt(slider.value); render(); });
-
-  document.getElementById('btn-prev').addEventListener('click', () => { if(currentTurn > 0) { currentTurn--; render(); } });
-  document.getElementById('btn-next').addEventListener('click', () => { if(currentTurn < gameData.turn_logs.length-1) { currentTurn++; render(); } });
-  document.getElementById('btn-play').addEventListener('click', togglePlay);
-
-  // Update final stats
-  if (gameData.assessment) {
-    document.getElementById('s-grade').textContent = gameData.assessment.grade;
+  ctx.textAlign = 'center'; ctx.fillStyle = '#8b949e';
+  for (let i = 0; i <= 10; i++) {
+    const x = pad.left + (plotW / 10) * i;
+    ctx.fillText(Math.round(numTurns * i / 10), x, H - 8);
   }
 
-  // Render milestones
-  const ml = document.getElementById('milestones-list');
+  // Draw line helper
+  function drawLine(data, color) {
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.beginPath();
+    data.forEach((val, i) => {
+      const x = pad.left + (i / (numTurns - 1)) * plotW;
+      const y = pad.top + (1 - val / maxVal) * plotH;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    // Fill
+    ctx.globalAlpha = 0.06; ctx.fillStyle = color;
+    ctx.lineTo(pad.left + plotW, pad.top + plotH);
+    ctx.lineTo(pad.left, pad.top + plotH); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha = 1.0;
+  }
+
+  drawLine(scores, '#f0883e');
+  drawLine(rewards, '#58a6ff');
+
+  // Milestone markers
   if (gameData.milestones) {
     gameData.milestones.forEach(m => {
-      const div = document.createElement('div');
-      div.className = 'milestone';
-      const icon = m.type === 'city_founded' ? '🏙️' : m.type === 'tech_complete' ? '🔬' : '⭐';
-      div.textContent = `Turn ${m.turn}: ${icon} ${m.type.replace('_',' ')} - ${m.detail}`;
-      ml.appendChild(div);
+      if (m.turn >= numTurns) return;
+      const x = pad.left + ((m.turn - 1) / (numTurns - 1)) * plotW;
+      ctx.strokeStyle = m.type === 'era_advance' ? '#f0883e' : m.type === 'city_founded' ? '#3fb950' : '#bc8cff';
+      ctx.setLineDash([2, 3]); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, pad.top + plotH); ctx.stroke();
+      ctx.setLineDash([]);
     });
   }
 
-  render();
+  // Legend
+  ctx.font = '10px sans-serif';
+  ctx.fillStyle = '#f0883e'; ctx.fillRect(W - 160, 8, 10, 10);
+  ctx.fillStyle = '#e6edf3'; ctx.textAlign = 'left'; ctx.fillText('Score', W - 146, 17);
+  ctx.fillStyle = '#58a6ff'; ctx.fillRect(W - 160, 23, 10, 10);
+  ctx.fillStyle = '#e6edf3'; ctx.fillText('Cumulative Reward', W - 146, 32);
 }
 
 function render() {
+  if (!gameData || !gameData.turn_logs || !gameData.turn_logs.length) return;
   const log = gameData.turn_logs[currentTurn];
   if (!log) return;
 
   document.getElementById('turn-slider').value = currentTurn;
-  document.getElementById('turn-label').textContent = `Turn ${log.turn}/${gameData.turn_logs.length}`;
-  document.getElementById('s-score').textContent = log.game_score || 0;
-  document.getElementById('s-reward').textContent = log.cumulative_reward?.toFixed(1) || '0';
+  document.getElementById('turn-label').textContent = `Turn ${log.turn} / ${gameData.turn_logs.length}`;
 
-  // Find snapshot for current era/cities info
-  let era = 'Ancient', cities = 1, techs = 2;
-  if (gameData.snapshots) {
-    for (const snap of gameData.snapshots) {
-      if (snap.turn <= log.turn) { era = snap.era; cities = snap.cities; techs = snap.techs_count; }
-    }
-  }
-  document.getElementById('s-era').textContent = era.charAt(0).toUpperCase() + era.slice(1);
-  document.getElementById('s-cities').textContent = cities;
-  document.getElementById('s-techs').textContent = techs;
+  // Observation text
+  document.getElementById('obs-text').textContent = log.observation || `Turn ${log.turn} | Score: ${log.game_score}`;
 
   // Reasoning
   document.getElementById('reasoning-text').textContent = log.reasoning || '(no reasoning)';
-
-  // Build observation from action results context
-  let obsLines = [];
-  obsLines.push(`Turn ${log.turn} | Score: ${log.game_score}`);
-  obsLines.push(`Cumulative Reward: ${log.cumulative_reward?.toFixed(1)}`);
-  obsLines.push(`Actions this turn: ${log.actions?.length || 0}`);
-  document.getElementById('obs-text').textContent = obsLines.join('\n');
 
   // Actions
   const al = document.getElementById('actions-list');
@@ -186,38 +243,80 @@ function render() {
     log.action_results.forEach(ar => {
       const li = document.createElement('li');
       const rClass = ar.reward > 0 ? 'positive' : ar.reward < 0 ? 'negative' : 'neutral';
-      li.innerHTML = `<span>${ar.action}</span><span class="reward ${rClass}">${ar.reward > 0 ? '+' : ''}${ar.reward.toFixed(1)} ${ar.message || ''}</span>`;
+      const sign = ar.reward > 0 ? '+' : '';
+      li.innerHTML = `<span>${ar.action}</span><span class="reward ${rClass}">${sign}${ar.reward.toFixed(1)}${ar.message ? ' | ' + ar.message : ''}</span>`;
       al.appendChild(li);
     });
   }
+}
+
+function renderMilestones() {
+  const ml = document.getElementById('milestones-list');
+  if (!gameData || !gameData.milestones) return;
+  gameData.milestones.forEach(m => {
+    const div = document.createElement('div');
+    let cls = 'milestone', icon = '';
+    if (m.type === 'era_advance') { cls += ' era'; icon = '⭐'; }
+    else if (m.type === 'city_founded') { cls += ' city'; icon = '🏙️'; }
+    else { cls += ' tech'; icon = '🔬'; }
+    div.className = cls;
+    div.innerHTML = `<span>${icon}</span><span>${m.detail}</span><span class="turn-num">T${m.turn}</span>`;
+    ml.appendChild(div);
+  });
 }
 
 function togglePlay() {
   playing = !playing;
   const btn = document.getElementById('btn-play');
   if (playing) {
-    btn.textContent = 'Pause';
-    btn.classList.add('active');
+    btn.textContent = 'Pause'; btn.classList.add('active');
     playInterval = setInterval(() => {
       if (currentTurn >= gameData.turn_logs.length - 1) { togglePlay(); return; }
-      currentTurn++;
-      render();
-    }, 1500);
+      currentTurn++; render();
+    }, 1200);
   } else {
-    btn.textContent = 'Play';
-    btn.classList.remove('active');
+    btn.textContent = 'Play'; btn.classList.remove('active');
     clearInterval(playInterval);
   }
 }
 
-// Keyboard shortcuts
+document.getElementById('btn-prev').addEventListener('click', () => { if(currentTurn > 0) { currentTurn--; render(); } });
+document.getElementById('btn-next').addEventListener('click', () => { if(currentTurn < (gameData?.turn_logs?.length||1)-1) { currentTurn++; render(); } });
+document.getElementById('btn-play').addEventListener('click', togglePlay);
+document.getElementById('turn-slider').addEventListener('input', (e) => { currentTurn = parseInt(e.target.value); render(); });
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') { if(currentTurn > 0) { currentTurn--; render(); } }
-  if (e.key === 'ArrowRight') { if(currentTurn < gameData.turn_logs.length-1) { currentTurn++; render(); } }
+  if (e.key === 'ArrowRight') { if(currentTurn < (gameData?.turn_logs?.length||1)-1) { currentTurn++; render(); } }
   if (e.key === ' ') { e.preventDefault(); togglePlay(); }
 });
 
-loadData().then(init);
+loadData().then(ok => {
+  if (ok && gameData) {
+    render(); renderMilestones(); drawChart();
+    window.addEventListener('resize', drawChart);
+  }
+});
+</script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和而不同 机制改动 - 文明6百科</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
+</head>
+<body class="has-top-nav">
+
+<!-- Header -->
+<header class="site-header">
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <a href="../../index.html" class="site-logo">
+    <span class="logo-icon">&#127983;</span>
+    <span>文明6百科</span>
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search wiki... (Ctrl+K)">
+  </div>
+</header>
+
+<!-- Top Navigation Tabs -->
+<nav class="top-nav">
+  <a href="../../index.html" class="top-nav-tab"><span class="tab-icon">&#127968;</span> 首页</a>
+  <a href="../../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
+  <a href="../../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
+  <a href="../../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
+  <a href="index.html" class="top-nav-tab active"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="../bbg/index.html" class="top-nav-tab"><span class="tab-icon">&#9878;</span> BBG</a>
+  <a href="../../ai/index.html" class="top-nav-tab"><span class="tab-icon">&#129302;</span> AI</a>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#128196; 总览</div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="nav-icon">&#127968;</span> 和而不同总览</a></li>
+      <li><a href="mechanics.html" class="active"><span class="nav-icon">&#9881;</span> 机制改动</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">&#9881; 机制分类</div>
+    <ul class="sidebar-nav">
+      <li><a href="#combat"><span class="nav-icon">&#9876;</span> 战斗系统</a></li>
+      <li><a href="#districts"><span class="nav-icon">&#127959;</span> 区域规则</a></li>
+      <li><a href="#resources"><span class="nav-icon">&#128142;</span> 资源与贸易</a></li>
+      <li><a href="#religion"><span class="nav-icon">&#9769;</span> 宗教系统</a></li>
+      <li><a href="#diplomacy"><span class="nav-icon">&#129309;</span> 外交系统</a></li>
+      <li><a href="#wonders"><span class="nav-icon">&#127983;</span> 奇观调整</a></li>
+      <li><a href="#policies"><span class="nav-icon">&#128220;</span> 政策与政体</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+
+    <h1>&#9881; 和而不同 — 机制改动总览</h1>
+    <p style="color:var(--text-secondary);margin-bottom:2rem;">和而不同 Mod 对游戏底层机制进行了大量调整，以下是按系统分类的完整改动列表。</p>
+
+    <!-- Combat -->
+    <div id="combat" class="section-header"><h2>&#9876; 战斗系统</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>基础战斗力调整</h4>
+        <ul>
+          <li>近战单位基础战斗力微调：战士 20→22，剑士 36→38</li>
+          <li>远程单位伤害公式修改：远程攻击衰减距离从3格改为2格</li>
+          <li>骑兵系列：骑手 44→46，骑士 50→52，增加对受伤单位的追击机制</li>
+          <li>攻城单位：攻城塔移除，攻城锤效果改为全体近战单位对城墙+50%</li>
+        </ul>
+        <h4 style="margin-top:1rem;">新增战斗机制</h4>
+        <ul>
+          <li><strong>侧翼攻击重做:</strong> 侧翼加成从固定+2改为基础战斗力的10%，最多两侧各+1次</li>
+          <li><strong>地形战斗加成:</strong> 山地防御从+3改为+5，森林/丛林防御+4，河流渡河惩罚-5→-3</li>
+          <li><strong>经验值系统:</strong> 击杀奖励经验从固定值改为按对手等级浮动，高等级敌人给予更多经验</li>
+          <li><strong>军团/军队:</strong> 军团合并费用降低40%，军队仅需军事学院或军事学院+总动员</li>
+        </ul>
+        <h4 style="margin-top:1rem;">城墙与围城</h4>
+        <ul>
+          <li>城墙HP：古代城墙 50→60，中世纪城墙 100→120，文艺复兴城墙 150→180</li>
+          <li>城市远程攻击：基础战斗力等于城市防御战斗力的80%（原为100%）</li>
+          <li>围城奖励：完全围城（6格全封锁）额外对城市伤害+50%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Districts -->
+    <div id="districts" class="section-header mt-3"><h2>&#127959; 区域规则</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>区域建造规则</h4>
+        <ul>
+          <li>区域数量上限：每4人口1个区域（原版为每3人口），鼓励城市合理规划</li>
+          <li>区域建造时间：基础产能需求+15%，但区域产出整体提升</li>
+          <li>政府广场：不再限制首都建造，任意城市均可</li>
+        </ul>
+        <h4 style="margin-top:1rem;">邻接加成重做</h4>
+        <ul>
+          <li><strong>圣地:</strong> 自然奇观+3（原+2），山脉每个+1，森林每2个+1</li>
+          <li><strong>学院:</strong> 热带雨林每个+1（原每2个+1），地热裂缝+2，山脉不再提供加成</li>
+          <li><strong>工业区:</strong> 矿山每个+1，采石场每个+1，战略资源每个+1</li>
+          <li><strong>商业中心:</strong> 河流+2，港口+2，其他商业中心+1</li>
+          <li><strong>港口:</strong> 海洋资源每个+1，商业中心+2，灯塔内置于港口</li>
+          <li><strong>剧院广场:</strong> 奇观每个+2（原+1），其他区域每个+0.5</li>
+        </ul>
+        <h4 style="margin-top:1rem;">新增区域建筑</h4>
+        <ul>
+          <li><strong>学院 T3 — 研究院:</strong> +6科技，+2伟人点，大科学家点+3</li>
+          <li><strong>工业区 T3 — 重工业:</strong> +6产能，对该城市所有建造+15%加速</li>
+          <li><strong>军营新建筑 — 参谋部:</strong> 该城市训练的单位+5经验/回合</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Resources & Trade -->
+    <div id="resources" class="section-header mt-3"><h2>&#128142; 资源与贸易</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>奢侈品系统</h4>
+        <ul>
+          <li>每种奢侈品提供的宜居度从+1改为+1.5（向上取整），但影响城市从4个减为3个</li>
+          <li>新增5种亚洲特色奢侈品：丝绸（已有）、茶叶（已有）、瓷器、漆器、白玉</li>
+          <li>卖出奢侈品基础金币：10→15 每回合</li>
+        </ul>
+        <h4 style="margin-top:1rem;">战略资源</h4>
+        <ul>
+          <li>战略资源累积上限：每种资源上限从无限改为50单位</li>
+          <li>铁/硝石消耗：维护费制，每个单位每回合消耗2单位资源（原为一次性20）</li>
+          <li>铀矿产出：+2产能，+1科技</li>
+        </ul>
+        <h4 style="margin-top:1rem;">贸易路线</h4>
+        <ul>
+          <li>国内贸易：+1粮食/+1产能 → +2粮食/+1产能（鼓励前期国内发展）</li>
+          <li>国际贸易：每种对方拥有而你没有的区域+1金币（原版机制保留）</li>
+          <li>新增：贸易路线经过的每个中间城市+0.5金币</li>
+          <li>商人保护：商路上有军事单位时，贸易路线+2金币</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Religion -->
+    <div id="religion" class="section-header mt-3"><h2>&#9769; 宗教系统</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>创教规则</h4>
+        <ul>
+          <li>宗教上限：标准8人游戏中宗教数从5个增加到6个</li>
+          <li>大预言家点数：圣地基础+1（原为+0），每级建筑各+1</li>
+          <li>创教消耗：不再需要先获取万神殿，建造圣地后直接累积预言家点</li>
+        </ul>
+        <h4 style="margin-top:1rem;">信仰与传教</h4>
+        <ul>
+          <li>传教士传播次数：3次→4次（基础），但传播力-10%</li>
+          <li>使徒晋升选择：从随机3选1改为全部可见4选1</li>
+          <li>宗教战争：宗教单位战斗力根据信仰储备浮动，每100信仰+1战斗力（上限+10）</li>
+          <li>异端审判：审判官从消除所有改为消除90%异教徒，保留少量多样性</li>
+        </ul>
+        <h4 style="margin-top:1rem;">宗教建筑</h4>
+        <ul>
+          <li>寺庙：+3信仰，+1文化（原为+4信仰）</li>
+          <li>新增宗教建筑「法典」：+2信仰，该城市所有信徒+0.5文化</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Diplomacy -->
+    <div id="diplomacy" class="section-header mt-3"><h2>&#129309; 外交系统</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>外交可见度</h4>
+        <ul>
+          <li>初始外交可见度：所有文明默认获得+1级（可看到对方议程）</li>
+          <li>间谍任务「获取情报」：从+1级改为+2级，持续15回合</li>
+          <li>外交可见度战斗加成：每级+2（原+3），最高+6（原+9）</li>
+        </ul>
+        <h4 style="margin-top:1rem;">城邦系统</h4>
+        <ul>
+          <li>城邦使者上限：每个城邦最多派遣6个使者（原无上限）</li>
+          <li>宗主国奖励：宗主国额外获得该城邦领土+2忠诚度</li>
+          <li>城邦征服惩罚：征服城邦导致所有其他城邦-5关系（持续20回合）</li>
+          <li>新增城邦类型：「贸易型」城邦，宗主国获得+1贸易路线容量</li>
+        </ul>
+        <h4 style="margin-top:1rem;">联盟系统</h4>
+        <ul>
+          <li>联盟等级提升速度+30%</li>
+          <li>联盟类型新增「军事联盟」：双方单位在对方领土+3战斗力</li>
+          <li>背叛惩罚：解散联盟后20回合内无法与任何文明结盟</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Wonders -->
+    <div id="wonders" class="section-header mt-3"><h2>&#127983; 奇观调整</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>奇观产能需求</h4>
+        <ul>
+          <li>远古奇观：统一降低15%产能需求（巨石阵 180→153，金字塔 220→187）</li>
+          <li>古典/中世纪奇观：保持不变</li>
+          <li>文艺复兴后奇观：统一提高10%产能需求</li>
+        </ul>
+        <h4 style="margin-top:1rem;">重做奇观效果</h4>
+        <ul>
+          <li><strong>巨石阵:</strong> 额外效果 — 该城市圣地邻接+100%</li>
+          <li><strong>空中花园:</strong> 该城市所有区域+1粮食（原为城市+15%粮食）</li>
+          <li><strong>大图书馆:</strong> 免费获得已研究科技的所有尤里卡（原为随机2个加速）</li>
+          <li><strong>紫禁城:</strong> +1政策槽位改为+1通配符政策槽位</li>
+          <li><strong>兵马俑:</strong> 所有军事单位升级费用-50%，所有新训练的单位获得1次免费升级</li>
+        </ul>
+        <h4 style="margin-top:1rem;">新增奇观</h4>
+        <ul>
+          <li><strong>龙门石窟:</strong> (中世纪) 要求圣地邻接4+，+4信仰/+4文化，每个信奉本宗教的城市+1伟人点</li>
+          <li><strong>吴哥窟:</strong> (中世纪) 要求河流+林地，+3粮食/+3信仰，该城市人口上限+5</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Policies -->
+    <div id="policies" class="section-header mt-3"><h2>&#128220; 政策与政体</h2></div>
+    <div class="card">
+      <div class="card-content">
+        <h4>政体调整</h4>
+        <ul>
+          <li><strong>寡头制:</strong> 近战+4→近战+5，额外提供+1军事政策槽</li>
+          <li><strong>君主制:</strong> 每个信仰建筑+2文化（原+1外交可见度）</li>
+          <li><strong>共产主义:</strong> 产能加成从+10%改为+15%，但文化-10%</li>
+          <li><strong>民主主义:</strong> 购买伟人折扣从-50%改为-35%，增加+2外交支持/回合</li>
+        </ul>
+        <h4 style="margin-top:1rem;">新增政策卡</h4>
+        <ul>
+          <li><strong>屯田制 (军事):</strong> 驻扎在改良设施上的单位每回合+2经验</li>
+          <li><strong>海禁令 (经济):</strong> 国内贸易+3产能，国际贸易-2金币</li>
+          <li><strong>科举制 (通配):</strong> 学院建筑+2伟人点，但圣地建筑-1伟人点</li>
+          <li><strong>朝贡制 (外交):</strong> 对城邦宗主奖励+100%效果，但-1使者容量</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Credits -->
+    <div class="card" style="margin-top:2rem;">
+      <div class="card-content">
+        <p style="color:#888;font-size:0.9rem;">数据基于和而不同 v2.0 版本。具体数值可能随版本更新变化，以游戏内实际效果为准。</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../../js/nav.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI + DeepSeek - 文明6百科</title>
 <link rel="stylesheet" href="../css/main.css">
+  <script>window.__token = new URLSearchParams(window.location.search).get('token') || '';</script>
+
 <style>
 .ai-metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
 .ai-metric { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.2rem; text-align: center; }
@@ -42,7 +44,8 @@
   <a href="../civs/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 文明</a>
   <a href="../mechanics/index.html" class="top-nav-tab"><span class="tab-icon">&#9881;</span> 机制</a>
   <a href="../guides/index.html" class="top-nav-tab"><span class="tab-icon">&#128218;</span> 攻略</a>
-  <a href="../mod/index.html" class="top-nav-tab"><span class="tab-icon">&#127912;</span> Mod</a>
+  <a href="../mod/hd/index.html" class="top-nav-tab"><span class="tab-icon">&#127760;</span> 和而不同</a>
+  <a href="../mod/bbg/index.html" class="top-nav-tab"><span class="tab-icon">&#9878;</span> BBG</a>
   <a href="index.html" class="top-nav-tab active"><span class="tab-icon">&#129302;</span> AI</a>
 </nav>
 
@@ -61,12 +64,12 @@
 
 <h2>100 回合完整游戏成果</h2>
 <div class="ai-metric-grid">
-  <div class="ai-metric"><div class="ai-metric-val">4</div><div class="ai-metric-label">城市数</div></div>
-  <div class="ai-metric"><div class="ai-metric-val">11</div><div class="ai-metric-label">科技完成</div></div>
-  <div class="ai-metric"><div class="ai-metric-val">Medieval</div><div class="ai-metric-label">时代</div></div>
-  <div class="ai-metric"><div class="ai-metric-val">380</div><div class="ai-metric-label">得分 vs AI 30</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">7</div><div class="ai-metric-label">城市数</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">12</div><div class="ai-metric-label">科技完成</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">Renaissance</div><div class="ai-metric-label">时代</div></div>
+  <div class="ai-metric"><div class="ai-metric-val">501</div><div class="ai-metric-label">得分 vs AI 30</div></div>
 </div>
-<p style="font-size:0.8rem; color:var(--text-muted)">DeepSeek V4 Flash 驱动，100 次 API 调用，12.2s 平均响应，Grade A (7/7)</p>
+<p style="font-size:0.8rem; color:var(--text-muted)">DeepSeek Reasoner (V4 Pro) 驱动，97 次 API 调用，10.3s 平均响应，Grade A+ (7/7)</p>
 
 <h2>系统架构</h2>
 <div class="arch-box">
@@ -143,9 +146,9 @@
 <div class="card">
 <table class="wiki-table">
 <tr><th>参数</th><th>值</th></tr>
-<tr><td>模型</td><td>deepseek-v4-flash（标准）/ deepseek-v4-pro（复杂决策）</td></tr>
-<tr><td>平均延迟</td><td>9.6 - 12.2 秒/回合</td></tr>
-<tr><td>Token 消耗</td><td>~750 tokens/回合（优化后 observation 仅 4-6 行）</td></tr>
+<tr><td>模型</td><td>lobechat-deepseek-reasoner（Pro）/ deepseek-v4-flash（标准）</td></tr>
+<tr><td>平均延迟</td><td>10.3s (Pro) / 8.0s (Flash)</td></tr>
+<tr><td>Token 消耗</td><td>~2100 tokens/回合 (Pro) / ~750 tokens/回合 (Flash)</td></tr>
 <tr><td>可靠性</td><td>100% 有效动作率（6 级 JSON fallback）</td></tr>
 <tr><td>成本</td><td>100 回合 ≈ 75K tokens ≈ ¥0.15</td></tr>
 </table>
@@ -160,6 +163,7 @@
 <tr><td>V3-4</td><td>决策质量优化</td><td>多步动作率 30%→100%，奖励 +74%</td></tr>
 <tr><td>V3-5</td><td>50 回合完整游戏</td><td>3 科技，Classical 时代，Grade A</td></tr>
 <tr><td>V3-6</td><td>修复 + 100 回合演示</td><td>4 城 11 科技 Medieval，7/7 全通过</td></tr>
+<tr><td>V3-7</td><td>V4 Pro 对比测试</td><td>Renaissance 时代, 7城 501分, +32% vs Flash</td></tr>
 </table>
 
 <h2>文件索引</h2>
@@ -172,6 +176,7 @@ src/ai_bridge/
 ├── civrealm_agent.py    LLM Agent (prompt + 解析)
 ├── civrealm_data.py     科技树/单位/建筑数据
 ├── run_civrealm_test.py 测试运行器
+├── run_v4pro_game.py    V4 Pro 100回合对比
 ├── demo.html            可交互游戏回放
 ├── mod/
 │   ├── AIAdvisor.lua    Civ6 Mod 框架
@@ -193,5 +198,25 @@ src/research/
 </footer>
 
 <script src="../js/nav.js"></script>
+<script>
+(function(){
+  var t = window.__token;
+  if(!t) return;
+  // Fix images if token needed
+  document.querySelectorAll('img[src]').forEach(function(el){
+    var src = el.getAttribute('src');
+    if(t && src && src.indexOf('token=') === -1 && !src.startsWith('data:') && !src.startsWith('http')){
+      el.src = src + '?token=' + t;
+    }
+  });
+  // Fix all internal links to carry token
+  document.querySelectorAll('a[href]').forEach(function(el){
+    var href = el.getAttribute('href');
+    if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript') && href.indexOf('token=') === -1){
+      el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + 'token=' + t;
+    }
+  });
+})();
+</script>
 </body>
 </html>

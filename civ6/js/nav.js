@@ -59,4 +59,47 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // ESC key → go back to parent level
+  var path = window.location.pathname;
+  var token = window.__token ? '?token=' + window.__token : '';
+  var backUrl = null;
+
+  if (path.match(/\/mod\/(hd|bbg)\/civs\/.+\.html/)) {
+    // mod civ detail → mod index
+    backUrl = '../index.html';
+  } else if (path.match(/\/mod\/(hd|bbg)\/(mechanics|index)\.html/)) {
+    // mod index/mechanics → home
+    backUrl = '../../index.html';
+  } else if (path.match(/\/civs\/.+\.html/) && !path.match(/\/civs\/index\.html/)) {
+    // civ detail → civs index
+    backUrl = 'index.html';
+  } else if (path.match(/\/civs\/index\.html/)) {
+    // civs index → home
+    backUrl = '../index.html';
+  } else if (path.match(/\/(mechanics|guides|ai)\/.+\.html/)) {
+    // sub-section page → home
+    backUrl = '../index.html';
+  }
+
+  if (backUrl) {
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+        var active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+          active.blur();
+          return;
+        }
+        window.location.href = backUrl + token;
+      }
+    });
+
+    // Add visible back button
+    var backBtn = document.createElement('a');
+    backBtn.href = backUrl + token;
+    backBtn.className = 'back-nav-btn';
+    backBtn.innerHTML = '&#8592; 返回上级 <kbd>Esc</kbd>';
+    var main = document.querySelector('.main-content .content-container');
+    if (main) main.insertBefore(backBtn, main.firstChild);
+  }
 });

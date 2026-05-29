@@ -227,7 +227,7 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--text-dim); font-si
     |--- MCTS Rollout (depth 3)        |--- Card Selection (Act 2+ / Elite / Boss)
     |--- Greedy Fallback               |--- Response Cache (512 entries)
     |--- Heart-specific Strategy       |--- Fallback to Heuristic on API fail
-    |--- Stance Evaluation (Watcher)   |--- Model: deepseek-v4-pro / gpt-5.2
+    |--- Stance Evaluation (Watcher)   |--- Model: LLM (reasoning)
     |
     v
 <span class="p">Game State</span> &rarr; Cards (80+) &rarr; Enemies (25+) &rarr; Relics &rarr; Potions
@@ -249,7 +249,7 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--text-dim); font-si
             <span class="kw">return</span> <span class="str">None</span>  <span class="cm"># Let heuristic handle Act 1 normals</span>
 
         prompt = self.<span class="fn">_build_prompt</span>(deck, offered, floor, act, character)
-        response = self.<span class="fn">_call_api</span>(prompt, model=<span class="str">"deepseek-v4-pro"</span>)
+        response = self.<span class="fn">_call_api</span>(prompt, model=<span class="str">"llm-reasoning"</span>)
 
         <span class="kw">if</span> response <span class="kw">is</span> <span class="str">None</span>:
             <span class="kw">return</span> <span class="str">None</span>  <span class="cm"># Silent degradation</span>

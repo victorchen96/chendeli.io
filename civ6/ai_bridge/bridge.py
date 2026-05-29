@@ -1,13 +1,13 @@
 """
 Civ6 AI Bridge - Main Loop
 ============================
-监听 Mod 输出的游戏状态文件，调用 DeepSeek API 生成决策建议，
+监听 Mod 输出的游戏状态文件，调用 LLM API 生成决策建议，
 将建议写回让 Mod 读取。
 
 通信协议：
   1. Mod 每回合将游戏状态写入 data/game_state.json
   2. Bridge 检测到文件更新后读取并解析
-  3. Bridge 调用 DeepSeek API 获取建议
+  3. Bridge 调用 LLM API 获取建议
   4. Bridge 将建议写入 data/advice.json
   5. Mod 下回合开始时读取 advice.json 并应用
 
@@ -27,18 +27,18 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent))
 
 from game_state import GameState, load_state_from_file, save_state_to_file, create_demo_scenario
-from advisor import call_deepseek_api, generate_fallback_advice, StrategicAdvice
+from advisor import call_llm_api, generate_fallback_advice, StrategicAdvice
 
 
 class AIBridge:
     """Civ6 AI Bridge 主控制器"""
 
-    def __init__(self, data_dir: str = None, model: str = "deepseek-v4-flash",
+    def __init__(self, data_dir: str = None, model: str = "llm-default",
                  poll_interval: float = 2.0, use_api: bool = True):
         """
         Args:
             data_dir: 数据交换目录路径
-            model: DeepSeek 模型名称
+            model: LLM 模型名称
             poll_interval: 轮询间隔（秒）
             use_api: 是否使用真实 API（False 则使用规则备选）
         """
@@ -89,7 +89,7 @@ class AIBridge:
 
         # 2. 调用 LLM 获取建议
         if self.use_api:
-            advice = call_deepseek_api(state, model=self.model)
+            advice = call_llm_api(state, model=self.model)
             if advice is None:
                 self.log("WARN", "API call failed, using fallback rules")
                 advice = generate_fallback_advice(state)
@@ -147,7 +147,7 @@ def demo_full_flow(use_api: bool = True):
     """
     演示完整的决策流程：
     1. 创建模拟游戏场景
-    2. 调用 DeepSeek API
+    2. 调用 LLM API
     3. 输出建议
     """
     print("=" * 60)
@@ -188,8 +188,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Civ6 AI Bridge")
     parser.add_argument("--mode", choices=["demo", "listen", "once"],
                        default="demo", help="运行模式")
-    parser.add_argument("--model", default="deepseek-v4-flash",
-                       help="DeepSeek 模型名称")
+    parser.add_argument("--model", default="llm-default",
+                       help="LLM 模型名称")
     parser.add_argument("--no-api", action="store_true",
                        help="不调用 API，使用规则备选")
     parser.add_argument("--data-dir", default=None,
